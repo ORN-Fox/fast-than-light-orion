@@ -1,3 +1,5 @@
+import { Ship } from '../ship/ship.model';
+
 export class Game {
 
   ship: Ship | null;
