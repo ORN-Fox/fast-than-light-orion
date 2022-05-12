@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Game } from '../../core/models/game/game.model';
 
@@ -11,7 +12,8 @@ export class MenuComponent implements OnInit {
 
   game: Game | null;
 
-  constructor() { }
+  constructor(
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,9 +23,8 @@ export class MenuComponent implements OnInit {
   }
 
   newGame() {
-    // TODO
     this.game = new Game();
-    // TODO navigate to shed view
+    this.router.navigate(['/shed']);
   }
 
   quitGame() {
