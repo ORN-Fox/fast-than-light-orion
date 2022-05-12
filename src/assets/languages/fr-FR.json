@@ -1,0 +1,10 @@
+{
+  "commons": {
+    "actions": {
+      "continue": "Continuer",
+      "newGame": "Nouvelle partie",
+      "options": "Options",
+      "quit": "Quitter"
+    }
+  }
+}

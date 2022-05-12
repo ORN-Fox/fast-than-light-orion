@@ -6,10 +6,10 @@
         </div>
 
         <div class="menu-actions">
-            <button disabled (click)="continueGame()">Continuer</button>
-            <button (click)="newGame()">Nouvelle partie</button>
-            <button disabled>Options</button>
-            <button (click)="quitGame()">Quitter</button>
+            <button disabled (click)="continueGame()">{{'commons.actions.continue' | translate}}</button>
+            <button (click)="newGame()">{{'commons.actions.newGame' | translate}}</button>
+            <button disabled>{{'commons.actions.settings' | translate}}</button>
+            <button (click)="quitGame()">{{'commons.actions.quit' | translate}}</button>
         </div>
     </div>
 </div>
