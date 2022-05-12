@@ -3,8 +3,8 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 import { Logger } from '../logger/logger.service';
-import * as enUS from '../../../../assets/languages/en-US.json';
-import * as frFR from '../../../../assets/languages/fr-FR.json';
+import * as enUS from '../../../../assets/translations/en-US.json';
+import * as frFR from '../../../../assets/translations/fr-FR.json';
 
 const log = new Logger('I18nService');
 const languageKey = 'language';
