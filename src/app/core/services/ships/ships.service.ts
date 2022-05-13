@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 
-import { Kestrel } from '../../models/ships/kestrel/kestrel.model';
+import { Kestrel, Ship } from '../../models/ships/index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShipsService {
 
-  ships: any[];
+  private ships: Ship[];
 
   constructor() {
     this.ships = [
       new Kestrel()
     ];
+  }
+
+  getShips(): Ship[]
+  {
+    return this.ships;
   }
 }
