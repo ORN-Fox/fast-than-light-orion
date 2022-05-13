@@ -22,20 +22,20 @@ export class Kestrel extends Ship {
     this.droneParts = 2;
 
     this.crews = [
-      new Crew('Humain 1', new Human(), Gender.Male),
-      new Crew('Humaine 2', new Human(), Gender.Female),
-      new Crew('Humaine 3', new Human(), Gender.Female)
+      new Crew('Human 1', new Human(), Gender.Male),
+      new Crew('Human 2', new Human(), Gender.Female),
+      new Crew('Human 3', new Human(), Gender.Female)
     ];
 
     this.rooms = [
-      new Room(new Piloting(), this.crews[0]), // PilotingSymbol.png Piloting (1)
-      new Room(new Door()), // DoorSystemSymbol.png Doors (1)
-      new Room(new Sensor()), // SensorsSymbol.png Sensors (1)
-      new Room(new Medbay()), // MedbaySymbol.png Medbay (1)
-      new Room(new Oxygen()), // OxygenSymbol.png Oxygen (1)
-      new Room(new Shield()), // ShieldsSymbol.png Shields (2)
-      new Room(new Engine(), this.crews[1]), // EnginesSymbol.png Engines (2)
-      new Room(new WeaponControl(), this.crews[2]) // WeaponControlSymbol.png Weapons (3)
+      new Room(new Piloting(), this.crews[0]),
+      new Room(new Door()),
+      new Room(new Sensor()),
+      new Room(new Medbay()),
+      new Room(new Oxygen()),
+      new Room(new Shield()),
+      new Room(new Engine(), this.crews[1]),
+      new Room(new WeaponControl(), this.crews[2])
     ];
 
     this.weapons = [
