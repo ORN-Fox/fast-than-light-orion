@@ -1,6 +1,6 @@
 export * from './battery/battery.model';
 export * from './cloacking/cloacking.model';
-export * from './clonebay/clonebay.model';
+export * from './cloneBay/cloneBay.model';
 export * from './door/door.model';
 export * from './drone/drone.model';
 export * from './engine/engine.model';

@@ -1,6 +1,6 @@
 import { System } from '../system.model';
 
-export class Clonebay extends System {
+export class CloneBay extends System {
 
   constructor() {
     super();
