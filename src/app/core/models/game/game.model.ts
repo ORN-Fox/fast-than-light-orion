@@ -1,4 +1,4 @@
-import { Ship } from '../ship/ship.model';
+import { Ship } from '../ships/ship.model';
 
 export class Game {
 
