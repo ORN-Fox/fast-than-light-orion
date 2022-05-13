@@ -1,30 +1,31 @@
 import { Ship } from '../ship.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
-import { Human } from '../../races/human/human.model';
+import { Human, Mantis, Zoltan } from '../../races/index';
 
 import { Room } from '../../room/room.model';
 import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
 import { Weapon } from '../../weapon/weapon.model';
 
-export class KestrelLayoutA extends Ship {
+export class KestrelLayoutB extends Ship {
   constructor() {
     super();
 
-    this.name = 'The Kestrel';
-    this.layout = 'A';
+    this.name = 'Red-Tail';
+    this.layout = 'B';
 
     this.hull = this.maxHull = 300;
     this.reactorPower = 8;
     this.fuel = 16;
-    this.missiles = 8;
-    this.droneParts = 2;
+    this.missiles = 5;
+    this.droneParts = 0;
 
     this.crews = [
       new Crew('Human 1', new Human(), Gender.Male),
       new Crew('Human 2', new Human(), Gender.Female),
-      new Crew('Human 3', new Human(), Gender.Female)
+      new Crew('Mantis', new Mantis(), Gender.Other),
+      new Crew('Zoltan', new Zoltan(), Gender.Other)
     ];
 
     this.rooms = [
@@ -33,14 +34,16 @@ export class KestrelLayoutA extends Ship {
       new Room(new Sensor()),
       new Room(new Medbay()),
       new Room(new Oxygen()),
-      new Room(new Shield()),
+      new Room(new Shield(), this.crews[2]),
       new Room(new Engine(), this.crews[1]),
-      new Room(new WeaponControl(), this.crews[2])
+      new Room(new WeaponControl(), this.crews[3])
     ];
 
     this.weapons = [
-      new Weapon(), // Burst Laser II
-      new Weapon() // Artemis Missiles
+      new Weapon(), // Basic Laser
+      new Weapon(), // Basic Laser
+      new Weapon(), // Basic Laser
+      new Weapon() // Basic Laser
     ];
 
     // Capacities related
@@ -51,7 +54,7 @@ export class KestrelLayoutA extends Ship {
     this.maxUpgradesAllowed = 3;
 
     // Display related
-    this.srcHullSprite = '/assets/images/ships/kestrel/layout_a/kestral_a_base.png';
-    this.srcInteriorSprite = '/assets/images/ships/kestrel/layout_a/kestral_a_floor.png';
+    this.srcHullSprite = '/assets/images/ships/kestrel/layout_b/kestral_b_base.png';
+    this.srcInteriorSprite = '/assets/images/ships/kestrel/layout_b/kestral_b_floor.png';
   }
 }
