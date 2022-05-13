@@ -21,7 +21,7 @@ export class Ship {
   drones: Drone[] = [];
   upgrades: Upgrade[] = [];
 
-  // Capacities
+  // Capacities related
   maxHull: number;
   maxSystemsAllowed: number;
   maxWeaponsAllowed: number;
@@ -29,8 +29,11 @@ export class Ship {
   maxCrewsAllowed: number;
   maxUpgradesAllowed: number;
 
-  constructor() {
+  // Display related
+  srcHullSprite: string
+  srcInteriorSprite: string;
 
-  }
+  constructor()
+  {}
 
 }
