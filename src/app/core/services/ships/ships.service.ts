@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Kestrel, Ship } from '../../models/ships/index';
+import { KestrelLayoutA, Ship } from '../../models/ships/index';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class ShipsService {
 
   constructor() {
     this.ships = [
-      new Kestrel()
+      new KestrelLayoutA()
     ];
   }
 

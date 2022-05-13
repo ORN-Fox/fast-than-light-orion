@@ -8,7 +8,7 @@ import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl }
 
 import { Weapon } from '../../weapon/weapon.model';
 
-export class Kestrel extends Ship {
+export class KestrelLayoutA extends Ship {
   constructor() {
     super();
 
