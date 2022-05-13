@@ -2,9 +2,9 @@ import { Ship } from '../ship/ship.model';
 
 export class Game {
 
-  ship: Ship | null;
+  ship: Ship;
   createdAt: Date;
-  updatedAt: Date | null;
+  updatedAt: Date;
 
   constructor() {
 
