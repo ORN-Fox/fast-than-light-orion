@@ -1,6 +1,6 @@
 import { Race } from '../race.model';
 
-export class Mantis extends Race {
+export class Rockmen extends Race {
 
   constructor() {
     super();
