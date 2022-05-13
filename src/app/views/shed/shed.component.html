@@ -1,3 +1,9 @@
 <div class="shed">
     <canvas id="shedCanvas"></canvas>
+
+    <ul>
+      <li *ngFor="let ship of ships">
+        <button (click)="selectShip(ship)">{{ship.name}}</button>
+      </li>
+    </ul>
 </div>

@@ -15,6 +15,8 @@ export class ShedComponent implements OnInit {
   canvasWidth: number = 1280;
   canvasRatio: number;
 
+  ctx: CanvasRenderingContext2D;
+
   ships: Ship[];
   selectedShip: Ship;
 
@@ -37,24 +39,33 @@ export class ShedComponent implements OnInit {
     shedCanvas.height = this.canvasHeight;
     shedCanvas.width = this.canvasWidth;
 
-    const ctx = shedCanvas.getContext('2d') as CanvasRenderingContext2D;
+    this.ctx = shedCanvas.getContext('2d') as CanvasRenderingContext2D;
 
-    this.loadSelectedShip(ctx);
+    this.loadSelectedShip();
   }
 
-  loadSelectedShip(ctx: CanvasRenderingContext2D)
+  loadSelectedShip()
   {
     let hullShipImage = new Image();
     hullShipImage.onload = () => {
-      ctx.drawImage(hullShipImage, 300, 0);
+      this.ctx.drawImage(hullShipImage, 300, 0);
     }
     hullShipImage.src = this.selectedShip.srcHullSprite;
 
     let interiorShipImage = new Image();
     interiorShipImage.onload = () => {
-      ctx.drawImage(interiorShipImage, 350, 97);
+      this.ctx.drawImage(interiorShipImage, 350, 97);
     }
     interiorShipImage.src = this.selectedShip.srcInteriorSprite;
+  }
+
+  selectShip(ship: Ship)
+  {
+    if (ship == this.selectedShip)
+      return;
+
+    this.selectedShip = ship;
+    this.loadSelectedShip();
   }
 
 }
