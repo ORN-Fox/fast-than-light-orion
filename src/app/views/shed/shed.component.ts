@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ShipsService } from '../../core/services/ships/ships.service';
+
+import { Ship } from '../../core/models/ships/ship.model';
+
 @Component({
   selector: 'app-shed',
   templateUrl: './shed.component.html',
@@ -7,21 +11,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShedComponent implements OnInit {
 
-  constructor() { }
+  canvasHeight: number = 720;
+  canvasWidth: number = 1280;
+  canvasRatio: number;
+
+  ships: Ship[];
+  selectedShip: Ship;
+
+  constructor(private shipsService: ShipsService)
+  {
+    // TODO extract canvas managemnet on dedicated file / service
+    this.canvasRatio = this.canvasHeight / this.canvasWidth;
+    console.log(this.canvasRatio); // 720 / 1280 = 0.5625
+
+    this.ships = this.shipsService.getShips();
+    this.selectedShip = this.ships[0];
+  }
 
   ngOnInit(): void {
+    const shedBody = document.querySelector('.shed') as HTMLHtmlElement;
+    shedBody.style.height = `${this.canvasHeight}px`;
+    shedBody.style.width = `${this.canvasWidth}px`;
+
     const shedCanvas = document.querySelector('#shedCanvas') as HTMLCanvasElement;
-    shedCanvas.height = 768;
-    shedCanvas.width = 1366;
+    shedCanvas.height = this.canvasHeight;
+    shedCanvas.width = this.canvasWidth;
 
     const ctx = shedCanvas.getContext('2d') as CanvasRenderingContext2D;
 
-    // TEMP
-    let shipImage = new Image();
-    shipImage.onload = function() {
-      ctx.drawImage(shipImage, 400, 100);
-    };
-    shipImage.src = '/assets/images/ships/kestrel_cruiser_a.webp';
+    this.loadSelectedShip(ctx);
+  }
+
+  loadSelectedShip(ctx: CanvasRenderingContext2D)
+  {
+    let hullShipImage = new Image();
+    hullShipImage.onload = () => {
+      ctx.drawImage(hullShipImage, 300, 0);
+    }
+    hullShipImage.src = this.selectedShip.srcHullSprite;
+
+    let interiorShipImage = new Image();
+    interiorShipImage.onload = () => {
+      ctx.drawImage(interiorShipImage, 350, 97);
+    }
+    interiorShipImage.src = this.selectedShip.srcInteriorSprite;
   }
 
 }
