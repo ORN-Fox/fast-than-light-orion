@@ -3,7 +3,7 @@
     "actions": {
       "continue": "Continuer",
       "newGame": "Nouvelle partie",
-      "options": "Options",
+      "settings": "Options",
       "quit": "Quitter"
     }
   }
