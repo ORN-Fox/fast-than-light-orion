@@ -61,7 +61,7 @@ describe('I18nService', () => {
   describe('init', () => {
     it('should init with default language', () => {
       // Act
-      i18nService.init(defaultLanguage, supportedLanguages);
+      i18nService.init();
 
       // Assert
       expect(translateService.use).toHaveBeenCalledWith(defaultLanguage);
@@ -74,7 +74,7 @@ describe('I18nService', () => {
       localStorage.setItem('language', savedLanguage);
 
       // Act
-      i18nService.init(defaultLanguage, supportedLanguages);
+      i18nService.init();
 
       // Assert
       expect(translateService.use).toHaveBeenCalledWith(savedLanguage);
@@ -86,7 +86,7 @@ describe('I18nService', () => {
     it('should change current language', () => {
       // Arrange
       const newLanguage = 'eo';
-      i18nService.init(defaultLanguage, supportedLanguages);
+      i18nService.init();
 
       // Act
       i18nService.language = newLanguage;
@@ -99,7 +99,7 @@ describe('I18nService', () => {
     it('should change current language without a region match', () => {
       // Arrange
       const newLanguage = 'fr-CA';
-      i18nService.init(defaultLanguage, supportedLanguages);
+      i18nService.init();
 
       // Act
       i18nService.language = newLanguage;
@@ -112,7 +112,7 @@ describe('I18nService', () => {
     it('should change current language to default if unsupported', () => {
       // Arrange
       const newLanguage = 'es';
-      i18nService.init(defaultLanguage, supportedLanguages);
+      i18nService.init();
 
       // Act
       i18nService.language = newLanguage;
@@ -126,7 +126,7 @@ describe('I18nService', () => {
   describe('get language', () => {
     it('should return current language', () => {
       // Arrange
-      i18nService.init(defaultLanguage, supportedLanguages);
+      i18nService.init();
 
       // Act
       const currentLanguage = i18nService.language;
