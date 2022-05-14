@@ -17,6 +17,25 @@
         <button class="btn btn-play" [disabled]="!selectedShip.name" (click)="startGame()">{{'commons.actions.play' | translate}}</button>
       </div>
 
+      <div class="ship-management-gui-container">
+        <p class="ships-label">Vaisseaux</p>
+        <div class="ships-list-control-container">
+          <button class="btn btn-previous-ship"><</button>
+          <button class="btn btn-ship-list">Liste</button>
+          <button class="btn btn-next-ship">></button>
+        </div>
+        <button class="btn btn-random-ship">Vaisseau aléatoire</button>
+
+        <p class="ships-layout">Agencement</p>
+        <div class="ships-layout-control-container">
+          <button class="btn btn-ship-layout active">A</button>
+          <button class="btn btn-ship-layout">B</button>
+          <button class="btn btn-ship-layout">C</button>
+        </div>
+
+        <button class="btn btn-hide-ship-rooms">Cacher salles</button>
+      </div>
+
       <div class="advanced-edition-gui-container">
         <p>{{'commons.advancedEditionContent' | translate }}</p>
         <button class="btn btn-disabled-advanced-edition" [ngClass]="{'active': !game.advancedEditionEnabled}" (click)="toggleAdvancedEditionContentActivation()">

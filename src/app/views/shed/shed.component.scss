@@ -76,6 +76,68 @@
       }
     }
 
+    .ship-management-gui-container {
+      position: absolute;
+      top: 120px;
+      left: 16px;
+
+      .ships-label, .ships-layout {
+        font-family: 'Aquire';
+        margin-bottom: 10px;
+      }
+
+      .ships-list-control-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 7px;
+
+        .btn-previous-ship, .btn-ship-list, .btn-next-ship {
+          font-size: 1rem;
+          height: 30px;
+        }
+
+        .btn-previous-ship, .btn-next-ship {
+          width: 25px;
+        }
+
+        .btn-previous-ship {
+          margin-right: 5px;
+        }
+
+        .btn-ship-list {
+          width: 70px;
+        }
+
+        .btn-next-ship {
+          margin-left: 5px;
+        }
+      }
+
+      .btn-random-ship {
+        width: 157px;
+        height: 28px;
+        font-size: .8rem;
+        margin-bottom: 12px;
+      }
+
+      .ships-layout-control-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 14px;
+
+        .btn-ship-layout {
+          font-size: 1.25rem;
+          height: 40px;
+          width: 35px;
+        }
+      }
+
+      .btn-hide-ship-rooms {
+        height: 30px;
+        width: 157px;
+      }
+    }
+
     .advanced-edition-gui-container {
       position: absolute;
       right: 53px;
