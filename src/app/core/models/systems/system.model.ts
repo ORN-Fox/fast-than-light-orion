@@ -2,5 +2,9 @@ export class System {
 
   level: number;
 
-  constructor() {}
+  srcSystemGreenSprite: string;
+
+  constructor() {
+    this.level = 1;
+  }
 }
