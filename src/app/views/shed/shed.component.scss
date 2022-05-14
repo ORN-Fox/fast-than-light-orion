@@ -14,8 +14,10 @@
       border: none;
       font-family: 'Aquire';
 
-      &:hover, &:focus, &:active, &.active {
-        background-color: #fff02a;
+      &:not(:disabled) {
+        &:hover, &:focus, &:active, &.active {
+          background-color: #fff02a;
+        }
       }
     }
 

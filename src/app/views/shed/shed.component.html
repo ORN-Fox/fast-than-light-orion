@@ -14,7 +14,7 @@
           </button>
         </div>
 
-        <button class="btn btn-play" (click)="startGame()">{{'commons.actions.play' | translate}}</button>
+        <button class="btn btn-play" [disabled]="!selectedShip.name" (click)="startGame()">{{'commons.actions.play' | translate}}</button>
       </div>
 
       <div class="advanced-edition-gui-container">
