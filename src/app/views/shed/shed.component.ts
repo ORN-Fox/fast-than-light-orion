@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GameService } from '../../core/services/game/game.service';
 import { ShipsService } from '../../core/services/ships/ships.service';
 
+import { Difficulty } from '../../core/models/difficulty/difficulty.model';
+import { Game } from '../../core/models/game/game.model';
 import { Ship } from '../../core/models/ships/ship.model';
 
 @Component({
@@ -17,13 +20,24 @@ export class ShedComponent implements OnInit {
 
   ctx: CanvasRenderingContext2D;
 
+  difficulties: Difficulty[];
+
+  game: Game;
+
   ships: Ship[];
   selectedShip: Ship;
 
-  constructor(private shipsService: ShipsService)
+  constructor(
+    private gameService: GameService,
+    private shipsService: ShipsService)
   {
     // TODO extract canvas managemnet on dedicated file / service
     this.canvasRatio = this.canvasHeight / this.canvasWidth;
+
+    this.game = this.gameService.game;
+
+    this.difficulties = this.gameService.difficulties;
+    this.game.difficulty = this.difficulties[0];
 
     this.ships = this.shipsService.getShips();
   }
@@ -166,6 +180,21 @@ export class ShedComponent implements OnInit {
       this.loadSystemsGUIofShip(this.selectedShip);
       this.loadWeasponsGUIofShip(this.selectedShip);
     }
+  }
+
+  selectDifficulty(difficulty: Difficulty)
+  {
+    this.game.difficulty = difficulty;
+  }
+
+  toggleAdvancedEditionContentActivation() {
+    this.game.advancedEditionEnabled = !this.game.advancedEditionEnabled;
+  }
+
+  startGame() {
+    this.game.ship = this.selectedShip;
+    
+    console.log('Start game, include in future version', this.game);
   }
 
 }

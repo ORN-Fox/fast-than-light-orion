@@ -2,12 +2,15 @@
   "commons": {
     "actions": {
       "continue": "Continuer",
+      "disabled": "Désactivé",
+      "enabled": "Activé",
       "newGame": "Nouvelle partie",
       "play": "Jouer",
       "rename": "Renom.",
       "settings": "Options",
       "quit": "Quitter"
     },
+    "advancedEditionContent": "Contenu de l'édition avancée",
     "difficulties": {
       "easy": "Facile",
       "normal": "Normal",

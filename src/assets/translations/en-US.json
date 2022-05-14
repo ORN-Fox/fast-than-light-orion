@@ -2,12 +2,15 @@
   "commons": {
     "actions": {
       "continue": "Continue",
+      "disabled": "Disabled",
+      "enabled": "Enabled",
       "newGame": "New Game",
       "play": "Play",
       "rename": "Rename",
       "settings": "Settings",
       "quit": "Quit"
     },
+    "advancedEditionContent": "Advanced Edition Content",
     "difficulties": {
       "easy": "Easy",
       "normal": "Normal",

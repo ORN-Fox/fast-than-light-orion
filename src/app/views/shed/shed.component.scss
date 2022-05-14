@@ -14,7 +14,7 @@
       border: none;
       font-family: 'Aquire';
 
-      &:hover, &:focus, &:active {
+      &:hover, &:focus, &:active, &.active {
         background-color: #fff02a;
       }
     }
@@ -71,6 +71,33 @@
         margin-left: 7px;
         margin-top: 13px;
         font-size: 2rem;
+      }
+    }
+
+    .advanced-edition-gui-container {
+      position: absolute;
+      right: 53px;
+      bottom: 277px;
+
+      p {
+        color: white;
+        font-family: "CW Bitmap";
+        margin-bottom: 9px;
+        font-size: 18px;
+        text-align: center;
+      }
+
+      .btn-disabled-advanced-edition {
+        width: 109px;
+        height: 22px;
+        margin-right: 25px;
+        font-size: 1rem;
+      }
+
+      .btn-enabled-advanced-edition {
+        width: 103px;
+        height: 22px;
+        font-size: 1rem;
       }
     }
   }
