@@ -32,7 +32,11 @@ export class ShedComponent implements OnInit {
     this.initShepCanvas();
 
     this.loadSelectedShip(this.ships[0]);
-    setTimeout(() => this.loadShedGUI(), 200);
+
+    this.loadShedGUI();
+
+    this.loadSystemsGUIofShip(this.selectedShip);
+    this.loadWeasponsGUIofShip(this.selectedShip);
   }
 
   initShepCanvas()
@@ -78,6 +82,12 @@ export class ShedComponent implements OnInit {
       this.ctx.drawImage(boxStartGUI, this.canvasWidth - 316, 0);
     }
 
+    let shipAdvancedGUI = new Image();
+    shipAdvancedGUI.src = '/assets/images/gui/box_advanced.png';
+    shipAdvancedGUI.onload = () => {
+      this.ctx.drawImage(shipAdvancedGUI, this.canvasWidth - 305, this.canvasHeight - 340);
+    }
+
     let shipEquipmentGUI = new Image();
     shipEquipmentGUI.src = '/assets/images/gui/box_shipequip.png';
     shipEquipmentGUI.onload = () => {
@@ -112,8 +122,6 @@ export class ShedComponent implements OnInit {
     thrustersRightImage.onload = () => {
       this.ctx.drawImage(thrustersRightImage, 360, 305);
     }
-
-    this.loadSystemsGUIofShip(this.selectedShip)
   }
 
   loadSystemsGUIofShip(ship: Ship)
@@ -133,6 +141,17 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  loadWeasponsGUIofShip(ship: Ship)
+  {
+    for (let i = 0; i < ship.maxWeaponsAllowed; i++) {
+      let shipWeaponGUI = new Image();
+      shipWeaponGUI.src = `/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`;
+      shipWeaponGUI.onload = () => {
+        this.ctx.drawImage(shipWeaponGUI, 425 + (i * 120), 515);
+      };
+    }
+  }
+
   selectShip(ship: Ship)
   {
     if (ship == this.selectedShip)
@@ -141,8 +160,12 @@ export class ShedComponent implements OnInit {
     // Clear canvas
     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-    this.loadSelectedShip(ship);
-    setTimeout(() => this.loadShedGUI(), 200);
+    this.loadSelectedShip(this.ships[0]);
+
+    this.loadShedGUI();
+
+    this.loadSystemsGUIofShip(this.selectedShip);
+    this.loadWeasponsGUIofShip(this.selectedShip);
   }
 
 }
