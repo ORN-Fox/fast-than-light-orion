@@ -5,7 +5,7 @@ import { ShipsService } from '../../core/services/ships/ships.service';
 
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
-import { Ship } from '../../core/models/ships/ship.model';
+import { Ship, ShipList } from '../../core/models/ships/index';
 
 @Component({
   selector: 'app-shed',
@@ -24,8 +24,11 @@ export class ShedComponent implements OnInit {
 
   game: Game;
 
-  ships: Ship[];
+  ships: ShipList[];
+  shipListIndex: number = 0;
+
   selectedShip: Ship;
+
 
   renameShipEnabled: boolean = false;
 
@@ -36,6 +39,7 @@ export class ShedComponent implements OnInit {
     // TODO extract canvas managemnet on dedicated file / service
     this.canvasRatio = this.canvasHeight / this.canvasWidth;
 
+    this.gameService.newGame(); // TEMP
     this.game = this.gameService.game;
 
     this.difficulties = this.gameService.difficulties;
@@ -47,7 +51,7 @@ export class ShedComponent implements OnInit {
   ngOnInit(): void {
     this.initShepCanvas();
 
-    this.loadSelectedShip(this.ships[0]);
+    this.loadSelectedShip(this.ships[this.shipListIndex].layouts[0]);
 
     this.loadShedGUI();
 

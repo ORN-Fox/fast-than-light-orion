@@ -28,9 +28,9 @@
 
         <p class="ships-layout">Agencement</p>
         <div class="ships-layout-control-container">
-          <button class="btn btn-ship-layout active">A</button>
-          <button class="btn btn-ship-layout">B</button>
-          <button class="btn btn-ship-layout">C</button>
+          <button *ngFor="let shipLayout of ships[shipListIndex].layouts" class="btn btn-ship-layout" [ngClass]="{'active': shipLayout.layout == selectedShip.layout}" (click)="selectShip(shipLayout)">
+            {{shipLayout.layout}}
+          </button>
         </div>
 
         <button class="btn btn-hide-ship-rooms">Cacher salles</button>
@@ -46,10 +46,4 @@
         </button>
       </div>
     </div>
-
-    <ul>
-      <li *ngFor="let ship of ships">
-        <button (click)="selectShip(ship)">{{ship.name}}</button>
-      </li>
-    </ul>
 </div>

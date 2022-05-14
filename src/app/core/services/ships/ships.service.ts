@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 
-import { KestrelLayoutA, KestrelLayoutB, KestrelLayoutC, Ship } from '../../models/ships/index';
+import { KestrelLayoutA, KestrelLayoutB, KestrelLayoutC, ShipList } from '../../models/ships/index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShipsService {
 
-  private ships: Ship[];
+  private ships: ShipList[];
 
   constructor() {
     this.ships = [
-      new KestrelLayoutA(),
-      new KestrelLayoutB(),
-      new KestrelLayoutC()
+      new ShipList('kestrel', [
+        new KestrelLayoutA(),
+        new KestrelLayoutB(),
+        new KestrelLayoutC()
+      ])
     ];
   }
 
-  getShips(): Ship[]
+  getShips(): ShipList[]
   {
     return this.ships;
   }
