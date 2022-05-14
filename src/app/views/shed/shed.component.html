@@ -3,18 +3,18 @@
 
     <div class="shed-gui-container">
       <div class="ship-rename-gui">
-        <button class="btn btn-rename">Rename</button>
+        <button class="btn btn-rename">{{'commons.actions.rename' | translate}}</button>
         <input type="text" id="inputShipRename" class="input-rename" [(ngModel)]="selectedShip.name" maxlength="16">
       </div>
 
       <div class="ship-box-start">
         <div class="difficulities-container">
-          <button class="btn">Facile</button>
-          <button class="btn">Normal</button>
-          <button class="btn">Difficile</button>
+          <button class="btn">{{'commons.difficulties.easy' | translate}}</button>
+          <button class="btn">{{'commons.difficulties.normal' | translate}}</button>
+          <button class="btn">{{'commons.difficulties.hard' | translate}}</button>
         </div>
 
-        <button class="btn btn-play">Jouer</button>
+        <button class="btn btn-play">{{'commons.actions.play' | translate}}</button>
       </div>
     </div>
 

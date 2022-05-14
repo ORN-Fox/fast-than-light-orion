@@ -3,8 +3,15 @@
     "actions": {
       "continue": "Continue",
       "newGame": "New Game",
+      "play": "Play",
+      "rename": "Rename",
       "settings": "Settings",
       "quit": "Quit"
+    },
+    "difficulties": {
+      "easy": "Easy",
+      "normal": "Normal",
+      "hard": "Hard"
     }
   }
 }

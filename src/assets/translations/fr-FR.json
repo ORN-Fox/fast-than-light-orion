@@ -3,8 +3,15 @@
     "actions": {
       "continue": "Continuer",
       "newGame": "Nouvelle partie",
+      "play": "Jouer",
+      "rename": "Renom.",
       "settings": "Options",
       "quit": "Quitter"
+    },
+    "difficulties": {
+      "easy": "Facile",
+      "normal": "Normal",
+      "hard": "Difficile"
     }
   }
 }
