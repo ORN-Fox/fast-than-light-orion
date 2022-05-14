@@ -154,18 +154,18 @@ export class ShedComponent implements OnInit {
 
   selectShip(ship: Ship)
   {
-    if (ship == this.selectedShip)
-      return;
+    if (ship != this.selectedShip)
+    {
+      // Clear canvas before display new ship
+      this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-    // Clear canvas
-    this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+      this.loadSelectedShip(ship);
 
-    this.loadSelectedShip(ship);
+      this.loadShedGUI();
 
-    this.loadShedGUI();
-
-    this.loadSystemsGUIofShip(this.selectedShip);
-    this.loadWeasponsGUIofShip(this.selectedShip);
+      this.loadSystemsGUIofShip(this.selectedShip);
+      this.loadWeasponsGUIofShip(this.selectedShip);
+    }
   }
 
 }
