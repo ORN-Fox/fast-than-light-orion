@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { GameService } from '../../core/services/game/game.service';
+
 import { Game } from '../../core/models/game/game.model';
 
 @Component({
@@ -10,12 +12,15 @@ import { Game } from '../../core/models/game/game.model';
 })
 export class MenuComponent implements OnInit {
 
-  game: Game | null;
+  gameInProgress: boolean;
 
   constructor(
-    private router: Router) { }
+    private router: Router,
+    private gameService: GameService
+  ) {}
 
   ngOnInit(): void {
+    this.gameInProgress = this.gameService.shouldExistGameInProgress();
   }
 
   continueGame() {
@@ -23,8 +28,12 @@ export class MenuComponent implements OnInit {
   }
 
   newGame() {
-    this.game = new Game();
+    this.gameService.newGame();
     this.router.navigate(['/shed']);
+  }
+
+  openSettings() {
+    // TODO
   }
 
   quitGame() {
