@@ -160,7 +160,7 @@ export class ShedComponent implements OnInit {
     // Clear canvas
     this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-    this.loadSelectedShip(this.ships[0]);
+    this.loadSelectedShip(ship);
 
     this.loadShedGUI();
 
