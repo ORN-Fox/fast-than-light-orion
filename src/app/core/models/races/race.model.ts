@@ -12,6 +12,8 @@ export class Race {
 
   nbBlueOptions: number;
 
+  needOxygen: boolean = true;
+
   // TODO skills
 
   constructor()
