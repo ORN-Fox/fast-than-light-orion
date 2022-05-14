@@ -27,6 +27,8 @@ export class ShedComponent implements OnInit {
   ships: Ship[];
   selectedShip: Ship;
 
+  renameShipEnabled: boolean = false;
+
   constructor(
     private gameService: GameService,
     private shipsService: ShipsService)
@@ -187,13 +189,29 @@ export class ShedComponent implements OnInit {
     this.game.difficulty = difficulty;
   }
 
+  openRenameShipInput()
+  {
+    this.renameShipEnabled = true;
+
+    let renameShipInput = document.querySelector('#inputShipRename') as HTMLInputElement;
+    renameShipInput.focus();
+  }
+
+  closeRenameShipInput()
+  {
+    this.renameShipEnabled = false;
+
+    let renameShipInput = document.querySelector('#inputShipRename') as HTMLInputElement;
+    renameShipInput.blur();
+  }
+
   toggleAdvancedEditionContentActivation() {
     this.game.advancedEditionEnabled = !this.game.advancedEditionEnabled;
   }
 
   startGame() {
     this.game.ship = this.selectedShip;
-    
+
     console.log('Start game, include in future version', this.game);
   }
 
