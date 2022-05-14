@@ -41,7 +41,29 @@ export class ShedComponent implements OnInit {
 
     this.ctx = shedCanvas.getContext('2d') as CanvasRenderingContext2D;
 
+    this.initShedGUI();
     this.loadSelectedShip();
+  }
+
+  initShedGUI()
+  {
+    let boxShipSelectGUI = new Image();
+    boxShipSelectGUI.onload = () => {
+      this.ctx.drawImage(boxShipSelectGUI, 0, 105);
+    }
+    boxShipSelectGUI.src = '/assets/images/gui/box_shipselect.png';
+
+    let boxStartGUI = new Image();
+    boxStartGUI.onload = () => {
+      this.ctx.drawImage(boxStartGUI, this.canvasWidth - 316, 0);
+    }
+    boxStartGUI.src = '/assets/images/gui/box_start.png';
+
+    let shipEquipmentGUI = new Image();
+    shipEquipmentGUI.onload = () => {
+      this.ctx.drawImage(shipEquipmentGUI, 0, this.canvasHeight - 242);
+    }
+    shipEquipmentGUI.src = '/assets/images/gui/box_shipequip.png';
   }
 
   loadSelectedShip()
@@ -57,6 +79,15 @@ export class ShedComponent implements OnInit {
       this.ctx.drawImage(interiorShipImage, 350, 97);
     }
     interiorShipImage.src = this.selectedShip.srcInteriorSprite;
+
+    // Ship systems
+    for (let i = 0; i < this.selectedShip.rooms.length; i++) {
+      let shipSystemGUI = new Image();
+      shipSystemGUI.onload = () => {
+        this.ctx.drawImage(shipSystemGUI, 380 + (i * 38), 382);
+      }
+      shipSystemGUI.src = '/assets/images/gui/box_system_on.png';
+    }
   }
 
   selectShip(ship: Ship)
