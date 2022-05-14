@@ -16,6 +16,8 @@ export class Lanius extends Race {
 
     this.nbBlueOptions = 11;
 
+    this.needOxygen = false;
+
     // TODO skills
   }
 }
