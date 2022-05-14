@@ -100,16 +100,16 @@ export class ShedComponent implements OnInit {
     this.selectedShip = ship;
 
     let hullShipImage = new Image();
+    hullShipImage.src = this.selectedShip.srcHullSprite;
     hullShipImage.onload = () => {
       this.ctx.drawImage(hullShipImage, 300, 0);
-    }
-    hullShipImage.src = this.selectedShip.srcHullSprite;
 
-    let interiorShipImage = new Image();
-    interiorShipImage.onload = () => {
-      this.ctx.drawImage(interiorShipImage, 350, 97);
+      let interiorShipImage = new Image();
+      interiorShipImage.src = this.selectedShip.srcInteriorSprite;
+      interiorShipImage.onload = () => {
+        this.ctx.drawImage(interiorShipImage, 350, 97);
+      }
     }
-    interiorShipImage.src = this.selectedShip.srcInteriorSprite;
 
     let thrustersLeftImage = new Image();
     thrustersLeftImage.src = '/assets/images/effects/thrusters_on_img.png';
