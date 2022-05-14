@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,6 +17,7 @@ import { MenuComponent } from './views/menu/menu.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     TranslateModule.forRoot(),
     AppRoutingModule
   ],

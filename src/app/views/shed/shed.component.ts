@@ -37,9 +37,13 @@ export class ShedComponent implements OnInit {
 
   initShepCanvas()
   {
-    const shedBody = document.querySelector('.shed') as HTMLHtmlElement;
+    const shedBody = document.querySelector('.shed') as HTMLElement;
     shedBody.style.height = `${this.canvasHeight}px`;
     shedBody.style.width = `${this.canvasWidth}px`;
+
+    const shedGUIContainer = document.querySelector('.shed-gui-container') as HTMLElement;
+    shedGUIContainer.style.height = `${this.canvasHeight}px`;
+    shedGUIContainer.style.width = `${this.canvasWidth}px`;
 
     const shedCanvas = document.querySelector('#shedCanvas') as HTMLCanvasElement;
     shedCanvas.height = this.canvasHeight;
