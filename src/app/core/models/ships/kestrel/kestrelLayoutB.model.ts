@@ -29,14 +29,14 @@ export class KestrelLayoutB extends Ship {
     ];
 
     this.rooms = [
-      new Room(new Piloting(), this.crews[0]),
-      new Room(new Door()),
-      new Room(new Sensor()),
-      new Room(new Medbay()),
+      new Room(new Shield(2), this.crews[2]),
+      new Room(new Engine(2), this.crews[1]),
       new Room(new Oxygen()),
-      new Room(new Shield(), this.crews[2]),
-      new Room(new Engine(), this.crews[1]),
-      new Room(new WeaponControl(), this.crews[3])
+      new Room(new WeaponControl(4), this.crews[3]),
+      new Room(new Medbay()),
+      new Room(new Piloting(), this.crews[0]),
+      new Room(new Sensor()),
+      new Room(new Door())
     ];
 
     this.weapons = [
