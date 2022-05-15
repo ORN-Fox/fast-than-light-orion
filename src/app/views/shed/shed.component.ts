@@ -58,6 +58,7 @@ export class ShedComponent implements OnInit {
     this.loadSystemsGUIofShip(this.selectedShip);
     this.loadWeasponsGUIofShip(this.selectedShip);
     this.loadDronesGUIofShip(this.selectedShip);
+    this.loadUpgradesGUIOfShip(this.selectedShip);
   }
 
   initShepCanvas()
@@ -200,6 +201,22 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  loadUpgradesGUIOfShip(ship: Ship)
+  {
+    for (let i = 0; i < ship.maxUpgradesAllowed; i++) {
+      let shipUpgradeGUI = new Image();
+      shipUpgradeGUI.src = `/assets/images/gui/box_augment_${ i < ship.upgrades.length ? 'on' : 'off'}.png`;
+      shipUpgradeGUI.onload = () => {
+        this.ctx.drawImage(shipUpgradeGUI, 990, 529 + (i * 60));
+
+        if (ship.upgrades.length > 0)
+        {
+          // TODO display upgrades
+        }
+      };
+    }
+  }
+
   previousShip()
   {
     this.shipListIndex--;
@@ -245,6 +262,7 @@ export class ShedComponent implements OnInit {
       this.loadSystemsGUIofShip(this.selectedShip);
       this.loadWeasponsGUIofShip(this.selectedShip);
       this.loadDronesGUIofShip(this.selectedShip);
+      this.loadUpgradesGUIOfShip(this.selectedShip);
     }
   }
 
