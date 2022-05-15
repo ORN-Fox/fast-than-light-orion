@@ -4,7 +4,5 @@ export class System {
 
   srcSystemGreenSprite: string;
 
-  constructor() {
-    this.level = 1;
-  }
+  constructor() {}
 }
