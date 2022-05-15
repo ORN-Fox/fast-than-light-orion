@@ -44,7 +44,6 @@ export class KestrelLayoutA extends Ship {
     ];
 
     // Capacities related
-    this.maxSystemsAllowed = 14;
     this.maxWeaponsAllowed = 4;
     this.maxDronesAllowed = 2;
     this.maxCrewsAllowed = 6;

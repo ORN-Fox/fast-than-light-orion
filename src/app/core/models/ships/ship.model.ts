@@ -35,7 +35,9 @@ export class Ship {
   srcInteriorSprite: string;
 
   constructor()
-  {}
+  {
+    this.maxSystemsAllowed = 14;
+  }
 
   resetName()
   {
