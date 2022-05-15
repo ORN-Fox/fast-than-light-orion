@@ -15,7 +15,7 @@
       font-family: 'Aquire';
 
       &:not(:disabled) {
-        &:hover, &:focus, &:active, &.active {
+        &:hover, &.active {
           background-color: #fff02a;
         }
       }
