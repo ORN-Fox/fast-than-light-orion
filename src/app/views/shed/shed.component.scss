@@ -168,22 +168,36 @@
     .ships-crews-gui-container {
       position: absolute;
       left: 20px;
-      bottom: 204px;
+      top: 494px;
 
       .crews-label {
         font-family: 'Aquire';
         margin-bottom: 10px;
+      }
+
+      .ships-crews-container {
+        .ship-crew {
+          color: white;
+          font-family: "CW Bitmap";
+        }
       }
     }
 
     .ships-weapons-gui-container {
       position: absolute;
       left: 390px;
-      bottom: 204px;
+      top: 494px;
 
       .weapons-label {
         font-family: 'Aquire';
         margin-bottom: 10px;
+      }
+
+      .ships-weapons-container {
+        .ship-weapon {
+          color: white;
+          font-family: "CW Bitmap";
+        }
       }
     }
 
@@ -205,16 +219,30 @@
         font-size: 2rem;
         margin-left: 60px;
       }
+
+      .ships-drones-container {
+        .ship-drone {
+          color: white;
+          font-family: "CW Bitmap";
+        }
+      }
     }
 
     .ships-upgrades-gui-container {
       position: absolute;
       right: 196px;
-      bottom: 204px;
+      top: 494px;
 
       .upgrades-label {
         font-family: 'Aquire';
         margin-bottom: 10px;
+      }
+
+      .ships-upgrades-container {
+        .ship-upgrade {
+          color: white;
+          font-family: "CW Bitmap";
+        }
       }
     }
   }

@@ -48,20 +48,48 @@
 
       <div class="ships-crews-gui-container">
         <p class="crews-label">Équipages</p>
+
+        <div class="ships-crews-container">
+            <div *ngFor="let crew of selectedShip.crews" class="ship-crew">
+                <img src="" alt="todo.png">
+                <p>{{crew.name}}</p>
+            </div>
+        </div>
       </div>
 
       <div class="ships-weapons-gui-container">
         <p class="weapons-label">Armes</p>
+
+        <div class="ships-weapons-container">
+            <div *ngFor="let weapon of selectedShip.weapons" class="ship-weapon">
+                <img src="" alt="todo.png">
+                <p>TODO</p>
+            </div>
+        </div>
       </div>
 
       <div class="ships-drones-gui-container">
         <p class="drones-label">Drones</p>
 
         <p *ngIf="shipHaveNoDroneControlSystem" class="no-drone-control-label">Système non installé</p>
+
+        <div *ngIf="!shipHaveNoDroneControlSystem" class="ships-drones-container">
+            <div *ngFor="let drone of selectedShip.drones" class="ship-drone">
+                <img src="" alt="todo.png">
+                <p>TODO</p>
+            </div>
+        </div>
       </div>
 
       <div class="ships-upgrades-gui-container">
         <p class="upgrades-label">Améliorations</p>
+
+        <div *ngIf="selectedShip.upgrades.length > 0" class="ships-upgrades-container">
+            <div *ngFor="let upgrade of selectedShip.upgrades" class="ship-upgrade">
+                <img src="" alt="todo.png">
+                <p>TODO</p>
+            </div>
+        </div>
       </div>
     </div>
 </div>
