@@ -56,6 +56,7 @@ export class ShedComponent implements OnInit {
     this.loadShedGUI();
 
     this.loadSystemsGUIofShip(this.selectedShip);
+    this.loadCrewsGUIofShip(this.selectedShip);
     this.loadWeasponsGUIofShip(this.selectedShip);
     this.loadDronesGUIofShip(this.selectedShip);
     this.loadUpgradesGUIOfShip(this.selectedShip);
@@ -170,6 +171,25 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  loadCrewsGUIofShip(ship: Ship)
+  {
+    for (let i = 0; i < 2; i++) {
+      let shipCrewGUI = new Image();
+      shipCrewGUI.src = `/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`;
+      shipCrewGUI.onload = () => {
+        this.ctx.drawImage(shipCrewGUI, 60 + (i * 150), 530);
+      };
+    }
+
+    for (let y = 0; y < 2; y++) {
+      let shipCrewGUI = new Image();
+      shipCrewGUI.src = `/assets/images/gui/box_crew_${ y + 2 < ship.crews.length ? 'on' : 'off'}.png`;
+      shipCrewGUI.onload = () => {
+        this.ctx.drawImage(shipCrewGUI, 60 + (y * 150), 620);
+      };
+    }
+  }
+
   loadWeasponsGUIofShip(ship: Ship)
   {
     for (let i = 0; i < ship.maxWeaponsAllowed; i++) {
@@ -260,6 +280,7 @@ export class ShedComponent implements OnInit {
       this.loadShedGUI();
 
       this.loadSystemsGUIofShip(this.selectedShip);
+      this.loadCrewsGUIofShip(this.selectedShip);
       this.loadWeasponsGUIofShip(this.selectedShip);
       this.loadDronesGUIofShip(this.selectedShip);
       this.loadUpgradesGUIOfShip(this.selectedShip);
