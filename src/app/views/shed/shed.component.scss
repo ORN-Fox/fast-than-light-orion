@@ -190,11 +190,20 @@
     .ships-drones-gui-container {
       position: absolute;
       left: 390px;
-      bottom: 94px;
+      bottom: 42px;
+
+      .drones-label, .no-drone-control-label {
+        font-family: 'Aquire';
+      }
 
       .drones-label {
-        font-family: 'Aquire';
-        margin-bottom: 10px;
+        margin-bottom: 32px;
+      }
+
+      .no-drone-control-label {
+        color: white;
+        font-size: 2rem;
+        margin-left: 60px;
       }
     }
 

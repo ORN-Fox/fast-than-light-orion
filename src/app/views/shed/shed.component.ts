@@ -29,8 +29,8 @@ export class ShedComponent implements OnInit {
 
   selectedShip: Ship;
 
-
   renameShipEnabled: boolean = false;
+  shipHaveNoDroneControlSystem: boolean = false;
 
   constructor(
     private gameService: GameService,
@@ -184,14 +184,19 @@ export class ShedComponent implements OnInit {
 
   loadDronesGUIofShip(ship: Ship)
   {
-    for (let i = 0; i < ship.maxDronesAllowed; i++) {
-      let shipDroneGUI = new Image();
-      shipDroneGUI.src = `/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`;
-      shipDroneGUI.onload = () => {
-        this.ctx.drawImage(shipDroneGUI, 425 + (i * 120), 625);
+    this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
 
-        // TODO display weapons
-      };
+    if (this.selectedShip.drones.length > 0)
+    {
+      for (let i = 0; i < ship.maxDronesAllowed; i++) {
+        let shipDroneGUI = new Image();
+        shipDroneGUI.src = `/assets/images/gui/box_weapons_${ i < ship.drones.length ? 'on' : 'off'}.png`;
+        shipDroneGUI.onload = () => {
+          this.ctx.drawImage(shipDroneGUI, 425 + (i * 120), 625);
+
+          // TODO display drones
+        };
+      }
     }
   }
 

@@ -56,6 +56,8 @@
 
       <div class="ships-drones-gui-container">
         <p class="drones-label">Drones</p>
+
+        <p *ngIf="shipHaveNoDroneControlSystem" class="no-drone-control-label">Système non installé</p>
       </div>
 
       <div class="ships-upgrades-gui-container">
