@@ -57,6 +57,7 @@ export class ShedComponent implements OnInit {
 
     this.loadSystemsGUIofShip(this.selectedShip);
     this.loadWeasponsGUIofShip(this.selectedShip);
+    this.loadDronesGUIofShip(this.selectedShip);
   }
 
   initShepCanvas()
@@ -175,6 +176,21 @@ export class ShedComponent implements OnInit {
       shipWeaponGUI.src = `/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`;
       shipWeaponGUI.onload = () => {
         this.ctx.drawImage(shipWeaponGUI, 425 + (i * 120), 515);
+
+        // TODO display weapons
+      };
+    }
+  }
+
+  loadDronesGUIofShip(ship: Ship)
+  {
+    for (let i = 0; i < ship.maxDronesAllowed; i++) {
+      let shipDroneGUI = new Image();
+      shipDroneGUI.src = `/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`;
+      shipDroneGUI.onload = () => {
+        this.ctx.drawImage(shipDroneGUI, 425 + (i * 120), 625);
+
+        // TODO display weapons
       };
     }
   }
@@ -211,6 +227,7 @@ export class ShedComponent implements OnInit {
 
       this.loadSystemsGUIofShip(this.selectedShip);
       this.loadWeasponsGUIofShip(this.selectedShip);
+      this.loadDronesGUIofShip(this.selectedShip);
     }
   }
 
