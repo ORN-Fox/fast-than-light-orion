@@ -12,7 +12,7 @@ export class KestrelLayoutC extends Ship {
   constructor() {
     super();
 
-    this.name = 'The Swallow';
+    this.name = this.originalName = 'The Swallow';
     this.layout = 'C';
 
     this.hull = this.maxHull = 300;

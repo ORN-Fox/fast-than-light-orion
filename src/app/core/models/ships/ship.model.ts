@@ -7,6 +7,7 @@ import { Upgrade } from '../upgrade/upgrade.model';
 export class Ship {
 
   name: string;
+  originalName: string;
   layout: string;
 
   hull: number;
@@ -35,5 +36,10 @@ export class Ship {
 
   constructor()
   {}
+
+  resetName()
+  {
+    this.name = this.originalName;
+  }
 
 }
