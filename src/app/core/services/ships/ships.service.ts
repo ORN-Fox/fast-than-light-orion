@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { KestrelLayoutA, KestrelLayoutB, KestrelLayoutC, ShipList } from '../../models/ships/index';
+import { EngiLayoutA, EngiLayoutB, EngiLayoutC, KestrelLayoutA, KestrelLayoutB, KestrelLayoutC, ShipList } from '../../models/ships/index';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,11 @@ export class ShipsService {
         new KestrelLayoutA(),
         new KestrelLayoutB(),
         new KestrelLayoutC()
+      ]),
+      new ShipList('engi', [
+        new EngiLayoutA(),
+        new EngiLayoutB(),
+        new EngiLayoutC(),
       ])
     ];
   }
