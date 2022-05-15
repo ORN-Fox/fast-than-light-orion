@@ -5,7 +5,7 @@ export class Zoltan extends Race {
   constructor() {
     super();
 
-    this.name = 'Rockmen';
+    this.name = 'Zoltan';
     this.storeCost = 60;
 
     this.health = this.maximumHealth = 70;
