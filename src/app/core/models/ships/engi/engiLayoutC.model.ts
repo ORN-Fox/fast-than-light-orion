@@ -61,7 +61,8 @@ export class EngiLayoutC extends Ship {
     this.maxUpgradesAllowed = 3;
 
     // Display related
-    this.srcHullSprite = '/assets/images/ships/engi/layout_c/engi_c_base.png';
-    this.srcInteriorSprite = '/assets/images/ships/engi/layout_c/engi_c_floor.png';
+    this.srcHullSprite = '/assets/images/ships/engi/layout_c/circle_cruiser_c_base.png';
+    this.srcInteriorSprite = '/assets/images/ships/engi/layout_c/circle_cruiser_c_floor.png';
+
   }
 }
