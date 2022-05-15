@@ -198,6 +198,12 @@ export class ShedComponent implements OnInit {
   previousShip()
   {
     this.shipListIndex--;
+
+    if (this.shipListIndex < 0)
+    {
+      this.shipListIndex = this.ships.length - 1;
+    }
+
     this.selectShip(this.ships[this.shipListIndex].layouts[0]);
   }
 
@@ -209,6 +215,12 @@ export class ShedComponent implements OnInit {
   nextShip()
   {
     this.shipListIndex++;
+
+    if (this.shipListIndex > this.ships.length - 1)
+    {
+      this.shipListIndex = 0;
+    }
+
     this.selectShip(this.ships[this.shipListIndex].layouts[0]);
   }
 
