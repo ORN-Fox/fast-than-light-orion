@@ -1,6 +1,6 @@
 import { System } from '../system.model';
 
-export class Drone extends System {
+export class DroneControl extends System {
 
   constructor(level: number = 1) {
     super();
