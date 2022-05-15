@@ -179,6 +179,23 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  previousShip()
+  {
+    this.shipListIndex--;
+    this.selectShip(this.ships[this.shipListIndex].layouts[0]);
+  }
+
+  openShipsList()
+  {
+    // TODO
+  }
+
+  nextShip()
+  {
+    this.shipListIndex++;
+    this.selectShip(this.ships[this.shipListIndex].layouts[0]);
+  }
+
   selectShip(ship: Ship)
   {
     if (ship != this.selectedShip)

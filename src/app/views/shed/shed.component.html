@@ -20,9 +20,9 @@
       <div class="ship-management-gui-container">
         <p class="ships-label">Vaisseaux</p>
         <div class="ships-list-control-container">
-          <button class="btn btn-previous-ship"><</button>
-          <button class="btn btn-ship-list">Liste</button>
-          <button class="btn btn-next-ship">></button>
+          <button class="btn btn-previous-ship" (click)="previousShip()"><</button>
+          <button class="btn btn-ship-list" (click)="openShipsList()">Liste</button>
+          <button class="btn btn-next-ship" (click)="nextShip()">></button>
         </div>
         <button class="btn btn-random-ship">Vaisseau aléatoire</button>
 
