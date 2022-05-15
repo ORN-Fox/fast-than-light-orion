@@ -156,6 +156,13 @@ export class ShedComponent implements OnInit {
         shipSystemIconGUI.src = ship.rooms[i].affectedSystem.srcSystemGreenSprite;
         shipSystemIconGUI.onload = () => {
           this.ctx.drawImage(shipSystemIconGUI, 367 + (i * 38), 427);
+
+          for (let y = 0; y < ship.rooms[i].affectedSystem.level; y++) {
+            this.ctx.beginPath();
+            this.ctx.fillStyle = "#3ff33c";
+            this.ctx.fillRect(391.5 + (i * 38), 435 + (y * -7), 15, 5);
+            this.ctx.closePath();
+          }
         };
       }
     }
