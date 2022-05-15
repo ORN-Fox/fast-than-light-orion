@@ -134,16 +134,19 @@ export class ShedComponent implements OnInit {
       }
     }
 
-    let thrustersLeftImage = new Image();
-    thrustersLeftImage.src = '/assets/images/effects/thrusters_on_img.png';
-    thrustersLeftImage.onload = () => {
-      this.ctx.drawImage(thrustersLeftImage, 360, 40);
-    }
+    if (ship.originalName == 'The Kestrel' || ship.originalName == 'Red-Tail' || ship.originalName == 'The Swallow')
+    {
+      let thrustersLeftImage = new Image();
+      thrustersLeftImage.src = '/assets/images/effects/thrusters_on_img.png';
+      thrustersLeftImage.onload = () => {
+        this.ctx.drawImage(thrustersLeftImage, 360, 40);
+      }
 
-    let thrustersRightImage = new Image();
-    thrustersRightImage.src = '/assets/images/effects/thrusters_on_img.png';
-    thrustersRightImage.onload = () => {
-      this.ctx.drawImage(thrustersRightImage, 360, 305);
+      let thrustersRightImage = new Image();
+      thrustersRightImage.src = '/assets/images/effects/thrusters_on_img.png';
+      thrustersRightImage.onload = () => {
+        this.ctx.drawImage(thrustersRightImage, 360, 305);
+      }
     }
   }
 
