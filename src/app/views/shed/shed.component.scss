@@ -164,5 +164,49 @@
         font-size: 1rem;
       }
     }
+
+    .ships-crews-gui-container {
+      position: absolute;
+      left: 20px;
+      bottom: 204px;
+
+      .crews-label {
+        font-family: 'Aquire';
+        margin-bottom: 10px;
+      }
+    }
+
+    .ships-weapons-gui-container {
+      position: absolute;
+      left: 390px;
+      bottom: 204px;
+
+      .weapons-label {
+        font-family: 'Aquire';
+        margin-bottom: 10px;
+      }
+    }
+
+    .ships-drones-gui-container {
+      position: absolute;
+      left: 390px;
+      bottom: 94px;
+
+      .drones-label {
+        font-family: 'Aquire';
+        margin-bottom: 10px;
+      }
+    }
+
+    .ships-upgrades-gui-container {
+      position: absolute;
+      right: 196px;
+      bottom: 204px;
+
+      .upgrades-label {
+        font-family: 'Aquire';
+        margin-bottom: 10px;
+      }
+    }
   }
 }
