@@ -190,7 +190,7 @@ export class ShedComponent implements OnInit {
     {
       for (let i = 0; i < ship.maxDronesAllowed; i++) {
         let shipDroneGUI = new Image();
-        shipDroneGUI.src = `/assets/images/gui/box_weapons_${ i < ship.drones.length ? 'on' : 'off'}.png`;
+        shipDroneGUI.src = `/assets/images/gui/box_drones_${ i < ship.drones.length ? 'on' : 'off'}.png`;
         shipDroneGUI.onload = () => {
           this.ctx.drawImage(shipDroneGUI, 425 + (i * 120), 625);
 
