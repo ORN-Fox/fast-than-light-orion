@@ -50,8 +50,8 @@
         <p class="crews-label">Équipages</p>
 
         <div class="ships-crews-container">
-            <div *ngFor="let crew of selectedShip.crews" class="ship-crew">
-                <img src="" alt="todo.png">
+            <div *ngFor="let crew of selectedShip.crews" class="ship-crew-content">
+                <span class="ship-crew {{crew.race.name | lowercase}}"></span>
                 <p>{{crew.name}}</p>
             </div>
         </div>
