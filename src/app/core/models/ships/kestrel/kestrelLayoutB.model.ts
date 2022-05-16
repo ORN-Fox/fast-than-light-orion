@@ -6,7 +6,7 @@ import { Human, Mantis, Zoltan } from '../../races/index';
 import { Room } from '../../room/room.model';
 import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { BasicLaser } from '../../weapons/armory/basicLaser.model';
+import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
 
 export class KestrelLayoutB extends Ship {
   constructor() {

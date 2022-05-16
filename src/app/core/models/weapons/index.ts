@@ -1,8 +1,10 @@
 export * from './weapon.model';
 export * from './projectileWeapon.model';
 
-export * from './armory/artemis.model';
-export * from './armory/basicLaser.model';
-export * from './armory/burstLaserII.model';
-export * from './armory/dualLaser.model';
-export * from './armory/ionStunner.model';
+export * from './armory/missiles/artemis.model';
+
+export * from './armory/lasers/basicLaser.model';
+export * from './armory/lasers/burstLaserII.model';
+export * from './armory/lasers/dualLaser.model';
+
+export * from './armory/ions/ionStunner.model';

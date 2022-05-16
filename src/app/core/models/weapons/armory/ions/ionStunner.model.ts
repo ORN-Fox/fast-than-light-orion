@@ -1,4 +1,4 @@
-import { ProjectileWeapon } from '../projectileWeapon.model';
+import { ProjectileWeapon } from '../../projectileWeapon.model';
 
 export class IonStunner extends ProjectileWeapon {
 
