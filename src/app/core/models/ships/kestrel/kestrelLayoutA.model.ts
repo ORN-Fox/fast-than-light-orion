@@ -39,8 +39,8 @@ export class KestrelLayoutA extends Ship {
     ];
 
     this.weapons = [
-      new BurstLaserII(), // Burst Laser II
-      new Artemis() // Artemis Missiles
+      new BurstLaserII(),
+      new Artemis()
     ];
 
     // Capacities related
