@@ -6,7 +6,7 @@ import { Human, Mantis, Zoltan } from '../../races/index';
 import { Room } from '../../room/room.model';
 import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { Weapon } from '../../weapons/weapon.model';
+import { BasicLaser } from '../../weapons/armory/basicLaser.model';
 
 export class KestrelLayoutB extends Ship {
   constructor() {
@@ -40,10 +40,10 @@ export class KestrelLayoutB extends Ship {
     ];
 
     this.weapons = [
-      new Weapon(), // Basic Laser
-      new Weapon(), // Basic Laser
-      new Weapon(), // Basic Laser
-      new Weapon() // Basic Laser
+      new BasicLaser(),
+      new BasicLaser(),
+      new BasicLaser(),
+      new BasicLaser()
     ];
 
     // Capacities related
