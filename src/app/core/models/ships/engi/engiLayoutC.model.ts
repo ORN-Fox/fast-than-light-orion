@@ -8,7 +8,7 @@ import { CloneBay, Door, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor
 
 import { Drone } from '../../drone/drone.model';
 import { Upgrade } from '../../upgrade/upgrade.model';
-import { Weapon } from '../../weapon/weapon.model';
+import { Weapon } from '../../weapons/weapon.model';
 
 export class EngiLayoutC extends Ship {
   constructor() {

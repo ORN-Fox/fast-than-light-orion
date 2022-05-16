@@ -6,7 +6,7 @@ import { Human, Lanius } from '../../races/index';
 import { Room } from '../../room/room.model';
 import { Door, Engine, CloneBay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { Weapon } from '../../weapon/weapon.model';
+import { Weapon } from '../../weapons/weapon.model';
 
 export class KestrelLayoutC extends Ship {
   constructor() {

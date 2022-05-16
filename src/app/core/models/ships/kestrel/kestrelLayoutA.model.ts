@@ -6,7 +6,7 @@ import { Human } from '../../races/human/human.model';
 import { Room } from '../../room/room.model';
 import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { Weapon } from '../../weapon/weapon.model';
+import { Weapon } from '../../weapons/weapon.model';
 
 export class KestrelLayoutA extends Ship {
   constructor() {
