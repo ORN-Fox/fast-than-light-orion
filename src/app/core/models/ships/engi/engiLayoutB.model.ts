@@ -8,7 +8,7 @@ import { Door, DroneControl, Engine, Medbay, Oxygen, Piloting, Shield, WeaponCon
 
 import { Drone } from '../../drone/drone.model';
 import { Upgrade } from '../../upgrade/upgrade.model';
-import { Weapon } from '../../weapons/weapon.model';
+import { HeavyIon, HeavyLaserI } from '../../weapons/index';
 
 export class EngiLayoutB extends Ship {
   constructor() {
@@ -39,8 +39,8 @@ export class EngiLayoutB extends Ship {
     ];
 
     this.weapons = [
-      new Weapon(), // Heavy Ion
-      new Weapon() // Heavy Laser I
+      new HeavyIon(),
+      new HeavyLaserI()
     ];
 
     this.drones = [
