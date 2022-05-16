@@ -6,7 +6,7 @@ import { Human } from '../../races/human/human.model';
 import { Room } from '../../room/room.model';
 import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { Weapon } from '../../weapons/weapon.model';
+import { Artemis, BurstLaserII } from '../../weapons/index';
 
 export class KestrelLayoutA extends Ship {
   constructor() {
@@ -39,8 +39,8 @@ export class KestrelLayoutA extends Ship {
     ];
 
     this.weapons = [
-      new Weapon(), // Burst Laser II
-      new Weapon() // Artemis Missiles
+      new BurstLaserII(), // Burst Laser II
+      new Artemis() // Artemis Missiles
     ];
 
     // Capacities related
