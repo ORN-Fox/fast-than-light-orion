@@ -6,15 +6,29 @@
       "enabled": "Activé",
       "newGame": "Nouvelle partie",
       "play": "Jouer",
+      "quit": "Quitter",
       "rename": "Renom.",
-      "settings": "Options",
-      "quit": "Quitter"
+      "settings": "Options"
     },
     "advancedEditionContent": "Contenu de l'édition avancée",
+    "crews": "Équipages",
     "difficulties": {
       "easy": "Facile",
-      "normal": "Normal",
-      "hard": "Difficile"
+      "hard": "Difficile",
+      "normal": "Normal"
+    },
+    "drones": "Drones",
+    "layout": "Agencement",
+    "list": "Liste",
+    "ships": "Vaisseaux",
+    "systemNotInstalled": "Système non installé",
+    "upgrades": "Améliorations",
+    "weapons": "Armes"
+  },
+  "views": {
+    "shed": {
+      "hideRooms": "Cacher les salles",
+      "randomShip": "Vaisseau aléatoire"
     }
   }
 }

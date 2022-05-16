@@ -6,15 +6,29 @@
       "enabled": "Enabled",
       "newGame": "New Game",
       "play": "Play",
+      "quit": "Quit",
       "rename": "Rename",
-      "settings": "Settings",
-      "quit": "Quit"
+      "settings": "Settings"
     },
     "advancedEditionContent": "Advanced Edition Content",
+    "crews": "Crews",
     "difficulties": {
       "easy": "Easy",
-      "normal": "Normal",
-      "hard": "Hard"
+      "hard": "Hard",
+      "normal": "Normal"
+    },
+    "drones": "Drones",
+    "layout": "Layout",
+    "list": "List",
+    "ships": "Ships",
+    "systemNotInstalled": "System not installed",
+    "upgrades": "Upgrades",
+    "weapons": "Weapons"
+  },
+  "views": {
+    "shed": {
+      "hideRooms": "Hide rooms",
+      "randomShip": "Ramdom Ship"
     }
   }
 }

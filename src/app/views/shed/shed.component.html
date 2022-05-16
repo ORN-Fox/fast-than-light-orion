@@ -23,22 +23,22 @@
 
       <img src="/assets/images/gui/box_shipselect.png" alt="" class="ship-select-gui-image">
       <div class="ship-management-gui-container">
-        <p class="ships-label">Vaisseaux</p>
+        <p class="ships-label">{{'commons.ships' | translate}}</p>
         <div class="ships-list-control-container">
           <button class="btn btn-previous-ship" (click)="previousShip()"><</button>
-          <button class="btn btn-ship-list" (click)="openShipsList()">Liste</button>
+          <button class="btn btn-ship-list" (click)="openShipsList()">{{'commons.list' | translate}}</button>
           <button class="btn btn-next-ship" (click)="nextShip()">></button>
         </div>
-        <button class="btn btn-random-ship">Vaisseau aléatoire</button>
+        <button class="btn btn-random-ship">{{'views.shed.randomShip' | translate}}</button>
 
-        <p class="ships-layout">Agencement</p>
+        <p class="ships-layout">{{'commons.layout' | translate}}</p>
         <div class="ships-layout-control-container">
           <button *ngFor="let shipLayout of ships[shipListIndex].layouts" class="btn btn-ship-layout" [ngClass]="{'active': shipLayout.layout == selectedShip.layout}" (click)="selectShip(shipLayout)">
             {{shipLayout.layout}}
           </button>
         </div>
 
-        <button class="btn btn-hide-ship-rooms" (click)="toggleShipRooms()">Cacher salles</button>
+        <button class="btn btn-hide-ship-rooms" (click)="toggleShipRooms()">{{'views.shed.hideRooms' | translate}}</button>
       </div>
 
       <img src="/assets/images/gui/box_shipach.png" alt="" class="ship-advancement-gui-image">
@@ -55,7 +55,7 @@
       </div>
 
       <div class="ships-crews-gui-container">
-        <p class="crews-label">Équipages</p>
+        <p class="crews-label">{{'commons.crews' | translate}}</p>
 
         <div class="ships-crews-container">
             <div *ngFor="let crew of selectedShip.crews" class="ship-crew-content">
@@ -66,7 +66,7 @@
       </div>
 
       <div class="ships-weapons-gui-container">
-        <p class="weapons-label">Armes</p>
+        <p class="weapons-label">{{'commons.weapons' | translate}}</p>
 
         <div class="ships-weapons-container">
             <div *ngFor="let weapon of selectedShip.weapons" class="ship-weapon">
@@ -77,9 +77,9 @@
       </div>
 
       <div class="ships-drones-gui-container">
-        <p class="drones-label">Drones</p>
+        <p class="drones-label">{{'commons.drones' | translate}}</p>
 
-        <p *ngIf="shipHaveNoDroneControlSystem" class="no-drone-control-label">Système non installé</p>
+        <p *ngIf="shipHaveNoDroneControlSystem" class="no-drone-control-label">{{'commons.systemNotInstalled' | translate}}</p>
 
         <div *ngIf="!shipHaveNoDroneControlSystem" class="ships-drones-container">
             <div *ngFor="let drone of selectedShip.drones" class="ship-drone">
@@ -90,7 +90,7 @@
       </div>
 
       <div class="ships-upgrades-gui-container">
-        <p class="upgrades-label">Améliorations</p>
+        <p class="upgrades-label">{{'commons.upgrades' | translate}}</p>
 
         <div *ngIf="selectedShip.upgrades.length > 0" class="ships-upgrades-container">
             <div *ngFor="let upgrade of selectedShip.upgrades" class="ship-upgrade">
