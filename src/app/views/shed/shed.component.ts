@@ -30,6 +30,7 @@ export class ShedComponent implements OnInit {
   selectedShip: Ship;
 
   renameShipEnabled: boolean = false;
+  displayRooms: boolean = true;
   shipHaveNoDroneControlSystem: boolean = false;
 
   constructor(
@@ -86,10 +87,12 @@ export class ShedComponent implements OnInit {
     hullShipImage.onload = () => {
       this.ctx.drawImage(hullShipImage, 300, 0);
 
-      let interiorShipImage = new Image();
-      interiorShipImage.src = this.selectedShip.srcInteriorSprite;
-      interiorShipImage.onload = () => {
-        this.ctx.drawImage(interiorShipImage, 350, 97);
+      if (this.displayRooms) {
+        let interiorShipImage = new Image();
+        interiorShipImage.src = this.selectedShip.srcInteriorSprite;
+        interiorShipImage.onload = () => {
+          this.ctx.drawImage(interiorShipImage, 350, 97);
+        }
       }
     }
 
@@ -266,6 +269,16 @@ export class ShedComponent implements OnInit {
 
     let renameShipInput = document.querySelector('#inputShipRename') as HTMLInputElement;
     renameShipInput.blur();
+  }
+
+  toggleShipRooms() {
+    this.displayRooms = !this.displayRooms;
+
+    // Clear canvas before display new ship
+    this.ctx.clearRect(200, 0, 800, 450);
+
+    this.loadSelectedShip(this.selectedShip);
+    this.loadSystemsGUIofShip(this.selectedShip);
   }
 
   toggleAdvancedEditionContentActivation() {
