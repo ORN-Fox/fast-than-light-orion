@@ -8,3 +8,4 @@ export * from './armory/lasers/burstLaserII.model';
 export * from './armory/lasers/dualLaser.model';
 
 export * from './armory/ions/ionStunner.model';
+export * from './armory/ions/ionBlastII.model';
