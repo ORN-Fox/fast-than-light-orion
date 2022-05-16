@@ -10,11 +10,11 @@ export class Artemis extends ProjectileWeapon {
     this.cost = 38;
 
     this.cooldown = 11;
-    this.firingSpeed = 60; // Need to test missile firing speed
+    this.firingSpeed = 35;
 
-    this.piercing = .5
-    this.fire = .1;
-    this.breach = .1
+    this.piercing = .5;
+    this.fire = 10;
+    this.breach = 9;
     this.stun = .1;
 
     this.damagePerShot = 2;

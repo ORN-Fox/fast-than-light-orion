@@ -10,7 +10,9 @@ export class IonStunner extends ProjectileWeapon {
     this.cost = 35;
 
     this.cooldown = 10;
-    this.firingSpeed = 60;
+    this.firingSpeed = 30;
+
+    this.stun = 1;
 
     // this.damagePerShot = 1; // TODO 1 ion damage
     this.nbShots = 1;

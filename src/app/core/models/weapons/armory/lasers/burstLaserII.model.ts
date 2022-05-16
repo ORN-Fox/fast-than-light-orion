@@ -12,7 +12,7 @@ export class BurstLaserII extends ProjectileWeapon {
     this.cooldown = 12;
     this.firingSpeed = 60;
 
-    this.fire = .1;
+    this.fire = 10;
 
     this.damagePerShot = 1;
     this.nbShots = 3;

@@ -12,7 +12,7 @@ export class BasicLaser extends ProjectileWeapon {
     this.cooldown = 10;
     this.firingSpeed = 60;
 
-    this.fire = .1;
+    this.fire = 10;
 
     this.damagePerShot = 1;
   }
