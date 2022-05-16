@@ -6,7 +6,7 @@ import { Human, Lanius } from '../../races/index';
 import { Room } from '../../room/room.model';
 import { Door, Engine, CloneBay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { DualLaser, IonStunner } from '../../weapons/index';
+import { DualLasers, IonStunner } from '../../weapons/index';
 
 export class KestrelLayoutC extends Ship {
   constructor() {
@@ -39,7 +39,7 @@ export class KestrelLayoutC extends Ship {
     ];
 
     this.weapons = [
-      new DualLaser(),
+      new DualLasers(),
       new IonStunner()
     ];
 

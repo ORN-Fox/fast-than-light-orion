@@ -1,11 +1,11 @@
 import { ProjectileWeapon } from '../../projectileWeapon.model';
 
-export class DualLaser extends ProjectileWeapon {
+export class DualLasers extends ProjectileWeapon {
 
   constructor() {
     super();
 
-    this.name = "Dual Laser";
+    this.name = "Dual Lasers";
     this.powerCost = 1;
     this.cost = 25;
 
