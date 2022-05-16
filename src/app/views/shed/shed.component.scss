@@ -2,6 +2,16 @@
   background: url('/assets/images/shed.jpg') no-repeat;
   background-size: cover;
 
+  .ship-components-gui-image {
+    position: absolute;
+    left: 0;
+    top: 478px;
+  }
+
+  #shedCanvas {
+    position: absolute;
+  }
+
   .shed-gui-container {
     position: absolute;
     left: 0;
@@ -20,7 +30,13 @@
       }
     }
 
-    .ship-rename-gui {
+    .ship-rename-gui-image {
+      position: absolute;
+      top: 8px;
+      left: 5px;
+    }
+
+    .ship-rename-gui-container {
       position: relative;
       top: 16px;
       left: 13px;
@@ -45,6 +61,12 @@
         width: 300px;
         outline: none;
       }
+    }
+
+    .ship-play-gui-image {
+      position: absolute;
+      top: 0;
+      left: 964px;
     }
 
     .ship-box-start {
@@ -73,6 +95,12 @@
         margin-top: 13px;
         font-size: 2rem;
       }
+    }
+
+    .ship-select-gui-image {
+      position: absolute;
+      left: 0;
+      top: 106px;
     }
 
     .ship-management-gui-container {
@@ -135,6 +163,18 @@
         height: 30px;
         width: 157px;
       }
+    }
+
+    .ship-advancement-gui-image {
+      position: absolute;
+      left: 0px;
+      top: 354px;
+    }
+
+    .advanced-edition-gui-image {
+      position: absolute;
+      left: 974px;
+      top: 380px;
     }
 
     .advanced-edition-gui-container {

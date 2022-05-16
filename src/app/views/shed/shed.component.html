@@ -1,12 +1,16 @@
 <div class="shed">
+    <img src="/assets/images/gui/box_shipequip.png" alt="" class="ship-components-gui-image">
+
     <canvas id="shedCanvas"></canvas>
 
     <div class="shed-gui-container">
-      <div class="ship-rename-gui">
+        <img src="/assets/images/gui/box_shipname.png" alt="" class="ship-rename-gui-image">
+      <div class="ship-rename-gui-container">
         <button class="btn btn-rename" [ngClass]="{'active': renameShipEnabled}" (click)="openRenameShipInput()">{{'commons.actions.rename' | translate}}</button>
         <input type="text" id="inputShipRename" class="input-rename" [(ngModel)]="selectedShip.name" (keyup.enter)="closeRenameShipInput()" maxlength="16">
       </div>
 
+      <img src="/assets/images/gui/box_start.png" alt="" class="ship-play-gui-image">
       <div class="ship-box-start">
         <div class="difficulities-container">
           <button *ngFor="let difficulty of difficulties" class="btn" [ngClass]="{'active': difficulty.value == game.difficulty.value }" (click)="selectDifficulty(difficulty)">
@@ -17,6 +21,7 @@
         <button class="btn btn-play" [disabled]="!selectedShip.name" (click)="startGame()">{{'commons.actions.play' | translate}}</button>
       </div>
 
+      <img src="/assets/images/gui/box_shipselect.png" alt="" class="ship-select-gui-image">
       <div class="ship-management-gui-container">
         <p class="ships-label">Vaisseaux</p>
         <div class="ships-list-control-container">
@@ -36,6 +41,9 @@
         <button class="btn btn-hide-ship-rooms">Cacher salles</button>
       </div>
 
+      <img src="/assets/images/gui/box_shipach.png" alt="" class="ship-advancement-gui-image">
+
+      <img src="/assets/images/gui/box_advanced.png" alt="" class="advanced-edition-gui-image">
       <div class="advanced-edition-gui-container">
         <p>{{'commons.advancedEditionContent' | translate }}</p>
         <button class="btn btn-disabled-advanced-edition" [ngClass]="{'active': !game.advancedEditionEnabled}" (click)="toggleAdvancedEditionContentActivation()">

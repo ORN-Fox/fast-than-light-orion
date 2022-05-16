@@ -53,8 +53,6 @@ export class ShedComponent implements OnInit {
 
     this.loadSelectedShip(this.ships[this.shipListIndex].layouts[0]);
 
-    this.loadShedGUI();
-
     this.loadSystemsGUIofShip(this.selectedShip);
     this.loadCrewsGUIofShip(this.selectedShip);
     this.loadWeasponsGUIofShip(this.selectedShip);
@@ -77,45 +75,6 @@ export class ShedComponent implements OnInit {
     shedCanvas.width = this.canvasWidth;
 
     this.ctx = shedCanvas.getContext('2d') as CanvasRenderingContext2D;
-  }
-
-  loadShedGUI()
-  {
-    let boxShipNameGUI = new Image();
-    boxShipNameGUI.src = '/assets/images/gui/box_shipname.png';
-    boxShipNameGUI.onload = () => {
-      this.ctx.drawImage(boxShipNameGUI, 5, 8);
-    }
-
-    let boxShipSelectGUI = new Image();
-    boxShipSelectGUI.src = '/assets/images/gui/box_shipselect.png';
-    boxShipSelectGUI.onload = () => {
-      this.ctx.drawImage(boxShipSelectGUI, 0, 105);
-    }
-
-    let boxShipShipashGUI = new Image();
-    boxShipShipashGUI.src = '/assets/images/gui/box_shipach.png';
-    boxShipShipashGUI.onload = () => {
-      this.ctx.drawImage(boxShipShipashGUI, 0, 355);
-    }
-
-    let boxStartGUI = new Image();
-    boxStartGUI.src = '/assets/images/gui/box_start.png';
-    boxStartGUI.onload = () => {
-      this.ctx.drawImage(boxStartGUI, this.canvasWidth - 316, 0);
-    }
-
-    let shipAdvancedGUI = new Image();
-    shipAdvancedGUI.src = '/assets/images/gui/box_advanced.png';
-    shipAdvancedGUI.onload = () => {
-      this.ctx.drawImage(shipAdvancedGUI, this.canvasWidth - 305, this.canvasHeight - 340);
-    }
-
-    let shipEquipmentGUI = new Image();
-    shipEquipmentGUI.src = '/assets/images/gui/box_shipequip.png';
-    shipEquipmentGUI.onload = () => {
-      this.ctx.drawImage(shipEquipmentGUI, 0, this.canvasHeight - 242);
-    }
   }
 
   loadSelectedShip(ship: Ship)
@@ -279,8 +238,6 @@ export class ShedComponent implements OnInit {
       ship.resetName();
 
       this.loadSelectedShip(ship);
-
-      this.loadShedGUI();
 
       this.loadSystemsGUIofShip(this.selectedShip);
       this.loadCrewsGUIofShip(this.selectedShip);
