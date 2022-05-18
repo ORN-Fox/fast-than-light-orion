@@ -1,3 +1,6 @@
+// import * as PIXI from 'pixi.js' // Many errors on typescript
+declare var PIXI: any;
+
 import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../../core/services/game/game.service';
@@ -14,6 +17,8 @@ import { Ship, ShipList } from '../../core/models/ships/index';
 })
 export class ShedComponent implements OnInit {
 
+  app: any;
+
   canvasHeight: number = 720;
   canvasWidth: number = 1280;
   canvasRatio: number; // 720 / 1280 = 0.5625
@@ -27,7 +32,10 @@ export class ShedComponent implements OnInit {
   ships: ShipList[];
   shipListIndex: number = 0;
 
+  shipContainer: any;
+
   selectedShip: Ship;
+  selectedShipFloor: any;
 
   renameShipEnabled: boolean = false;
   displayRooms: boolean = true;
@@ -63,6 +71,9 @@ export class ShedComponent implements OnInit {
 
   initShepCanvas()
   {
+    this.app = new PIXI.Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
+    document.querySelector('#canvsPixi')!.appendChild(this.app.view);
+
     const shedBody = document.querySelector('.shed') as HTMLElement;
     shedBody.style.height = `${this.canvasHeight}px`;
     shedBody.style.width = `${this.canvasWidth}px`;
@@ -82,56 +93,53 @@ export class ShedComponent implements OnInit {
   {
     this.selectedShip = ship;
 
-    let hullShipImage = new Image();
-    hullShipImage.src = this.selectedShip.srcHullSprite;
-    hullShipImage.onload = () => {
-      this.ctx.drawImage(hullShipImage, 300, 0);
+    this.shipContainer = new PIXI.Container();
+    this.app.stage.addChild(this.shipContainer);
 
-      if (this.displayRooms) {
-        let interiorShipImage = new Image();
-        interiorShipImage.src = this.selectedShip.srcInteriorSprite;
-        interiorShipImage.onload = () => {
-          this.ctx.drawImage(interiorShipImage, 350, 97);
-        }
-      }
-    }
+    const shipHull = PIXI.Sprite.from(this.selectedShip.srcHullSprite);
+    shipHull.x = 300;
+    shipHull.y = 0;
 
+    this.selectedShipFloor = PIXI.Sprite.from(this.selectedShip.srcInteriorSprite);
+    this.selectedShipFloor.x = 350;
+    this.selectedShipFloor.y = 97;
+
+    this.shipContainer.addChild(shipHull, this.selectedShipFloor);
+
+    // TODO animate thrusters and extract
     if (ship.originalName == 'The Kestrel' || ship.originalName == 'Red-Tail' || ship.originalName == 'The Swallow')
     {
-      let thrustersLeftImage = new Image();
-      thrustersLeftImage.src = '/assets/images/effects/thrusters_on_img.png';
-      thrustersLeftImage.onload = () => {
-        this.ctx.drawImage(thrustersLeftImage, 360, 40);
-      }
+      const thrustersLeftImage = PIXI.Sprite.from('/assets/images/effects/thrusters_on_img.png');
+      thrustersLeftImage.x = 360;
+      thrustersLeftImage.y = 40;
 
-      let thrustersRightImage = new Image();
-      thrustersRightImage.src = '/assets/images/effects/thrusters_on_img.png';
-      thrustersRightImage.onload = () => {
-        this.ctx.drawImage(thrustersRightImage, 360, 305);
-      }
+      const thrustersRightImage = PIXI.Sprite.from('/assets/images/effects/thrusters_on_img.png');
+      thrustersRightImage.x = 360;
+      thrustersRightImage.y = 305;
+
+      this.shipContainer.addChild(thrustersLeftImage, thrustersRightImage);
     }
   }
 
   loadSystemsGUIofShip(ship: Ship)
   {
     for (let i = 0; i < ship.rooms.length; i++) {
-      let shipSystemGUI = new Image();
-      shipSystemGUI.src = '/assets/images/gui/box_system_on.png';
-      shipSystemGUI.onload = () => {
-        this.ctx.drawImage(shipSystemGUI, 380 + (i * 38), 382);
+      let shipSystemGUI = PIXI.Sprite.from('/assets/images/gui/box_system_on.png');
+      shipSystemGUI.x = 380 + (i * 38);
+      shipSystemGUI.y = 382;
 
-        let shipSystemIconGUI = new Image();
-        shipSystemIconGUI.src = ship.rooms[i].affectedSystem.srcSystemGreenSprite;
-        shipSystemIconGUI.onload = () => {
-          this.ctx.drawImage(shipSystemIconGUI, 367 + (i * 38), 427);
+      let shipSystemIconGUI = PIXI.Sprite.from(ship.rooms[i].affectedSystem.srcSystemGreenSprite);
+      shipSystemIconGUI.x = 367 + (i * 38);
+      shipSystemIconGUI.y = 427;
 
-          for (let y = 0; y < ship.rooms[i].affectedSystem.level; y++) {
-            this.ctx.beginPath();
-            this.ctx.fillStyle = "#3ff33c";
-            this.ctx.fillRect(391.5 + (i * 38), 435 + (y * -7), 15, 5);
-            this.ctx.closePath();
-          }
-        };
+      this.shipContainer.addChild(shipSystemGUI, shipSystemIconGUI);
+
+      for (let y = 0; y < ship.rooms[i].affectedSystem.level; y++) {
+        let shipSystemLevel = new PIXI.Graphics()
+        shipSystemLevel.beginFill(0x3ff33c);
+        shipSystemLevel.drawRect(391.5 + (i * 38), 435 + (y * -7), 15, 5);
+
+        this.shipContainer.addChild(shipSystemLevel);
       }
     }
   }
@@ -139,33 +147,33 @@ export class ShedComponent implements OnInit {
   loadCrewsGUIofShip(ship: Ship)
   {
     for (let i = 0; i < 2; i++) {
-      let shipCrewGUI = new Image();
-      shipCrewGUI.src = `/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`;
-      shipCrewGUI.onload = () => {
-        this.ctx.drawImage(shipCrewGUI, 60 + (i * 150), 530);
-      };
+      let shipCrewLineOneGUI = PIXI.Sprite.from(`/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`);
+      shipCrewLineOneGUI.x = 60 + (i * 150);
+      shipCrewLineOneGUI.y = 530;
+
+      this.shipContainer.addChild(shipCrewLineOneGUI);
     }
 
     for (let y = 0; y < 2; y++) {
-      let shipCrewGUI = new Image();
-      shipCrewGUI.src = `/assets/images/gui/box_crew_${ y + 2 < ship.crews.length ? 'on' : 'off'}.png`;
-      shipCrewGUI.onload = () => {
-        this.ctx.drawImage(shipCrewGUI, 60 + (y * 150), 620);
-      };
+      let shipCrewLineTwoGUI = PIXI.Sprite.from(`/assets/images/gui/box_crew_${ y + 2 < ship.crews.length ? 'on' : 'off'}.png`);
+      shipCrewLineTwoGUI.x = 60 + (y * 150);
+      shipCrewLineTwoGUI.y = 620;
+
+      this.shipContainer.addChild(shipCrewLineTwoGUI);
     }
   }
 
   loadWeasponsGUIofShip(ship: Ship)
   {
     for (let i = 0; i < ship.maxWeaponsAllowed; i++) {
-      let shipWeaponGUI = new Image();
-      shipWeaponGUI.src = `/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`;
-      shipWeaponGUI.onload = () => {
-        this.ctx.drawImage(shipWeaponGUI, 425 + (i * 120), 515);
+      let shipWeaponGUI = PIXI.Sprite.from(`/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`);
+      shipWeaponGUI.x = 425 + (i * 120);
+      shipWeaponGUI.y = 515;
 
-        // TODO display weapons
-      };
+      this.shipContainer.addChild(shipWeaponGUI);
     }
+
+    // TODO display weapons
   }
 
   loadDronesGUIofShip(ship: Ship)
@@ -175,30 +183,30 @@ export class ShedComponent implements OnInit {
     if (this.selectedShip.drones.length > 0)
     {
       for (let i = 0; i < ship.maxDronesAllowed; i++) {
-        let shipDroneGUI = new Image();
-        shipDroneGUI.src = `/assets/images/gui/box_drones_${ i < ship.drones.length ? 'on' : 'off'}.png`;
-        shipDroneGUI.onload = () => {
-          this.ctx.drawImage(shipDroneGUI, 425 + (i * 120), 625);
+        let shipDroneGUI = PIXI.Sprite.from(`/assets/images/gui/box_drones_${ i < ship.drones.length ? 'on' : 'off'}.png`);
+        shipDroneGUI.x = 425 + (i * 120);
+        shipDroneGUI.y = 625;
 
-          // TODO display drones
-        };
+        this.shipContainer.addChild(shipDroneGUI);
       }
+
+      // TODO display drones
     }
   }
 
   loadUpgradesGUIOfShip(ship: Ship)
   {
     for (let i = 0; i < ship.maxUpgradesAllowed; i++) {
-      let shipUpgradeGUI = new Image();
-      shipUpgradeGUI.src = `/assets/images/gui/box_augment_${ i < ship.upgrades.length ? 'on' : 'off'}.png`;
-      shipUpgradeGUI.onload = () => {
-        this.ctx.drawImage(shipUpgradeGUI, 990, 529 + (i * 60));
+      let shipDroneGUI = PIXI.Sprite.from(`/assets/images/gui/box_augment_${ i < ship.upgrades.length ? 'on' : 'off'}.png`);
+      shipDroneGUI.x = 990;
+      shipDroneGUI.y = 529 + (i * 60);
 
-        if (ship.upgrades.length > 0)
-        {
-          // TODO display upgrades
-        }
-      };
+      this.shipContainer.addChild(shipDroneGUI);
+    }
+
+    if (ship.upgrades.length > 0)
+    {
+      // TODO display upgrades
     }
   }
 
@@ -235,8 +243,7 @@ export class ShedComponent implements OnInit {
   {
     if (ship != this.selectedShip)
     {
-      // Clear canvas before display new ship
-      this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+      this.shipContainer.destroy(true);
 
       ship.resetName();
 
@@ -273,12 +280,7 @@ export class ShedComponent implements OnInit {
 
   toggleShipRooms() {
     this.displayRooms = !this.displayRooms;
-
-    // Clear canvas before display new ship
-    this.ctx.clearRect(200, 0, 800, 450);
-
-    this.loadSelectedShip(this.selectedShip);
-    this.loadSystemsGUIofShip(this.selectedShip);
+    this.selectedShipFloor.visible = this.displayRooms;
   }
 
   toggleAdvancedEditionContentActivation() {
