@@ -1,7 +1,9 @@
 # Fast Than Light - Orion Edition
+## ! Work in progress !
+
 ![Game Home Menu](./preview.jpg)
 
-## ! Work in progress !
+![Game Shed View](./preview-shed.jpg)
 
 Remake FTL with web technologies for fun !
 
