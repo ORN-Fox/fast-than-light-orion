@@ -218,42 +218,6 @@
         .ship-crew-content {
           color: white;
           font-family: "CW Bitmap";
-
-          .ship-crew {
-            display: block;
-            height: 30px;
-            width: 30px;
-
-            &.engi {
-              height: 30px;
-              width: 30px;
-              background: url('/assets/images/peoples/engi_base.png') 0 0;
-            }
-
-            &.human {
-              height: 30px;
-              width: 30px;
-              background: url('/assets/images/peoples/human_base.png') 0 0;
-            }
-
-            &.lanius {
-              height: 30px;
-              width: 30px;
-              background: url('/assets/images/peoples/anaerobic_base.png') 0 0;
-            }
-
-            &.mantis {
-              height: 30px;
-              width: 30px;
-              background: url('/assets/images/peoples/mantis_base.png') 0 0;
-            }
-
-            &.zoltan {
-              height: 30px;
-              width: 30px;
-              background: url('/assets/images/peoples/energy_base.png') 0 0;
-            }
-          }
         }
       }
     }

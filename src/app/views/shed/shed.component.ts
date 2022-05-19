@@ -62,11 +62,21 @@ export class ShedComponent implements OnInit {
 
     this.loadSelectedShip(this.ships[this.shipListIndex].layouts[0]);
 
-    this.loadSystemsGUIofShip(this.selectedShip);
-    this.loadCrewsGUIofShip(this.selectedShip);
-    this.loadWeasponsGUIofShip(this.selectedShip);
-    this.loadDronesGUIofShip(this.selectedShip);
-    this.loadUpgradesGUIOfShip(this.selectedShip);
+    let setup = () => {
+      this.loadSystemsGUIofShip(this.selectedShip);
+      this.loadCrewsGUIofShip(this.selectedShip);
+      this.loadWeasponsGUIofShip(this.selectedShip);
+      this.loadDronesGUIofShip(this.selectedShip);
+      this.loadUpgradesGUIOfShip(this.selectedShip);
+    }
+
+    PIXI.Loader.shared
+      .add("/assets/images/peoples/engi/engi-base-spritesheet.json")
+      .add("/assets/images/peoples/human/human-base-spritesheet.json")
+      .add("/assets/images/peoples/lanius/lanius-base-spritesheet.json")
+      .add("/assets/images/peoples/mantis/mantis-base-spritesheet.json")
+      .add("/assets/images/peoples/zoltan/zoltan-base-spritesheet.json")
+      .load(setup);
   }
 
   initShepCanvas()
@@ -144,14 +154,59 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  // TODO extract to races service
+  getRaceSheetForRace(name: string)
+  {
+    switch (name)
+    {
+      case 'crystal':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/crystal/crystal-base-spritesheet.json"].spritesheet;
+
+      case 'engi':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/engi/engi-base-spritesheet.json"].spritesheet;
+
+      case 'human':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/human/human-base-spritesheet.json"].spritesheet;
+
+      case 'lanius':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/lanius/lanius-base-spritesheet.json"].spritesheet;
+
+      case 'mantis':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/mantis/mantis-base-spritesheet.json"].spritesheet;
+
+      case 'rockmen':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/rockmen/rockmen-base-spritesheet.json"].spritesheet;
+
+      case 'zoltan':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/zoltan/zoltan-base-spritesheet.json"].spritesheet;
+    }
+  }
+
   loadCrewsGUIofShip(ship: Ship)
   {
+
+
     for (let i = 0; i < 2; i++) {
       let shipCrewLineOneGUI = PIXI.Sprite.from(`/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`);
       shipCrewLineOneGUI.x = 60 + (i * 150);
       shipCrewLineOneGUI.y = 530;
 
       this.shipContainer.addChild(shipCrewLineOneGUI);
+
+      let crewMember = ship.crews[i];
+
+      if (crewMember)
+      {
+        let raceName = crewMember.race.name.toLowerCase();
+
+        let crewMemberLineOne = PIXI.Sprite.from(this.getRaceSheetForRace(raceName).textures[`${raceName}_base-0.png`]);
+        crewMemberLineOne.x = 112 + (i * 150);
+        crewMemberLineOne.y = 558;
+        crewMemberLineOne.height = 60;
+        crewMemberLineOne.width = 60;
+
+        this.shipContainer.addChild(crewMemberLineOne);
+      }
     }
 
     for (let y = 0; y < 2; y++) {
@@ -160,6 +215,21 @@ export class ShedComponent implements OnInit {
       shipCrewLineTwoGUI.y = 620;
 
       this.shipContainer.addChild(shipCrewLineTwoGUI);
+
+      let crewMember = ship.crews[y + 2];
+
+      if (crewMember)
+      {
+        let raceName = crewMember.race.name.toLowerCase();
+
+        let crewMemberLineTwo = PIXI.Sprite.from(this.getRaceSheetForRace(raceName).textures[`${raceName}_base-0.png`]);
+        crewMemberLineTwo.x = 112 + (y * 150);
+        crewMemberLineTwo.y = 648;
+        crewMemberLineTwo.height = 60;
+        crewMemberLineTwo.width = 60;
+
+        this.shipContainer.addChild(crewMemberLineTwo);
+      }
     }
   }
 
@@ -243,7 +313,7 @@ export class ShedComponent implements OnInit {
   {
     if (ship != this.selectedShip)
     {
-      this.shipContainer.destroy(true);
+      this.shipContainer.destroy();
 
       ship.resetName();
 
