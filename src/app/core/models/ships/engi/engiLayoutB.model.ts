@@ -7,7 +7,7 @@ import { Room } from '../../room/room.model';
 import { Door, DroneControl, Engine, Medbay, Oxygen, Piloting, Shield, WeaponControl } from '../../systems/index';
 
 import { AntiPersonnel, SystemRepair } from '../../drones/index';
-import { Upgrade } from '../../upgrade/upgrade.model';
+import { DroneReactorBooster } from '../../upgrades/index';
 import { HeavyIon, HeavyLaserI } from '../../weapons/index';
 
 export class EngiLayoutB extends Ship {
@@ -50,7 +50,7 @@ export class EngiLayoutB extends Ship {
     ];
 
     this.upgrades = [
-      new Upgrade() // Drone Reactor Booster
+      new DroneReactorBooster()
     ];
 
     // Capacities related

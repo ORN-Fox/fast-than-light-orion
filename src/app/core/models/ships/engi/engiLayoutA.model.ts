@@ -7,7 +7,7 @@ import { Room } from '../../room/room.model';
 import { Door, DroneControl, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
 import { CombatI } from '../../drones/index';
-import { Upgrade } from '../../upgrade/upgrade.model';
+import { EngiMedbotDispersal } from '../../upgrades/index';
 import { IonBlastII } from '../../weapons/armory/ions/ionBlastII.model';
 
 export class EngiLayoutA extends Ship {
@@ -50,7 +50,7 @@ export class EngiLayoutA extends Ship {
     ];
 
     this.upgrades = [
-      new Upgrade() // Engi Med-bot Dispersal
+      new EngiMedbotDispersal()
     ];
 
     // Capacities related

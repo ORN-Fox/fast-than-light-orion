@@ -7,7 +7,7 @@ import { Room } from '../../room/room.model';
 import { CloneBay, Door, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
 import { BeamI } from '../../drones/index';
-import { Upgrade } from '../../upgrade/upgrade.model';
+import { DefenseScrambler } from '../../upgrades/index';
 import { DualLasers } from '../../weapons/armory/lasers/dualLasers.model';
 
 export class EngiLayoutC extends Ship {
@@ -51,7 +51,7 @@ export class EngiLayoutC extends Ship {
     ];
 
     this.upgrades = [
-      new Upgrade() // Defense Scrambler
+      new DefenseScrambler()
     ];
 
     // Capacities related

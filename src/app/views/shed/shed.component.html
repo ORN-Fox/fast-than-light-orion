@@ -92,7 +92,7 @@
 
         <div *ngIf="selectedShip.upgrades.length > 0" class="ships-upgrades-container">
             <div *ngFor="let upgrade of selectedShip.upgrades" class="ship-upgrade-content">
-                <p>upgrade name</p>
+                <p>{{upgrade.name}}</p>
             </div>
         </div>
       </div>
