@@ -6,7 +6,7 @@ import { Engi, Human } from '../../races/index';
 import { Room } from '../../room/room.model';
 import { Door, DroneControl, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { Drone } from '../../drone/drone.model';
+import { CombatI } from '../../drones/index';
 import { Upgrade } from '../../upgrade/upgrade.model';
 import { IonBlastII } from '../../weapons/armory/ions/ionBlastII.model';
 
@@ -46,7 +46,7 @@ export class EngiLayoutA extends Ship {
     ];
 
     this.drones = [
-      new Drone() // Combat Mark I
+      new CombatI()
     ];
 
     this.upgrades = [

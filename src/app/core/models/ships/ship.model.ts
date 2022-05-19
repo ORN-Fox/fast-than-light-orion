@@ -1,6 +1,6 @@
 import { Room } from '../room/room.model';
 import { Weapon } from '../weapons/weapon.model';
-import { Drone } from '../drone/drone.model';
+import { Drone } from '../drones/drone.model';
 import { Crew } from '../crew/crew.model';
 import { Upgrade } from '../upgrade/upgrade.model';
 

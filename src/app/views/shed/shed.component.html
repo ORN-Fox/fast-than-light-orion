@@ -82,7 +82,7 @@
 
         <div *ngIf="!shipHaveNoDroneControlSystem" class="ships-drones-container">
             <div *ngFor="let drone of selectedShip.drones" class="ship-drone-content">
-                <p>drone name</p>
+                <p>{{drone.name}}</p>
             </div>
         </div>
       </div>

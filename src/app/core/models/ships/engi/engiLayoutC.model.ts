@@ -6,7 +6,7 @@ import { Engi, Lanius } from '../../races/index';
 import { Room } from '../../room/room.model';
 import { CloneBay, Door, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
-import { Drone } from '../../drone/drone.model';
+import { BeamI } from '../../drones/index';
 import { Upgrade } from '../../upgrade/upgrade.model';
 import { DualLasers } from '../../weapons/armory/lasers/dualLasers.model';
 
@@ -47,7 +47,7 @@ export class EngiLayoutC extends Ship {
     ];
 
     this.drones = [
-      new Drone() // Beam I
+      new BeamI()
     ];
 
     this.upgrades = [
