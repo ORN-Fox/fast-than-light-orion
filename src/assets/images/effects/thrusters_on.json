@@ -1,0 +1,51 @@
+{"frames": {
+
+"thrusters_on-0.png":
+{
+	"frame": {"x":49,"y":1,"w":21,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":2,"w":21,"h":68},
+	"sourceSize": {"w":22,"h":70},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"thrusters_on-1.png":
+{
+	"frame": {"x":1,"y":71,"w":20,"h":68},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":20,"h":68},
+	"sourceSize": {"w":22,"h":70},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"thrusters_on-2.png":
+{
+	"frame": {"x":1,"y":1,"w":22,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":22,"h":68},
+	"sourceSize": {"w":22,"h":70},
+	"anchor": {"x":0.5,"y":0.5}
+},
+"thrusters_on-3.png":
+{
+	"frame": {"x":25,"y":1,"w":22,"h":68},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":22,"h":68},
+	"sourceSize": {"w":22,"h":70},
+	"anchor": {"x":0.5,"y":0.5}
+}},
+"animations": {
+	"thrusters_on": ["thrusters_on-0.png","thrusters_on-1.png","thrusters_on-2.png","thrusters_on-3.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "thrusters_on.png",
+	"format": "RGBA8888",
+	"size": {"w":71,"h":92},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:00720a99dc0ca71c40f8c49f22e21230:0708ad6d504bd9cf36e556d9baef4c48:b59d6c022a88dda00ac844482b4c1e8b$"
+}
+}

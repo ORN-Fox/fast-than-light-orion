@@ -58,6 +58,8 @@ export class ShedComponent implements OnInit {
     this.loadSelectedShip(this.ships[this.shipListIndex].layouts[0]);
 
     let setup = () => {
+      this.loadThrustersAnimation();
+
       this.loadSystemsGUIofShip(this.selectedShip);
       this.loadCrewsGUIofShip(this.selectedShip);
       this.loadWeasponsGUIofShip(this.selectedShip);
@@ -66,6 +68,7 @@ export class ShedComponent implements OnInit {
     }
 
     PIXI.Loader.shared
+      .add("/assets/images/effects/thrusters_on.json")
       .add("/assets/images/peoples/crystal/crystal-base-spritesheet.json")
       .add("/assets/images/peoples/engi/engi-base-spritesheet.json")
       .add("/assets/images/peoples/human-female/human-female-base-spritesheet.json")
@@ -108,19 +111,28 @@ export class ShedComponent implements OnInit {
     this.selectedShipFloor.y = this.selectedShip.interiorSpriteY;
 
     this.shipContainer.addChild(shipHull, this.selectedShipFloor);
+  }
 
-    // TODO animate thrusters and extract
-    if (ship.originalName == 'The Kestrel' || ship.originalName == 'Red-Tail' || ship.originalName == 'The Swallow')
+  loadThrustersAnimation()
+  {
+    if (this.selectedShip.originalName == 'The Kestrel' || this.selectedShip.originalName == 'Red-Tail' || this.selectedShip.originalName == 'The Swallow')
     {
-      const thrustersLeftImage = PIXI.Sprite.from('/assets/images/effects/thrusters_on_img.png');
-      thrustersLeftImage.x = 360;
-      thrustersLeftImage.y = 40;
+      const thrustersOnSheet = PIXI.Loader.shared.resources["/assets/images/effects/thrusters_on.json"].spritesheet;
+      const thrustersAnimationSpeed = .08;
 
-      const thrustersRightImage = PIXI.Sprite.from('/assets/images/effects/thrusters_on_img.png');
-      thrustersRightImage.x = 360;
-      thrustersRightImage.y = 305;
+      let animatedThrustersLeftSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
+      animatedThrustersLeftSprite.x = 371;
+      animatedThrustersLeftSprite.y = 75;
+      animatedThrustersLeftSprite.animationSpeed = thrustersAnimationSpeed;
+      animatedThrustersLeftSprite.play();
 
-      this.shipContainer.addChild(thrustersLeftImage, thrustersRightImage);
+      let animatedThrustersRightSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
+      animatedThrustersRightSprite.x = 371;
+      animatedThrustersRightSprite.y = 340;
+      animatedThrustersRightSprite.animationSpeed = thrustersAnimationSpeed;
+      animatedThrustersRightSprite.play();
+
+      this.shipContainer.addChild(animatedThrustersLeftSprite, animatedThrustersRightSprite);
     }
   }
 
@@ -327,6 +339,8 @@ export class ShedComponent implements OnInit {
       this.displayRooms = true;
 
       this.loadSelectedShip(ship);
+
+      this.loadThrustersAnimation();
 
       this.loadSystemsGUIofShip(this.selectedShip);
       this.loadCrewsGUIofShip(this.selectedShip);
