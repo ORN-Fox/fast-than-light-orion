@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../core/services/game/game.service';
 import { ShipsService } from '../../core/services/ships/ships.service';
 
+import { Gender } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
 import { Ship, ShipList } from '../../core/models/ships/index';
@@ -71,10 +72,13 @@ export class ShedComponent implements OnInit {
     }
 
     PIXI.Loader.shared
+      .add("/assets/images/peoples/crystal/crystal-base-spritesheet.json")
       .add("/assets/images/peoples/engi/engi-base-spritesheet.json")
-      .add("/assets/images/peoples/human/human-base-spritesheet.json")
+      .add("/assets/images/peoples/human-female/human-female-base-spritesheet.json")
+      .add("/assets/images/peoples/human-male/human-male-base-spritesheet.json")
       .add("/assets/images/peoples/lanius/lanius-base-spritesheet.json")
       .add("/assets/images/peoples/mantis/mantis-base-spritesheet.json")
+      .add("/assets/images/peoples/rockmen/rockmen-base-spritesheet.json")
       .add("/assets/images/peoples/zoltan/zoltan-base-spritesheet.json")
       .load(setup);
   }
@@ -165,8 +169,11 @@ export class ShedComponent implements OnInit {
       case 'engi':
         return PIXI.Loader.shared.resources["/assets/images/peoples/engi/engi-base-spritesheet.json"].spritesheet;
 
-      case 'human':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/human/human-base-spritesheet.json"].spritesheet;
+      case 'human-female':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/human-female/human-female-base-spritesheet.json"].spritesheet;
+
+      case 'human-male':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/human-male/human-male-base-spritesheet.json"].spritesheet;
 
       case 'lanius':
         return PIXI.Loader.shared.resources["/assets/images/peoples/lanius/lanius-base-spritesheet.json"].spritesheet;
@@ -184,8 +191,6 @@ export class ShedComponent implements OnInit {
 
   loadCrewsGUIofShip(ship: Ship)
   {
-
-
     for (let i = 0; i < 2; i++) {
       let shipCrewLineOneGUI = PIXI.Sprite.from(`/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`);
       shipCrewLineOneGUI.x = 60 + (i * 150);
@@ -198,6 +203,11 @@ export class ShedComponent implements OnInit {
       if (crewMember)
       {
         let raceName = crewMember.race.name.toLowerCase();
+
+        if (raceName == 'human')
+        {
+          raceName = `${raceName}-${crewMember.gender == Gender.Male ? 'male' : 'female'}`;
+        }
 
         let crewMemberLineOne = PIXI.Sprite.from(this.getRaceSheetForRace(raceName).textures[`${raceName}_base-0.png`]);
         crewMemberLineOne.x = 112 + (i * 150);
@@ -221,6 +231,11 @@ export class ShedComponent implements OnInit {
       if (crewMember)
       {
         let raceName = crewMember.race.name.toLowerCase();
+
+        if (raceName == 'human')
+        {
+          raceName = `${raceName}-${crewMember.gender == Gender.Male ? 'male' : 'female'}`;
+        }
 
         let crewMemberLineTwo = PIXI.Sprite.from(this.getRaceSheetForRace(raceName).textures[`${raceName}_base-0.png`]);
         crewMemberLineTwo.x = 112 + (y * 150);
