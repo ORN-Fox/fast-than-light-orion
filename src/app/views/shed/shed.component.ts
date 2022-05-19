@@ -22,9 +22,6 @@ export class ShedComponent implements OnInit {
 
   canvasHeight: number = 720;
   canvasWidth: number = 1280;
-  canvasRatio: number; // 720 / 1280 = 0.5625
-
-  ctx: CanvasRenderingContext2D;
 
   difficulties: Difficulty[];
 
@@ -46,9 +43,6 @@ export class ShedComponent implements OnInit {
     private gameService: GameService,
     private shipsService: ShipsService)
   {
-    // TODO extract canvas managemnet on dedicated file / service
-    this.canvasRatio = this.canvasHeight / this.canvasWidth;
-
     this.gameService.newGame(); // TEMP
     this.game = this.gameService.game;
 
@@ -95,12 +89,6 @@ export class ShedComponent implements OnInit {
     const shedGUIContainer = document.querySelector('.shed-gui-container') as HTMLElement;
     shedGUIContainer.style.height = `${this.canvasHeight}px`;
     shedGUIContainer.style.width = `${this.canvasWidth}px`;
-
-    const shedCanvas = document.querySelector('#shedCanvas') as HTMLCanvasElement;
-    shedCanvas.height = this.canvasHeight;
-    shedCanvas.width = this.canvasWidth;
-
-    this.ctx = shedCanvas.getContext('2d') as CanvasRenderingContext2D;
   }
 
   loadSelectedShip(ship: Ship)
