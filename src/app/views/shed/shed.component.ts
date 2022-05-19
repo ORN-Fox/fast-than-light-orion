@@ -73,6 +73,7 @@ export class ShedComponent implements OnInit {
       .add("/assets/images/peoples/lanius/lanius-base-spritesheet.json")
       .add("/assets/images/peoples/mantis/mantis-base-spritesheet.json")
       .add("/assets/images/peoples/rockmen/rockmen-base-spritesheet.json")
+      .add("/assets/images/peoples/slug/slug-base-spritesheet.json")
       .add("/assets/images/peoples/zoltan/zoltan-base-spritesheet.json")
       .load(setup);
   }
@@ -171,6 +172,9 @@ export class ShedComponent implements OnInit {
 
       case 'rockmen':
         return PIXI.Loader.shared.resources["/assets/images/peoples/rockmen/rockmen-base-spritesheet.json"].spritesheet;
+
+      case 'slug':
+        return PIXI.Loader.shared.resources["/assets/images/peoples/slug/slug-base-spritesheet.json"].spritesheet;
 
       case 'zoltan':
         return PIXI.Loader.shared.resources["/assets/images/peoples/zoltan/zoltan-base-spritesheet.json"].spritesheet;
