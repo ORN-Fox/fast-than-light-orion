@@ -215,9 +215,19 @@
       }
 
       .ships-crews-container {
+        position: absolute;
+        top: 83px;
+        left: 50px;
+        width: 300px;
+        height: 121px;
+
         .ship-crew-content {
           color: white;
+          display: inline-flex;
           font-family: "CW Bitmap";
+          font-size: 0.85rem;
+          height: 87px;
+          width: 149px;
         }
       }
     }
