@@ -332,6 +332,8 @@ export class ShedComponent implements OnInit {
 
       ship.resetName();
 
+      this.displayRooms = true;
+
       this.loadSelectedShip(ship);
 
       this.loadSystemsGUIofShip(this.selectedShip);
