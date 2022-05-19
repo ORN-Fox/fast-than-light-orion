@@ -61,7 +61,6 @@
 
         <div class="ships-crews-container">
             <div *ngFor="let crew of selectedShip.crews" class="ship-crew-content">
-                <span class="ship-crew {{crew.race.name | lowercase}}"></span>
                 <p>{{crew.name}}</p>
             </div>
         </div>
@@ -71,8 +70,7 @@
         <p class="weapons-label">{{'commons.weapons' | translate}}</p>
 
         <div class="ships-weapons-container">
-            <div *ngFor="let weapon of selectedShip.weapons" class="ship-weapon">
-                <img src="" alt="todo.png">
+            <div *ngFor="let weapon of selectedShip.weapons" class="ship-weapon-content">
                 <p>{{weapon.name}}</p>
             </div>
         </div>
@@ -84,9 +82,8 @@
         <p *ngIf="shipHaveNoDroneControlSystem" class="no-drone-control-label">{{'commons.systemNotInstalled' | translate}}</p>
 
         <div *ngIf="!shipHaveNoDroneControlSystem" class="ships-drones-container">
-            <div *ngFor="let drone of selectedShip.drones" class="ship-drone">
-                <img src="" alt="todo.png">
-                <p>TODO</p>
+            <div *ngFor="let drone of selectedShip.drones" class="ship-drone-content">
+                <p>drone name</p>
             </div>
         </div>
       </div>
@@ -95,9 +92,8 @@
         <p class="upgrades-label">{{'commons.upgrades' | translate}}</p>
 
         <div *ngIf="selectedShip.upgrades.length > 0" class="ships-upgrades-container">
-            <div *ngFor="let upgrade of selectedShip.upgrades" class="ship-upgrade">
-                <img src="" alt="todo.png">
-                <p>TODO</p>
+            <div *ngFor="let upgrade of selectedShip.upgrades" class="ship-upgrade-content">
+                <p>upgrade name</p>
             </div>
         </div>
       </div>
