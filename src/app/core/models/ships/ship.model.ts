@@ -34,6 +34,12 @@ export class Ship {
   srcHullSprite: string
   srcInteriorSprite: string;
 
+  // Shed display related
+  hullSpriteX: number;
+  hullSpriteY: number;
+  interiorSpriteX: number;
+  interiorSpriteY: number;
+
   constructor()
   {
     this.maxSystemsAllowed = 14;

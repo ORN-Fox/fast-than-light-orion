@@ -111,12 +111,12 @@ export class ShedComponent implements OnInit {
     this.app.stage.addChild(this.shipContainer);
 
     const shipHull = PIXI.Sprite.from(this.selectedShip.srcHullSprite);
-    shipHull.x = 300;
-    shipHull.y = 0;
+    shipHull.x = this.selectedShip.hullSpriteX;
+    shipHull.y = this.selectedShip.hullSpriteY;
 
     this.selectedShipFloor = PIXI.Sprite.from(this.selectedShip.srcInteriorSprite);
-    this.selectedShipFloor.x = 350;
-    this.selectedShipFloor.y = 97;
+    this.selectedShipFloor.x = this.selectedShip.interiorSpriteX;
+    this.selectedShipFloor.y = this.selectedShip.interiorSpriteY;
 
     this.shipContainer.addChild(shipHull, this.selectedShipFloor);
 

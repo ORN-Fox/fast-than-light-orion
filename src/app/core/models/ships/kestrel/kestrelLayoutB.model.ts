@@ -55,5 +55,11 @@ export class KestrelLayoutB extends Ship {
     // Display related
     this.srcHullSprite = '/assets/images/ships/kestrel/layout_b/kestral_b_base.png';
     this.srcInteriorSprite = '/assets/images/ships/kestrel/layout_b/kestral_b_floor.png';
+
+    // Shed display related
+    this.hullSpriteX = 300;
+    this.hullSpriteY = 0;
+    this.interiorSpriteX = 375;
+    this.interiorSpriteY = 57;
   }
 }

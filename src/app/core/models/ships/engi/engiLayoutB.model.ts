@@ -62,5 +62,11 @@ export class EngiLayoutB extends Ship {
     // Display related
     this.srcHullSprite = '/assets/images/ships/engi/layout_b/circle_cruiser_b_base.png';
     this.srcInteriorSprite = '/assets/images/ships/engi/layout_b/circle_cruiser_b_floor.png';
+
+    // Shed display related
+    this.hullSpriteX = 400;
+    this.hullSpriteY = 50;
+    this.interiorSpriteX = 439;
+    this.interiorSpriteY = 64;
   }
 }
