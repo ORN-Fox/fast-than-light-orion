@@ -1,6 +1,18 @@
+export enum RaceType {
+  Crystal = 1,
+  Engi,
+  Human,
+  Lanius,
+  Mantis,
+  Rockmen,
+  Slug,
+  Zoltan
+}
+
 export class Race {
 
   name: string;
+  type: number;
   storeCost: number;
 
   health: number;

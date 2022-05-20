@@ -1,4 +1,4 @@
-import { Race } from '../race.model';
+import { Race, RaceType } from '../race.model';
 
 export class Lanius extends Race {
 
@@ -6,6 +6,7 @@ export class Lanius extends Race {
     super();
 
     this.name = 'Lanius';
+    this.type = RaceType.Lanius;
     this.storeCost = 50;
 
     this.health = this.maximumHealth = 100;

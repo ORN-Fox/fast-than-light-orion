@@ -1,4 +1,4 @@
-import { Race } from '../race.model';
+import { Race, RaceType } from '../race.model';
 
 export class Rockmen extends Race {
 
@@ -6,6 +6,7 @@ export class Rockmen extends Race {
     super();
 
     this.name = 'Rockmen';
+    this.type = RaceType.Rockmen;
     this.storeCost = 55;
 
     this.health = this.maximumHealth = 150;
