@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Human } from '../../races/human/human.model';
 
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DroneControl, Door, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
@@ -36,16 +36,15 @@ export class KestrelLayoutA extends Ship {
       new Room(new RoomDisplaySettings(547, 176, 1, 2), new Piloting(), this.crews[0]),
       new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor()),
       new Room(new RoomDisplaySettings(409, 174, 2, 1), new Door()),
-      new Room(new RoomDisplaySettings(94, 247, 2, 1)), // Botton on engine
-      new Room(new RoomDisplaySettings(164, 247, 2, 1)), // Bottom of weapons
-      new Room(new RoomDisplaySettings(164, 140, 2, 1)), // Right on oxygen
+      new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
+      new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, false)), // Bottom of weapons // Manage advancedEditionEnabled
+      new Room(new RoomDisplaySettings(164, 140, 2, 1), new Battery(1, false)), // Right on oxygen
       new Room(new RoomDisplaySettings(57, 177, 1, 2)), // Left on engine
-      // new Room(new RoomDisplaySettings(164, 177, 1, 2)), // Left on engine and rigth of weapons // Vanilla or Captain Edition ???
       new Room(new RoomDisplaySettings(269, 104, 2, 1)), // Top external doors on center of ship
-      new Room(new RoomDisplaySettings(269, 141, 2, 2)), // Bottom of top external doors
-      new Room(new RoomDisplaySettings(269, 211, 2, 2)), // Top of bottom external doors
+      new Room(new RoomDisplaySettings(269, 141, 2, 2), new MindControl(1, false)), // Bottom of top external doors
+      new Room(new RoomDisplaySettings(269, 211, 2, 2), new Cloacking(1, false)), // Top of bottom external doors
       new Room(new RoomDisplaySettings(269, 281, 2, 1)), // Bottom external doors on center of ship
-      new Room(new RoomDisplaySettings(479, 176, 2, 2)) // Left of piloting
+      new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, false)) // Left of piloting
     ];
 
     this.weapons = [

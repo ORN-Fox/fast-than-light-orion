@@ -363,6 +363,7 @@ export class ShedComponent implements OnInit {
           let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
           roomSystemInterior.x = room.roomDisplaySettings.x - 2;
           roomSystemInterior.y = room.roomDisplaySettings.y - 2;
+          roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
           this.shipFloorContainer.addChild(roomSystemInterior);
         }
@@ -370,6 +371,7 @@ export class ShedComponent implements OnInit {
         let roomSystemIcon = new PIXI.Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
         roomSystemIcon.x = room.roomDisplaySettings.getRoomSystemIconPositionX();
         roomSystemIcon.y = room.roomDisplaySettings.getRoomSystemIconPositionY();
+        roomSystemIcon.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
         this.shipFloorContainer.addChild(roomSystemIcon);
       }
