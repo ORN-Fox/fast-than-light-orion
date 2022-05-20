@@ -10,6 +10,7 @@ import { Gender } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
 import { Ship, ShipList } from '../../core/models/ships/index';
+import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../core/models/room/roomDisplaySettings.model';
 
 @Component({
   selector: 'app-shed',
@@ -31,6 +32,7 @@ export class ShedComponent implements OnInit {
   shipListIndex: number = 0;
 
   shipContainer: any;
+  shipFloorContainer: any;
 
   selectedShip: Ship;
   selectedShipFloor: any;
@@ -65,6 +67,9 @@ export class ShedComponent implements OnInit {
       this.loadWeasponsGUIofShip(this.selectedShip);
       this.loadDronesGUIofShip(this.selectedShip);
       this.loadUpgradesGUIOfShip(this.selectedShip);
+
+      // Experimental
+      this.loadRoomsGUIofShip(this.selectedShip);
     }
 
     PIXI.Loader.shared
@@ -100,7 +105,13 @@ export class ShedComponent implements OnInit {
     this.selectedShip = ship;
 
     this.shipContainer = new PIXI.Container();
-    this.app.stage.addChild(this.shipContainer);
+    this.shipFloorContainer = new PIXI.Container();
+    this.shipFloorContainer.x = 300;
+    this.shipFloorContainer.y = 0;
+    this.shipFloorContainer.height = 400;
+    this.shipFloorContainer.width = 660;
+
+    this.app.stage.addChild(this.shipContainer, this.shipFloorContainer);
 
     const shipHull = PIXI.Sprite.from(this.selectedShip.srcHullSprite);
     shipHull.x = this.selectedShip.hullSpriteX;
@@ -143,18 +154,23 @@ export class ShedComponent implements OnInit {
       shipSystemGUI.x = 380 + (i * 38);
       shipSystemGUI.y = 382;
 
-      let shipSystemIconGUI = PIXI.Sprite.from(ship.rooms[i].affectedSystem.srcSystemGreenSprite);
-      shipSystemIconGUI.x = 367 + (i * 38);
-      shipSystemIconGUI.y = 427;
+      if (ship.rooms[i].affectedSystem)
+      {
+        let shipSystemIconGUI = PIXI.Sprite.from(ship.rooms[i].affectedSystem!.srcSystemGreenSprite);
+        shipSystemIconGUI.x = 367 + (i * 38);
+        shipSystemIconGUI.y = 427;
 
-      this.shipContainer.addChild(shipSystemGUI, shipSystemIconGUI);
+        this.shipContainer.addChild(shipSystemGUI, shipSystemIconGUI);
 
-      for (let y = 0; y < ship.rooms[i].affectedSystem.level; y++) {
-        let shipSystemLevel = new PIXI.Graphics()
-        shipSystemLevel.beginFill(0x3ff33c);
-        shipSystemLevel.drawRect(391.5 + (i * 38), 435 + (y * -7), 15, 5);
+        for (let y = 0; y < ship.rooms[i].affectedSystem!.level; y++) {
+          let shipSystemLevel = new PIXI.Graphics()
+          shipSystemLevel
+            .beginFill(0x3ff33c)
+            .drawRect(391.5 + (i * 38), 435 + (y * -7), 15, 5)
+            .endFill();
 
-        this.shipContainer.addChild(shipSystemLevel);
+          this.shipContainer.addChild(shipSystemLevel);
+        }
       }
     }
   }
@@ -299,6 +315,67 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  loadRoomsGUIofShip(ship: Ship)
+  {
+    for (let room of ship.rooms) {
+      let roomTileBorder = new PIXI.Graphics()
+        .beginFill(0x000000)
+        .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.height + 4, room.roomDisplaySettings.width + 4)
+        .endFill();
+
+      console.log(room)
+      let roomTile = new PIXI.Graphics()
+        .beginFill(0xe6e2db)
+        .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.height, room.roomDisplaySettings.width)
+        .endFill();
+
+      this.shipFloorContainer.addChild(roomTileBorder, roomTile);
+
+      // Compute Room grid
+      if (room.roomDisplaySettings.sizeX > 1)
+      {
+        for (let verticalLineIndex = 1; verticalLineIndex < room.roomDisplaySettings.sizeX; verticalLineIndex++) {
+          let roomTileSlotLine = new PIXI.Graphics()
+            .beginFill(0xb4b1ac)
+            .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.width)
+            .endFill();
+
+          this.shipFloorContainer.addChild(roomTileSlotLine);
+        }
+      }
+
+      if (room.roomDisplaySettings.sizeY > 1)
+      {
+        for (let horizontalLineIndex = 1; horizontalLineIndex < room.roomDisplaySettings.sizeY; horizontalLineIndex++) {
+          let roomTileSlotLine = new PIXI.Graphics()
+            .beginFill(0xb4b1ac)
+            .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.height, 1)
+            .endFill();
+
+          this.shipFloorContainer.addChild(roomTileSlotLine);
+        }
+      }
+
+      if (room.affectedSystem)
+      {
+        if (room.affectedSystem.srcSystemInRoomSprite)
+        {
+          let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+          roomSystemInterior.x = room.roomDisplaySettings.x - 2;
+          roomSystemInterior.y = room.roomDisplaySettings.y - 2;
+
+          this.shipFloorContainer.addChild(roomSystemInterior);
+        }
+
+        let roomSystemIcon = new PIXI.Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
+        roomSystemIcon.x = room.roomDisplaySettings.getRoomSystemIconPositionX();
+        roomSystemIcon.y = room.roomDisplaySettings.getRoomSystemIconPositionY();
+
+        this.shipFloorContainer.addChild(roomSystemIcon);
+      }
+    }
+  }
+
   previousShip()
   {
     this.shipListIndex--;
@@ -333,6 +410,7 @@ export class ShedComponent implements OnInit {
     if (ship != this.selectedShip)
     {
       this.shipContainer.destroy();
+      this.shipFloorContainer.destroy();
 
       ship.resetName();
 
@@ -347,6 +425,9 @@ export class ShedComponent implements OnInit {
       this.loadWeasponsGUIofShip(this.selectedShip);
       this.loadDronesGUIofShip(this.selectedShip);
       this.loadUpgradesGUIOfShip(this.selectedShip);
+
+      // Experimental
+      this.loadRoomsGUIofShip(this.selectedShip);
     }
   }
 
