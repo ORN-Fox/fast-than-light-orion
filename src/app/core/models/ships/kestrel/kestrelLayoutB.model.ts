@@ -3,8 +3,8 @@ import { Ship } from '../ship.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Mantis, Zoltan } from '../../races/index';
 
-import { Room } from '../../room/room.model';
-import { Door, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
+import { Room, RoomDisplaySettings } from '../../room/index';
+import { Battery, Cloacking, Door, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
 
 import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
 
@@ -29,14 +29,21 @@ export class KestrelLayoutB extends Ship {
     ];
 
     this.rooms = [
-      // new Room(new Shield(2), this.crews[2]),
-      // new Room(new Engine(2), this.crews[1]),
-      // new Room(new Oxygen()),
-      // new Room(new WeaponControl(4), this.crews[3]),
-      // new Room(new Medbay()),
-      // new Room(new Piloting(), this.crews[0]),
-      // new Room(new Sensor()),
-      // new Room(new Door())
+      new Room(new RoomDisplaySettings(128, 122, 2, 2), new Shield(2), this.crews[2]),
+      new Room(new RoomDisplaySettings(94, 192,  2, 1), new Engine(2), this.crews[1]),
+      new Room(new RoomDisplaySettings(302, 123, 2, 2), new Oxygen()),
+      new Room(new RoomDisplaySettings(128, 229, 2, 2), new WeaponControl(4), this.crews[3]),
+      new Room(new RoomDisplaySettings(198, 87, 2, 2), new Medbay()),
+      new Room(new RoomDisplaySettings(512, 192,  2, 1), new Piloting(), this.crews[0]),
+      new Room(new RoomDisplaySettings(232, 229, 2, 1), new Sensor()),
+      new Room(new RoomDisplaySettings(372, 192, 2, 1), new Door()),
+      new Room(new RoomDisplaySettings(268, 87, 2, 1), new MindControl(1, false)),
+      new Room(new RoomDisplaySettings(232, 156, 2, 1), new Teleport(1, false)),
+      new Room(new RoomDisplaySettings(302, 192, 2, 1), new Battery(1, false)),
+      new Room(new RoomDisplaySettings(198, 266, 2, 2), new DroneControl(1, false)),
+      new Room(new RoomDisplaySettings(302, 229, 2, 2), new Cloacking(1, false)),
+      new Room(new RoomDisplaySettings(268, 299, 2, 1), new Hacking(1, false)), // Manage advancedEditionEnabled
+      new Room(new RoomDisplaySettings(442, 192, 2, 1)), // right of door control
     ];
 
     this.weapons = [
