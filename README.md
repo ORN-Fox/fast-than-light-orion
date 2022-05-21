@@ -3,7 +3,7 @@
 
 ![Game Home Menu](./preview.jpg)
 
-![Game Shed View](./preview-shed.jpg)
+![Game Shed View](./preview-shed.jpeg)
 
 Remake FTL with web technologies for fun !
 
