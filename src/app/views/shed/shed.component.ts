@@ -332,12 +332,12 @@ export class ShedComponent implements OnInit {
         .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.height + 4, room.roomDisplaySettings.width + 4)
         .endFill();
 
-      let roomTile = new PIXI.Graphics()
+      room.roomTile = new PIXI.Graphics()
         .beginFill(0xe6e2db)
         .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.height, room.roomDisplaySettings.width)
         .endFill();
 
-      this.shipFloorContainer.addChild(roomTileBorder, roomTile);
+      this.shipFloorContainer.addChild(roomTileBorder, room.roomTile);
 
       // Compute Room grid
       if (room.roomDisplaySettings.sizeX > 1)

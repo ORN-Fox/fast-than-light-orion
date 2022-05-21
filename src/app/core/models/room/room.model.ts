@@ -13,6 +13,7 @@ export class Room {
   roomDisplaySettings: RoomDisplaySettings;
 
   // Sprites
+  roomTile: any;
   noOxygenInRoomSprite: any;
 
   constructor(roomDisplaySettings: RoomDisplaySettings, system: System | null = null, crew: Crew | null = null) {
