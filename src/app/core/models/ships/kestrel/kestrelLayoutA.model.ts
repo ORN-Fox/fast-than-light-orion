@@ -3,8 +3,9 @@ import { Ship } from '../ship.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human } from '../../races/human/human.model';
 
+import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, DroneControl, Door, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
@@ -35,7 +36,7 @@ export class KestrelLayoutA extends Ship {
       new Room(new RoomDisplaySettings(339, 141, 2, 2), new Medbay()),
       new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(), this.crews[0]),
       new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor()),
-      new Room(new RoomDisplaySettings(409, 174, 2, 1), new Door()),
+      new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
       new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
       new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons // Manage advancedEditionEnabled
       new Room(new RoomDisplaySettings(164, 140, 2, 1), new Battery(1, 0, false)), // Right on oxygen

@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Lanius } from '../../races/index';
 
 import { Room } from '../../room/room.model';
-import { CloneBay, Door, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
+import { CloneBay, DoorControl, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
 import { BeamI } from '../../drones/index';
 import { DefenseScrambler } from '../../upgrades/index';
@@ -37,7 +37,7 @@ export class EngiLayoutC extends Ship {
       // new Room(new DroneControl(2)),
       // new Room(new Piloting(), this.crews[0]),
       // new Room(new Sensor()),
-      // new Room(new Door()),
+      // new Room(new DoorControl()),
       // new Room(new CloneBay()),
       // new Room(new Hacking())
     ];

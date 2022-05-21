@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Human } from '../../races/index';
 
 import { Room } from '../../room/room.model';
-import { Door, DroneControl, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
+import { DoorControl, DroneControl, Engine, Medbay, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
 
 import { CombatI } from '../../drones/index';
 import { EngiMedbotDispersal } from '../../upgrades/index';
@@ -38,7 +38,7 @@ export class EngiLayoutA extends Ship {
       // new Room(new Medbay()),
       // new Room(new Piloting(), this.crews[2]),
       // new Room(new Sensor()),
-      // new Room(new Door())
+      // new Room(new DoorControl())
     ];
 
     this.weapons = [

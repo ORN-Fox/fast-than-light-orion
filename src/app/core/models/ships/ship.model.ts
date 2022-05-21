@@ -1,3 +1,4 @@
+import { Door } from '../door/door.model';
 import { Room } from '../room/room.model';
 import { Weapon } from '../weapons/weapon.model';
 import { Drone } from '../drones/drone.model';
@@ -18,6 +19,7 @@ export class Ship {
 
   crews: Crew[] = [];
   rooms: Room[] = [];
+  doors: Door[] = [];
   weapons: Weapon[] = [];
   drones: Drone[] = [];
   upgrades: Upgrade[] = [];

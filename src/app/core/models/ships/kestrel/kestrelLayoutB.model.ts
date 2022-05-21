@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Mantis, Zoltan } from '../../races/index';
 
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, Door, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
 
 import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
 
@@ -36,7 +36,7 @@ export class KestrelLayoutB extends Ship {
       new Room(new RoomDisplaySettings(198, 87, 2, 2), new Medbay(1, 4)),
       new Room(new RoomDisplaySettings(512, 192,  2, 1), new Piloting(1, 3 ), this.crews[0]),
       new Room(new RoomDisplaySettings(232, 229, 2, 1), new Sensor(1, 2)),
-      new Room(new RoomDisplaySettings(372, 192, 2, 1), new Door()),
+      new Room(new RoomDisplaySettings(372, 192, 2, 1), new DoorControl()),
       new Room(new RoomDisplaySettings(268, 87, 2, 1), new MindControl(1, 1, false)),
       new Room(new RoomDisplaySettings(232, 156, 2, 1), new Teleport(1, false)),
       new Room(new RoomDisplaySettings(302, 192, 2, 1), new Battery(1, 2, false)),

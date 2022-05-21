@@ -1,6 +1,6 @@
 import { System } from '../system.model';
 
-export class Door extends System {
+export class DoorControl extends System {
 
   constructor(level: number = 1, variantSystemInRoom: number = 0) {
     super();

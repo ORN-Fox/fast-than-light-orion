@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Lanius } from '../../races/index';
 
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, CloneBay, DroneControl, Door, Engine, Hacking, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, CloneBay, DroneControl, DoorControl, Engine, Hacking, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
 
 import { DualLasers, IonStunner } from '../../weapons/index';
 
@@ -34,7 +34,7 @@ export class KestrelLayoutC extends Ship {
       new Room(new RoomDisplaySettings(198, 141, 2, 2), new WeaponControl(2, 2), this.crews[2]),
       new Room(new RoomDisplaySettings(547, 176, 1, 2), new Piloting(), this.crews[0]),
       new Room(new RoomDisplaySettings(478, 209, 2, 1), new Sensor(2)),
-      new Room(new RoomDisplaySettings(478, 176, 2, 1), new Door()),
+      new Room(new RoomDisplaySettings(478, 176, 2, 1), new DoorControl()),
       new Room(new RoomDisplaySettings(408, 176, 2, 2), new CloneBay(1)),
       new Room(new RoomDisplaySettings(94, 140, 2, 1), new Cloacking(1, 3, false)),
       new Room(new RoomDisplaySettings(129, 176, 2, 2), new DroneControl(1, 13, false)),
