@@ -8,7 +8,8 @@
 Remake FTL with web technologies for fun !
 
 ## Stack
-- Angular 13
-- PIXI 5
+- Angular v13.x
+- PIXI v5.x
+- TexturePacker v6.x
 
 Enjoy 🥳
