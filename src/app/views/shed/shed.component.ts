@@ -32,6 +32,7 @@ export class ShedComponent implements OnInit {
   ships: ShipList[];
   shipListIndex: number = 0;
 
+  shedContainer: any;
   shipContainer: any;
   shipFloorContainer: any;
 
@@ -61,6 +62,8 @@ export class ShedComponent implements OnInit {
     this.loadSelectedShip(this.ships[this.shipListIndex].layouts[0]);
 
     let setup = () => {
+      this.loadShepAnimations();
+
       this.loadThrustersAnimation();
 
       this.loadSystemsGUIofShip(this.selectedShip);
@@ -99,6 +102,9 @@ export class ShedComponent implements OnInit {
     const shedGUIContainer = document.querySelector('.shed-gui-container') as HTMLElement;
     shedGUIContainer.style.height = `${this.canvasHeight}px`;
     shedGUIContainer.style.width = `${this.canvasWidth}px`;
+
+    this.shedContainer = new PIXI.Container();
+    this.app.stage.addChild(this.shedContainer);
   }
 
   loadSelectedShip(ship: Ship)
@@ -419,7 +425,6 @@ export class ShedComponent implements OnInit {
   {
     for (let i = 0; i < ship.doors.length; i++) {
       let door = ship.doors[i];
-      console.log(door);
 
       let doorSprite = new PIXI.Sprite.from(door.getSrcDoorSprite());
       doorSprite.x = door.x;
@@ -432,6 +437,19 @@ export class ShedComponent implements OnInit {
 
       this.shipFloorContainer.addChild(doorSprite);
     }
+  }
+
+  loadShepAnimations()
+  {
+    const humanAnimationSpeed = .05;
+
+    let animatedShipEngineerSprite = new PIXI.AnimatedSprite(this.getRaceSheetForRace('human-male').animations["useComputer_Top"]);
+    animatedShipEngineerSprite.x = 100;
+    animatedShipEngineerSprite.y = 109;
+    animatedShipEngineerSprite.animationSpeed = humanAnimationSpeed;
+    animatedShipEngineerSprite.play();
+
+    this.shedContainer.addChild(animatedShipEngineerSprite);
   }
 
   previousShip()
