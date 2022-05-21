@@ -2,7 +2,7 @@ import { System } from '../system.model';
 
 export class Piloting extends System {
 
-  constructor(level: number = 1) {
+  constructor(level: number = 1, variantSystemInRoom: number = 0) {
     super();
 
     this.level = level;
@@ -10,6 +10,6 @@ export class Piloting extends System {
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_pilot_green1.png';
     this.srcSystemOverlaySprite = '/assets/images/gui/icons/overlay/s_pilot_overlay.png';
 
-    this.srcSystemInRoomSprite = '/assets/images/ships/interior/pilot/room_pilot.png';
+    this.srcSystemInRoomSprite = `/assets/images/ships/interior/pilot/room_pilot${variantSystemInRoom == 0 ? '' : '_' + variantSystemInRoom}.png`;
   }
 }
