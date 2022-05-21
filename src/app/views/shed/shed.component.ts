@@ -154,15 +154,17 @@ export class ShedComponent implements OnInit {
       shipSystemGUI.x = 380 + (i * 38);
       shipSystemGUI.y = 382;
 
-      if (ship.rooms[i].affectedSystem)
+      let room = ship.rooms[i];
+
+      if (room.affectedSystem && room.affectedSystem.isInstalled)
       {
-        let shipSystemIconGUI = PIXI.Sprite.from(ship.rooms[i].affectedSystem!.srcSystemGreenSprite);
+        let shipSystemIconGUI = PIXI.Sprite.from(room.affectedSystem!.srcSystemGreenSprite);
         shipSystemIconGUI.x = 367 + (i * 38);
         shipSystemIconGUI.y = 427;
 
         this.shipContainer.addChild(shipSystemGUI, shipSystemIconGUI);
 
-        for (let y = 0; y < ship.rooms[i].affectedSystem!.level; y++) {
+        for (let y = 0; y < room.affectedSystem!.level; y++) {
           let shipSystemLevel = new PIXI.Graphics()
           shipSystemLevel
             .beginFill(0x3ff33c)
