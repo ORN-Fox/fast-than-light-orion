@@ -69,7 +69,6 @@ export class ShedComponent implements OnInit {
       this.loadDronesGUIofShip(this.selectedShip);
       this.loadUpgradesGUIOfShip(this.selectedShip);
 
-      // Experimental
       this.loadRoomsGUIofShip(this.selectedShip);
       this.loadDoorsGUIofShip(this.selectedShip);
     }
@@ -393,6 +392,25 @@ export class ShedComponent implements OnInit {
         roomSystemIcon.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
         this.shipFloorContainer.addChild(roomSystemIcon);
+
+        if (room.affectedCrew) {
+          let raceName = room.affectedCrew.race.name.toLowerCase();
+
+          if (raceName == 'human')
+          {
+            raceName = `${raceName}-${room.affectedCrew.gender == Gender.Male ? 'male' : 'female'}`;
+          }
+
+          const raceSpeed = .05;
+          
+          let crewMember = new PIXI.AnimatedSprite(this.getRaceSheetForRace(raceName).animations["useComputer_Top"]);
+          crewMember.x = room.roomDisplaySettings.x + 10;
+          crewMember.y = room.roomDisplaySettings.y + 10;
+          crewMember.animationSpeed = raceSpeed;
+          crewMember.play();
+
+          this.shipFloorContainer.addChild(crewMember);
+        }
       }
     }
   }
@@ -466,7 +484,6 @@ export class ShedComponent implements OnInit {
       this.loadDronesGUIofShip(this.selectedShip);
       this.loadUpgradesGUIOfShip(this.selectedShip);
 
-      // Experimental
       this.loadRoomsGUIofShip(this.selectedShip);
       this.loadDoorsGUIofShip(this.selectedShip);
     }
