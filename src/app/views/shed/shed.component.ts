@@ -326,7 +326,6 @@ export class ShedComponent implements OnInit {
         .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.height + 4, room.roomDisplaySettings.width + 4)
         .endFill();
 
-      console.log(room)
       let roomTile = new PIXI.Graphics()
         .beginFill(0xe6e2db)
         .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.height, room.roomDisplaySettings.width)
