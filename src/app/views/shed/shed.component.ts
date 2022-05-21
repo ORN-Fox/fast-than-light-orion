@@ -10,6 +10,7 @@ import { Gender } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
 import { Ship, ShipList } from '../../core/models/ships/index';
+import { Teleport } from '../../core/models/systems/index';
 import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../core/models/room/roomDisplaySettings.model';
 
 @Component({
@@ -362,12 +363,28 @@ export class ShedComponent implements OnInit {
       {
         if (room.affectedSystem.srcSystemInRoomSprite)
         {
-          let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-          roomSystemInterior.x = room.roomDisplaySettings.x - 2;
-          roomSystemInterior.y = room.roomDisplaySettings.y - 2;
-          roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
+          if (room.affectedSystem instanceof Teleport)
+          {
+            for (let i = 0; i < room.roomDisplaySettings.sizeX; i++) {
+              for (let y = 0; y < room.roomDisplaySettings.sizeY; y++) {
+                let roomTeleportSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+                roomTeleportSystemInterior.x = room.roomDisplaySettings.x + 4 + (i * DEFAULT_TILE_WIDTH); // 4px for center teleport sprite texture
+                roomTeleportSystemInterior.y = room.roomDisplaySettings.y + 4 + (y * DEFAULT_TILE_HEIGHT);
+                roomTeleportSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
-          this.shipFloorContainer.addChild(roomSystemInterior);
+                this.shipFloorContainer.addChild(roomTeleportSystemInterior);
+              }
+            }
+          }
+          else
+          {
+            let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+            roomSystemInterior.x = room.roomDisplaySettings.x - 2;
+            roomSystemInterior.y = room.roomDisplaySettings.y - 2;
+            roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
+
+            this.shipFloorContainer.addChild(roomSystemInterior);
+          }
         }
 
         let roomSystemIcon = new PIXI.Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
