@@ -48,6 +48,27 @@ export class KestrelLayoutA extends Ship {
       new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, 0, false)) // Left of piloting
     ];
 
+    this.doors = [
+      new Door(39, 177), // Left Top of left external doors room
+      new Door(39, 210), // left Bottom of left external doors room
+      new Door(75, 177), // Left Top of engines room
+      new Door(75, 210), // Left Bottom of engines room
+      // new Door(120, 155, 90), // Top of engines room // TODO rework rotation
+      new Door(145, 139), // Right of oxygen room
+      new Door(145, 246), // Right of teleport room
+      // TODO new Door(., ., .) // Bottom Right of battery room
+      // TODOnew Door(., ., .) // Top Right of hacking room
+      new Door(250, 177), // Right Top of weapons room
+      new Door(250, 210), // Right Bottom of weapons room
+      new Door(320, 139), // Right Top of mind room
+      new Door(320, 245), // Right Bottom of cloacking room
+      new Door(390, 175), // Right Bottom of medbay room
+      new Door(390, 210), // Right Top of shields room
+      new Door(460, 175), // Right of doors room
+      new Door(460, 210), // Right of sensors room
+      new Door(530, 210) // Right Bottok of drones room
+    ];
+
     this.weapons = [
       new BurstLaserII(),
       new Artemis()

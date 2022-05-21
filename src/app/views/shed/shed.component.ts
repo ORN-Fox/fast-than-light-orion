@@ -71,6 +71,7 @@ export class ShedComponent implements OnInit {
 
       // Experimental
       this.loadRoomsGUIofShip(this.selectedShip);
+      this.loadDoorsGUIofShip(this.selectedShip);
     }
 
     PIXI.Loader.shared
@@ -396,6 +397,26 @@ export class ShedComponent implements OnInit {
     }
   }
 
+  loadDoorsGUIofShip(ship: Ship)
+  {
+    for (let i = 0; i < ship.doors.length; i++) {
+      let door = ship.doors[i];
+      console.log(door);
+
+      let doorSprite = new PIXI.Sprite.from(door.getSrcDoorSprite());
+      doorSprite.x = door.x;
+      doorSprite.y = door.y;
+
+      // TODO rotation is not good, rework for display horizontal doors
+      // if (door.rotation)
+      // {
+      //   doorSprite.rotation = door.rotation;
+      // }
+
+      this.shipFloorContainer.addChild(doorSprite);
+    }
+  }
+
   previousShip()
   {
     this.shipListIndex--;
@@ -448,6 +469,7 @@ export class ShedComponent implements OnInit {
 
       // Experimental
       this.loadRoomsGUIofShip(this.selectedShip);
+      this.loadDoorsGUIofShip(this.selectedShip);
     }
   }
 
