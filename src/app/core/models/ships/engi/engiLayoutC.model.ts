@@ -31,11 +31,11 @@ export class EngiLayoutC extends Ship {
 
     this.rooms = [
       // new Room(new Shield(2)),
-      // new Room(new Engine(2), this.crews[2]),
+      // new Room(new Engine(2), this.crews[2]), // Lanius
       // new Room(new Oxygen()),
-      // new Room(new WeaponControl(), this.crews[1]),
+      // new Room(new WeaponControl(), this.crews[1]), // Engi
       // new Room(new DroneControl(2)),
-      // new Room(new Piloting(), this.crews[0]),
+      // new Room(new Piloting(), this.crews[0]), // Engi
       // new Room(new Sensor()),
       // new Room(new DoorControl()),
       // new Room(new CloneBay()),

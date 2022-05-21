@@ -29,10 +29,10 @@ export class KestrelLayoutC extends Ship {
 
     this.rooms = [
       new Room(new RoomDisplaySettings(198, 211, 2, 2), new Shield(2, 3)),
-      new Room(new RoomDisplaySettings(59, 176, 2, 2), new Engine(2), this.crews[1]),
+      new Room(new RoomDisplaySettings(59, 176, 2, 2), new Engine(2), this.crews[1]), // Human Female
       new Room(new RoomDisplaySettings(302, 176, 1, 2), new Oxygen(1, 6)),
-      new Room(new RoomDisplaySettings(198, 141, 2, 2), new WeaponControl(2, 2), this.crews[2]),
-      new Room(new RoomDisplaySettings(547, 176, 1, 2), new Piloting(), this.crews[0]),
+      new Room(new RoomDisplaySettings(198, 141, 2, 2), new WeaponControl(2, 2), this.crews[2]), // Lanius
+      new Room(new RoomDisplaySettings(547, 176, 1, 2), new Piloting(), this.crews[0]), // Human Male
       new Room(new RoomDisplaySettings(478, 209, 2, 1), new Sensor(2)),
       new Room(new RoomDisplaySettings(478, 176, 2, 1), new DoorControl()),
       new Room(new RoomDisplaySettings(408, 176, 2, 2), new CloneBay(1)),

@@ -30,11 +30,11 @@ export class KestrelLayoutA extends Ship {
 
     this.rooms = [
       new Room(new RoomDisplaySettings(339, 211, 2, 2), new Shield(2)),
-      new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2), this.crews[1]),
+      new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2), this.crews[1]), // Human Female
       new Room(new RoomDisplaySettings(94, 140, 2, 1), new Oxygen()),
-      new Room(new RoomDisplaySettings(199, 177, 2, 2), new WeaponControl(3), this.crews[2]),
+      new Room(new RoomDisplaySettings(199, 177, 2, 2), new WeaponControl(3), this.crews[2]), // Human Female
       new Room(new RoomDisplaySettings(339, 141, 2, 2), new Medbay()),
-      new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(), this.crews[0]),
+      new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(), this.crews[0]), // Human Male
       new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor()),
       new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
       new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine

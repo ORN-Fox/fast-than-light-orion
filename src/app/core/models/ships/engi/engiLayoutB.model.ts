@@ -34,7 +34,7 @@ export class EngiLayoutB extends Ship {
       // new Room(new WeaponControl(3)),
       // new Room(new DroneControl(3)),
       // new Room(new Medbay()),
-      // new Room(new Piloting(), this.crews[0]),
+      // new Room(new Piloting(), this.crews[0]), // Engi
       // new Room(new DoorControl())
     ];
 
