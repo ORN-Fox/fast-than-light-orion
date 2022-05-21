@@ -10,7 +10,7 @@ export class Room {
   oxygen: number = 100;
 
   // diplay related
-  roomDisplaySettings: RoomDisplaySettings
+  roomDisplaySettings: RoomDisplaySettings;
 
   constructor(roomDisplaySettings: RoomDisplaySettings, system: System | null = null, crew: Crew | null = null) {
     this.affectedCrew = crew;
