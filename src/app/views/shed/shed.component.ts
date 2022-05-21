@@ -408,7 +408,7 @@ export class ShedComponent implements OnInit {
           }
 
           const raceSpeed = .05;
-          
+
           let crewMember = new PIXI.AnimatedSprite(this.getRaceSheetForRace(raceName).animations["useComputer_Top"]);
           crewMember.x = room.roomDisplaySettings.x + 10;
           crewMember.y = room.roomDisplaySettings.y + 10;
