@@ -12,6 +12,9 @@ export class Room {
   // diplay related
   roomDisplaySettings: RoomDisplaySettings;
 
+  // Sprites
+  noOxygenInRoomSprite: any;
+
   constructor(roomDisplaySettings: RoomDisplaySettings, system: System | null = null, crew: Crew | null = null) {
     this.affectedCrew = crew;
     this.affectedSystem = system;

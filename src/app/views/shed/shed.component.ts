@@ -364,6 +364,12 @@ export class ShedComponent implements OnInit {
         }
       }
 
+      room.noOxygenInRoomSprite = new PIXI.Sprite.from(`/assets/images/effects/low_o2_stripes_${room.roomDisplaySettings.sizeX}x${room.roomDisplaySettings.sizeY}.png`);
+      room.noOxygenInRoomSprite.x = room.roomDisplaySettings.x - 2;
+      room.noOxygenInRoomSprite.y = room.roomDisplaySettings.y - 2;
+      room.noOxygenInRoomSprite.visible = room.oxygen == 0;
+      this.shipFloorContainer.addChild(room.noOxygenInRoomSprite);
+
       if (room.affectedSystem)
       {
         if (room.affectedSystem.srcSystemInRoomSprite)
