@@ -407,11 +407,10 @@ export class ShedComponent implements OnInit {
       doorSprite.x = door.x;
       doorSprite.y = door.y;
 
-      // TODO rotation is not good, rework for display horizontal doors
-      // if (door.rotation)
-      // {
-      //   doorSprite.rotation = door.rotation;
-      // }
+      if (door.rotation)
+      {
+        doorSprite.angle = door.rotation;
+      }
 
       this.shipFloorContainer.addChild(doorSprite);
     }
