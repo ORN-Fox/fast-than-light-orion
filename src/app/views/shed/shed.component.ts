@@ -413,7 +413,7 @@ export class ShedComponent implements OnInit {
             raceName = `${raceName}-${room.affectedCrew.gender == Gender.Male ? 'male' : 'female'}`;
           }
 
-          const raceSpeed = .05;
+          const raceSpeed = .1;
 
           let crewMember = new PIXI.AnimatedSprite(this.getRaceSheetForRace(raceName).animations["useComputer_Top"]);
           crewMember.x = room.roomDisplaySettings.x + 10;
@@ -447,15 +447,29 @@ export class ShedComponent implements OnInit {
 
   loadShepAnimations()
   {
-    const humanAnimationSpeed = .05;
+    const humanMaleSheet = this.getRaceSheetForRace('human-male');
+    const humanFemaleSheet = this.getRaceSheetForRace('human-female');
+    const humanAnimationSpeed = .1;
 
-    let animatedShipEngineerSprite = new PIXI.AnimatedSprite(this.getRaceSheetForRace('human-male').animations["useComputer_Top"]);
+    let animatedShipEngineerSprite = new PIXI.AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);
     animatedShipEngineerSprite.x = 100;
     animatedShipEngineerSprite.y = 109;
     animatedShipEngineerSprite.animationSpeed = humanAnimationSpeed;
     animatedShipEngineerSprite.play();
 
-    this.shedContainer.addChild(animatedShipEngineerSprite);
+    let animatedShipEngineerReparingDroneSprite = new PIXI.AnimatedSprite(humanMaleSheet.animations["repair"]);
+    animatedShipEngineerReparingDroneSprite.x = 1120;
+    animatedShipEngineerReparingDroneSprite.y = 114;
+    animatedShipEngineerReparingDroneSprite.animationSpeed = humanAnimationSpeed;
+    animatedShipEngineerReparingDroneSprite.play();
+
+    let animatedShipEngineerReparingShipSprite = new PIXI.AnimatedSprite(humanFemaleSheet.animations["repair"]);
+    animatedShipEngineerReparingShipSprite.x = 1100;
+    animatedShipEngineerReparingShipSprite.y = 362;
+    animatedShipEngineerReparingShipSprite.animationSpeed = humanAnimationSpeed;
+    animatedShipEngineerReparingShipSprite.play();
+
+    this.shedContainer.addChild(animatedShipEngineerSprite, animatedShipEngineerReparingDroneSprite, animatedShipEngineerReparingShipSprite);
   }
 
   previousShip()
