@@ -932,7 +932,7 @@
 	"repair": ["human-female_base-41.png", "human-female_base-42.png", "human-female_base-43.png", "human-female_base-44.png", "human-female_base-45.png", "human-female_base-46.png", "human-female_base-47.png", "human-female_base-48.png", "human-female_base-49.png"],
 	"useComputer_Top": ["human-female_base-64.png", "human-female_base-65.png", "human-female_base-66.png", "human-female_base-67.png"],
 	"useComputer_Right": ["human-female_base-56.png", "human-female_base-57.png", "human-female_base-58.png", "human-female_base-59.png"],
-	"useComputer_Bottom": ["human-female_base-64.png", "human-female_base-65.png", "human-female_base-66.png", "human-female_base-67.png"],
+	"useComputer_Bottom": ["human-female_base-68.png", "human-female_base-69.png", "human-female_base-70.png", "human-female_base-71.png"],
 	"useComputer_Left": ["human-female_base-60.png", "human-female_base-61.png", "human-female_base-62.png", "human-female_base-63.png"]
 },
 "meta": {
