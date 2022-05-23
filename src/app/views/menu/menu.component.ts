@@ -36,8 +36,4 @@ export class MenuComponent implements OnInit {
     // TODO
   }
 
-  quitGame() {
-    // TODO
-  }
-
 }
