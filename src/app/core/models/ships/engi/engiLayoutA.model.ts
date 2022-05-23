@@ -5,7 +5,7 @@ import { Engi, Human } from '../../races/index';
 
 import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 
 import { CombatI } from '../../drones/index';
 import { EngiMedbotDispersal } from '../../upgrades/index';
@@ -31,15 +31,15 @@ export class EngiLayoutA extends EngiShip {
     ];
 
     this.rooms = [
-      new Room(new RoomDisplaySettings(237, 230, 2, 2), new Shield(2, 4)),
-      new Room(new RoomDisplaySettings(167, 230, 2, 2), new Engine(2, 2), this.crews[0]), // Engi
+      new Room(new RoomDisplaySettings(237, 230, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),
+      new Room(new RoomDisplaySettings(167, 230, 2, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[0]), // Engi
       new Room(new RoomDisplaySettings(237, 125, 1, 2), new Oxygen(1, 4)),
       new Room(new RoomDisplaySettings(379, 125, 2, 2), new WeaponControl(3), this.crews[1]), // Engi
       new Room(new RoomDisplaySettings(167, 91, 2, 2), new DroneControl(3)),
       new Room(new RoomDisplaySettings(378, 264, 2, 2), new Medbay()),
-      new Room(new RoomDisplaySettings(448, 264, 1, 2), new Piloting(), this.crews[2]), // Human Male
-      new Room(new RoomDisplaySettings(306, 194, 1, 2), new Sensor(1, 4)),
-      new Room(new RoomDisplaySettings(306, 264, 1, 2), new DoorControl(1, 4)),
+      new Room(new RoomDisplaySettings(448, 264, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[2]), // Human Male
+      new Room(new RoomDisplaySettings(306, 194, 1, 2), new Sensor(1, SystemPositionEnum.Left, 4)),
+      new Room(new RoomDisplaySettings(306, 264, 1, 2), new DoorControl(1, SystemPositionEnum.Right, 4)),
       new Room(new RoomDisplaySettings(200, 160, 1, 2), new Battery(1, 6, false)),
       new Room(new RoomDisplaySettings(273, 125, 2, 1), new Hacking(1, 2, false)), // Manage advancedEditionEnabled
       new Room(new RoomDisplaySettings(273, 88, 2, 1)), // Top of hacking room

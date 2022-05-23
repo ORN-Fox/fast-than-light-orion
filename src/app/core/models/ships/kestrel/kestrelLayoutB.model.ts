@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Mantis, Zoltan } from '../../races/index';
 
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 
 import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
 
@@ -29,13 +29,13 @@ export class KestrelLayoutB extends KestrelShip {
     ];
 
     this.rooms = [
-      new Room(new RoomDisplaySettings(128, 122, 2, 2), new Shield(2, 9), this.crews[2]), // Mantis
-      new Room(new RoomDisplaySettings(94, 192,  2, 1), new Engine(2, 3), this.crews[1]), // Human Female
+      new Room(new RoomDisplaySettings(128, 122, 2, 2), new Shield(2, SystemPositionEnum.Top, 9), this.crews[2]), // Mantis
+      new Room(new RoomDisplaySettings(94, 192,  2, 1), new Engine(2, SystemPositionEnum.Right, 3), this.crews[1]), // Human Female
       new Room(new RoomDisplaySettings(302, 123, 2, 2), new Oxygen(1, 11)),
       new Room(new RoomDisplaySettings(128, 229, 2, 2), new WeaponControl(4), this.crews[3]), // Zoltan
       new Room(new RoomDisplaySettings(198, 87, 2, 2), new Medbay(1, 4)),
-      new Room(new RoomDisplaySettings(512, 192,  2, 1), new Piloting(1, 3 ), this.crews[0]), // Human Male
-      new Room(new RoomDisplaySettings(232, 229, 2, 1), new Sensor(1, 2)),
+      new Room(new RoomDisplaySettings(512, 192,  2, 1), new Piloting(1, SystemPositionEnum.Right, 3), this.crews[0]), // Human Male
+      new Room(new RoomDisplaySettings(232, 229, 2, 1), new Sensor(1, SystemPositionEnum.Bottom, 2)),
       new Room(new RoomDisplaySettings(372, 192, 2, 1), new DoorControl()),
       new Room(new RoomDisplaySettings(268, 87, 2, 1), new MindControl(1, 1, false)),
       new Room(new RoomDisplaySettings(232, 156, 2, 1), new Teleport(1, false)),

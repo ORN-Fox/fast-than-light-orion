@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Engi } from '../../races/engi/engi.model';
 
 import { Room } from '../../room/room.model';
-import { DoorControl, DroneControl, Engine, Medbay, Oxygen, Piloting, Shield, WeaponControl } from '../../systems/index';
+import { DoorControl, DroneControl, Engine, Medbay, Oxygen, Piloting, Shield, SystemPositionEnum, WeaponControl } from '../../systems/index';
 
 import { AntiPersonnel, SystemRepair } from '../../drones/index';
 import { DroneReactorBooster } from '../../upgrades/index';

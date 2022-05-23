@@ -4,7 +4,7 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Lanius } from '../../races/index';
 
 import { Room } from '../../room/room.model';
-import { CloneBay, DoorControl, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, WeaponControl } from '../../systems/index';
+import { CloneBay, DoorControl, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, WeaponControl } from '../../systems/index';
 
 import { BeamI } from '../../drones/index';
 import { DefenseScrambler } from '../../upgrades/index';
