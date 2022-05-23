@@ -22,7 +22,7 @@ export class MenuComponent implements OnInit {
   }
 
   continueGame() {
-    // TODO
+    this.router.navigate(['/game']);
   }
 
   newGame() {
