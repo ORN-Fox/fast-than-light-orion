@@ -37,7 +37,6 @@ export class ShedComponent implements OnInit {
   shipFloorContainer: any;
 
   selectedShip: Ship;
-  selectedShipFloor: any;
 
   renameShipEnabled: boolean = false;
   displayRooms: boolean = true;
@@ -124,11 +123,13 @@ export class ShedComponent implements OnInit {
     shipHull.x = this.selectedShip.hullSpriteX;
     shipHull.y = this.selectedShip.hullSpriteY;
 
-    this.selectedShipFloor = PIXI.Sprite.from(this.selectedShip.srcInteriorSprite);
-    this.selectedShipFloor.x = this.selectedShip.interiorSpriteX;
-    this.selectedShipFloor.y = this.selectedShip.interiorSpriteY;
+    this.shipContainer.addChild(shipHull);
 
-    this.shipContainer.addChild(shipHull, this.selectedShipFloor);
+    let selectedShipFloor = PIXI.Sprite.from(this.selectedShip.srcInteriorSprite);
+    selectedShipFloor.x = this.selectedShip.interiorSpriteX - 300; // - 300px is temporary use for positioning floor ship sprite on shed view
+    selectedShipFloor.y = this.selectedShip.interiorSpriteY;
+
+    this.shipFloorContainer.addChild(selectedShipFloor);
   }
 
   loadThrustersAnimation()
@@ -550,7 +551,7 @@ export class ShedComponent implements OnInit {
 
   toggleShipRooms() {
     this.displayRooms = !this.displayRooms;
-    this.selectedShipFloor.visible = this.displayRooms;
+    this.shipFloorContainer.visible = this.displayRooms;
   }
 
   toggleAdvancedEditionContentActivation() {
