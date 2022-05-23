@@ -1,4 +1,4 @@
-import { Ship } from '../ship.model';
+import { KestrelShip } from './kestrelShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Lanius } from '../../races/index';
@@ -8,7 +8,7 @@ import { Battery, Cloacking, CloneBay, DroneControl, DoorControl, Engine, Hackin
 
 import { DualLasers, IonStunner } from '../../weapons/index';
 
-export class KestrelLayoutC extends Ship {
+export class KestrelLayoutC extends KestrelShip {
   constructor() {
     super();
 

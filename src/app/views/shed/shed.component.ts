@@ -10,7 +10,7 @@ import { ShipsService } from '../../core/services/ships/ships.service';
 import { Gender } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
-import { Ship, ShipList } from '../../core/models/ships/index';
+import { KestrelShip, Ship, ShipList } from '../../core/models/ships/index';
 import { Teleport } from '../../core/models/systems/index';
 import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../core/models/room/roomDisplaySettings.model';
 
@@ -135,7 +135,7 @@ export class ShedComponent implements OnInit {
 
   loadThrustersAnimation()
   {
-    if (this.selectedShip.originalName == 'The Kestrel' || this.selectedShip.originalName == 'Red-Tail' || this.selectedShip.originalName == 'The Swallow')
+    if (this.selectedShip instanceof KestrelShip)
     {
       const thrustersOnSheet = PIXI.Loader.shared.resources["/assets/images/effects/thrusters_on.json"].spritesheet;
       const thrustersAnimationSpeed = .08;

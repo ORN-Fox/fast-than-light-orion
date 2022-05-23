@@ -1,4 +1,4 @@
-import { Ship } from '../ship.model';
+import { EngiShip } from './engiShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Human } from '../../races/index';
@@ -11,7 +11,7 @@ import { CombatI } from '../../drones/index';
 import { EngiMedbotDispersal } from '../../upgrades/index';
 import { IonBlastII } from '../../weapons/armory/ions/ionBlastII.model';
 
-export class EngiLayoutA extends Ship {
+export class EngiLayoutA extends EngiShip {
   constructor() {
     super();
 

@@ -1,4 +1,4 @@
-import { Ship } from '../ship.model';
+import { KestrelShip } from './kestrelShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human } from '../../races/human/human.model';
@@ -9,7 +9,7 @@ import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay,
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
-export class KestrelLayoutA extends Ship {
+export class KestrelLayoutA extends KestrelShip {
   constructor() {
     super();
 
@@ -113,9 +113,8 @@ export class KestrelLayoutA extends Ship {
 
 // Experimental
 export class Slot {
-
   room: Room | null;
-  system: System | null;
+  system: System | null; // Manage system axe Top/Right/Bottom/Left
   crew: Crew | null;
   enemy: any; // TODO Manage enemny
 
