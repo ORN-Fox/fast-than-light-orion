@@ -28,24 +28,42 @@ export class KestrelLayoutA extends KestrelShip {
       new Crew('Human 3', new Human(), Gender.Female)
     ];
 
+    let shieldRoom = new Room(new RoomDisplaySettings(339, 211, 2, 2), new Shield(2)),
+      enginesRoom = new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2), this.crews[1]), // Human Female
+      oxygenRoom = new Room(new RoomDisplaySettings(94, 140, 2, 1), new Oxygen()),
+      weaponsControlRoom = new Room(new RoomDisplaySettings(199, 177, 2, 2), new WeaponControl(3), this.crews[2]), // Human Female
+      medbayRoom = new Room(new RoomDisplaySettings(339, 141, 2, 2), new Medbay()),
+      pilotingRoom = new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(), this.crews[0]), // Human Male
+      sensorRoom = new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor()),
+      doorControlRoom = new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
+      teleportRoom = new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
+      hackingRoom = new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons // Manage advancedEditionEnabled
+      batteryRoom = new Room(new RoomDisplaySettings(164, 140, 2, 1), new Battery(1, 0, false)), // Right on oxygen
+      leftOnEngineRoom = new Room(new RoomDisplaySettings(57, 177, 1, 2)), // Left on engine
+      topExternalDoorsRoom = new Room(new RoomDisplaySettings(269, 104, 2, 1)), // Top external doors on center of ship
+      mindControlRoom = new Room(new RoomDisplaySettings(269, 141, 2, 2), new MindControl(1, 0, false)), // Bottom of top external doors
+      cloackingRoom = new Room(new RoomDisplaySettings(269, 211, 2, 2), new Cloacking(1, 0, false)), // Top of bottom external doors
+      bottomExternalDoorsRoom = new Room(new RoomDisplaySettings(269, 281, 2, 1)), // Bottom external doors on center of ship
+      dronesControlRoom = new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, 0, false)) // Left of piloting
+
     this.rooms = [
-      new Room(new RoomDisplaySettings(339, 211, 2, 2), new Shield(2)),
-      new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2), this.crews[1]), // Human Female
-      new Room(new RoomDisplaySettings(94, 140, 2, 1), new Oxygen()),
-      new Room(new RoomDisplaySettings(199, 177, 2, 2), new WeaponControl(3), this.crews[2]), // Human Female
-      new Room(new RoomDisplaySettings(339, 141, 2, 2), new Medbay()),
-      new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(), this.crews[0]), // Human Male
-      new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor()),
-      new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
-      new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
-      new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons // Manage advancedEditionEnabled
-      new Room(new RoomDisplaySettings(164, 140, 2, 1), new Battery(1, 0, false)), // Right on oxygen
-      new Room(new RoomDisplaySettings(57, 177, 1, 2)), // Left on engine
-      new Room(new RoomDisplaySettings(269, 104, 2, 1)), // Top external doors on center of ship
-      new Room(new RoomDisplaySettings(269, 141, 2, 2), new MindControl(1, 0, false)), // Bottom of top external doors
-      new Room(new RoomDisplaySettings(269, 211, 2, 2), new Cloacking(1, 0, false)), // Top of bottom external doors
-      new Room(new RoomDisplaySettings(269, 281, 2, 1)), // Bottom external doors on center of ship
-      new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, 0, false)) // Left of piloting
+      shieldRoom,
+      enginesRoom,
+      oxygenRoom,
+      weaponsControlRoom,
+      medbayRoom,
+      pilotingRoom,
+      sensorRoom,
+      doorControlRoom,
+      teleportRoom,
+      hackingRoom,
+      batteryRoom,
+      leftOnEngineRoom,
+      topExternalDoorsRoom,
+      mindControlRoom,
+      cloackingRoom,
+      bottomExternalDoorsRoom,
+      dronesControlRoom
     ];
 
     this.doors = [
@@ -100,12 +118,12 @@ export class KestrelLayoutA extends KestrelShip {
 
     // Experimental
     this.shipRepresentation = [
-      [null, null, null, null, null, null, new Slot(this.rooms[12]), new Slot(this.rooms[12]), null, null, null, null, null, null, null], // y0
-      [null, new Slot(this.rooms[2]), new Slot(this.rooms[2]), new Slot(this.rooms[10]), new Slot(this.rooms[10]), null, new Slot(this.rooms[13]), new Slot(this.rooms[13]), new Slot(this.rooms[4]), null, null, null, null, null, null], // y1
-      [new Slot(this.rooms[11]), new Slot(this.rooms[1]), new Slot(this.rooms[1]), null, new Slot(this.rooms[3]), new Slot(this.rooms[3]), new Slot(this.rooms[13]), new Slot(this.rooms[13]), new Slot(this.rooms[4]), new Slot(this.rooms[4]), new Slot(this.rooms[7]), new Slot(this.rooms[7]), new Slot(this.rooms[16]), new Slot(this.rooms[16]), new Slot(this.rooms[5])], // y2
-      [new Slot(this.rooms[11]), new Slot(this.rooms[1]), new Slot(this.rooms[1]), null, new Slot(this.rooms[3]), new Slot(this.rooms[3]), new Slot(this.rooms[14]), new Slot(this.rooms[14]), new Slot(this.rooms[0]), new Slot(this.rooms[0]), new Slot(this.rooms[6]), new Slot(this.rooms[6]), new Slot(this.rooms[16]), new Slot(this.rooms[16]), new Slot(this.rooms[5])], // y3
-      [null, new Slot(this.rooms[8]), new Slot(this.rooms[8]), new Slot(this.rooms[9]), new Slot(this.rooms[9]), null, new Slot(this.rooms[14]), new Slot(this.rooms[14]), new Slot(this.rooms[0]), new Slot(this.rooms[0]), null, null, null, null, null], // y4
-      [null, null, null, null, null, null, new Slot(this.rooms[15]), new Slot(this.rooms[15]), null, null, null, null, null, null, null], // y5
+      [null, null, null, null, null, null, new Slot(topExternalDoorsRoom), new Slot(topExternalDoorsRoom), null, null, null, null, null, null, null], // y0
+      [null, new Slot(oxygenRoom), new Slot(oxygenRoom), new Slot(batteryRoom), new Slot(batteryRoom), null, new Slot(mindControlRoom), new Slot(mindControlRoom), new Slot(medbayRoom), null, null, null, null, null, null], // y1
+      [new Slot(leftOnEngineRoom), new Slot(enginesRoom), new Slot(enginesRoom), null, new Slot(weaponsControlRoom), new Slot(weaponsControlRoom), new Slot(mindControlRoom), new Slot(mindControlRoom), new Slot(medbayRoom), new Slot(medbayRoom), new Slot(doorControlRoom), new Slot(doorControlRoom), new Slot(dronesControlRoom), new Slot(dronesControlRoom), new Slot(pilotingRoom)], // y2
+      [new Slot(leftOnEngineRoom), new Slot(enginesRoom), new Slot(enginesRoom), null, new Slot(weaponsControlRoom), new Slot(weaponsControlRoom), new Slot(cloackingRoom), new Slot(cloackingRoom), new Slot(shieldRoom), new Slot(shieldRoom), new Slot(sensorRoom), new Slot(sensorRoom), new Slot(dronesControlRoom), new Slot(dronesControlRoom), new Slot(pilotingRoom)], // y3
+      [null, new Slot(teleportRoom), new Slot(teleportRoom), new Slot(hackingRoom), new Slot(hackingRoom), null, new Slot(cloackingRoom), new Slot(cloackingRoom), new Slot(shieldRoom), new Slot(shieldRoom), null, null, null, null, null], // y4
+      [null, null, null, null, null, null, new Slot(bottomExternalDoorsRoom), new Slot(bottomExternalDoorsRoom), null, null, null, null, null, null, null], // y5
     ];
   }
 }
