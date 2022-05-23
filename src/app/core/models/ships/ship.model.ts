@@ -42,6 +42,9 @@ export class Ship {
   interiorSpriteX: number;
   interiorSpriteY: number;
 
+  // Experimental
+  shipRepresentation: any;
+
   constructor()
   {
     this.maxSystemsAllowed = 14;

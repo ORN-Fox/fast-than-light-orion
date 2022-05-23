@@ -5,7 +5,7 @@ import { Human } from '../../races/human/human.model';
 
 import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, System, Teleport, WeaponControl } from '../../systems/index';
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
@@ -97,5 +97,42 @@ export class KestrelLayoutA extends Ship {
     this.hullSpriteY = 0;
     this.interiorSpriteX = 350;
     this.interiorSpriteY = 97;
+
+    // Experimental
+    this.shipRepresentation = [
+      [null, null, null, null, null, null, new Slot(this.rooms[12]), new Slot(this.rooms[12]), null, null, null, null, null, null, null], // y0
+      [null, new Slot(this.rooms[2]), new Slot(this.rooms[2]), new Slot(this.rooms[10]), new Slot(this.rooms[10]), null, new Slot(this.rooms[13]), new Slot(this.rooms[13]), new Slot(this.rooms[4]), null, null, null, null, null, null], // y1
+      [new Slot(this.rooms[11]), new Slot(this.rooms[1]), new Slot(this.rooms[1]), null, new Slot(this.rooms[3]), new Slot(this.rooms[3]), new Slot(this.rooms[13]), new Slot(this.rooms[13]), new Slot(this.rooms[4]), new Slot(this.rooms[4]), new Slot(this.rooms[7]), new Slot(this.rooms[7]), new Slot(this.rooms[16]), new Slot(this.rooms[16]), new Slot(this.rooms[5])], // y2
+      [new Slot(this.rooms[11]), new Slot(this.rooms[1]), new Slot(this.rooms[1]), null, new Slot(this.rooms[3]), new Slot(this.rooms[3]), new Slot(this.rooms[14]), new Slot(this.rooms[14]), new Slot(this.rooms[0]), new Slot(this.rooms[0]), new Slot(this.rooms[6]), new Slot(this.rooms[6]), new Slot(this.rooms[16]), new Slot(this.rooms[16]), new Slot(this.rooms[5])], // y3
+      [null, new Slot(this.rooms[8]), new Slot(this.rooms[8]), new Slot(this.rooms[9]), new Slot(this.rooms[9]), null, new Slot(this.rooms[14]), new Slot(this.rooms[14]), new Slot(this.rooms[0]), new Slot(this.rooms[0]), null, null, null, null, null], // y4
+      [null, null, null, null, null, null, new Slot(this.rooms[15]), new Slot(this.rooms[15]), null, null, null, null, null, null, null], // y5
+    ];
+  }
+}
+
+
+// Experimental
+export class Slot {
+
+  room: Room | null;
+  system: System | null;
+  crew: Crew | null;
+  enemy: any; // TODO Manage enemny
+
+  doors: any; // Manage doors : axes X/Y
+
+  breach: boolean = false;
+  fire: boolean = false;
+  hacking: boolean = false;
+
+  constructor(room: Room | null = null, system: System | null = null, crew: Crew | null = null)
+  {
+    this.room = room;
+
+    if (this.room)
+    {
+      this.system = system;
+      this.crew = crew;
+    }
   }
 }
