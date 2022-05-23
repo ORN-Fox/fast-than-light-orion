@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit {
   }
 
   newGame() {
-    this.gameService.newGame();
     this.router.navigate(['/shed']);
   }
 
