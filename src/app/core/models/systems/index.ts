@@ -1,3 +1,5 @@
+export * from './system.model';
+
 export * from './battery/battery.model';
 export * from './cloacking/cloacking.model';
 export * from './cloneBay/cloneBay.model';
