@@ -48,8 +48,7 @@ export class ShedComponent implements OnInit {
     private gameService: GameService,
     private shipsService: ShipsService)
   {
-    this.gameService.newGame();
-    this.game = this.gameService.game;
+    this.game = this.gameService.newGame();
 
     this.difficulties = this.gameService.difficulties;
     this.game.difficulty = this.difficulties[0];
