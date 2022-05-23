@@ -2,6 +2,7 @@
 declare var PIXI: any;
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GameService } from '../../core/services/game/game.service';
 import { ShipsService } from '../../core/services/ships/ships.service';
@@ -43,6 +44,7 @@ export class ShedComponent implements OnInit {
   shipHaveNoDroneControlSystem: boolean = false;
 
   constructor(
+    private router: Router,
     private gameService: GameService,
     private shipsService: ShipsService)
   {
@@ -560,8 +562,9 @@ export class ShedComponent implements OnInit {
 
   startGame() {
     this.game.ship = this.selectedShip;
+    this.gameService.storeGame(this.game);
 
-    console.log('Start game, include in future version', this.game);
+    this.router.navigate(['/game']);
   }
 
 }

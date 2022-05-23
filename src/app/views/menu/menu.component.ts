@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 
 import { GameService } from '../../core/services/game/game.service';
 
-import { Game } from '../../core/models/game/game.model';
-
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

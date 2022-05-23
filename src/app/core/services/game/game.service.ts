@@ -28,4 +28,9 @@ export class GameService {
   {
     this.game = new Game();
   }
+
+  storeGame(game: Game)
+  {
+    this.game = game;
+  }
 }

@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShedComponent } from './views/shed/shed.component';
 import { MenuComponent } from './views/menu/menu.component';
+import { GameComponent } from './views/game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShedComponent,
-    MenuComponent
+    MenuComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
