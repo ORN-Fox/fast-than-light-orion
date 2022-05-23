@@ -5,7 +5,7 @@ import { Human } from '../../races/human/human.model';
 
 import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
-import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, System, Teleport, WeaponControl } from '../../systems/index';
+import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
@@ -28,13 +28,13 @@ export class KestrelLayoutA extends KestrelShip {
       new Crew('Human 3', new Human(), Gender.Female)
     ];
 
-    let shieldRoom = new Room(new RoomDisplaySettings(339, 211, 2, 2), new Shield(2)),
-      enginesRoom = new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2), this.crews[1]), // Human Female
+    let shieldRoom = new Room(new RoomDisplaySettings(339, 211, 2, 2), new Shield(2, SystemPositionEnum.Left)),
+      enginesRoom = new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2, SystemPositionEnum.Bottom), this.crews[1]), // Human Female
       oxygenRoom = new Room(new RoomDisplaySettings(94, 140, 2, 1), new Oxygen()),
       weaponsControlRoom = new Room(new RoomDisplaySettings(199, 177, 2, 2), new WeaponControl(3), this.crews[2]), // Human Female
       medbayRoom = new Room(new RoomDisplaySettings(339, 141, 2, 2), new Medbay()),
-      pilotingRoom = new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(), this.crews[0]), // Human Male
-      sensorRoom = new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor()),
+      pilotingRoom = new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Human Male
+      sensorRoom = new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor(1, SystemPositionEnum.Bottom)),
       doorControlRoom = new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
       teleportRoom = new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
       hackingRoom = new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons // Manage advancedEditionEnabled
@@ -132,7 +132,6 @@ export class KestrelLayoutA extends KestrelShip {
 // Experimental
 export class Slot {
   room: Room | null;
-  system: System | null; // Manage system axe Top/Right/Bottom/Left
   crew: Crew | null;
   enemy: any; // TODO Manage enemny
 
@@ -142,13 +141,12 @@ export class Slot {
   fire: boolean = false;
   hacking: boolean = false;
 
-  constructor(room: Room | null = null, system: System | null = null, crew: Crew | null = null)
+  constructor(room: Room | null = null, crew: Crew | null = null)
   {
     this.room = room;
 
     if (this.room)
     {
-      this.system = system;
       this.crew = crew;
     }
   }

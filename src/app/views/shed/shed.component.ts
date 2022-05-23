@@ -11,7 +11,7 @@ import { Gender } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
 import { KestrelShip, Ship, ShipList } from '../../core/models/ships/index';
-import { Teleport } from '../../core/models/systems/index';
+import { SystemPositionEnum, Teleport } from '../../core/models/systems/index';
 import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../core/models/room/roomDisplaySettings.model';
 
 @Component({
@@ -417,7 +417,29 @@ export class ShedComponent implements OnInit {
 
           const raceSpeed = .1;
 
-          let crewMember = new PIXI.AnimatedSprite(this.getRaceSheetForRace(raceName).animations["useComputer_Top"]);
+          let crewMemberAnimationName;
+
+          switch (room.affectedSystem.systemPosition)
+          {
+            default:
+            case SystemPositionEnum.Top:
+              crewMemberAnimationName = "useComputer_Top";
+              break;
+
+            case SystemPositionEnum.Right:
+              crewMemberAnimationName = "useComputer_Right";
+              break;
+
+            case SystemPositionEnum.Bottom:
+              crewMemberAnimationName = "useComputer_Bottom";
+              break;
+
+            case SystemPositionEnum.Left:
+              crewMemberAnimationName = "useComputer_Left";
+              break;
+          }
+
+          let crewMember = new PIXI.AnimatedSprite(this.getRaceSheetForRace(raceName).animations[crewMemberAnimationName]);
           crewMember.x = room.roomDisplaySettings.x + 10;
           crewMember.y = room.roomDisplaySettings.y + 10;
           crewMember.animationSpeed = raceSpeed;
