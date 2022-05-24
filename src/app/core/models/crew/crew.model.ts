@@ -1,4 +1,4 @@
-import { Race } from '../races/race.model';
+import { Race, RaceType } from '../races/race.model';
 
 export enum Gender {
   Male = 1,
@@ -22,5 +22,15 @@ export class Crew {
 
     // Skills related
     // TODO
+  }
+
+  getRaceNameWithGender(): string
+  {
+    if (this.race.type == RaceType.Human)
+    {
+      return `${this.race.name}-${this.gender == Gender.Male ? 'male' : 'female'}`;
+    }
+
+    return this.race.name;
   }
 }
