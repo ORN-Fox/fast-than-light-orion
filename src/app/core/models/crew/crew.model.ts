@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { Race, RaceType } from '../races/race.model';
 
 export enum Gender {
@@ -8,6 +10,7 @@ export enum Gender {
 
 export class Crew {
 
+  id: string;
   name: string;
   race: Race;
   gender: number;
@@ -16,6 +19,7 @@ export class Crew {
   // TODO
 
   constructor(name: string, race: Race, gender: number) {
+    this.id = uuidv4();
     this.name = name;
     this.race = race;
     this.gender = gender;
