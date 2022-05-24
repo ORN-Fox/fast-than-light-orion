@@ -45,7 +45,7 @@ export class KestrelLayoutA extends KestrelShip {
       mindControlRoom = new Room(new RoomDisplaySettings(269, 141, 2, 2), new MindControl(1, 0, false)), // Bottom of top external doors
       cloackingRoom = new Room(new RoomDisplaySettings(269, 211, 2, 2), new Cloacking(1, 0, false)), // Top of bottom external doors
       bottomExternalDoorsRoom = new Room(new RoomDisplaySettings(269, 281, 2, 1)), // Bottom external doors on center of ship
-      dronesControlRoom = new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, 0, false)) // Left of piloting
+      dronesControlRoom = new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, 0, false)); // Left of piloting
 
     this.rooms = [
       shieldRoom,
