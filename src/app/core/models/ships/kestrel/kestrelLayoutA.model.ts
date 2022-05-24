@@ -118,12 +118,12 @@ export class KestrelLayoutA extends KestrelShip {
 
     // Experimental
     this.shipRepresentation = [
-      [null, null, null, null, null, null, new Slot(topExternalDoorsRoom), new Slot(topExternalDoorsRoom), null, null, null, null, null, null, null], // y0
-      [null, new Slot(oxygenRoom), new Slot(oxygenRoom), new Slot(batteryRoom), new Slot(batteryRoom), null, new Slot(mindControlRoom), new Slot(mindControlRoom), new Slot(medbayRoom), null, null, null, null, null, null], // y1
-      [new Slot(leftOnEngineRoom), new Slot(enginesRoom), new Slot(enginesRoom), null, new Slot(weaponsControlRoom), new Slot(weaponsControlRoom), new Slot(mindControlRoom), new Slot(mindControlRoom), new Slot(medbayRoom), new Slot(medbayRoom), new Slot(doorControlRoom), new Slot(doorControlRoom), new Slot(dronesControlRoom), new Slot(dronesControlRoom), new Slot(pilotingRoom)], // y2
-      [new Slot(leftOnEngineRoom), new Slot(enginesRoom), new Slot(enginesRoom), null, new Slot(weaponsControlRoom), new Slot(weaponsControlRoom), new Slot(cloackingRoom), new Slot(cloackingRoom), new Slot(shieldRoom), new Slot(shieldRoom), new Slot(sensorRoom), new Slot(sensorRoom), new Slot(dronesControlRoom), new Slot(dronesControlRoom), new Slot(pilotingRoom)], // y3
-      [null, new Slot(teleportRoom), new Slot(teleportRoom), new Slot(hackingRoom), new Slot(hackingRoom), null, new Slot(cloackingRoom), new Slot(cloackingRoom), new Slot(shieldRoom), new Slot(shieldRoom), null, null, null, null, null], // y4
-      [null, null, null, null, null, null, new Slot(bottomExternalDoorsRoom), new Slot(bottomExternalDoorsRoom), null, null, null, null, null, null, null], // y5
+      [null, null, null, null, null, null, new Slot(0, 0, topExternalDoorsRoom), new Slot(1, 0, topExternalDoorsRoom), null, null, null, null, null, null, null], // y0
+      [null, new Slot(0, 0, oxygenRoom), new Slot(1, 0, oxygenRoom), new Slot(0, 0, batteryRoom), new Slot(1, 0, batteryRoom), null, new Slot(0, 0, mindControlRoom), new Slot(1, 0, mindControlRoom), new Slot(0, 0, medbayRoom), null, null, null, null, null, null], // y1
+      [new Slot(0, 0, leftOnEngineRoom), new Slot(0, 0, enginesRoom), new Slot(1, 0, enginesRoom), null, new Slot(0, 0, weaponsControlRoom), new Slot(1, 0, weaponsControlRoom, weaponsControlRoom.affectedCrew), new Slot(0, 0, mindControlRoom), new Slot(1, 0, mindControlRoom), new Slot(0, 0, medbayRoom), new Slot(1, 0, medbayRoom), new Slot(0, 0, doorControlRoom), new Slot(1, 0, doorControlRoom), new Slot(0, 0, dronesControlRoom), new Slot(1, 0, dronesControlRoom), new Slot(0, 0, pilotingRoom, pilotingRoom.affectedCrew)], // y2
+      [new Slot(0, 1, leftOnEngineRoom), new Slot(0, 1, enginesRoom, enginesRoom.affectedCrew), new Slot(1, 1, enginesRoom), null, new Slot(0, 1, weaponsControlRoom), new Slot(1, 1, weaponsControlRoom), new Slot(0, 0, cloackingRoom), new Slot(0, 1, cloackingRoom), new Slot(0, 0, shieldRoom), new Slot(1, 0, shieldRoom), new Slot(0, 0, sensorRoom), new Slot(1, 0, sensorRoom), new Slot(0, 1, dronesControlRoom), new Slot(1, 1, dronesControlRoom), new Slot(0, 1, pilotingRoom)], // y3
+      [null, new Slot(0, 0, teleportRoom), new Slot(0, 1, teleportRoom), new Slot(0, 0, hackingRoom), new Slot(1, 0, hackingRoom), null, new Slot(0, 0, cloackingRoom), new Slot(1, 0, cloackingRoom), new Slot(0, 1, shieldRoom), new Slot(1, 1, shieldRoom), null, null, null, null, null], // y4
+      [null, null, null, null, null, null, new Slot(0, 0, bottomExternalDoorsRoom), new Slot(1, 0, bottomExternalDoorsRoom), null, null, null, null, null, null, null], // y5
     ];
   }
 }
@@ -131,6 +131,9 @@ export class KestrelLayoutA extends KestrelShip {
 
 // Experimental
 export class Slot {
+  slotPositionX: number;
+  slotPositionY: number;
+
   room: Room | null;
   crew: Crew | null;
   enemy: any; // TODO Manage enemny
@@ -141,8 +144,11 @@ export class Slot {
   fire: boolean = false;
   hacking: boolean = false;
 
-  constructor(room: Room | null = null, crew: Crew | null = null)
+  constructor(slotPositionX: number, slotPositionY: number, room: Room | null = null, crew: Crew | null = null)
   {
+    this.slotPositionX = slotPositionX;
+    this.slotPositionY = slotPositionY;
+
     this.room = room;
 
     if (this.room)

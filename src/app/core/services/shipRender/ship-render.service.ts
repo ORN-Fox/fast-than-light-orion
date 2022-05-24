@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 import { TexturesManagerService } from '../texturesManager/textures-manager.service';
 
-import { KestrelShip, Ship } from '../../models/ships/index';
+import { KestrelShip, Ship, Slot } from '../../models/ships/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
 import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../models/room/roomDisplaySettings.model';
 
@@ -164,13 +164,24 @@ export class ShipRenderService {
                 break;
             }
 
-            let crewMember = new PIXI.AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
-            crewMember.x = room.roomDisplaySettings.x + 10;
-            crewMember.y = room.roomDisplaySettings.y + 10;
-            crewMember.animationSpeed = raceSpeed;
-            crewMember.play();
+            for (let i = 0; i < ship.shipRepresentation.length; i++) {
+              for (let y = 0; y < ship.shipRepresentation[i].length; y++) {
+                let slot = ship.shipRepresentation[i][y];
 
-            shipFloorContainer.addChild(crewMember);
+                if (slot && slot.crew && slot.crew.id == room.affectedCrew.id)
+                {
+                  let crewMember = new PIXI.AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
+                  crewMember.x = room.roomDisplaySettings.x + (DEFAULT_TILE_WIDTH * slot.slotPositionX) + 16.5; // 16.5 = 33 / 2 for position crew in center of slot
+                  crewMember.y = room.roomDisplaySettings.y + (DEFAULT_TILE_HEIGHT * slot.slotPositionY) + 16.5;
+                  crewMember.animationSpeed = raceSpeed;
+                  crewMember.play();
+
+                  shipFloorContainer.addChild(crewMember);
+
+                  break;
+                }
+              }
+            }
           }
         }
       }
