@@ -102,7 +102,6 @@ export class ShipRenderService {
       room.noOxygenInRoomSprite.visible = room.oxygen == 0;
       shipFloorContainer.addChild(room.noOxygenInRoomSprite);
 
-      console.log(room)
       if (room.affectedSystem)
       {
         if (isShedMode ? true : room.affectedSystem.isInstalled)
