@@ -29,7 +29,7 @@ export class ShipRenderService {
       this.loadUpgradesGUIOfShip(shipGUIContainer, ship);
     }
 
-    this.loadRoomsGUIofShip(shipFloorContainer, ship);
+    this.loadRoomsGUIofShip(shipFloorContainer, ship, isShedMode);
     this.loadDoorsGUIofShip(shipFloorContainer, ship);
   }
 
@@ -56,7 +56,7 @@ export class ShipRenderService {
     }
   }
 
-  loadRoomsGUIofShip(shipFloorContainer: any, ship: Ship)
+  loadRoomsGUIofShip(shipFloorContainer: any, ship: Ship, isShedMode: boolean)
   {
     for (let room of ship.rooms) {
       let roomTileBorder = new PIXI.Graphics()
@@ -102,73 +102,77 @@ export class ShipRenderService {
       room.noOxygenInRoomSprite.visible = room.oxygen == 0;
       shipFloorContainer.addChild(room.noOxygenInRoomSprite);
 
+      console.log(room)
       if (room.affectedSystem)
       {
-        if (room.affectedSystem.srcSystemInRoomSprite)
+        if (isShedMode ? true : room.affectedSystem.isInstalled)
         {
-          if (room.affectedSystem instanceof Teleport)
+          if (room.affectedSystem.srcSystemInRoomSprite)
           {
-            for (let i = 0; i < room.roomDisplaySettings.sizeX; i++) {
-              for (let y = 0; y < room.roomDisplaySettings.sizeY; y++) {
-                let roomTeleportSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-                roomTeleportSystemInterior.x = room.roomDisplaySettings.x + 4 + (i * DEFAULT_TILE_WIDTH); // 4px for center teleport sprite texture
-                roomTeleportSystemInterior.y = room.roomDisplaySettings.y + 4 + (y * DEFAULT_TILE_HEIGHT);
-                roomTeleportSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
+            if (room.affectedSystem instanceof Teleport)
+            {
+              for (let i = 0; i < room.roomDisplaySettings.sizeX; i++) {
+                for (let y = 0; y < room.roomDisplaySettings.sizeY; y++) {
+                  let roomTeleportSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+                  roomTeleportSystemInterior.x = room.roomDisplaySettings.x + 4 + (i * DEFAULT_TILE_WIDTH); // 4px for center teleport sprite texture
+                  roomTeleportSystemInterior.y = room.roomDisplaySettings.y + 4 + (y * DEFAULT_TILE_HEIGHT);
+                  roomTeleportSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
-                shipFloorContainer.addChild(roomTeleportSystemInterior);
+                  shipFloorContainer.addChild(roomTeleportSystemInterior);
+                }
               }
             }
-          }
-          else
-          {
-            let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-            roomSystemInterior.x = room.roomDisplaySettings.x - 2;
-            roomSystemInterior.y = room.roomDisplaySettings.y - 2;
-            roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
+            else
+            {
+              let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+              roomSystemInterior.x = room.roomDisplaySettings.x - 2;
+              roomSystemInterior.y = room.roomDisplaySettings.y - 2;
+              roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
-            shipFloorContainer.addChild(roomSystemInterior);
-          }
-        }
-
-        let roomSystemIcon = new PIXI.Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
-        roomSystemIcon.x = room.roomDisplaySettings.getRoomSystemIconPositionX();
-        roomSystemIcon.y = room.roomDisplaySettings.getRoomSystemIconPositionY();
-        roomSystemIcon.alpha = room.affectedSystem.isInstalled ? 1 : .5;
-
-        shipFloorContainer.addChild(roomSystemIcon);
-
-        if (room.affectedCrew) {
-          const raceSpeed = .1;
-
-          let crewMemberAnimationName;
-
-          switch (room.affectedSystem.systemPosition)
-          {
-            default:
-            case SystemPositionEnum.Top:
-              crewMemberAnimationName = "useComputer_Top";
-              break;
-
-            case SystemPositionEnum.Right:
-              crewMemberAnimationName = "useComputer_Right";
-              break;
-
-            case SystemPositionEnum.Bottom:
-              crewMemberAnimationName = "useComputer_Bottom";
-              break;
-
-            case SystemPositionEnum.Left:
-              crewMemberAnimationName = "useComputer_Left";
-              break;
+              shipFloorContainer.addChild(roomSystemInterior);
+            }
           }
 
-          let crewMember = new PIXI.AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
-          crewMember.x = room.roomDisplaySettings.x + 10;
-          crewMember.y = room.roomDisplaySettings.y + 10;
-          crewMember.animationSpeed = raceSpeed;
-          crewMember.play();
+          let roomSystemIcon = new PIXI.Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
+          roomSystemIcon.x = room.roomDisplaySettings.getRoomSystemIconPositionX();
+          roomSystemIcon.y = room.roomDisplaySettings.getRoomSystemIconPositionY();
+          roomSystemIcon.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
-          shipFloorContainer.addChild(crewMember);
+          shipFloorContainer.addChild(roomSystemIcon);
+
+          if (room.affectedCrew) {
+            const raceSpeed = .1;
+
+            let crewMemberAnimationName;
+
+            switch (room.affectedSystem.systemPosition)
+            {
+              default:
+              case SystemPositionEnum.Top:
+                crewMemberAnimationName = "useComputer_Top";
+                break;
+
+              case SystemPositionEnum.Right:
+                crewMemberAnimationName = "useComputer_Right";
+                break;
+
+              case SystemPositionEnum.Bottom:
+                crewMemberAnimationName = "useComputer_Bottom";
+                break;
+
+              case SystemPositionEnum.Left:
+                crewMemberAnimationName = "useComputer_Left";
+                break;
+            }
+
+            let crewMember = new PIXI.AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
+            crewMember.x = room.roomDisplaySettings.x + 10;
+            crewMember.y = room.roomDisplaySettings.y + 10;
+            crewMember.animationSpeed = raceSpeed;
+            crewMember.play();
+
+            shipFloorContainer.addChild(crewMember);
+          }
         }
       }
     }

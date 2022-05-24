@@ -21,7 +21,6 @@ import { Ship, ShipList } from '../../core/models/ships/index';
 export class ShedComponent implements OnInit {
 
   app: any;
-
   canvasHeight: number = 720;
   canvasWidth: number = 1280;
 
