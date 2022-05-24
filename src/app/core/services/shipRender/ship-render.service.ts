@@ -38,7 +38,7 @@ export class ShipRenderService {
     if (ship instanceof KestrelShip)
     {
       const thrustersOnSheet = PIXI.Loader.shared.resources["/assets/images/effects/thrusters_on.json"].spritesheet;
-      const thrustersAnimationSpeed = .08;
+      const thrustersAnimationSpeed = .12;
 
       let animatedThrustersLeftSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
       animatedThrustersLeftSprite.x = 72;
