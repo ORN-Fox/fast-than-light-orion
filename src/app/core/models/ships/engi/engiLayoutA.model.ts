@@ -6,6 +6,7 @@ import { Engi, Human } from '../../races/index';
 import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
+import { Slot } from '../../slot/slot.model';
 
 import { CombatI } from '../../drones/index';
 import { EngiMedbotDispersal } from '../../upgrades/index';
@@ -30,23 +31,40 @@ export class EngiLayoutA extends EngiShip {
       new Crew('Human 1', new Human(), Gender.Male)
     ];
 
+    let shieldRoom = new Room(new RoomDisplaySettings(237, 230, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),
+      enginesRoom = new Room(new RoomDisplaySettings(167, 230, 2, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[0]), // Engi
+      oxygenRoom = new Room(new RoomDisplaySettings(237, 125, 1, 2), new Oxygen(1, 4)),
+      weaponsControlRoom = new Room(new RoomDisplaySettings(379, 125, 2, 2), new WeaponControl(3), this.crews[1]), // Engi
+      droneControlRoom = new Room(new RoomDisplaySettings(167, 91, 2, 2), new DroneControl(3)),
+      medbayRoom = new Room(new RoomDisplaySettings(378, 264, 2, 2), new Medbay()),
+      pilotingRoom = new Room(new RoomDisplaySettings(448, 264, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[2]), // Human Male
+      sensorRoom = new Room(new RoomDisplaySettings(306, 194, 1, 2), new Sensor(1, SystemPositionEnum.Left, 4)),
+      doorControlRoom = new Room(new RoomDisplaySettings(306, 264, 1, 2), new DoorControl(1, SystemPositionEnum.Right, 4)),
+      batteryRoom = new Room(new RoomDisplaySettings(200, 160, 1, 2), new Battery(1, 6, false)),
+      hackingRoom = new Room(new RoomDisplaySettings(273, 125, 2, 1), new Hacking(1, 2, false)), // Manage advancedEditionEnabled
+      topOfHackingRoom = new Room(new RoomDisplaySettings(273, 88, 2, 1)), // Top of hacking room
+      cloackingRoom = new Room(new RoomDisplaySettings(342, 92, 1, 2), new Cloacking(1, 4, false)),
+      mindControlRoom = new Room(new RoomDisplaySettings(342, 230, 1, 2), new MindControl(1, 6, false)),
+      teleportRoom = new Room(new RoomDisplaySettings(378, 194, 1, 2), new Teleport(1, false)),
+      rightOfTeleportRoom = new Room(new RoomDisplaySettings(415, 194, 1, 2)); // Right of teleport room
+
     this.rooms = [
-      new Room(new RoomDisplaySettings(237, 230, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),
-      new Room(new RoomDisplaySettings(167, 230, 2, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[0]), // Engi
-      new Room(new RoomDisplaySettings(237, 125, 1, 2), new Oxygen(1, 4)),
-      new Room(new RoomDisplaySettings(379, 125, 2, 2), new WeaponControl(3), this.crews[1]), // Engi
-      new Room(new RoomDisplaySettings(167, 91, 2, 2), new DroneControl(3)),
-      new Room(new RoomDisplaySettings(378, 264, 2, 2), new Medbay()),
-      new Room(new RoomDisplaySettings(448, 264, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[2]), // Human Male
-      new Room(new RoomDisplaySettings(306, 194, 1, 2), new Sensor(1, SystemPositionEnum.Left, 4)),
-      new Room(new RoomDisplaySettings(306, 264, 1, 2), new DoorControl(1, SystemPositionEnum.Right, 4)),
-      new Room(new RoomDisplaySettings(200, 160, 1, 2), new Battery(1, 6, false)),
-      new Room(new RoomDisplaySettings(273, 125, 2, 1), new Hacking(1, 2, false)), // Manage advancedEditionEnabled
-      new Room(new RoomDisplaySettings(273, 88, 2, 1)), // Top of hacking room
-      new Room(new RoomDisplaySettings(342, 92, 1, 2), new Cloacking(1, 4, false)),
-      new Room(new RoomDisplaySettings(342, 230, 1, 2), new MindControl(1, 6, false)),
-      new Room(new RoomDisplaySettings(378, 194, 1, 2), new Teleport(1, false)),
-      new Room(new RoomDisplaySettings(415, 194, 1, 2)) // Right of teleport room
+      shieldRoom,
+      enginesRoom,
+      oxygenRoom,
+      weaponsControlRoom,
+      droneControlRoom,
+      medbayRoom,
+      pilotingRoom,
+      sensorRoom,
+      doorControlRoom,
+      batteryRoom,
+      hackingRoom,
+      topOfHackingRoom,
+      cloackingRoom,
+      mindControlRoom,
+      teleportRoom,
+      rightOfTeleportRoom
     ];
 
     this.doors = [
@@ -102,5 +120,15 @@ export class EngiLayoutA extends EngiShip {
     this.interiorSpriteX = 455;
     this.interiorSpriteY = 82;
 
+    // Experimental
+    this.shipRepresentation = [
+      [new Slot(0, 0, droneControlRoom), new Slot(1, 0, droneControlRoom), null, new Slot(0, 0, topOfHackingRoom), new Slot(1, 0, topOfHackingRoom), new Slot(0, 0, cloackingRoom), null, null, null], // y0
+      [new Slot(0, 1, droneControlRoom), new Slot(1, 1, droneControlRoom), new Slot(0, 0, oxygenRoom), new Slot(0, 0, hackingRoom), new Slot(1, 0, hackingRoom), new Slot(0, 1, hackingRoom), new Slot(0, 0, weaponsControlRoom), new Slot(1, 0, weaponsControlRoom, weaponsControlRoom.affectedCrew), null], // y1
+      [null, new Slot(0, 0, batteryRoom), new Slot(0, 1, oxygenRoom), null, null, null, new Slot(0, 1, weaponsControlRoom), new Slot(1, 1, weaponsControlRoom), null], // y2
+      [null, new Slot(0, 1, batteryRoom), null, null, new Slot(0, 0, sensorRoom), null, new Slot(0, 0, teleportRoom), new Slot(0, 0, rightOfTeleportRoom), null], // y3
+      [new Slot(0, 0, enginesRoom), new Slot(1, 0, enginesRoom), new Slot(0, 0, shieldRoom), new Slot(0, 1, sensorRoom), new Slot(0, 0, mindControlRoom), new Slot(0, 1, teleportRoom), new Slot(0, 1, rightOfTeleportRoom), null], // y4
+      [new Slot(0, 1, enginesRoom, enginesRoom.affectedCrew), new Slot(1, 1, enginesRoom), new Slot(0, 1, shieldRoom), new Slot(1, 1, sensorRoom), new Slot(0, 0, doorControlRoom), new Slot(0, 1, mindControlRoom), new Slot(0, 0, medbayRoom), null, new Slot(0, 0, pilotingRoom, pilotingRoom.affectedCrew)], // y5
+      [null, null, null, null, new Slot(0, 1, doorControlRoom), null, new Slot(0, 1, medbayRoom), new Slot(1, 1, medbayRoom), new Slot(0, 1, pilotingRoom)] // y6
+    ];
   }
 }
