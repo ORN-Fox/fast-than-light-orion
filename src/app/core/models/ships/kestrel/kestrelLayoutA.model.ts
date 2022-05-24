@@ -6,6 +6,7 @@ import { Human } from '../../races/human/human.model';
 import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
+import { Slot } from '../../slot/slot.model';
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
@@ -125,35 +126,5 @@ export class KestrelLayoutA extends KestrelShip {
       [null, new Slot(0, 0, teleportRoom), new Slot(0, 1, teleportRoom), new Slot(0, 0, hackingRoom), new Slot(1, 0, hackingRoom), null, new Slot(0, 0, cloackingRoom), new Slot(1, 0, cloackingRoom), new Slot(0, 1, shieldRoom), new Slot(1, 1, shieldRoom), null, null, null, null, null], // y4
       [null, null, null, null, null, null, new Slot(0, 0, bottomExternalDoorsRoom), new Slot(1, 0, bottomExternalDoorsRoom), null, null, null, null, null, null, null], // y5
     ];
-  }
-}
-
-
-// Experimental
-export class Slot {
-  slotPositionX: number;
-  slotPositionY: number;
-
-  room: Room | null;
-  crew: Crew | null;
-  enemy: any; // TODO Manage enemny
-
-  doors: any; // Manage doors : axes X/Y
-
-  breach: boolean = false;
-  fire: boolean = false;
-  hacking: boolean = false;
-
-  constructor(slotPositionX: number, slotPositionY: number, room: Room | null = null, crew: Crew | null = null)
-  {
-    this.slotPositionX = slotPositionX;
-    this.slotPositionY = slotPositionY;
-
-    this.room = room;
-
-    if (this.room)
-    {
-      this.crew = crew;
-    }
   }
 }

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 import { TexturesManagerService } from '../texturesManager/textures-manager.service';
 
-import { KestrelShip, Ship, Slot } from '../../models/ships/index';
+import { KestrelShip, Ship } from '../../models/ships/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
 import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../models/room/roomDisplaySettings.model';
 
