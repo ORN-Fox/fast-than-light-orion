@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 import { TexturesManagerService } from '../texturesManager/textures-manager.service';
 
 import { KestrelShip, Ship } from '../../models/ships/index';
+import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH, Room } from '../../models/room/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
-import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH } from '../../models/room/roomDisplaySettings.model';
 
 @Injectable({
   providedIn: 'root'
@@ -71,30 +71,7 @@ export class ShipRenderService {
 
       shipFloorContainer.addChild(roomTileBorder, room.roomTile);
 
-      // Compute Room grid
-      if (room.roomDisplaySettings.sizeX > 1)
-      {
-        for (let verticalLineIndex = 1; verticalLineIndex < room.roomDisplaySettings.sizeX; verticalLineIndex++) {
-          let roomTileSlotLine = new PIXI.Graphics()
-            .beginFill(0xb4b1ac)
-            .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.width)
-            .endFill();
-
-          shipFloorContainer.addChild(roomTileSlotLine);
-        }
-      }
-
-      if (room.roomDisplaySettings.sizeY > 1)
-      {
-        for (let horizontalLineIndex = 1; horizontalLineIndex < room.roomDisplaySettings.sizeY; horizontalLineIndex++) {
-          let roomTileSlotLine = new PIXI.Graphics()
-            .beginFill(0xb4b1ac)
-            .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.height, 1)
-            .endFill();
-
-          shipFloorContainer.addChild(roomTileSlotLine);
-        }
-      }
+      this.loadRoomGrid(shipFloorContainer, room);
 
       room.noOxygenInRoomSprite = new PIXI.Sprite.from(`/assets/images/effects/low_o2_stripes_${room.roomDisplaySettings.sizeX}x${room.roomDisplaySettings.sizeY}.png`);
       room.noOxygenInRoomSprite.x = room.roomDisplaySettings.x - 2;
@@ -184,6 +161,33 @@ export class ShipRenderService {
             }
           }
         }
+      }
+    }
+  }
+
+  loadRoomGrid(shipFloorContainer: any, room: Room)
+  {
+    if (room.roomDisplaySettings.sizeX > 1)
+    {
+      for (let verticalLineIndex = 1; verticalLineIndex < room.roomDisplaySettings.sizeX; verticalLineIndex++) {
+        let roomTileSlotLine = new PIXI.Graphics()
+          .beginFill(0xb4b1ac)
+          .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.width)
+          .endFill();
+
+        shipFloorContainer.addChild(roomTileSlotLine);
+      }
+    }
+
+    if (room.roomDisplaySettings.sizeY > 1)
+    {
+      for (let horizontalLineIndex = 1; horizontalLineIndex < room.roomDisplaySettings.sizeY; horizontalLineIndex++) {
+        let roomTileSlotLine = new PIXI.Graphics()
+          .beginFill(0xb4b1ac)
+          .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.height, 1)
+          .endFill();
+
+        shipFloorContainer.addChild(roomTileSlotLine);
       }
     }
   }
