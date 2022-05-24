@@ -53,12 +53,13 @@ export class GameComponent implements OnInit {
   {
     this.shipContainer = new PIXI.Container();
     this.shipContainer.x = 300;
+    this.shipContainer.y = 100;
     this.shipContainer.height = 400;
     this.shipContainer.width = 660;
 
     this.shipFloorContainer = new PIXI.Container();
     this.shipFloorContainer.x = 300;
-    this.shipFloorContainer.y = 0;
+    this.shipFloorContainer.y = 100;
     this.shipFloorContainer.height = 400;
     this.shipFloorContainer.width = 660;
 
