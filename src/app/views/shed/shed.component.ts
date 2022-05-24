@@ -34,6 +34,7 @@ export class ShedComponent implements OnInit {
   shipListIndex: number = 0;
 
   shedContainer: any;
+  shipGUIContainer: any;
   shipContainer: any;
   shipFloorContainer: any;
 
@@ -111,17 +112,23 @@ export class ShedComponent implements OnInit {
   {
     this.selectedShip = ship;
 
+    this.shipGUIContainer = new PIXI.Container();
+
     this.shipContainer = new PIXI.Container();
+    this.shipContainer.x = 300;
+    this.shipContainer.height = 400;
+    this.shipContainer.width = 660;
+
     this.shipFloorContainer = new PIXI.Container();
     this.shipFloorContainer.x = 300;
     this.shipFloorContainer.y = 0;
     this.shipFloorContainer.height = 400;
     this.shipFloorContainer.width = 660;
 
-    this.app.stage.addChild(this.shipContainer, this.shipFloorContainer);
+    this.app.stage.addChild(this.shipGUIContainer, this.shipContainer, this.shipFloorContainer);
 
     const shipHull = PIXI.Sprite.from(this.selectedShip.srcHullSprite);
-    shipHull.x = this.selectedShip.hullSpriteX;
+    shipHull.x = this.selectedShip.hullSpriteX - 300; // - 300px is temporary use for positioning floor ship sprite on shed view
     shipHull.y = this.selectedShip.hullSpriteY;
 
     this.shipContainer.addChild(shipHull);
@@ -141,13 +148,13 @@ export class ShedComponent implements OnInit {
       const thrustersAnimationSpeed = .08;
 
       let animatedThrustersLeftSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
-      animatedThrustersLeftSprite.x = 371;
+      animatedThrustersLeftSprite.x = 72;
       animatedThrustersLeftSprite.y = 75;
       animatedThrustersLeftSprite.animationSpeed = thrustersAnimationSpeed;
       animatedThrustersLeftSprite.play();
 
       let animatedThrustersRightSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
-      animatedThrustersRightSprite.x = 371;
+      animatedThrustersRightSprite.x = 72;
       animatedThrustersRightSprite.y = 340;
       animatedThrustersRightSprite.animationSpeed = thrustersAnimationSpeed;
       animatedThrustersRightSprite.play();
@@ -171,7 +178,7 @@ export class ShedComponent implements OnInit {
         shipSystemIconGUI.x = 367 + (i * 38);
         shipSystemIconGUI.y = 427;
 
-        this.shipContainer.addChild(shipSystemGUI, shipSystemIconGUI);
+        this.shipGUIContainer.addChild(shipSystemGUI, shipSystemIconGUI);
 
         for (let y = 0; y < room.affectedSystem!.level; y++) {
           let shipSystemLevel = new PIXI.Graphics()
@@ -180,7 +187,7 @@ export class ShedComponent implements OnInit {
             .drawRect(391.5 + (i * 38), 435 + (y * -7), 15, 5)
             .endFill();
 
-          this.shipContainer.addChild(shipSystemLevel);
+          this.shipGUIContainer.addChild(shipSystemLevel);
         }
       }
     }
@@ -227,7 +234,7 @@ export class ShedComponent implements OnInit {
       shipCrewLineOneGUI.x = 60 + (i * 150);
       shipCrewLineOneGUI.y = 530;
 
-      this.shipContainer.addChild(shipCrewLineOneGUI);
+      this.shipGUIContainer.addChild(shipCrewLineOneGUI);
 
       let crewMember = ship.crews[i];
 
@@ -246,7 +253,7 @@ export class ShedComponent implements OnInit {
         crewMemberLineOne.height = 60;
         crewMemberLineOne.width = 60;
 
-        this.shipContainer.addChild(crewMemberLineOne);
+        this.shipGUIContainer.addChild(crewMemberLineOne);
       }
     }
 
@@ -255,7 +262,7 @@ export class ShedComponent implements OnInit {
       shipCrewLineTwoGUI.x = 60 + (y * 150);
       shipCrewLineTwoGUI.y = 620;
 
-      this.shipContainer.addChild(shipCrewLineTwoGUI);
+      this.shipGUIContainer.addChild(shipCrewLineTwoGUI);
 
       let crewMember = ship.crews[y + 2];
 
@@ -274,7 +281,7 @@ export class ShedComponent implements OnInit {
         crewMemberLineTwo.height = 60;
         crewMemberLineTwo.width = 60;
 
-        this.shipContainer.addChild(crewMemberLineTwo);
+        this.shipGUIContainer.addChild(crewMemberLineTwo);
       }
     }
   }
@@ -286,7 +293,7 @@ export class ShedComponent implements OnInit {
       shipWeaponGUI.x = 425 + (i * 120);
       shipWeaponGUI.y = 515;
 
-      this.shipContainer.addChild(shipWeaponGUI);
+      this.shipGUIContainer.addChild(shipWeaponGUI);
     }
 
     // TODO display weapons
@@ -303,7 +310,7 @@ export class ShedComponent implements OnInit {
         shipDroneGUI.x = 425 + (i * 120);
         shipDroneGUI.y = 625;
 
-        this.shipContainer.addChild(shipDroneGUI);
+        this.shipGUIContainer.addChild(shipDroneGUI);
       }
 
       // TODO display drones
@@ -317,7 +324,7 @@ export class ShedComponent implements OnInit {
       shipDroneGUI.x = 990;
       shipDroneGUI.y = 529 + (i * 60);
 
-      this.shipContainer.addChild(shipDroneGUI);
+      this.shipGUIContainer.addChild(shipDroneGUI);
     }
 
     if (ship.upgrades.length > 0)
@@ -529,6 +536,7 @@ export class ShedComponent implements OnInit {
   {
     if (ship != this.selectedShip)
     {
+      this.shipGUIContainer.destroy();
       this.shipContainer.destroy();
       this.shipFloorContainer.destroy();
 
