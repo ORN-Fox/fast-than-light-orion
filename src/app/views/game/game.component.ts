@@ -3,9 +3,11 @@ declare var PIXI: any;
 import { Component, OnInit } from '@angular/core';
 
 import { GameService } from '../../core/services/game/game.service';
+import { SettingsService } from '../../core/services/settings/settings.service';
 import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
 
 import { Game } from '../../core/models/game/game.model';
+import { Settings } from '../../core/models/settings/settings.model';
 import { Ship } from '../../core/models/ships/index';
 
 @Component({
@@ -20,6 +22,7 @@ export class GameComponent implements OnInit {
   canvasWidth: number = 1280;
 
   game: Game;
+  settings: Settings;
 
   gameContainer: any;
 
@@ -28,9 +31,11 @@ export class GameComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
+    private settingsService: SettingsService,
     private shipRenderService: ShipRenderService)
   {
     this.game = this.gameService.game;
+    this.settings = this.settingsService.getSettings();
     console.log('Start game, include in future version', this.game);
   }
 
@@ -41,6 +46,11 @@ export class GameComponent implements OnInit {
     const gameBody = document.querySelector('.game') as HTMLElement;
     gameBody.style.height = `${this.canvasHeight}px`;
     gameBody.style.width = `${this.canvasWidth}px`;
+
+    if (this.settings.fullScreenMode)
+    {
+      (gameBody.style as any).zoom = 1.5;
+    }
 
     this.gameContainer = new PIXI.Container();
     this.app.stage.addChild(this.gameContainer);

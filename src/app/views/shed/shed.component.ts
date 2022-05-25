@@ -5,12 +5,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { GameService } from '../../core/services/game/game.service';
+import { SettingsService } from '../../core/services/settings/settings.service';
 import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
 import { ShipsService } from '../../core/services/ships/ships.service';
 import { TexturesManagerService } from '../../core/services/texturesManager/textures-manager.service';
 
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
+import { Settings } from '../../core/models/settings/settings.model';
 import { Ship, ShipList } from '../../core/models/ships/index';
 
 @Component({
@@ -27,6 +29,7 @@ export class ShedComponent implements OnInit {
   difficulties: Difficulty[];
 
   game: Game;
+  settings: Settings;
 
   ships: ShipList[];
   shipListIndex: number = 0;
@@ -45,11 +48,13 @@ export class ShedComponent implements OnInit {
   constructor(
     private router: Router,
     private gameService: GameService,
+    private settingsService: SettingsService,
     private shipRenderService: ShipRenderService,
     private shipsService: ShipsService,
     private texturesManagerService: TexturesManagerService)
   {
     this.game = this.gameService.newGame();
+    this.settings = this.settingsService.getSettings();
 
     this.difficulties = this.gameService.difficulties;
     this.game.difficulty = this.difficulties[0];
@@ -81,6 +86,11 @@ export class ShedComponent implements OnInit {
     const shedBody = document.querySelector('.shed') as HTMLElement;
     shedBody.style.height = `${this.canvasHeight}px`;
     shedBody.style.width = `${this.canvasWidth}px`;
+
+    if (this.settings.fullScreenMode)
+    {
+      (shedBody.style as any).zoom = 1.5;
+    }
 
     const shedGUIContainer = document.querySelector('.shed-gui-container') as HTMLElement;
     shedGUIContainer.style.height = `${this.canvasHeight}px`;

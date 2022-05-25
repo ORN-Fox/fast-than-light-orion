@@ -8,8 +8,8 @@ import { Game } from '../../models/game/game.model';
 })
 export class GameService {
 
-  game: Game;
   difficulties: Difficulty[];
+  game: Game;
 
   constructor() {
     this.difficulties = [

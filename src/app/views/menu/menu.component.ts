@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { GameService } from '../../core/services/game/game.service';
 import { I18nService } from '../../core/services/translations/i18n.service';
+import { SettingsService } from '../../core/services/settings/settings.service';
 
 import { Settings } from '../../core/models/settings/settings.model';
 
@@ -21,9 +22,10 @@ export class MenuComponent implements OnInit {
   constructor(
     private router: Router,
     private gameService: GameService,
-    private i18nService: I18nService
+    private i18nService: I18nService,
+    private settingsService: SettingsService
   ) {
-    this.settings = new Settings(); // TODO store settings in local storage
+    this.settings = this.settingsService.getSettings();
     this.languages = this.i18nService.supportedLanguages;
   }
 
@@ -61,6 +63,7 @@ export class MenuComponent implements OnInit {
   toggleFullScren()
   {
     this.settings.fullScreenMode = !this.settings.fullScreenMode;
+    this.settingsService.setSettings(this.settings);
 
     let element = document.querySelector('body') as any;
 
