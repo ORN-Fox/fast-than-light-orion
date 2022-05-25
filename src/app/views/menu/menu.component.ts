@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { GameService } from '../../core/services/game/game.service';
 import { I18nService } from '../../core/services/translations/i18n.service';
 
+import { Settings } from '../../core/models/settings/settings.model';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -11,6 +13,7 @@ import { I18nService } from '../../core/services/translations/i18n.service';
 })
 export class MenuComponent implements OnInit {
 
+  settings: Settings;
   languages: string[];
 
   gameInProgress: boolean;
@@ -20,6 +23,7 @@ export class MenuComponent implements OnInit {
     private gameService: GameService,
     private i18nService: I18nService
   ) {
+    this.settings = new Settings(); // TODO store settings in local storage
     this.languages = this.i18nService.supportedLanguages;
   }
 
@@ -54,9 +58,48 @@ export class MenuComponent implements OnInit {
 
   // Options related
 
+  toggleFullScren()
+  {
+    this.settings.fullScreenMode = !this.settings.fullScreenMode;
+
+    let element = document.querySelector('body') as any;
+    console.log(element, element.requestFullscreen)
+
+    if (this.settings.fullScreenMode)
+    {
+      this.openFullscreen(element);
+    }
+    else
+    {
+      this.closeFullscreen();
+    }
+  }
+
   changeLanguage(language: string)
   {
     this.i18nService.language = language;
+  }
+
+  private openFullscreen(elem: any) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+  }
+
+  private closeFullscreen() {
+    let documentElement: any = document;
+
+    if (documentElement.exitFullscreen) {
+      documentElement.exitFullscreen();
+    } else if (documentElement.webkitExitFullscreen) { /* Safari */
+      documentElement.webkitExitFullscreen();
+    } else if (documentElement.msExitFullscreen) { /* IE11 */
+      documentElement.msExitFullscreen();
+    }
   }
 
 }

@@ -22,9 +22,9 @@
     <div class="video-settings-container">
       <h2>Vidéo</h2>
       <ul class="video-settings-content">
-        <li>Plein écran : TODO</li>
-        <li>Arrière plan dynamique : TODO</li>
-        <li>Mode daltonien : TODO</li>
+        <li>Plein écran : <a (click)="toggleFullScren()">{{settings.fullScreenMode ? 'Oui' : 'Non'}}</a></li>
+        <li>Arrière plan dynamique : Oui</li>
+        <li>Mode daltonien : Non</li>
         <li data-modal="modal-languages"><a href="#">Changer de langue</a></li>
       </ul>
     </div>
@@ -32,9 +32,9 @@
     <div class="gameplay-settings-container">
       <h2>Gameplay</h2>
       <ul class="gameplay-settings-content">
-        <li>Choix d'événement : TODO</li>
-        <li>Affiche traje. balises au curseur : TODO</li>
-        <li>Fenêtres d'exploit : TODO</li>
+        <li>Choix d'événement : Pas de retard</li>
+        <li>Affiche traje. balises au curseur : Oui</li>
+        <li>Fenêtres d'exploit : Oui</li>
       </ul>
     </div>
 
