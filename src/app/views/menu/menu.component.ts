@@ -63,7 +63,6 @@ export class MenuComponent implements OnInit {
     this.settings.fullScreenMode = !this.settings.fullScreenMode;
 
     let element = document.querySelector('body') as any;
-    console.log(element, element.requestFullscreen)
 
     if (this.settings.fullScreenMode)
     {

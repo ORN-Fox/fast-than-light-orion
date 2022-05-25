@@ -22,7 +22,7 @@
     <div class="video-settings-container">
       <h2>{{'views.menu.options.video.sectiontitle' | translate}}</h2>
       <ul class="video-settings-content">
-        <li>{{'views.menu.options.video.fullscreen' | translate}} : <a (click)="toggleFullScren()">{{'commons.actions.' + settings.fullScreenMode ? 'Yes' : 'no' | translate}}</a></li>
+        <li>{{'views.menu.options.video.fullscreen' | translate}} : <a (click)="toggleFullScren()">{{'commons.actions.' + (settings.fullScreenMode ? 'yes' : 'no') | translate}}</a></li>
         <li>{{'views.menu.options.video.dynamicBackground' | translate}} : {{'commons.actions.yes' | translate}}</li>
         <li>{{'views.menu.options.video.colorblindMode' | translate}} : {{'commons.actions.no' | translate}}</li>
         <li data-modal="modal-languages"><a>{{'views.menu.options.video.changeLanguage' | translate}}</a></li>
