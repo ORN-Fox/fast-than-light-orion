@@ -5,10 +5,12 @@
       "disabled": "Désactivé",
       "enabled": "Activé",
       "newGame": "Nouvelle partie",
+      "no": "Non",
       "play": "Jouer",
       "quit": "Quitter",
       "rename": "Renom.",
-      "settings": "Options"
+      "settings": "Options",
+      "yes": "Oui"
     },
     "advancedEditionContent": "Contenu de l'édition avancée",
     "crews": "Équipages",
@@ -26,6 +28,30 @@
     "weapons": "Armes"
   },
   "views": {
+    "menu": {
+      "options": {
+        "audio": {
+          "musicVolume": "Volume musique",
+          "volume": "Volume",
+          "sectiontitle": "Audio"
+        },
+        "gameplay": {
+          "chooseEvent": "Choix d'événement",
+          "displayBeaconsTrajectoryOnCursor": "Afficher le trajet des balises au curseur",
+          "noDelay": "Aucun retard",
+          "featsWindow": "Fenêtres d'exploit",
+          "sectiontitle": "Gameplay"
+        },
+        "video": {
+          "colorblindMode": "Mode Daltonien",
+          "changeLanguage": "Changer de langue",
+          "dynamicBackground": "Arrière plan dynamique",
+          "fullscreen": "Plein écran",
+          "sectiontitle": "Vidéo"
+        },
+        "title": "Options"
+      }
+    },
     "shed": {
       "hideRooms": "Cacher les salles",
       "randomShip": "Vaisseau aléatoire"

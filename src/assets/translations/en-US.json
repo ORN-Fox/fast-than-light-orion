@@ -5,10 +5,12 @@
       "disabled": "Disabled",
       "enabled": "Enabled",
       "newGame": "New Game",
+      "no": "No",
       "play": "Play",
       "quit": "Quit",
       "rename": "Rename",
-      "settings": "Settings"
+      "settings": "Settings",
+      "yes": "Yes"
     },
     "advancedEditionContent": "Advanced Edition Content",
     "crews": "Crews",
@@ -26,6 +28,30 @@
     "weapons": "Weapons"
   },
   "views": {
+    "menu": {
+      "options": {
+        "audio": {
+          "musicVolume": "Music volume",
+          "volume": "Volume",
+          "sectiontitle": "Audio"
+        },
+        "gameplay": {
+          "chooseEvent": "Choose event",
+          "displayBeaconsTrajectoryOnCursor": "Show Cursor Beacons Path",
+          "featsWindow": "Feats window",
+          "noDelay": "No delay",
+          "sectiontitle": "Gameplay"
+        },
+        "video": {
+          "colorblindMode": "Colorblind Mode",
+          "changeLanguage": "Change language",
+          "dynamicBackground": "Dynamic background",
+          "fullscreen": "Full screen",
+          "sectiontitle": "Video"
+        },
+        "title": "Settings"
+      }
+    },
     "shed": {
       "hideRooms": "Hide rooms",
       "randomShip": "Ramdom Ship"

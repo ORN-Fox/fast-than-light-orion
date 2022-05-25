@@ -17,38 +17,38 @@
   <div class="modal-bg modal-exit"></div>
 
   <div class="modal-container options-container">
-    <h1>Options</h1>
+    <h1>{{'views.menu.options.title' | translate}}</h1>
 
     <div class="video-settings-container">
-      <h2>Vidéo</h2>
+      <h2>{{'views.menu.options.video.sectiontitle' | translate}}</h2>
       <ul class="video-settings-content">
-        <li>Plein écran : <a (click)="toggleFullScren()">{{settings.fullScreenMode ? 'Oui' : 'Non'}}</a></li>
-        <li>Arrière plan dynamique : Oui</li>
-        <li>Mode daltonien : Non</li>
-        <li data-modal="modal-languages"><a>Changer de langue</a></li>
+        <li>{{'views.menu.options.video.fullscreen' | translate}} : <a (click)="toggleFullScren()">{{'commons.actions.' + settings.fullScreenMode ? 'Yes' : 'no' | translate}}</a></li>
+        <li>{{'views.menu.options.video.dynamicBackground' | translate}} : {{'commons.actions.yes' | translate}}</li>
+        <li>{{'views.menu.options.video.colorblindMode' | translate}} : {{'commons.actions.no' | translate}}</li>
+        <li data-modal="modal-languages"><a>{{'views.menu.options.video.changeLanguage' | translate}}</a></li>
       </ul>
     </div>
 
     <div class="gameplay-settings-container">
-      <h2>Gameplay</h2>
+      <h2>{{'views.menu.options.gameplay.sectiontitle' | translate}}</h2>
       <ul class="gameplay-settings-content">
-        <li>Choix d'événement : Pas de retard</li>
-        <li>Affiche traje. balises au curseur : Oui</li>
-        <li>Fenêtres d'exploit : Oui</li>
+        <li>{{'views.menu.options.gameplay.chooseEvent' | translate}} : {{'views.menu.options.gameplay.noDelay' | translate}}</li>
+        <li>{{'views.menu.options.gameplay.displayBeaconsTrajectoryOnCursor' | translate}} : {{'commons.actions.yes' | translate}}</li>
+        <li>{{'views.menu.options.gameplay.featsWindow' | translate}} : {{'commons.actions.yes' | translate}}</li>
       </ul>
     </div>
 
     <div class="audio-settings-container">
-      <h2>Audio</h2>
+      <h2>{{'views.menu.options.audio.sectiontitle' | translate}}</h2>
       <ul class="audio-settings-content">
         <li>
-          <span>Volume</span>
+          <span>{{'views.menu.options.audio.volume' | translate}}</span>
           <div class="slidecontainer">
             <input type="range" min="0" max="100" value="50" class="slider" id="volumeSlider">
           </div>
         </li>
         <li>
-          <span>Volume musique</span>
+          <span>{{'views.menu.options.audio.musicVolume' | translate}}</span>
           <div class="slidecontainer">
             <input type="range" min="0" max="100" value="100" class="slider" id="musicVolumeSlider">
           </div>
