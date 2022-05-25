@@ -17,19 +17,6 @@
     left: 0;
     top: 0;
 
-    .btn {
-      border-radius: 10px;
-      background-color: #ebf5e5;
-      border: none;
-      font-family: 'Aquire';
-
-      &:not(:disabled) {
-        &:hover, &.active {
-          background-color: #ffe65e;
-        }
-      }
-    }
-
     .ship-rename-gui-image {
       position: absolute;
       top: 8px;

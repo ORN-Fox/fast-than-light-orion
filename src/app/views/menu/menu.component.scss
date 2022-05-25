@@ -55,3 +55,98 @@
     }
   }
 }
+
+.options-container {
+  background: url('/assets/images/gui/box_options.png') no-repeat;
+  color: white;
+  height: 450px;
+  width: 826px;
+
+  h1, h2 {
+    color: black;
+    font-family: "Aquire";
+    position: absolute;
+  }
+
+  h1 {
+    top: 14px;
+    left: 54px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  ul {
+    font-family: 'CW Bitmap';
+    padding-left: .75rem;
+
+    li {
+      margin-bottom: .75rem;
+    }
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .video-settings-container, .gameplay-settings-container {
+    position: absolute;
+    top: 50px;
+  }
+
+  .video-settings-container {
+    left: 24px;
+
+    .video-settings-content {
+      position: relative;
+      top: 30px;
+    }
+  }
+
+  .gameplay-settings-container {
+    left: 430px;
+
+    .gameplay-settings-content {
+      position: relative;
+      top: 30px;
+    }
+  }
+
+  .audio-settings-container {
+    position: absolute;
+    left: 194px;
+    top: 296px;
+
+    .audio-settings-content {
+      position: relative;
+      top: 30px;
+    }
+  }
+}
+
+.languages-container {
+  background: url('/assets/images/gui/box_languages.png') no-repeat;
+  color: white;
+  height: 450px;
+  width: 260px;
+
+  ul {
+    padding: 11px 10.45px;
+
+    li {
+      margin-bottom: 7.3px;
+
+      button {
+        font-size: 1.2rem;
+        height: 27px;
+        width: 240px;
+      }
+
+      .more-languages-soon {
+        font-size: 1rem;
+      }
+    }
+  }
+}

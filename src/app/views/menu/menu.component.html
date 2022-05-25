@@ -8,7 +8,54 @@
         <div class="menu-actions">
             <button [disabled]="!gameInProgress" (click)="continueGame()">{{'commons.actions.continue' | translate}}</button>
             <button (click)="newGame()">{{'commons.actions.newGame' | translate}}</button>
-            <button disabled (click)="openSettings()">{{'commons.actions.settings' | translate}}</button>
+            <button data-modal="modal-options">{{'commons.actions.settings' | translate}}</button>
         </div>
     </div>
+</div>
+
+<div class="modal" id="modal-options">
+  <div class="modal-bg modal-exit"></div>
+
+  <div class="modal-container options-container">
+    <h1>Options</h1>
+
+    <div class="video-settings-container">
+      <h2>Vidéo</h2>
+      <ul class="video-settings-content">
+        <li>Plein écran : TODO</li>
+        <li>Arrière plan dynamique : TODO</li>
+        <li>Mode daltonien : TODO</li>
+        <li data-modal="modal-languages"><a href="#">Changer de langue</a></li>
+      </ul>
+    </div>
+
+    <div class="gameplay-settings-container">
+      <h2>Gameplay</h2>
+      <ul class="gameplay-settings-content">
+        <li>Choix d'événement : TODO</li>
+        <li>Affiche traje. balises au curseur : TODO</li>
+        <li>Fenêtres d'exploit : TODO</li>
+      </ul>
+    </div>
+
+    <div class="audio-settings-container">
+      <h2>Audio</h2>
+      <ul class="audio-settings-content">
+        <li>Volume <span>TODO</span></li>
+        <li>Volume musique <span>TODO</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal-languages">
+  <div class="modal-bg modal-exit"></div>
+
+  <div class="modal-container languages-container">
+    <ul>
+      <li><button class="btn" (click)="changeLanguage(languages[0])">English</button></li>
+      <li><button class="btn" (click)="changeLanguage(languages[1])">Français</button></li>
+      <li><button class="btn more-languages-soon" disabled>More languages soon...</button></li>
+    </ul>
+  </div>
 </div>
