@@ -968,7 +968,8 @@
 	"useComputer_Top": ["engi_base-64.png", "engi_base-65.png", "engi_base-66.png", "engi_base-67.png"],
 	"useComputer_Right": ["engi_base-56.png", "engi_base-57.png", "engi_base-58.png", "engi_base-59.png"],
 	"useComputer_Bottom": ["engi_base-68.png", "engi_base-69.png", "engi_base-70.png", "engi_base-71.png"],
-	"useComputer_Left": ["engi_base-60.png", "engi_base-61.png", "engi_base-62.png", "engi_base-63.png"]
+	"useComputer_Left": ["engi_base-60.png", "engi_base-61.png", "engi_base-62.png", "engi_base-63.png"],
+	"portrait": ["engi_base-99.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",

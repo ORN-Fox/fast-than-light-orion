@@ -933,7 +933,8 @@
 	"useComputer_Top": ["human-male_base-64.png", "human-male_base-65.png", "human-male_base-66.png", "human-male_base-67.png"],
 	"useComputer_Right": ["human-male_base-56.png", "human-male_base-57.png", "human-male_base-58.png", "human-male_base-59.png"],
 	"useComputer_Bottom": ["human-male_base-68.png", "human-male_base-69.png", "human-male_base-70.png", "human-male_base-71.png"],
-	"useComputer_Left": ["human-male_base-60.png", "human-male_base-61.png", "human-male_base-62.png", "human-male_base-63.png"]
+	"useComputer_Left": ["human-male_base-60.png", "human-male_base-61.png", "human-male_base-62.png", "human-male_base-63.png"],
+	"portrait": ["human-male_base-96.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",

@@ -869,7 +869,8 @@
 	"useComputer_Top": ["zoltan_base-66.png", "zoltan_base-67.png", "zoltan_base-68.png", "zoltan_base-69.png"],
 	"useComputer_Right": ["zoltan_base-58.png", "zoltan_base-59.png", "zoltan_base-60.png", "zoltan_base-61.png"],
 	"useComputer_Bottom": ["zoltan_base-70.png", "zoltan_base-71.png", "zoltan_base-72.png", "zoltan_base-73.png"],
-	"useComputer_Left": ["zoltan_base-62.png", "zoltan_base-63.png", "zoltan_base-64.png", "zoltan_base-65.png"]
+	"useComputer_Left": ["zoltan_base-62.png", "zoltan_base-63.png", "zoltan_base-64.png", "zoltan_base-65.png"],
+	"portrait": ["zoltan_base-88.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",

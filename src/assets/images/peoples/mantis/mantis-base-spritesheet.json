@@ -1094,7 +1094,8 @@
 	"useComputer_Top": ["mantis_base-81.png", "mantis_base-82.png", "mantis_base-83.png", "mantis_base-84.png"],
 	"useComputer_Right": ["mantis_base-72.png", "mantis_base-73.png", "mantis_base-74.png", "mantis_base-75.png"],
 	"useComputer_Bottom": ["mantis_base-66.png", "mantis_base-67.png", "mantis_base-68.png", "mantis_base-69.png"],
-	"useComputer_Left": ["mantis_base-77.png", "mantis_base-78.png", "mantis_base-79.png", "mantis_base-80.png"]
+	"useComputer_Left": ["mantis_base-77.png", "mantis_base-78.png", "mantis_base-79.png", "mantis_base-80.png"],
+	"portrait": ["mantis_base-111.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",

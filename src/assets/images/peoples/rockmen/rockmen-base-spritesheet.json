@@ -821,7 +821,8 @@
 	"useComputer_Top": ["rockmen_base-64.png", "rockmen_base-65.png", "rockmen_base-66.png", "rockmen_base-67.png"],
 	"useComputer_Right": ["rockmen_base-56.png", "rockmen_base-57.png", "rockmen_base-58.png", "rockmen_base-59.png"],
 	"useComputer_Bottom": ["rockmen_base-68.png", "rockmen_base-69.png", "rockmen_base-70.png", "rockmen_base-71.png"],
-	"useComputer_Left": ["rockmen_base-60.png", "rockmen_base-61.png", "rockmen_base-62.png", "rockmen_base-63.png"]
+	"useComputer_Left": ["rockmen_base-60.png", "rockmen_base-61.png", "rockmen_base-62.png", "rockmen_base-63.png"],
+	"portrait": ["rockmen_base-93.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",

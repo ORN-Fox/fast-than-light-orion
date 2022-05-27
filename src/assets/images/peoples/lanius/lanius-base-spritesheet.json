@@ -905,7 +905,8 @@
 	"useComputer_Top": ["lanius_base-64.png", "lanius_base-65.png", "lanius_base-66.png", "lanius_base-67.png"],
 	"useComputer_Right": ["lanius_base-56.png", "lanius_base-57.png", "lanius_base-58.png", "lanius_base-59.png"],
 	"useComputer_Bottom": ["lanius_base-64.png", "lanius_base-65.png", "lanius_base-66.png", "lanius_base-67.png"],
-	"useComputer_Left": ["lanius_base-60.png", "lanius_base-61.png", "lanius_base-62.png", "lanius_base-63.png"]
+	"useComputer_Left": ["lanius_base-60.png", "lanius_base-61.png", "lanius_base-62.png", "lanius_base-63.png"],
+	"portrait": ["lanius_base-94.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",

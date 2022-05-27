@@ -261,7 +261,7 @@ export class ShipRenderService {
       {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
 
-        let crewMemberLineOne = PIXI.Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).textures[`${raceName}_base-0.png`]);
+        let crewMemberLineOne = PIXI.Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
         crewMemberLineOne.x = 112 + (i * 150);
         crewMemberLineOne.y = 558;
         crewMemberLineOne.height = 60;
@@ -284,7 +284,7 @@ export class ShipRenderService {
       {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
 
-        let crewMemberLineTwo = PIXI.Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).textures[`${raceName}_base-0.png`]);
+        let crewMemberLineTwo = PIXI.Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
         crewMemberLineTwo.x = 112 + (y * 150);
         crewMemberLineTwo.y = 648;
         crewMemberLineTwo.height = 60;
