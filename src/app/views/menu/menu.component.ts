@@ -65,16 +65,17 @@ export class MenuComponent implements OnInit {
     this.settings.fullScreenMode = !this.settings.fullScreenMode;
     this.settingsService.setSettings(this.settings);
 
-    let element = document.querySelector('body') as any;
+    // Fullscreen is not apply on reload page
+    // let element = document.querySelector('body') as any;
 
-    if (this.settings.fullScreenMode)
-    {
-      this.openFullscreen(element);
-    }
-    else
-    {
-      this.closeFullscreen();
-    }
+    // if (this.settings.fullScreenMode)
+    // {
+    //   this.openFullscreen(element);
+    // }
+    // else
+    // {
+    //   this.closeFullscreen();
+    // }
   }
 
   changeLanguage(language: string)
@@ -82,26 +83,26 @@ export class MenuComponent implements OnInit {
     this.i18nService.language = language;
   }
 
-  private openFullscreen(elem: any) {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-      elem.msRequestFullscreen();
-    }
-  }
-
-  private closeFullscreen() {
-    let documentElement: any = document;
-
-    if (documentElement.exitFullscreen) {
-      documentElement.exitFullscreen();
-    } else if (documentElement.webkitExitFullscreen) { /* Safari */
-      documentElement.webkitExitFullscreen();
-    } else if (documentElement.msExitFullscreen) { /* IE11 */
-      documentElement.msExitFullscreen();
-    }
-  }
+  // private openFullscreen(elem: any) {
+  //   if (elem.requestFullscreen) {
+  //     elem.requestFullscreen();
+  //   } else if (elem.webkitRequestFullscreen) { /* Safari */
+  //     elem.webkitRequestFullscreen();
+  //   } else if (elem.msRequestFullscreen) { /* IE11 */
+  //     elem.msRequestFullscreen();
+  //   }
+  // }
+  //
+  // private closeFullscreen() {
+  //   let documentElement: any = document;
+  //
+  //   if (documentElement.exitFullscreen) {
+  //     documentElement.exitFullscreen();
+  //   } else if (documentElement.webkitExitFullscreen) { /* Safari */
+  //     documentElement.webkitExitFullscreen();
+  //   } else if (documentElement.msExitFullscreen) { /* IE11 */
+  //     documentElement.msExitFullscreen();
+  //   }
+  // }
 
 }
