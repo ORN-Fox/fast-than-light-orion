@@ -174,7 +174,7 @@ export class ShipRenderService {
       for (let verticalLineIndex = 1; verticalLineIndex < room.roomDisplaySettings.sizeX; verticalLineIndex++) {
         let roomTileSlotLine = new PIXI.Graphics()
           .beginFill(0xb4b1ac)
-          .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.width)
+          .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.height)
           .endFill();
 
         shipFloorContainer.addChild(roomTileSlotLine);
@@ -186,7 +186,7 @@ export class ShipRenderService {
       for (let horizontalLineIndex = 1; horizontalLineIndex < room.roomDisplaySettings.sizeY; horizontalLineIndex++) {
         let roomTileSlotLine = new PIXI.Graphics()
           .beginFill(0xb4b1ac)
-          .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.height, 1)
+          .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.width, 1)
           .endFill();
 
         shipFloorContainer.addChild(roomTileSlotLine);
