@@ -28,4 +28,29 @@ export class Room {
     // display related
     this.roomDisplaySettings = roomDisplaySettings;
   }
+
+  criticalOxygenLevel(): boolean
+  {
+    return this.oxygen <= 5;
+  }
+
+  getBackgroundColorForOxygenLevel(): number
+  {
+    if (this.oxygen >= 75)
+    {
+      return 0xe6e2db;
+    }
+    else if (this.oxygen >= 50)
+    {
+      return 0xe2cecc;
+    }
+    else if (this.oxygen >= 25)
+    {
+      return 0xe5bdb9;
+    }
+    else
+    {
+      return 0xfdb1a9;
+    }
+  }
 }

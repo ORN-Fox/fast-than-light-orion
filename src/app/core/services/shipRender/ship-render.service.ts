@@ -61,12 +61,12 @@ export class ShipRenderService {
     for (let room of ship.rooms) {
       let roomTileBorder = new PIXI.Graphics()
         .beginFill(0x000000)
-        .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.height + 4, room.roomDisplaySettings.width + 4)
+        .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.width + 4, room.roomDisplaySettings.height + 4)
         .endFill();
 
       room.roomTile = new PIXI.Graphics()
-        .beginFill(0xe6e2db)
-        .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.height, room.roomDisplaySettings.width)
+        .beginFill(room.getBackgroundColorForOxygenLevel())
+        .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.width, room.roomDisplaySettings.height)
         .endFill();
 
       shipFloorContainer.addChild(roomTileBorder, room.roomTile);
@@ -74,9 +74,11 @@ export class ShipRenderService {
       this.loadRoomGrid(shipFloorContainer, room);
 
       room.noOxygenInRoomSprite = new PIXI.Sprite.from(`/assets/images/effects/low_o2_stripes_${room.roomDisplaySettings.sizeX}x${room.roomDisplaySettings.sizeY}.png`);
-      room.noOxygenInRoomSprite.x = room.roomDisplaySettings.x - 2;
-      room.noOxygenInRoomSprite.y = room.roomDisplaySettings.y - 2;
-      room.noOxygenInRoomSprite.visible = room.oxygen == 0;
+      room.noOxygenInRoomSprite.x = room.roomDisplaySettings.x;
+      room.noOxygenInRoomSprite.y = room.roomDisplaySettings.y;
+      room.noOxygenInRoomSprite.height = room.roomDisplaySettings.height;
+      room.noOxygenInRoomSprite.width = room.roomDisplaySettings.width;
+      room.noOxygenInRoomSprite.visible = room.criticalOxygenLevel();
       shipFloorContainer.addChild(room.noOxygenInRoomSprite);
 
       if (room.affectedSystem)

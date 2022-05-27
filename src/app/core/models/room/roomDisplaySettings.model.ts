@@ -21,8 +21,8 @@ export class RoomDisplaySettings
     this.sizeY = sizeY;
 
     // In pixels
-    this.height = this.sizeX * DEFAULT_TILE_HEIGHT;
-    this.width = this.sizeY * DEFAULT_TILE_WIDTH;
+    this.height = this.sizeY * DEFAULT_TILE_HEIGHT;
+    this.width = this.sizeX * DEFAULT_TILE_WIDTH;
   }
 
   getRoomSystemIconPositionX(): number
