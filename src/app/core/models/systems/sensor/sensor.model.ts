@@ -2,10 +2,11 @@ import { System, SystemPositionEnum } from '../system.model';
 
 export class Sensor extends System {
 
-  constructor(level: number = 1, systemPosition: number = SystemPositionEnum.Top, variantSystemInRoom: number = 0) {
+  constructor(level: number = 1, systemPosition: number = SystemPositionEnum.Top, variantSystemInRoom: number = 0, isInstalled: boolean = true) {
     super();
 
     this.level = level;
+    this.isInstalled = isInstalled;
 
     this.systemPosition = systemPosition;
 

@@ -3,8 +3,9 @@ import { EngiShip } from './engiShip.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Lanius } from '../../races/index';
 
-import { Room } from '../../room/room.model';
-import { CloneBay, DoorControl, DroneControl, Engine, Hacking, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, WeaponControl } from '../../systems/index';
+import { Room, RoomDisplaySettings } from '../../room/index';
+import { Slot } from '../../slot/slot.model';
+import { Battery, Cloacking, CloneBay, DoorControl, DroneControl, Engine, Hacking, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 
 import { BeamI } from '../../drones/index';
 import { DefenseScrambler } from '../../upgrades/index';
@@ -29,17 +30,42 @@ export class EngiLayoutC extends EngiShip {
       new Crew('Engi 2', new Engi(), Gender.Male)
     ];
 
+    let shieldRoom = new Room(new RoomDisplaySettings(306, 198, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),
+      engineRoom = new Room(new RoomDisplaySettings(164, 232, 1, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[2]), // Lanius
+      oxygenRoom = new Room(new RoomDisplaySettings(162, 92, 1, 2), new Oxygen(1, 13)),
+      weaponsControlRoom = new Room(new RoomDisplaySettings(378, 128, 2, 2), new WeaponControl(), this.crews[1]), // Engi
+      droneControlRoom = new Room(new RoomDisplaySettings(200, 162, 2, 2), new DroneControl(2)),
+      pilotingRoom = new Room(new RoomDisplaySettings(448, 268, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Engi
+      sensorRoom = new Room(new RoomDisplaySettings(270, 268, 2, 1), new Sensor()),
+      doorControlRoom = new Room(new RoomDisplaySettings(378, 304, 2, 1), new DoorControl()),
+      cloneBayRoom = new Room(new RoomDisplaySettings(236, 232, 2, 1), new CloneBay(1)),
+      hackingRoom = new Room(new RoomDisplaySettings(342, 92, 1, 2), new Hacking(1, 5)),
+      cloackingRoom = new Room(new RoomDisplaySettings(198, 92, 1, 2), new Cloacking(1, 4, false)),
+      batteryRoom = new Room(new RoomDisplaySettings(234, 92, 1, 2), new Battery(1, 17, false)),
+      mindControlRoom = new Room(new RoomDisplaySettings(270, 92, 1, 2), new MindControl(1, 12, false)),
+      teleportRoom = new Room(new RoomDisplaySettings(306, 92, 1, 2), new Teleport(1, false)),
+      bottomOfWeaponsControlRoom = new Room(new RoomDisplaySettings(376, 198, 1, 2)),
+      rightOfEngineRoom = new Room(new RoomDisplaySettings(200, 268, 2, 1)),
+      bottomOfSensorRoom = new Room(new RoomDisplaySettings(308, 304, 2, 1));
+
     this.rooms = [
-      // new Room(new Shield(2)),
-      // new Room(new Engine(2), this.crews[2]), // Lanius
-      // new Room(new Oxygen()),
-      // new Room(new WeaponControl(), this.crews[1]), // Engi
-      // new Room(new DroneControl(2)),
-      // new Room(new Piloting(), this.crews[0]), // Engi
-      // new Room(new Sensor()),
-      // new Room(new DoorControl()),
-      // new Room(new CloneBay()),
-      // new Room(new Hacking())
+      shieldRoom,
+      engineRoom,
+      oxygenRoom,
+      weaponsControlRoom,
+      droneControlRoom,
+      pilotingRoom,
+      sensorRoom,
+      doorControlRoom,
+      cloneBayRoom,
+      hackingRoom,
+      cloackingRoom,
+      batteryRoom,
+      mindControlRoom,
+      teleportRoom,
+      bottomOfWeaponsControlRoom,
+      rightOfEngineRoom,
+      bottomOfSensorRoom
     ];
 
     this.weapons = [
@@ -70,5 +96,15 @@ export class EngiLayoutC extends EngiShip {
     this.interiorSpriteX = 455;
     this.interiorSpriteY = 82;
 
+    // Experimental
+    this.shipRepresentation = [
+      [new Slot(0, 0, oxygenRoom), new Slot(0, 0, cloackingRoom), new Slot(0, 0, batteryRoom), new Slot(0, 0, mindControlRoom), new Slot(0, 0, teleportRoom), new Slot(0, 0, hackingRoom), null, null, null], // y0
+      [new Slot(0, 1, oxygenRoom), new Slot(0, 1, cloackingRoom), new Slot(0, 1, batteryRoom), new Slot(0, 1, mindControlRoom), new Slot(0, 1, teleportRoom), new Slot(0, 1, hackingRoom), new Slot(0, 0, weaponsControlRoom), new Slot(1, 0, weaponsControlRoom, weaponsControlRoom.affectedCrew), null], // y1
+      [null, new Slot(0, 0, droneControlRoom), new Slot(1, 0, droneControlRoom), null, null, null, null, new Slot(0, 1, weaponsControlRoom), new Slot(1, 1, weaponsControlRoom), null], // y2
+      [null, new Slot(0, 1, droneControlRoom), new Slot(1, 1, droneControlRoom), null, new Slot(0, 0, shieldRoom), new Slot(1, 0, shieldRoom), new Slot(0, 0, bottomOfWeaponsControlRoom), null, null], // y3
+      [new Slot(0, 0, engineRoom), null, new Slot(0, 0, cloneBayRoom), new Slot(1, 0, cloneBayRoom), new Slot(0, 1, shieldRoom), new Slot(1, 1, shieldRoom), new Slot(0, 1, bottomOfWeaponsControlRoom), null, null], // y4
+      [new Slot(0, 1, engineRoom, engineRoom.affectedCrew), new Slot(0, 0, rightOfEngineRoom), new Slot(1, 0, rightOfEngineRoom), new Slot(0, 0, sensorRoom), new Slot(1, 0, sensorRoom), null, null, null, new Slot(0, 0, pilotingRoom, pilotingRoom.affectedCrew)], // y5
+      [null, null, null, null, new Slot(0, 0, bottomOfSensorRoom), new Slot(1, 0, bottomOfSensorRoom), new Slot(0, 0, doorControlRoom), new Slot(1, 0, doorControlRoom), new Slot(0, 1, pilotingRoom)] // y6
+    ];
   }
 }
