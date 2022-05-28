@@ -26,7 +26,7 @@ export class GameService {
 
   newGame(): Game
   {
-    return this.game = new Game();
+    return new Game();
   }
 
   storeGame(game: Game)
