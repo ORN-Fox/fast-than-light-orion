@@ -31,8 +31,9 @@ export class ShedComponent implements OnInit {
   game: Game;
   settings: Settings;
 
-  ships: ShipList[];
+  shipsList: ShipList[];
   shipListIndex: number = 0;
+  shipListLayoutIndex: number = 0;
 
   shedContainer: any;
   shipGUIContainer: any;
@@ -59,13 +60,13 @@ export class ShedComponent implements OnInit {
     this.difficulties = this.gameService.difficulties;
     this.game.difficulty = this.difficulties[0];
 
-    this.ships = this.shipsService.getShips();
+    this.shipsList = this.shipsService.getShips();
   }
 
   ngOnInit(): void {
-    this.initShepCanvas();
+    this.initShepPage();
 
-    this.loadSelectedShip(this.ships[this.shipListIndex].layouts[0]);
+    this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
 
     let loadingComplete = () => {
       this.loadShepAnimations();
@@ -76,9 +77,25 @@ export class ShedComponent implements OnInit {
     }
 
     this.texturesManagerService.loadRacesSpritesheets(loadingComplete);
+
+    const modals = document.querySelectorAll("[data-modal]");
+
+    modals.forEach(function (trigger: any) {
+      trigger.addEventListener("click", function (event: any) {
+        event.preventDefault();
+        const modal = document.getElementById(trigger.dataset.modal) as HTMLElement;
+        const exits = modal.querySelectorAll(".modal-exit");
+        exits.forEach(function (exit) {
+          exit.addEventListener("click", function (event) {
+            event.preventDefault();
+            modal.classList.remove("open");
+          });
+        });
+      });
+    });
   }
 
-  initShepCanvas()
+  initShepPage()
   {
     this.app = new PIXI.Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
     document.querySelector('#canvsPixi')!.appendChild(this.app.view);
@@ -98,6 +115,10 @@ export class ShedComponent implements OnInit {
 
     this.shedContainer = new PIXI.Container();
     this.app.stage.addChild(this.shedContainer);
+
+    const shipsListGUIContainer = document.querySelector('.modal') as HTMLElement;
+    shipsListGUIContainer.style.height = `${this.canvasHeight}px`;
+    shipsListGUIContainer.style.width = `${this.canvasWidth}px`;
   }
 
   loadSelectedShip(ship: Ship)
@@ -165,27 +186,33 @@ export class ShedComponent implements OnInit {
 
     if (this.shipListIndex < 0)
     {
-      this.shipListIndex = this.ships.length - 1;
+      this.shipListIndex = this.shipsList.length - 1;
     }
 
-    this.selectShip(this.ships[this.shipListIndex].layouts[0]);
+    this.selectShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
   }
 
   openShipsList()
   {
-    // TODO
+    let modalShipList = document.querySelector('#modal-ships-list') as HTMLElement;
+    modalShipList.classList.add('open');
   }
 
   nextShip()
   {
     this.shipListIndex++;
 
-    if (this.shipListIndex > this.ships.length - 1)
+    if (this.shipListIndex > this.shipsList.length - 1)
     {
       this.shipListIndex = 0;
     }
 
-    this.selectShip(this.ships[this.shipListIndex].layouts[0]);
+    this.selectShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
+  }
+
+  selectShipLayout(layoutIndex: number)
+  {
+    this.shipListLayoutIndex = layoutIndex;
   }
 
   selectShip(ship: Ship)
@@ -206,6 +233,19 @@ export class ShedComponent implements OnInit {
 
       this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.selectedShip, true, this.shipGUIContainer);
     }
+  }
+
+  selectShipFromShipListSelector(shipListIndex: number, ship: Ship)
+  {
+    if (shipListIndex)
+    {
+      this.shipListIndex = shipListIndex;
+    }
+
+    let modalShipList = document.querySelector('#modal-ships-list') as HTMLElement;
+    modalShipList.classList.remove('open');
+
+    this.selectShip(ship);
   }
 
   selectDifficulty(difficulty: Difficulty)

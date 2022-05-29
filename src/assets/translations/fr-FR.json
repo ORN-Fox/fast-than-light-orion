@@ -53,7 +53,9 @@
       }
     },
     "shed": {
+      "chooseShip": "Choissizez votre vaisseau",
       "hideRooms": "Cacher les salles",
+      "layout": "Type",
       "randomShip": "Vaisseau aléatoire"
     }
   }

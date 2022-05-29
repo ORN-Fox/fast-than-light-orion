@@ -26,14 +26,14 @@
         <p class="ships-label">{{'commons.ships' | translate}}</p>
         <div class="ships-list-control-container">
           <button class="btn btn-previous-ship" (click)="previousShip()"><</button>
-          <button class="btn btn-ship-list" (click)="openShipsList()">{{'commons.list' | translate}}</button>
+          <button class="btn btn-ship-list" (click)="openShipsList()" data-modal="modal-ships-list">{{'commons.list' | translate}}</button>
           <button class="btn btn-next-ship" (click)="nextShip()">></button>
         </div>
         <button class="btn btn-random-ship">{{'views.shed.randomShip' | translate}}</button>
 
         <p class="ships-layout">{{'commons.layout' | translate}}</p>
         <div class="ships-layout-control-container">
-          <button *ngFor="let shipLayout of ships[shipListIndex].layouts" class="btn btn-ship-layout" [ngClass]="{'active': shipLayout.layout == selectedShip.layout}" (click)="selectShip(shipLayout)">
+          <button *ngFor="let shipLayout of shipsList[shipListIndex].layouts" class="btn btn-ship-layout" [ngClass]="{'active': shipLayout.layout == selectedShip.layout}" (click)="selectShip(shipLayout)">
             {{shipLayout.layout}}
           </button>
         </div>
@@ -97,4 +97,29 @@
         </div>
       </div>
     </div>
+</div>
+
+<div class="modal" id="modal-ships-list">
+  <div class="modal-bg modal-exit"></div>
+
+  <div class="modal-container ships-list-container">
+    <div class="ships-list-header">
+      <h1>{{'views.shed.chooseShip' | translate }}</h1>
+      <button class="btn btn-ships-layout" [ngClass]="{'active': shipListLayoutIndex == 0}" (click)="selectShipLayout(0)">{{'views.shed.layout' | translate}} A</button>
+      <button class="btn btn-ships-layout" [ngClass]="{'active': shipListLayoutIndex == 1}" (click)="selectShipLayout(1)">{{'views.shed.layout' | translate}} B</button>
+      <button class="btn btn-ships-layout" [ngClass]="{'active': shipListLayoutIndex == 2}" (click)="selectShipLayout(2)">{{'views.shed.layout' | translate}} C</button>
+    </div>
+
+    <div class="ships-list-content">
+      <div *ngFor="let ships of shipsList; let shipListIndex = index" [attr.data-index]="shipListIndex" style="margin-right: 15px;">
+        <div class="ship-layouts-containter" (click)="selectShipFromShipListSelector(shipListIndex, ships.layouts[shipListLayoutIndex])">
+          <img src="assets/images/ships/{{ships.layouts[shipListLayoutIndex].type}}/layout_{{ships.layouts[shipListLayoutIndex].layout.toLowerCase()}}/miniship.png" alt="">
+        </div>
+
+        <div class="ship-layouts-feats-container">
+          <!-- TODO -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

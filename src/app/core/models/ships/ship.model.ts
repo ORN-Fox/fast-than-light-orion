@@ -9,6 +9,7 @@ export class Ship {
 
   name: string;
   originalName: string;
+  type: string;
   layout: string;
 
   hull: number;

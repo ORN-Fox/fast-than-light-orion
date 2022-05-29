@@ -53,7 +53,9 @@
       }
     },
     "shed": {
+      "chooseShip": "Choose ship",
       "hideRooms": "Hide rooms",
+      "layout": "Layout",
       "randomShip": "Ramdom Ship"
     }
   }

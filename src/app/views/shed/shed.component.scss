@@ -308,3 +308,60 @@
     }
   }
 }
+
+.ships-list-container {
+  background: url('/assets/images/gui/ship_list_main.png') no-repeat;
+  color: white;
+  height: 420px;
+  width: 1078px;
+
+  .ships-list-header {
+    position: absolute;
+    top: 12px;
+    left: 24px;
+    width: 1036px;
+
+    h1 {
+      color: black;
+      display: inline-block;
+      font-family: "Aquire";
+      font-size: 1.6rem;
+      margin-right: 3rem;
+    }
+
+    .btn-ships-layout {
+      border: 2px solid black;
+      bottom: 4px;
+      margin-right: 1rem;
+      position: relative;
+      height: 24px;
+      width: 110px;
+    }
+  }
+
+  .ships-list-content {
+    display: flex;
+    position: absolute;
+    top: 50px;
+    left: 25px;
+
+    .ship-layouts-containter {
+      background: url('/assets/images/gui/ship_list_button_on.png') no-repeat;
+      position: relative;
+      height: 121px;
+      width: 191px;
+
+      &:hover {
+        background: url('/assets/images/gui/ship_list_button_select2.png') no-repeat;
+      }
+    }
+
+    .ship-layouts-feats-container {
+      background: url('/assets/images/gui/ship_list_button_lower_on.png') no-repeat;
+      position: absolute;
+      top: 110px;
+      height: 54px;
+      width: 191px;
+    }
+  }
+}
