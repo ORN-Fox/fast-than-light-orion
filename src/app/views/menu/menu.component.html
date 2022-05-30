@@ -23,7 +23,7 @@
       <h2>{{'views.menu.options.video.sectiontitle' | translate}}</h2>
       <ul class="video-settings-content">
         <li>{{'views.menu.options.video.fullscreen' | translate}} : <a (click)="toggleFullScren()">{{'commons.actions.' + (settings.fullScreenMode ? 'yes' : 'no') | translate}}</a></li>
-        <li>{{'views.menu.options.video.dynamicBackground' | translate}} : {{'commons.actions.yes' | translate}}</li>
+        <li>{{'views.menu.options.video.dynamicBackground' | translate}} : <a (click)="toggleDynamicBackground()">{{'commons.actions.' + (settings.dynamicBackground ? 'yes' : 'no') | translate}}</a></li>
         <li>{{'views.menu.options.video.colorblindMode' | translate}} : {{'commons.actions.no' | translate}}</li>
         <li data-modal="modal-languages"><a>{{'views.menu.options.video.changeLanguage' | translate}}</a></li>
       </ul>

@@ -78,6 +78,12 @@ export class MenuComponent implements OnInit {
     // }
   }
 
+  toggleDynamicBackground()
+  {
+    this.settings.dynamicBackground = !this.settings.dynamicBackground;
+    this.settingsService.setSettings(this.settings);
+  }
+
   changeLanguage(language: string)
   {
     this.i18nService.language = language;
