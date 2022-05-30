@@ -69,10 +69,7 @@ export class ShedComponent implements OnInit {
     this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
 
     let loadingComplete = () => {
-      if (this.settings.dynamicBackground)
-      {
-        this.loadShepAnimations();
-      }
+      this.loadShepAnimations();
 
       this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
 
@@ -165,20 +162,26 @@ export class ShedComponent implements OnInit {
     let animatedShipEngineerSprite = new PIXI.AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);
     animatedShipEngineerSprite.x = 100;
     animatedShipEngineerSprite.y = 109;
-    animatedShipEngineerSprite.animationSpeed = humanAnimationSpeed;
-    animatedShipEngineerSprite.play();
 
     let animatedShipEngineerReparingDroneSprite = new PIXI.AnimatedSprite(humanMaleSheet.animations["repair"]);
     animatedShipEngineerReparingDroneSprite.x = 1120;
     animatedShipEngineerReparingDroneSprite.y = 114;
-    animatedShipEngineerReparingDroneSprite.animationSpeed = humanAnimationSpeed;
-    animatedShipEngineerReparingDroneSprite.play();
 
     let animatedShipEngineerReparingShipSprite = new PIXI.AnimatedSprite(humanFemaleSheet.animations["repair"]);
     animatedShipEngineerReparingShipSprite.x = 1100;
     animatedShipEngineerReparingShipSprite.y = 362;
-    animatedShipEngineerReparingShipSprite.animationSpeed = humanAnimationSpeed;
-    animatedShipEngineerReparingShipSprite.play();
+
+    if (this.settings.dynamicBackground)
+    {
+      animatedShipEngineerSprite.animationSpeed = humanAnimationSpeed;
+      animatedShipEngineerSprite.play();
+
+      animatedShipEngineerReparingDroneSprite.animationSpeed = humanAnimationSpeed;
+      animatedShipEngineerReparingDroneSprite.play();
+
+      animatedShipEngineerReparingShipSprite.animationSpeed = humanAnimationSpeed;
+      animatedShipEngineerReparingShipSprite.play();
+    }
 
     this.shedContainer.addChild(animatedShipEngineerSprite, animatedShipEngineerReparingDroneSprite, animatedShipEngineerReparingShipSprite);
   }
