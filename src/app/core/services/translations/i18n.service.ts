@@ -37,13 +37,13 @@ export class I18nService {
    * Initializes i18n for the application.
    * Loads language from local storage if present, or sets default language.
    */
-  init() {
-    this.language = '';
+  init(language: string) {
+    this.language = language;
 
-    // Warning: this subscription will always be alive for the app's lifetime
-    this.langChangeSubscription = this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-      localStorage.setItem(languageKey, event.lang);
-    });
+    // // Warning: this subscription will always be alive for the app's lifetime
+    // this.langChangeSubscription = this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+    //   localStorage.setItem(languageKey, event.lang);
+    // });
   }
 
   /**
@@ -62,7 +62,6 @@ export class I18nService {
    * @param language The IETF language code to set.
    */
   set language(language: string) {
-    language = language || localStorage.getItem(languageKey) || this.translateService.getBrowserCultureLang() || 'en-US';
     let isSupportedLanguage = this.supportedLanguages.includes(language);
 
     // If no exact match is found, search without the region

@@ -4,7 +4,7 @@ export class Settings {
   fullScreenMode: boolean = false;
   dynamicBackground: boolean = true;
   colorblindMode: boolean = false;
-  language: string;
+  language: string = 'en-US';
 
   // gameplay related
   // TODO

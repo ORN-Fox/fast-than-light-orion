@@ -103,6 +103,7 @@ export class MenuComponent implements OnInit {
   changeLanguage(language: string)
   {
     this.i18nService.language = language;
+    this.settings.language = language;
     this.settingsService.setSettings(this.settings);
   }
 
