@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+declare var PIXI: any;
 
 import { GameService } from '../../core/services/game/game.service';
 import { I18nService } from '../../core/services/translations/i18n.service';
@@ -17,6 +18,8 @@ export class MenuComponent implements OnInit {
   settings: Settings;
   languages: string[];
 
+  menuMusic: any;
+
   gameInProgress: boolean;
 
   constructor(
@@ -31,6 +34,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameInProgress = this.gameService.shouldExistGameInProgress();
+
+    this.playMenuMusic();
 
     const modals = document.querySelectorAll("[data-modal]");
 
@@ -52,10 +57,21 @@ export class MenuComponent implements OnInit {
 
   continueGame() {
     this.router.navigate(['/game']);
+    this.menuMusic.stop();
   }
 
   newGame() {
     this.router.navigate(['/shed']);
+    this.menuMusic.stop();
+  }
+
+  private playMenuMusic()
+  {
+    this.menuMusic = PIXI.sound.Sound.from({
+      url: 'assets/sounds/music/bp_MUS_TitleScreen.ogg',
+      loop: true
+    });
+    this.menuMusic.play();
   }
 
   // Options related
