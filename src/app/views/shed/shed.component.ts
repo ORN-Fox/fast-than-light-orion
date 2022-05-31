@@ -167,6 +167,10 @@ export class ShedComponent implements OnInit {
     animatedShipEngineerReparingDroneSprite.x = 1120;
     animatedShipEngineerReparingDroneSprite.y = 114;
 
+    let animatedShipEngineerReparingMissileSprite = new PIXI.AnimatedSprite(humanFemaleSheet.animations["repair"]);
+    animatedShipEngineerReparingMissileSprite.x = 1206;
+    animatedShipEngineerReparingMissileSprite.y = 332;
+
     let animatedShipEngineerReparingShipSprite = new PIXI.AnimatedSprite(humanFemaleSheet.animations["repair"]);
     animatedShipEngineerReparingShipSprite.x = 1100;
     animatedShipEngineerReparingShipSprite.y = 362;
@@ -179,11 +183,19 @@ export class ShedComponent implements OnInit {
       animatedShipEngineerReparingDroneSprite.animationSpeed = humanAnimationSpeed;
       animatedShipEngineerReparingDroneSprite.play();
 
+      animatedShipEngineerReparingMissileSprite.animationSpeed = humanAnimationSpeed;
+      animatedShipEngineerReparingMissileSprite.play();
+
       animatedShipEngineerReparingShipSprite.animationSpeed = humanAnimationSpeed;
       animatedShipEngineerReparingShipSprite.play();
     }
 
-    this.shedContainer.addChild(animatedShipEngineerSprite, animatedShipEngineerReparingDroneSprite, animatedShipEngineerReparingShipSprite);
+    this.shedContainer.addChild(
+      animatedShipEngineerSprite,
+      animatedShipEngineerReparingDroneSprite,
+      animatedShipEngineerReparingMissileSprite,
+      animatedShipEngineerReparingShipSprite,
+    );
   }
 
   previousShip()
