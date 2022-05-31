@@ -934,6 +934,10 @@
 	"useComputer_Right": ["human-male_base-56.png", "human-male_base-57.png", "human-male_base-58.png", "human-male_base-59.png"],
 	"useComputer_Bottom": ["human-male_base-68.png", "human-male_base-69.png", "human-male_base-70.png", "human-male_base-71.png"],
 	"useComputer_Left": ["human-male_base-60.png", "human-male_base-61.png", "human-male_base-62.png", "human-male_base-63.png"],
+	"walking_Top": ["human-male_base-8.png", "human-male_base-9.png", "human-male_base-10.png", "human-male_base-11.png"],
+	"walking_Right": ["human-male_base-4.png", "human-male_base-5.png", "human-male_base-6.png", "human-male_base-7.png"],
+	"walking_Bottom": ["human-male_base-0.png", "human-male_base-1.png", "human-male_base-2.png", "human-male_base-3.png"],
+	"walking_Left": ["human-male_base-12.png", "human-male_base-13.png", "human-male_base-14.png", "human-male_base-15.png"],
 	"portrait": ["human-male_base-96.png"]
 },
 "meta": {

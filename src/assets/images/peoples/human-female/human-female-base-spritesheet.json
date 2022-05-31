@@ -934,6 +934,10 @@
 	"useComputer_Right": ["human-female_base-56.png", "human-female_base-57.png", "human-female_base-58.png", "human-female_base-59.png"],
 	"useComputer_Bottom": ["human-female_base-68.png", "human-female_base-69.png", "human-female_base-70.png", "human-female_base-71.png"],
 	"useComputer_Left": ["human-female_base-60.png", "human-female_base-61.png", "human-female_base-62.png", "human-female_base-63.png"],
+	"walking_Top": ["human-female_base-8.png", "human-female_base-9.png", "human-female_base-10.png", "human-female_base-11.png"],
+	"walking_Right": ["human-female_base-4.png", "human-female_base-5.png", "human-female_base-6.png", "human-female_base-7.png"],
+	"walking_Bottom": ["human-female_base-0.png", "human-female_base-1.png", "human-female_base-2.png", "human-female_base-3.png"],
+	"walking_Left": ["human-female_base-12.png", "human-female_base-13.png", "human-female_base-14.png", "human-female_base-15.png"],
 	"portrait": ["human-female_base-96.png"]
 },
 "meta": {
