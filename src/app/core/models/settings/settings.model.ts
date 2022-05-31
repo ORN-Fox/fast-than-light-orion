@@ -10,7 +10,7 @@ export class Settings {
   // TODO
 
   // audio related
-  volume: number = 1;
+  volume: number = .5;
   musicVolume: number = 1;
 
   constructor()
