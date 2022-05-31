@@ -822,6 +822,10 @@
 	"useComputer_Right": ["rockmen_base-56.png", "rockmen_base-57.png", "rockmen_base-58.png", "rockmen_base-59.png"],
 	"useComputer_Bottom": ["rockmen_base-68.png", "rockmen_base-69.png", "rockmen_base-70.png", "rockmen_base-71.png"],
 	"useComputer_Left": ["rockmen_base-60.png", "rockmen_base-61.png", "rockmen_base-62.png", "rockmen_base-63.png"],
+	"walking_Top": ["rockmen_base-8.png", "rockmen_base-9.png", "rockmen_base-10.png", "rockmen_base-11.png"],
+	"walking_Right": ["rockmen_base-4.png", "rockmen_base-5.png", "rockmen_base-6.png", "rockmen_base-7.png"],
+	"walking_Bottom": ["rockmen_base-0.png", "rockmen_base-1.png", "rockmen_base-2.png", "rockmen_base-3.png"],
+	"walking_Left": ["rockmen_base-12.png", "rockmen_base-13.png", "rockmen_base-14.png", "rockmen_base-15.png"],
 	"portrait": ["rockmen_base-93.png"]
 },
 "meta": {
