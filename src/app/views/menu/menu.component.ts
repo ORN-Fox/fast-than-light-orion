@@ -103,6 +103,13 @@ export class MenuComponent implements OnInit {
   changeLanguage(language: string)
   {
     this.i18nService.language = language;
+    this.settingsService.setSettings(this.settings);
+  }
+
+  updateAudioMusicVolume(volume: number)
+  {
+    this.menuMusic.volume = volume;
+    this.settingsService.setSettings(this.settings);
   }
 
   // private openFullscreen(elem: any) {
