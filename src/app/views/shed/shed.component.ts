@@ -10,6 +10,8 @@ import { ShipRenderService } from '../../core/services/shipRender/ship-render.s
 import { ShipsService } from '../../core/services/ships/ships.service';
 import { TexturesManagerService } from '../../core/services/texturesManager/textures-manager.service';
 
+import { NumberService } from '../../core/utils/number.service';
+
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
 import { Settings } from '../../core/models/settings/settings.model';
@@ -224,6 +226,14 @@ export class ShedComponent implements OnInit {
     {
       this.shipListIndex = 0;
     }
+
+    this.selectShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
+  }
+
+  randomShip()
+  {
+    this.shipListIndex = NumberService.randomIntFromInterval(0, 1);
+    this.shipListLayoutIndex = NumberService.randomIntFromInterval(0, 2);
 
     this.selectShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
   }
