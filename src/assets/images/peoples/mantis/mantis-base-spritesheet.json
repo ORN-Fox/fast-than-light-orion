@@ -1095,6 +1095,10 @@
 	"useComputer_Right": ["mantis_base-72.png", "mantis_base-73.png", "mantis_base-74.png", "mantis_base-75.png"],
 	"useComputer_Bottom": ["mantis_base-66.png", "mantis_base-67.png", "mantis_base-68.png", "mantis_base-69.png"],
 	"useComputer_Left": ["mantis_base-77.png", "mantis_base-78.png", "mantis_base-79.png", "mantis_base-80.png"],
+	"walking_Top": ["mantis_base-8.png", "mantis_base-9.png", "mantis_base-10.png", "mantis_base-11.png"],
+	"walking_Right": ["mantis_base-4.png", "mantis_base-5.png", "mantis_base-6.png", "mantis_base-7.png"],
+	"walking_Bottom": ["mantis_base-0.png", "mantis_base-1.png", "mantis_base-2.png", "mantis_base-3.png"],
+	"walking_Left": ["mantis_base-12.png", "mantis_base-13.png", "mantis_base-14.png", "mantis_base-15.png"],
 	"portrait": ["mantis_base-111.png"]
 },
 "meta": {

@@ -970,6 +970,10 @@
 	"useComputer_Right": ["engi_base-56.png", "engi_base-57.png", "engi_base-58.png", "engi_base-59.png"],
 	"useComputer_Bottom": ["engi_base-68.png", "engi_base-69.png", "engi_base-70.png", "engi_base-71.png"],
 	"useComputer_Left": ["engi_base-60.png", "engi_base-61.png", "engi_base-62.png", "engi_base-63.png"],
+	"walking_Top": ["engi_base-8.png", "engi_base-9.png", "engi_base-10.png", "engi_base-11.png"],
+	"walking_Right": ["engi_base-4.png", "engi_base-5.png", "engi_base-6.png", "engi_base-7.png"],
+	"walking_Bottom": ["engi_base-0.png", "engi_base-1.png", "engi_base-2.png", "engi_base-3.png"],
+	"walking_Left": ["engi_base-12.png", "engi_base-13.png", "engi_base-14.png", "engi_base-15.png"],
 	"portrait": ["engi_base-99.png"]
 },
 "meta": {

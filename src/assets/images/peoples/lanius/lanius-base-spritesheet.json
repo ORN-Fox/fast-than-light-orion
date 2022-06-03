@@ -906,6 +906,10 @@
 	"useComputer_Right": ["lanius_base-56.png", "lanius_base-57.png", "lanius_base-58.png", "lanius_base-59.png"],
 	"useComputer_Bottom": ["lanius_base-64.png", "lanius_base-65.png", "lanius_base-66.png", "lanius_base-67.png"],
 	"useComputer_Left": ["lanius_base-60.png", "lanius_base-61.png", "lanius_base-62.png", "lanius_base-63.png"],
+	"walking_Top": ["lanius_base-8.png", "lanius_base-9.png", "lanius_base-10.png", "lanius_base-11.png"],
+	"walking_Right": ["lanius_base-4.png", "lanius_base-5.png", "lanius_base-6.png", "lanius_base-7.png"],
+	"walking_Bottom": ["lanius_base-0.png", "lanius_base-1.png", "lanius_base-2.png", "lanius_base-3.png"],
+	"walking_Left": ["lanius_base-12.png", "lanius_base-13.png", "lanius_base-14.png", "lanius_base-15.png"],
 	"portrait": ["lanius_base-94.png"]
 },
 "meta": {

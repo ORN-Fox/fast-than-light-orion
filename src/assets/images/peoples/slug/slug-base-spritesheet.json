@@ -951,6 +951,10 @@
 	"useComputer_Right": ["slug_base-56.png", "slug_base-57.png", "slug_base-58.png", "slug_base-59.png"],
 	"useComputer_Bottom": ["slug_base-78.png", "slug_base-79.png", "slug_base-80.png", "slug_base-81.png"],
 	"useComputer_Left": ["slug_base-69.png", "slug_base-70.png", "slug_base-71.png", "slug_base-72.png"],
+	"walking_Top": ["slug_base-8.png", "slug_base-9.png", "slug_base-10.png", "slug_base-11.png"],
+	"walking_Right": ["slug_base-4.png", "slug_base-5.png", "slug_base-6.png", "slug_base-7.png"],
+	"walking_Bottom": ["slug_base-0.png", "slug_base-1.png", "slug_base-2.png", "slug_base-3.png"],
+	"walking_Left": ["slug_base-12.png", "slug_base-13.png", "slug_base-14.png", "slug_base-15.png"],
 	"portrait": ["slug_base-96.png"]
 },
 "meta": {

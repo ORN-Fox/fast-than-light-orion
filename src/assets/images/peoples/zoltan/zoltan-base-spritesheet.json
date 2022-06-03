@@ -870,6 +870,10 @@
 	"useComputer_Right": ["zoltan_base-58.png", "zoltan_base-59.png", "zoltan_base-60.png", "zoltan_base-61.png"],
 	"useComputer_Bottom": ["zoltan_base-70.png", "zoltan_base-71.png", "zoltan_base-72.png", "zoltan_base-73.png"],
 	"useComputer_Left": ["zoltan_base-62.png", "zoltan_base-63.png", "zoltan_base-64.png", "zoltan_base-65.png"],
+	"walking_Top": ["zoltan_base-8.png", "zoltan_base-9.png", "zoltan_base-10.png", "zoltan_base-11.png"],
+	"walking_Right": ["zoltan_base-4.png", "zoltan_base-5.png", "zoltan_base-6.png", "zoltan_base-7.png"],
+	"walking_Bottom": ["zoltan_base-0.png", "zoltan_base-1.png", "zoltan_base-2.png", "zoltan_base-3.png"],
+	"walking_Left": ["zoltan_base-12.png", "zoltan_base-13.png", "zoltan_base-14.png", "zoltan_base-15.png"],
 	"portrait": ["zoltan_base-88.png"]
 },
 "meta": {

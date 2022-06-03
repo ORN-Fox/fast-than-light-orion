@@ -906,6 +906,10 @@
 	"useComputer_Right": ["crystal_base-56.png", "crystal_base-57.png", "crystal_base-58.png", "crystal_base-59.png"],
 	"useComputer_Bottom": ["crystal_base-68.png", "crystal_base-69.png", "crystal_base-70.png", "crystal_base-71.png"],
 	"useComputer_Left": ["crystal_base-60.png", "crystal_base-61.png", "crystal_base-62.png", "crystal_base-63.png"],
+	"walking_Top": ["crystal_base-8.png", "crystal_base-9.png", "crystal_base-10.png", "crystal_base-11.png"],
+	"walking_Right": ["crystal_base-4.png", "crystal_base-5.png", "crystal_base-6.png", "crystal_base-7.png"],
+	"walking_Bottom": ["crystal_base-0.png", "crystal_base-1.png", "crystal_base-2.png", "crystal_base-3.png"],
+	"walking_Left": ["crystal_base-12.png", "crystal_base-13.png", "crystal_base-14.png", "crystal_base-15.png"],
 	"portrait": ["crystal_base-92.png"]
 },
 "meta": {
