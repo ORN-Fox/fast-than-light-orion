@@ -1,8 +1,6 @@
-// import * as PIXI from 'pixi.js' // Many errors on typescript
-declare var PIXI: any;
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AnimatedSprite, Application, Container, Sprite } from 'pixi.js';
 
 import { GameService } from '../../core/services/game/game.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
@@ -99,7 +97,7 @@ export class ShedComponent implements OnInit {
 
   initShepPage()
   {
-    this.app = new PIXI.Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
+    this.app = new Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
     document.querySelector('#canvsPixi')!.appendChild(this.app.view);
 
     const shedBody = document.querySelector('.shed') as HTMLElement;
@@ -115,7 +113,7 @@ export class ShedComponent implements OnInit {
     shedGUIContainer.style.height = `${this.canvasHeight}px`;
     shedGUIContainer.style.width = `${this.canvasWidth}px`;
 
-    this.shedContainer = new PIXI.Container();
+    this.shedContainer = new Container();
     this.app.stage.addChild(this.shedContainer);
 
     const shipsListGUIContainer = document.querySelector('.modal') as HTMLElement;
@@ -127,14 +125,14 @@ export class ShedComponent implements OnInit {
   {
     this.selectedShip = ship;
 
-    this.shipGUIContainer = new PIXI.Container();
+    this.shipGUIContainer = new Container();
 
-    this.shipContainer = new PIXI.Container();
+    this.shipContainer = new Container();
     this.shipContainer.x = 300;
     this.shipContainer.height = 400;
     this.shipContainer.width = 660;
 
-    this.shipFloorContainer = new PIXI.Container();
+    this.shipFloorContainer = new Container();
     this.shipFloorContainer.x = 300;
     this.shipFloorContainer.y = 0;
     this.shipFloorContainer.height = 400;
@@ -142,13 +140,13 @@ export class ShedComponent implements OnInit {
 
     this.app.stage.addChild(this.shipGUIContainer, this.shipContainer, this.shipFloorContainer);
 
-    const shipHull = PIXI.Sprite.from(this.selectedShip.srcHullSprite);
+    const shipHull = Sprite.from(this.selectedShip.srcHullSprite);
     shipHull.x = this.selectedShip.hullSpriteX - 300; // - 300px is temporary use for positioning floor ship sprite on shed view
     shipHull.y = this.selectedShip.hullSpriteY;
 
     this.shipContainer.addChild(shipHull);
 
-    let selectedShipFloor = PIXI.Sprite.from(this.selectedShip.srcInteriorSprite);
+    let selectedShipFloor = Sprite.from(this.selectedShip.srcInteriorSprite);
     selectedShipFloor.x = this.selectedShip.interiorSpriteX - 300; // - 300px is temporary use for positioning floor ship sprite on shed view
     selectedShipFloor.y = this.selectedShip.interiorSpriteY;
 
@@ -161,19 +159,19 @@ export class ShedComponent implements OnInit {
     const humanFemaleSheet = this.texturesManagerService.getRaceSheetForRace('human-female');
     const humanAnimationSpeed = .1;
 
-    let animatedShipEngineerSprite = new PIXI.AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);
+    let animatedShipEngineerSprite = new AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);
     animatedShipEngineerSprite.x = 100;
     animatedShipEngineerSprite.y = 109;
 
-    let animatedShipEngineerReparingDroneSprite = new PIXI.AnimatedSprite(humanMaleSheet.animations["repair"]);
+    let animatedShipEngineerReparingDroneSprite = new AnimatedSprite(humanMaleSheet.animations["repair"]);
     animatedShipEngineerReparingDroneSprite.x = 1120;
     animatedShipEngineerReparingDroneSprite.y = 114;
 
-    let animatedShipEngineerReparingMissileSprite = new PIXI.AnimatedSprite(humanFemaleSheet.animations["repair"]);
+    let animatedShipEngineerReparingMissileSprite = new AnimatedSprite(humanFemaleSheet.animations["repair"]);
     animatedShipEngineerReparingMissileSprite.x = 1206;
     animatedShipEngineerReparingMissileSprite.y = 332;
 
-    let animatedShipEngineerReparingShipSprite = new PIXI.AnimatedSprite(humanFemaleSheet.animations["repair"]);
+    let animatedShipEngineerReparingShipSprite = new AnimatedSprite(humanFemaleSheet.animations["repair"]);
     animatedShipEngineerReparingShipSprite.x = 1100;
     animatedShipEngineerReparingShipSprite.y = 362;
 

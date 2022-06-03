@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-declare var PIXI: any;
+import { sound } from '@pixi/sound';
 
 import { GameService } from '../../core/services/game/game.service';
 import { I18nService } from '../../core/services/translations/i18n.service';
@@ -67,10 +67,7 @@ export class MenuComponent implements OnInit {
 
   private playMenuMusic()
   {
-    this.menuMusic = PIXI.sound.Sound.from({
-      url: 'assets/sounds/music/bp_MUS_TitleScreen.ogg',
-      loop: true
-    });
+    this.menuMusic = sound.add('main-theme', 'assets/sounds/music/bp_MUS_TitleScreen.ogg');
     this.menuMusic.play();
   }
 

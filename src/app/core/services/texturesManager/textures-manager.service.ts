@@ -1,4 +1,4 @@
-declare var PIXI: any;
+import { Loader } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
@@ -9,9 +9,9 @@ export class TexturesManagerService {
 
   constructor() {}
 
-  loadRacesSpritesheets(callbackFunction: Function)
+  loadRacesSpritesheets(callbackFunction: any)
   {
-    PIXI.Loader.shared
+    Loader.shared
       .add("/assets/images/effects/thrusters_on.json")
       .add("/assets/images/peoples/crystal/crystal-base-spritesheet.json")
       .add("/assets/images/peoples/engi/engi-base-spritesheet.json")
@@ -25,36 +25,36 @@ export class TexturesManagerService {
       .load(callbackFunction);
   }
 
-  getRaceSheetForRace(name: string)
+  getRaceSheetForRace(name: string): any
   {
     switch (name)
     {
       case 'crystal':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/crystal/crystal-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/crystal/crystal-base-spritesheet.json"].spritesheet;
 
       case 'engi':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/engi/engi-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/engi/engi-base-spritesheet.json"].spritesheet;
 
       case 'human-female':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/human-female/human-female-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/human-female/human-female-base-spritesheet.json"].spritesheet;
 
       case 'human-male':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/human-male/human-male-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/human-male/human-male-base-spritesheet.json"].spritesheet;
 
       case 'lanius':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/lanius/lanius-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/lanius/lanius-base-spritesheet.json"].spritesheet;
 
       case 'mantis':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/mantis/mantis-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/mantis/mantis-base-spritesheet.json"].spritesheet;
 
       case 'rockmen':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/rockmen/rockmen-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/rockmen/rockmen-base-spritesheet.json"].spritesheet;
 
       case 'slug':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/slug/slug-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/slug/slug-base-spritesheet.json"].spritesheet;
 
       case 'zoltan':
-        return PIXI.Loader.shared.resources["/assets/images/peoples/zoltan/zoltan-base-spritesheet.json"].spritesheet;
+        return Loader.shared.resources["/assets/images/peoples/zoltan/zoltan-base-spritesheet.json"].spritesheet;
     }
   }
 }

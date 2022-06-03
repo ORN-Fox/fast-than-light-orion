@@ -1,4 +1,4 @@
-declare var PIXI: any;
+import { AnimatedSprite, Graphics, Loader, Sprite } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
@@ -37,16 +37,16 @@ export class ShipRenderService {
   {
     if (ship instanceof KestrelShip)
     {
-      const thrustersOnSheet = PIXI.Loader.shared.resources["/assets/images/effects/thrusters_on.json"].spritesheet;
+      const thrustersOnSheet = Loader.shared.resources["/assets/images/effects/thrusters_on.json"].spritesheet as any;
       const thrustersAnimationSpeed = .12;
 
-      let animatedThrustersLeftSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
+      let animatedThrustersLeftSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
       animatedThrustersLeftSprite.x = 72;
       animatedThrustersLeftSprite.y = 75;
       animatedThrustersLeftSprite.animationSpeed = thrustersAnimationSpeed;
       animatedThrustersLeftSprite.play();
 
-      let animatedThrustersRightSprite = new PIXI.AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
+      let animatedThrustersRightSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
       animatedThrustersRightSprite.x = 72;
       animatedThrustersRightSprite.y = 340;
       animatedThrustersRightSprite.animationSpeed = thrustersAnimationSpeed;
@@ -59,12 +59,12 @@ export class ShipRenderService {
   loadRoomsGUIofShip(shipFloorContainer: any, ship: Ship, isShedMode: boolean)
   {
     for (let room of ship.rooms) {
-      let roomTileBorder = new PIXI.Graphics()
+      let roomTileBorder = new Graphics()
         .beginFill(0x000000)
         .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.width + 4, room.roomDisplaySettings.height + 4)
         .endFill();
 
-      room.roomTile = new PIXI.Graphics()
+      room.roomTile = new Graphics()
         .beginFill(room.getBackgroundColorForOxygenLevel())
         .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.width, room.roomDisplaySettings.height)
         .endFill();
@@ -73,7 +73,7 @@ export class ShipRenderService {
 
       this.loadRoomGrid(shipFloorContainer, room);
 
-      room.noOxygenInRoomSprite = new PIXI.Sprite.from(`/assets/images/effects/low_o2_stripes_${room.roomDisplaySettings.sizeX}x${room.roomDisplaySettings.sizeY}.png`);
+      room.noOxygenInRoomSprite = Sprite.from(`/assets/images/effects/low_o2_stripes_${room.roomDisplaySettings.sizeX}x${room.roomDisplaySettings.sizeY}.png`);
       room.noOxygenInRoomSprite.x = room.roomDisplaySettings.x;
       room.noOxygenInRoomSprite.y = room.roomDisplaySettings.y;
       room.noOxygenInRoomSprite.height = room.roomDisplaySettings.height;
@@ -91,7 +91,7 @@ export class ShipRenderService {
             {
               for (let i = 0; i < room.roomDisplaySettings.sizeX; i++) {
                 for (let y = 0; y < room.roomDisplaySettings.sizeY; y++) {
-                  let roomTeleportSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+                  let roomTeleportSystemInterior = Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
                   roomTeleportSystemInterior.x = room.roomDisplaySettings.x + 4 + (i * DEFAULT_TILE_WIDTH); // 4px for center teleport sprite texture
                   roomTeleportSystemInterior.y = room.roomDisplaySettings.y + 4 + (y * DEFAULT_TILE_HEIGHT);
                   roomTeleportSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
@@ -102,7 +102,7 @@ export class ShipRenderService {
             }
             else
             {
-              let roomSystemInterior = new PIXI.Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
+              let roomSystemInterior = Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
               roomSystemInterior.x = room.roomDisplaySettings.x - 2;
               roomSystemInterior.y = room.roomDisplaySettings.y - 2;
               roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
@@ -111,7 +111,7 @@ export class ShipRenderService {
             }
           }
 
-          let roomSystemIcon = new PIXI.Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
+          let roomSystemIcon = Sprite.from(room.affectedSystem.srcSystemOverlaySprite);
           roomSystemIcon.x = room.roomDisplaySettings.getRoomSystemIconPositionX();
           roomSystemIcon.y = room.roomDisplaySettings.getRoomSystemIconPositionY();
           roomSystemIcon.alpha = room.affectedSystem.isInstalled ? 1 : .5;
@@ -149,7 +149,7 @@ export class ShipRenderService {
 
                 if (slot && slot.crew && slot.crew.id == room.affectedCrew.id)
                 {
-                  let crewMember = new PIXI.AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
+                  let crewMember = new AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
                   crewMember.x = room.roomDisplaySettings.x + (DEFAULT_TILE_WIDTH * slot.slotPositionX) + 16.5; // 16.5 = 33 / 2 for position crew in center of slot
                   crewMember.y = room.roomDisplaySettings.y + (DEFAULT_TILE_HEIGHT * slot.slotPositionY) + 16.5;
                   crewMember.animationSpeed = raceSpeed;
@@ -172,7 +172,7 @@ export class ShipRenderService {
     if (room.roomDisplaySettings.sizeX > 1)
     {
       for (let verticalLineIndex = 1; verticalLineIndex < room.roomDisplaySettings.sizeX; verticalLineIndex++) {
-        let roomTileSlotLine = new PIXI.Graphics()
+        let roomTileSlotLine = new Graphics()
           .beginFill(0xb4b1ac)
           .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.height)
           .endFill();
@@ -184,7 +184,7 @@ export class ShipRenderService {
     if (room.roomDisplaySettings.sizeY > 1)
     {
       for (let horizontalLineIndex = 1; horizontalLineIndex < room.roomDisplaySettings.sizeY; horizontalLineIndex++) {
-        let roomTileSlotLine = new PIXI.Graphics()
+        let roomTileSlotLine = new Graphics()
           .beginFill(0xb4b1ac)
           .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.width, 1)
           .endFill();
@@ -199,7 +199,7 @@ export class ShipRenderService {
     for (let i = 0; i < ship.doors.length; i++) {
       let door = ship.doors[i];
 
-      let doorSprite = new PIXI.Sprite.from(door.getSrcDoorSprite());
+      let doorSprite = Sprite.from(door.getSrcDoorSprite());
       doorSprite.x = door.x;
       doorSprite.y = door.y;
 
@@ -219,7 +219,7 @@ export class ShipRenderService {
   loadSystemsGUIofShip(shipGUIContainer: any, ship: Ship)
   {
     for (let i = 0; i < ship.rooms.length; i++) {
-      let shipSystemGUI = PIXI.Sprite.from('/assets/images/gui/box_system_on.png');
+      let shipSystemGUI = Sprite.from('/assets/images/gui/box_system_on.png');
       shipSystemGUI.x = 380 + (i * 38);
       shipSystemGUI.y = 382;
 
@@ -227,14 +227,14 @@ export class ShipRenderService {
 
       if (room.affectedSystem && room.affectedSystem.isInstalled)
       {
-        let shipSystemIconGUI = PIXI.Sprite.from(room.affectedSystem!.srcSystemGreenSprite);
+        let shipSystemIconGUI = Sprite.from(room.affectedSystem!.srcSystemGreenSprite);
         shipSystemIconGUI.x = 367 + (i * 38);
         shipSystemIconGUI.y = 427;
 
         shipGUIContainer.addChild(shipSystemGUI, shipSystemIconGUI);
 
         for (let y = 0; y < room.affectedSystem!.level; y++) {
-          let shipSystemLevel = new PIXI.Graphics()
+          let shipSystemLevel = new Graphics()
           shipSystemLevel
             .beginFill(0x3ff33c)
             .drawRect(391.5 + (i * 38), 435 + (y * -7), 15, 5)
@@ -249,7 +249,7 @@ export class ShipRenderService {
   loadCrewsGUIofShip(shipGUIContainer: any, ship: Ship)
   {
     for (let i = 0; i < 2; i++) {
-      let shipCrewLineOneGUI = PIXI.Sprite.from(`/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`);
+      let shipCrewLineOneGUI = Sprite.from(`/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`);
       shipCrewLineOneGUI.x = 60 + (i * 150);
       shipCrewLineOneGUI.y = 530;
 
@@ -261,7 +261,7 @@ export class ShipRenderService {
       {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
 
-        let crewMemberLineOne = PIXI.Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
+        let crewMemberLineOne = Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
         crewMemberLineOne.x = 112 + (i * 150);
         crewMemberLineOne.y = 558;
         crewMemberLineOne.height = 60;
@@ -272,7 +272,7 @@ export class ShipRenderService {
     }
 
     for (let y = 0; y < 2; y++) {
-      let shipCrewLineTwoGUI = PIXI.Sprite.from(`/assets/images/gui/box_crew_${ y + 2 < ship.crews.length ? 'on' : 'off'}.png`);
+      let shipCrewLineTwoGUI = Sprite.from(`/assets/images/gui/box_crew_${ y + 2 < ship.crews.length ? 'on' : 'off'}.png`);
       shipCrewLineTwoGUI.x = 60 + (y * 150);
       shipCrewLineTwoGUI.y = 620;
 
@@ -284,7 +284,7 @@ export class ShipRenderService {
       {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
 
-        let crewMemberLineTwo = PIXI.Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
+        let crewMemberLineTwo = Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
         crewMemberLineTwo.x = 112 + (y * 150);
         crewMemberLineTwo.y = 648;
         crewMemberLineTwo.height = 60;
@@ -298,7 +298,7 @@ export class ShipRenderService {
   loadWeasponsGUIofShip(shipGUIContainer: any, ship: Ship)
   {
     for (let i = 0; i < ship.maxWeaponsAllowed; i++) {
-      let shipWeaponGUI = PIXI.Sprite.from(`/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`);
+      let shipWeaponGUI = Sprite.from(`/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`);
       shipWeaponGUI.x = 425 + (i * 120);
       shipWeaponGUI.y = 515;
 
@@ -313,7 +313,7 @@ export class ShipRenderService {
     if (ship.drones.length > 0)
     {
       for (let i = 0; i < ship.maxDronesAllowed; i++) {
-        let shipDroneGUI = PIXI.Sprite.from(`/assets/images/gui/box_drones_${ i < ship.drones.length ? 'on' : 'off'}.png`);
+        let shipDroneGUI = Sprite.from(`/assets/images/gui/box_drones_${ i < ship.drones.length ? 'on' : 'off'}.png`);
         shipDroneGUI.x = 425 + (i * 120);
         shipDroneGUI.y = 625;
 
@@ -327,7 +327,7 @@ export class ShipRenderService {
   loadUpgradesGUIOfShip(shipGUIContainer: any, ship: Ship)
   {
     for (let i = 0; i < ship.maxUpgradesAllowed; i++) {
-      let shipDroneGUI = PIXI.Sprite.from(`/assets/images/gui/box_augment_${ i < ship.upgrades.length ? 'on' : 'off'}.png`);
+      let shipDroneGUI = Sprite.from(`/assets/images/gui/box_augment_${ i < ship.upgrades.length ? 'on' : 'off'}.png`);
       shipDroneGUI.x = 990;
       shipDroneGUI.y = 529 + (i * 60);
 

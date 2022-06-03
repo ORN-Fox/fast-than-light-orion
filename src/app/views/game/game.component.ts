@@ -1,6 +1,5 @@
-declare var PIXI: any;
-
 import { Component, OnInit } from '@angular/core';
+import { Application, Container, Sprite } from 'pixi.js';
 
 import { GameService } from '../../core/services/game/game.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
@@ -40,7 +39,7 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.app = new PIXI.Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
+    this.app = new Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
     document.querySelector('#canvsPixi')!.appendChild(this.app.view);
 
     const gameBody = document.querySelector('.game') as HTMLElement;
@@ -52,7 +51,7 @@ export class GameComponent implements OnInit {
       (gameBody.style as any).zoom = 1.5;
     }
 
-    this.gameContainer = new PIXI.Container();
+    this.gameContainer = new Container();
     this.app.stage.addChild(this.gameContainer);
 
     this.loadSelectedShip(this.game.ship);
@@ -61,13 +60,13 @@ export class GameComponent implements OnInit {
 
   loadSelectedShip(ship: Ship)
   {
-    this.shipContainer = new PIXI.Container();
+    this.shipContainer = new Container();
     this.shipContainer.x = 300;
     this.shipContainer.y = 100;
     this.shipContainer.height = 400;
     this.shipContainer.width = 660;
 
-    this.shipFloorContainer = new PIXI.Container();
+    this.shipFloorContainer = new Container();
     this.shipFloorContainer.x = 300;
     this.shipFloorContainer.y = 100;
     this.shipFloorContainer.height = 400;
@@ -75,13 +74,13 @@ export class GameComponent implements OnInit {
 
     this.app.stage.addChild(this.shipContainer, this.shipFloorContainer);
 
-    const shipHull = PIXI.Sprite.from(ship.srcHullSprite);
+    const shipHull = Sprite.from(ship.srcHullSprite);
     shipHull.x = ship.hullSpriteX - 300; // - 300px is temporary use for positioning floor ship sprite on shed view
     shipHull.y = ship.hullSpriteY;
 
     this.shipContainer.addChild(shipHull);
 
-    let selectedShipFloor = PIXI.Sprite.from(ship.srcInteriorSprite);
+    let selectedShipFloor = Sprite.from(ship.srcInteriorSprite);
     selectedShipFloor.x = ship.interiorSpriteX - 300; // - 300px is temporary use for positioning floor ship sprite on shed view
     selectedShipFloor.y = ship.interiorSpriteY;
 
