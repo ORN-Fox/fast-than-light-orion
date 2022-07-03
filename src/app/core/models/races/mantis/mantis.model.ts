@@ -5,7 +5,6 @@ export class Mantis extends Race {
   constructor() {
     super();
 
-    this.name = 'Mantis';
     this.type = RaceType.Mantis;
     this.storeCost = 55;
 
