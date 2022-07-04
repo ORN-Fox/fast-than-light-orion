@@ -1,3 +1,5 @@
+import { CrewsService } from '../../../services/crews/crews.service';
+
 import { KestrelShip } from './kestrelShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
@@ -10,7 +12,8 @@ import { Slot } from '../../slot/slot.model';
 import { DualLasers, IonStunner } from '../../weapons/index';
 
 export class KestrelLayoutC extends KestrelShip {
-  constructor() {
+
+  constructor(crewsService: CrewsService) {
     super();
 
     this.name = this.originalName = 'The Swallow';
@@ -23,9 +26,9 @@ export class KestrelLayoutC extends KestrelShip {
     this.droneParts = 3;
 
     this.crews = [
-      new Crew('Human 1', new Human(), Gender.Male),
-      new Crew('Human 2', new Human(), Gender.Female),
-      new Crew('Lanius', new Lanius(), Gender.Other)
+      crewsService.createCrew(new Human(), Gender.Male),
+      crewsService.createCrew(new Human(), Gender.Female),
+      crewsService.createCrew(new Lanius(), Gender.Other)
     ];
 
     let shieldRoom = new Room(new RoomDisplaySettings(198, 211, 2, 2), new Shield(2, SystemPositionEnum.Left, 3)),

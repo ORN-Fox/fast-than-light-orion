@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CrewsService } from '../crews/crews.service';
 
 import { EngiLayoutA, EngiLayoutB, EngiLayoutC, KestrelLayoutA, KestrelLayoutB, KestrelLayoutC, ShipList } from '../../models/ships/index';
 
@@ -9,17 +10,17 @@ export class ShipsService {
 
   private ships: ShipList[];
 
-  constructor() {
+  constructor(private crewsService: CrewsService) {
     this.ships = [
       new ShipList('kestrel', [
-        new KestrelLayoutA(),
-        new KestrelLayoutB(),
-        new KestrelLayoutC()
+        new KestrelLayoutA(this.crewsService),
+        new KestrelLayoutB(this.crewsService),
+        new KestrelLayoutC(this.crewsService)
       ]),
       new ShipList('engi', [
-        new EngiLayoutA(),
-        new EngiLayoutB(),
-        new EngiLayoutC(),
+        new EngiLayoutA(this.crewsService),
+        new EngiLayoutB(this.crewsService),
+        new EngiLayoutC(this.crewsService),
       ])
     ];
   }

@@ -5,6 +5,7 @@ export class Slug extends Race {
   constructor() {
     super();
 
+    this.name = 'slug';
     this.type = RaceType.Slug;
     this.storeCost = 45;
 

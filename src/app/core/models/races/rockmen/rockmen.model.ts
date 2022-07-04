@@ -5,6 +5,7 @@ export class Rockmen extends Race {
   constructor() {
     super();
 
+    this.name = 'rockmen';
     this.type = RaceType.Rockmen;
     this.storeCost = 55;
 

@@ -5,6 +5,7 @@ export class Engi extends Race {
   constructor() {
     super();
 
+    this.name = 'engi';
     this.type = RaceType.Engi;
     this.storeCost = 50;
 

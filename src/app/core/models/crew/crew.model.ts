@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from 'uuid';
-import { TranslateService } from '@ngx-translate/core';
 
 import { Race, RaceType } from '../races/race.model';
 
@@ -20,23 +19,18 @@ export class Crew {
   // TODO
 
   constructor(
-    private translateService: TranslateService,
+    name: string,
     race: Race,
     gender: number
   ) {
     this.id = uuidv4();
-    this.name = this.getRandomName();
+    this.name = name;
+    console.log('name', name)
     this.race = race;
     this.gender = gender;
 
     // Skills related
     // TODO
-  }
-
-  getRandomName(): string
-  {
-    let randomNumber = Math.floor(Math.random() * 20);
-    return this.translateService.instant(`commons.races.${this.getRaceNameWithGender()}.name-${randomNumber}`);
   }
 
   getRaceNameWithGender(): string

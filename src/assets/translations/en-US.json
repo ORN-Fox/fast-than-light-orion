@@ -45,7 +45,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       },
       "engi": {
         "name-1": "Blanche",
@@ -67,7 +67,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       },
       "human-female": {
         "name-1": "Abigail",
@@ -89,7 +89,7 @@
         "name-17": "Vicky",
         "name-18": "Violet",
         "name-19": "Waverly",
-        "name-20": "Zoe",
+        "name-20": "Zoe"
       },
       "human-male": {
         "name-1": "Alex Payne",
@@ -111,7 +111,7 @@
         "name-17": "Maxwell",
         "name-18": "Stephen Eckman",
         "name-19": "Frederick",
-        "name-20": "Charle Collins",
+        "name-20": "Charle Collins"
       },
       "lanius": {
         "name-1": "Blanche",
@@ -133,7 +133,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       },
       "mantis": {
         "name-1": "Blanche",
@@ -155,7 +155,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       },
       "rockmen": {
         "name-1": "Blanche",
@@ -177,7 +177,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       },
       "slug": {
         "name-1": "Blanche",
@@ -199,7 +199,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       },
       "zoltan": {
         "name-1": "Blanche",
@@ -221,7 +221,7 @@
         "name-17": "Clémence",
         "name-18": "Jade",
         "name-19": "Lucy",
-        "name-20": "Claire",
+        "name-20": "Claire"
       }
     },
     "upgrades": "Upgrades",

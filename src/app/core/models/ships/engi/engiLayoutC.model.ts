@@ -1,3 +1,5 @@
+import { CrewsService } from '../../../services/crews/crews.service';
+
 import { EngiShip } from './engiShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
@@ -12,7 +14,8 @@ import { DefenseScrambler } from '../../upgrades/index';
 import { DualLasers } from '../../weapons/armory/lasers/dualLasers.model';
 
 export class EngiLayoutC extends EngiShip {
-  constructor() {
+
+  constructor(crewsService: CrewsService) {
     super();
 
     this.name = this.originalName = 'Tetragon';
@@ -25,9 +28,9 @@ export class EngiLayoutC extends EngiShip {
     this.droneParts = 25;
 
     this.crews = [
-      new Crew('Lanius 1', new Lanius(), Gender.Other),
-      new Crew('Engi 1', new Engi(), Gender.Other),
-      new Crew('Engi 2', new Engi(), Gender.Male)
+      crewsService.createCrew(new Lanius(), Gender.Other),
+      crewsService.createCrew(new Engi(), Gender.Other),
+      crewsService.createCrew(new Engi(), Gender.Male)
     ];
 
     let shieldRoom = new Room(new RoomDisplaySettings(306, 198, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),

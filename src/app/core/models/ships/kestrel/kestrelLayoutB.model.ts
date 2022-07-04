@@ -1,3 +1,5 @@
+import { CrewsService } from '../../../services/crews/crews.service';
+
 import { KestrelShip } from './kestrelShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
@@ -10,7 +12,8 @@ import { Slot } from '../../slot/slot.model';
 import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
 
 export class KestrelLayoutB extends KestrelShip {
-  constructor() {
+
+  constructor(crewsService: CrewsService) {
     super();
 
     this.name = this.originalName = 'Red-Tail';
@@ -23,10 +26,10 @@ export class KestrelLayoutB extends KestrelShip {
     this.droneParts = 0;
 
     this.crews = [
-      new Crew('Human 1', new Human(), Gender.Male),
-      new Crew('Human 2', new Human(), Gender.Female),
-      new Crew('Mantis', new Mantis(), Gender.Other),
-      new Crew('Zoltan', new Zoltan(), Gender.Other)
+      crewsService.createCrew(new Human(), Gender.Male),
+      crewsService.createCrew(new Human(), Gender.Female),
+      crewsService.createCrew(new Mantis(), Gender.Other),
+      crewsService.createCrew(new Zoltan(), Gender.Other)
     ];
 
     let shieldRoom = new Room(new RoomDisplaySettings(128, 122, 2, 2), new Shield(2, SystemPositionEnum.Top, 9), this.crews[2]), // Mantis

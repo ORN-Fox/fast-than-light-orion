@@ -1,3 +1,5 @@
+import { CrewsService } from '../../../services/crews/crews.service';
+
 import { EngiShip } from './engiShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
@@ -12,7 +14,8 @@ import { DroneReactorBooster } from '../../upgrades/index';
 import { HeavyIon, HeavyLaserI } from '../../weapons/index';
 
 export class EngiLayoutB extends EngiShip {
-  constructor() {
+
+  constructor(crewsService: CrewsService) {
     super();
 
     this.name = this.originalName = 'The Vortex';
@@ -25,7 +28,7 @@ export class EngiLayoutB extends EngiShip {
     this.droneParts = 6;
 
     this.crews = [
-      new Crew('Engi 1', new Engi(), Gender.Other)
+      crewsService.createCrew(new Engi(), Gender.Other)
     ];
 
     let shieldRoom = new Room(new RoomDisplaySettings(308, 266, 2, 1), new Shield(2, SystemPositionEnum.Bottom, 11)),
