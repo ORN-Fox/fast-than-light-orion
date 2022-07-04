@@ -60,7 +60,7 @@
 
         <div class="ships-crews-container">
             <div *ngFor="let crew of selectedShip.crews" class="ship-crew-content">
-                <p>{{crew.name}}</p>
+                <p class="ship-crew-name" title="{{crew.name}}">{{crew.name}}</p>
             </div>
         </div>
       </div>

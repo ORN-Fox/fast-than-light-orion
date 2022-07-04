@@ -215,6 +215,13 @@
           font-size: 0.85rem;
           height: 90px;
           width: 149px;
+
+          .ship-crew-name {
+            width: 80px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
         }
       }
     }
