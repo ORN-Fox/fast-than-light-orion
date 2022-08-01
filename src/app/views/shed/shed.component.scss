@@ -204,13 +204,13 @@
       .ships-crews-container {
         position: absolute;
         top: 84px;
-        left: 50px;
+        left: 40px;
         width: 300px;
         height: 121px;
 
         .ship-crew-content {
           color: white;
-          display: inline-flex;
+          display: inline-block;
           font-family: "CW Bitmap";
           font-size: 0.85rem;
           height: 90px;
@@ -219,8 +219,49 @@
           .ship-crew-name {
             width: 80px;
             text-overflow: ellipsis;
+            margin-left: 10px;
+            margin-bottom: 4px;
             overflow: hidden;
             white-space: nowrap;
+          }
+
+          .btn-customize-crew {
+            display: block;
+            width: 100px;
+            height: 16px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      .ships-crew-customization-bg-container {
+        position: absolute;
+        left: 30px;
+        top: 30px;
+        height: 170px;
+        width: 280px;
+        background: black;
+
+        .ships-crew-customization-container {
+          background: url('/assets/images/gui/box_crew_details.png') no-repeat;
+          display: inline-block;
+          position: relative;
+          height: 122px;
+          width: 205px;
+          top: 20px;
+          left: 42px;
+
+          .input-rename {
+            border: none;
+            color: white;
+            background: transparent;
+            position: absolute;
+            top: 65px;
+            font-family: "Aquire";
+            font-size: 1.5rem;
+            margin-left: 7px;
+            width: 190px;
+            outline: none;
           }
         }
       }

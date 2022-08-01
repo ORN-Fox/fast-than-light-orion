@@ -1,7 +1,9 @@
 {
   "commons": {
     "actions": {
+      "accept": "Accept",
       "continue": "Continue",
+      "customize": "Customize",
       "disabled": "Disabled",
       "enabled": "Enabled",
       "newGame": "New Game",
@@ -9,6 +11,7 @@
       "play": "Play",
       "quit": "Quit",
       "rename": "Rename",
+      "rename_abbr": "Rename",
       "settings": "Settings",
       "yes": "Yes"
     },

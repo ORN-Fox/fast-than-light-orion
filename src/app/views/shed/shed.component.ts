@@ -10,6 +10,7 @@ import { TexturesManagerService } from '../../core/services/texturesManager/text
 
 import { NumberService } from '../../core/utils/number.service';
 
+import { Crew } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
 import { Settings } from '../../core/models/settings/settings.model';
@@ -41,8 +42,10 @@ export class ShedComponent implements OnInit {
   shipFloorContainer: any;
 
   selectedShip: Ship;
+  selectedCrewForCustomization: Crew | null = null;
 
   renameShipEnabled: boolean = false;
+  renameCrewEnabled: boolean = false;
   displayRooms: boolean = true;
   shipHaveNoDroneControlSystem: boolean = false;
 
@@ -69,7 +72,7 @@ export class ShedComponent implements OnInit {
     this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
 
     let loadingComplete = () => {
-      this.loadShepAnimations();
+      // this.loadShepAnimations();
 
       this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
 
@@ -295,6 +298,33 @@ export class ShedComponent implements OnInit {
     renameShipInput.blur();
   }
 
+  openCrewCustomization(crew: Crew)
+  {
+    this.selectedCrewForCustomization = crew;
+    console.log('selectedCrewForCustomization', this.selectedCrewForCustomization);
+  }
+
+  closeCrewCustomization()
+  {
+    this.selectedCrewForCustomization = null;
+  }
+
+  openRenameCrewInput()
+  {
+    this.renameCrewEnabled = true;
+
+    let inputCrewRename = document.querySelector('#inputCrewRename') as HTMLInputElement;
+    inputCrewRename.focus();
+  }
+
+  closeRenameCrewInput()
+  {
+    this.renameShipEnabled = false;
+
+    let inputCrewRename = document.querySelector('#inputCrewRename') as HTMLInputElement;
+    inputCrewRename.blur();
+  }
+
   toggleShipRooms() {
     this.displayRooms = !this.displayRooms;
     this.shipFloorContainer.visible = this.displayRooms;
@@ -304,11 +334,32 @@ export class ShedComponent implements OnInit {
     this.game.advancedEditionEnabled = !this.game.advancedEditionEnabled;
   }
 
+  disablePlayButton()
+  {
+    return this.selectedShip.name == "" || this.crewNamingsIsInvalid();
+  }
+
   startGame() {
     this.game.ship = this.selectedShip;
     this.gameService.storeGame(this.game);
 
     this.router.navigate(['/game']);
+  }
+
+  private crewNamingsIsInvalid(): boolean
+  {
+    let isInvalid = false;
+
+    for (let crew of this.selectedShip.crews)
+    {
+      if (!crew.name)
+      {
+        isInvalid = true;
+        break;
+      }
+    }
+
+    return isInvalid;
   }
 
 }

@@ -1,14 +1,17 @@
 {
   "commons": {
     "actions": {
+      "accept": "Accepter",
       "continue": "Continuer",
+      "customize": "Personaliser",
       "disabled": "Désactivé",
       "enabled": "Activé",
       "newGame": "Nouvelle partie",
       "no": "Non",
       "play": "Jouer",
       "quit": "Quitter",
-      "rename": "Renom.",
+      "rename": "Renomer",
+      "rename_abbr": "Renom.",
       "settings": "Options",
       "yes": "Oui"
     },
