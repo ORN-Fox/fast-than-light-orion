@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
+import { NumberService } from '../../utils/number.service';
+
 import { Crew, Gender } from '../../models/crew/crew.model';
 import { Crystal,  Engi, Human, Lanius, Mantis, RaceType, Rockmen, Slug, Zoltan } from '../../models/races/index';
 
@@ -26,7 +28,6 @@ export class CrewsService {
       raceNameWithGender = `${raceNameWithGender}-${gender == Gender.Male ? 'male' : 'female'}`;
     }
 
-    let randomNumber = Math.floor(Math.random() * 20);
-    return this.translateService.instant(`commons.races.${raceNameWithGender}.name-${randomNumber}`);
+    return this.translateService.instant(`commons.races.${raceNameWithGender}.name-${NumberService.randomIntFromInterval(1, 20)}`);
   }
 }
