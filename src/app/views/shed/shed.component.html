@@ -68,8 +68,8 @@
         <div *ngIf="selectedCrewForCustomization" class="ships-crew-customization-bg-container">
           <div class="ships-crew-customization-container">
               <input type="text" id="inputCrewRename" class="input-rename" [(ngModel)]="selectedCrewForCustomization.name" (keyup.enter)="closeRenameCrewInput()" maxlength="16">
-              <button class="btn btn-rename" [ngClass]="{'active': renameCrewEnabled}" (click)="openRenameCrewInput()">{{'commons.actions.rename' | translate}}</button>
-              <button class="btn" (click)="closeCrewCustomization()" [disabled]="!selectedCrewForCustomization.name">{{'commons.actions.accept' | translate}}</button>
+              <button class="btn btn-rename-crew" [ngClass]="{'active': renameCrewEnabled}" (click)="openRenameCrewInput()">{{'commons.actions.rename' | translate}}</button>
+              <button class="btn btn-accept-crew" (click)="closeCrewCustomization()" [disabled]="!selectedCrewForCustomization.name">{{'commons.actions.accept' | translate}}</button>
           </div>
         </div>
       </div>

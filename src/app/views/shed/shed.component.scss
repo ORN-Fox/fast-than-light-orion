@@ -263,6 +263,22 @@
             width: 190px;
             outline: none;
           }
+
+          .btn-accept-crew, .btn-rename-crew {
+            top: 93px;
+            width: 94px;
+            height: 24px;
+            font-size: 1rem;
+            position: relative;
+          }
+
+          .btn-accept-crew {
+            left: 12px;
+          }
+
+          .btn-rename-crew {
+            left: 5px;
+          }
         }
       }
     }
