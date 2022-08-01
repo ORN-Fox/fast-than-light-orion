@@ -25,7 +25,6 @@ export class Crew {
   ) {
     this.id = uuidv4();
     this.name = name;
-    console.log('name', name)
     this.race = race;
     this.gender = gender;
 
