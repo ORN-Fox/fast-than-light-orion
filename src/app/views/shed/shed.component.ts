@@ -72,7 +72,7 @@ export class ShedComponent implements OnInit {
     this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
 
     let loadingComplete = () => {
-      // this.loadShepAnimations();
+      this.loadShepAnimations();
 
       this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
 
