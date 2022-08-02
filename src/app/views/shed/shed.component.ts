@@ -301,7 +301,6 @@ export class ShedComponent implements OnInit {
   openCrewCustomization(crew: Crew)
   {
     this.selectedCrewForCustomization = crew;
-    console.log('selectedCrewForCustomization', this.selectedCrewForCustomization);
   }
 
   closeCrewCustomization()
