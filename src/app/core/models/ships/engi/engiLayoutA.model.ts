@@ -44,7 +44,7 @@ export class EngiLayoutA extends EngiShip {
       sensorRoom = new Room(new RoomDisplaySettings(306, 194, 1, 2), new Sensor(1, SystemPositionEnum.Left, 4)),
       doorControlRoom = new Room(new RoomDisplaySettings(306, 264, 1, 2), new DoorControl(1, SystemPositionEnum.Right, 4)),
       batteryRoom = new Room(new RoomDisplaySettings(200, 160, 1, 2), new Battery(1, 6, false)),
-      hackingRoom = new Room(new RoomDisplaySettings(273, 125, 2, 1), new Hacking(1, 2, false)), // Manage advancedEditionEnabled
+      hackingRoom = new Room(new RoomDisplaySettings(273, 125, 2, 1), new Hacking(1, 2, false)),
       topOfHackingRoom = new Room(new RoomDisplaySettings(273, 88, 2, 1)), // Top of hacking room
       cloackingRoom = new Room(new RoomDisplaySettings(342, 92, 1, 2), new Cloacking(1, 4, false)),
       mindControlRoom = new Room(new RoomDisplaySettings(342, 230, 1, 2), new MindControl(1, 6, false)),

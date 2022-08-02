@@ -6,7 +6,5 @@ export class DefenseScrambler extends Upgrade {
 
     this.name = 'Defense Scrambler';
     this.cost = 80;
-
-    // Advanced Edition only
   }
 }

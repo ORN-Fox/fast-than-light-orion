@@ -41,7 +41,7 @@ export class KestrelLayoutA extends KestrelShip {
       sensorRoom = new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor(1, SystemPositionEnum.Bottom)),
       doorControlRoom = new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
       teleportRoom = new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
-      hackingRoom = new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons // Manage advancedEditionEnabled
+      hackingRoom = new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons
       batteryRoom = new Room(new RoomDisplaySettings(164, 140, 2, 1), new Battery(1, 0, false)), // Right on oxygen
       leftOnEngineRoom = new Room(new RoomDisplaySettings(57, 177, 1, 2)), // Left on engine
       topExternalDoorsRoom = new Room(new RoomDisplaySettings(269, 104, 2, 1)), // Top external doors on center of ship

@@ -6,14 +6,11 @@ export class Game {
   ship: Ship;
 
   difficulty: Difficulty;
-  advancedEditionEnabled: boolean;
 
   createdAt: Date;
   updatedAt: Date;
 
   constructor() {
-    this.advancedEditionEnabled = true;
-
     this.createdAt = new Date();
   }
 }

@@ -330,10 +330,6 @@ export class ShedComponent implements OnInit {
     this.shipFloorContainer.visible = this.displayRooms;
   }
 
-  toggleAdvancedEditionContentActivation() {
-    this.game.advancedEditionEnabled = !this.game.advancedEditionEnabled;
-  }
-
   disablePlayButton()
   {
     return this.selectedShip.name == "" || this.crewNamingsIsInvalid();

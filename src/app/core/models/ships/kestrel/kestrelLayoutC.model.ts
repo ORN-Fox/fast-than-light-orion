@@ -41,7 +41,7 @@ export class KestrelLayoutC extends KestrelShip {
       cloneBayRoom = new Room(new RoomDisplaySettings(408, 176, 2, 2), new CloneBay(1)),
       cloackingRoom = new Room(new RoomDisplaySettings(94, 140, 2, 1), new Cloacking(1, 3, false)),
       droneControlRoom = new Room(new RoomDisplaySettings(129, 176, 2, 2), new DroneControl(1, 13, false)),
-      hackingRoom = new Room(new RoomDisplaySettings(94, 245, 2, 1), new Hacking(1, 0, false)), // Manage advancedEditionEnabled
+      hackingRoom = new Room(new RoomDisplaySettings(94, 245, 2, 1), new Hacking(1, 0, false)),
       topExternalDoorsRoom = new Room(new RoomDisplaySettings(268, 104, 2, 1)), // Top external doors on center of ship
       bottomOfTopExternalDoorsRoom = new Room(new RoomDisplaySettings(268, 140, 2, 1)), // Bottom of top external doors
       topOfBottomExternalDoorsRoom = new Room(new RoomDisplaySettings(268, 246, 2, 1)), // Top of bottom external doors

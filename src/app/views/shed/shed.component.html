@@ -44,17 +44,6 @@
       <!-- Coming soon -->
       <!-- <img src="/assets/images/gui/box_shipach.png" alt="" class="ship-advancement-gui-image"> -->
 
-      <img src="/assets/images/gui/box_advanced.png" alt="" class="advanced-edition-gui-image">
-      <div class="advanced-edition-gui-container">
-        <p>{{'commons.advancedEditionContent' | translate }}</p>
-        <button class="btn btn-disabled-advanced-edition" [ngClass]="{'active': !game.advancedEditionEnabled}" (click)="toggleAdvancedEditionContentActivation()">
-          {{'commons.actions.disabled' | translate}}
-        </button>
-        <button class="btn btn-enabled-advanced-edition" [ngClass]="{'active': game.advancedEditionEnabled}" (click)="toggleAdvancedEditionContentActivation()">
-          {{'commons.actions.enabled' | translate}}
-        </button>
-      </div>
-
       <div class="ships-crews-gui-container">
         <p class="crews-label">{{'commons.crews' | translate}}</p>
 

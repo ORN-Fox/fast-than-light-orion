@@ -45,7 +45,7 @@ export class KestrelLayoutB extends KestrelShip {
       batteryRoom = new Room(new RoomDisplaySettings(302, 192, 2, 1), new Battery(1, 2, false)),
       dronesControlRoom = new Room(new RoomDisplaySettings(198, 266, 2, 2), new DroneControl(1, 12, false)),
       cloackingRoom = new Room(new RoomDisplaySettings(302, 229, 2, 2), new Cloacking(1, 2, false)),
-      hackingRoom = new Room(new RoomDisplaySettings(268, 299, 2, 1), new Hacking(1, 4, false)), // Manage advancedEditionEnabled
+      hackingRoom = new Room(new RoomDisplaySettings(268, 299, 2, 1), new Hacking(1, 4, false)),
       rightOfDoorControlRoom = new Room(new RoomDisplaySettings(442, 192, 2, 1)); // right of door control
 
     this.rooms = [
