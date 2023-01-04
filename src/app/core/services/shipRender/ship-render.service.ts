@@ -1,12 +1,14 @@
-import { AnimatedSprite, Graphics, Loader, Sprite } from 'pixi.js';
+import { AnimatedSprite, Graphics, Loader, Sprite, Text } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
 import { TexturesManagerService } from '../texturesManager/textures-manager.service';
 
 import { KestrelShip, Ship } from '../../models/ships/index';
-import { DEFAULT_TILE_HEIGHT, DEFAULT_TILE_WIDTH, Room } from '../../models/room/index';
+import { BORDER_TILE_SIZE, TILE_SIZE_WITH_BORDER, TILE_SIZE_WITHOUT_BORDER, Room } from '../../models/room/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
+
+export const MAX_SHIP_SLOT_X = 22, MAX_SHIP_SLOT_Y = 14;
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,56 @@ export class ShipRenderService {
 
     this.loadRoomsGUIofShip(shipFloorContainer, ship, isShedMode);
     this.loadDoorsGUIofShip(shipFloorContainer, ship);
+
+    // Dev mode
+    // this.loadShipDevGridGUI(shipFloorContainer);
+  }
+
+  loadShipDevGridGUI(shipFloorContainer: any)
+  {
+    let shipDevGrid = new Graphics();
+
+    for (let y = 0; y < MAX_SHIP_SLOT_Y; y++) {
+      for (let x = 0; x < MAX_SHIP_SLOT_X; x++) {
+        shipDevGrid
+          .lineStyle(2, 0xffffff, .5)
+          .drawRect(x * TILE_SIZE_WITH_BORDER, y * TILE_SIZE_WITH_BORDER, TILE_SIZE_WITH_BORDER - 2, TILE_SIZE_WITH_BORDER - 2);
+
+        console.log(shipDevGrid)
+      }
+    }
+
+    // Tile position X
+    for (let x = 0; x < MAX_SHIP_SLOT_X; x++) {
+      let tileXCoordinate = new Text(x, {
+        fontFamily: 'Arial',
+         fontSize: 16,
+         fill: 0xffffff,
+         align: 'center',
+      });
+
+      tileXCoordinate.x = (x + (x * TILE_SIZE_WITH_BORDER) + 2); // 2 px for text align
+      tileXCoordinate.y = MAX_SHIP_SLOT_Y * TILE_SIZE_WITH_BORDER + 20; // 20 px for text align
+
+      shipFloorContainer.addChild(tileXCoordinate);
+    }
+
+    // Tile position Y
+    for (let y = 0; y < MAX_SHIP_SLOT_Y; y++) {
+      let tileYCoordinate = new Text(y, {
+        fontFamily: 'Arial',
+         fontSize: 16,
+         fill: 0xffffff,
+         align: 'center',
+      });
+
+      tileYCoordinate.x = -30; // -30 px for text align
+      tileYCoordinate.y = (y + (y * TILE_SIZE_WITH_BORDER) + 8); // 8 px for text align
+
+      shipFloorContainer.addChild(tileYCoordinate);
+    }
+
+    shipFloorContainer.addChild(shipDevGrid);
   }
 
   loadThrustersAnimation(shipContainer: any, ship: Ship)
@@ -59,23 +111,22 @@ export class ShipRenderService {
   loadRoomsGUIofShip(shipFloorContainer: any, ship: Ship, isShedMode: boolean)
   {
     for (let room of ship.rooms) {
-      let roomTileBorder = new Graphics()
-        .beginFill(0x000000)
-        .drawRect(room.roomDisplaySettings.x - 2, room.roomDisplaySettings.y - 2, room.roomDisplaySettings.width + 4, room.roomDisplaySettings.height + 4)
-        .endFill();
+      console.log(room)
+      console.log(room.roomDisplaySettings.getRoomTilePositionX(), room.roomDisplaySettings.getRoomTilePositionY());
 
       room.roomTile = new Graphics()
+        .lineStyle(BORDER_TILE_SIZE, 0x000000)
         .beginFill(room.getBackgroundColorForOxygenLevel())
-        .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y, room.roomDisplaySettings.width, room.roomDisplaySettings.height)
+        .drawRect(room.roomDisplaySettings.getRoomTilePositionX(), room.roomDisplaySettings.getRoomTilePositionY(), room.roomDisplaySettings.width, room.roomDisplaySettings.height)
         .endFill();
 
-      shipFloorContainer.addChild(roomTileBorder, room.roomTile);
+      shipFloorContainer.addChild(room.roomTile);
 
       this.loadRoomGrid(shipFloorContainer, room);
 
       room.noOxygenInRoomSprite = Sprite.from(`/assets/images/effects/low_o2_stripes_${room.roomDisplaySettings.sizeX}x${room.roomDisplaySettings.sizeY}.png`);
-      room.noOxygenInRoomSprite.x = room.roomDisplaySettings.x;
-      room.noOxygenInRoomSprite.y = room.roomDisplaySettings.y;
+      room.noOxygenInRoomSprite.x = room.roomDisplaySettings.getRoomTilePositionX();
+      room.noOxygenInRoomSprite.y = room.roomDisplaySettings.getRoomTilePositionY();
       room.noOxygenInRoomSprite.height = room.roomDisplaySettings.height;
       room.noOxygenInRoomSprite.width = room.roomDisplaySettings.width;
       room.noOxygenInRoomSprite.visible = room.criticalOxygenLevel();
@@ -92,8 +143,8 @@ export class ShipRenderService {
               for (let i = 0; i < room.roomDisplaySettings.sizeX; i++) {
                 for (let y = 0; y < room.roomDisplaySettings.sizeY; y++) {
                   let roomTeleportSystemInterior = Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-                  roomTeleportSystemInterior.x = room.roomDisplaySettings.x + 4 + (i * DEFAULT_TILE_WIDTH); // 4px for center teleport sprite texture
-                  roomTeleportSystemInterior.y = room.roomDisplaySettings.y + 4 + (y * DEFAULT_TILE_HEIGHT);
+                  roomTeleportSystemInterior.x = room.roomDisplaySettings.getRoomTilePositionX() + (i * TILE_SIZE_WITH_BORDER);
+                  roomTeleportSystemInterior.y = room.roomDisplaySettings.getRoomTilePositionY() + (y * TILE_SIZE_WITH_BORDER);
                   roomTeleportSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
                   shipFloorContainer.addChild(roomTeleportSystemInterior);
@@ -103,8 +154,8 @@ export class ShipRenderService {
             else
             {
               let roomSystemInterior = Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-              roomSystemInterior.x = room.roomDisplaySettings.x - 2;
-              roomSystemInterior.y = room.roomDisplaySettings.y - 2;
+              roomSystemInterior.x = room.roomDisplaySettings.getRoomTilePositionX() - 2;
+              roomSystemInterior.y = room.roomDisplaySettings.getRoomTilePositionY() - 2;
               roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
               shipFloorContainer.addChild(roomSystemInterior);
@@ -147,11 +198,12 @@ export class ShipRenderService {
               for (let y = 0; y < ship.shipRepresentation[i].length; y++) {
                 let slot = ship.shipRepresentation[i][y];
 
+                // Affected crew rendering
                 if (slot && slot.crew && slot.crew.id == room.affectedCrew.id)
                 {
                   let crewMember = new AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
-                  crewMember.x = room.roomDisplaySettings.x + (DEFAULT_TILE_WIDTH * slot.slotPositionX) + 16.5; // 16.5 = 33 / 2 for position crew in center of slot
-                  crewMember.y = room.roomDisplaySettings.y + (DEFAULT_TILE_HEIGHT * slot.slotPositionY) + 16.5;
+                  crewMember.x = room.roomDisplaySettings.getRoomTilePositionX() + (TILE_SIZE_WITH_BORDER * slot.slotPositionX) + 17.5; // 17.5 = 35 / 2 for position crew in center of slot
+                  crewMember.y = room.roomDisplaySettings.getRoomTilePositionY() + (TILE_SIZE_WITH_BORDER * slot.slotPositionY) + 17.5;
                   crewMember.animationSpeed = raceSpeed;
                   crewMember.play();
 
@@ -174,7 +226,7 @@ export class ShipRenderService {
       for (let verticalLineIndex = 1; verticalLineIndex < room.roomDisplaySettings.sizeX; verticalLineIndex++) {
         let roomTileSlotLine = new Graphics()
           .beginFill(0xb4b1ac)
-          .drawRect(room.roomDisplaySettings.x + (verticalLineIndex * DEFAULT_TILE_HEIGHT), room.roomDisplaySettings.y, 1, room.roomDisplaySettings.height)
+          .drawRect(room.roomDisplaySettings.getRoomTilePositionX() + (verticalLineIndex * TILE_SIZE_WITH_BORDER), room.roomDisplaySettings.getRoomTilePositionY(), 1, room.roomDisplaySettings.height)
           .endFill();
 
         shipFloorContainer.addChild(roomTileSlotLine);
@@ -186,7 +238,7 @@ export class ShipRenderService {
       for (let horizontalLineIndex = 1; horizontalLineIndex < room.roomDisplaySettings.sizeY; horizontalLineIndex++) {
         let roomTileSlotLine = new Graphics()
           .beginFill(0xb4b1ac)
-          .drawRect(room.roomDisplaySettings.x, room.roomDisplaySettings.y + (horizontalLineIndex * DEFAULT_TILE_WIDTH), room.roomDisplaySettings.width, 1)
+          .drawRect(room.roomDisplaySettings.getRoomTilePositionX(), room.roomDisplaySettings.getRoomTilePositionY() + (horizontalLineIndex * TILE_SIZE_WITH_BORDER), room.roomDisplaySettings.width, 1)
           .endFill();
 
         shipFloorContainer.addChild(roomTileSlotLine);

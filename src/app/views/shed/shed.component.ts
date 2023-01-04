@@ -66,7 +66,7 @@ export class ShedComponent implements OnInit {
     this.shipsList = this.shipsService.getShips();
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.initShepPage();
 
     this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
@@ -132,12 +132,13 @@ export class ShedComponent implements OnInit {
 
     this.shipContainer = new Container();
     this.shipContainer.x = 300;
+    this.shipContainer.y = 0;
     this.shipContainer.height = 400;
     this.shipContainer.width = 660;
 
     this.shipFloorContainer = new Container();
     this.shipFloorContainer.x = 300;
-    this.shipFloorContainer.y = 0;
+    this.shipFloorContainer.y = 1;
     this.shipFloorContainer.height = 400;
     this.shipFloorContainer.width = 660;
 

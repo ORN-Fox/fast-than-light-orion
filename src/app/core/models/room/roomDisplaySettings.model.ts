@@ -1,5 +1,6 @@
-export const DEFAULT_TILE_HEIGHT: number = 33;
-export const DEFAULT_TILE_WIDTH: number = 33;
+export const TILE_SIZE_WITH_BORDER: number = 35; // px
+export const TILE_SIZE_WITHOUT_BORDER: number = 31; // px
+export const BORDER_TILE_SIZE: number = 2; // px
 
 export class RoomDisplaySettings
 {
@@ -21,17 +22,25 @@ export class RoomDisplaySettings
     this.sizeY = sizeY;
 
     // In pixels
-    this.height = this.sizeY * DEFAULT_TILE_HEIGHT;
-    this.width = this.sizeX * DEFAULT_TILE_WIDTH;
+    this.height = this.sizeY * TILE_SIZE_WITH_BORDER;
+    this.width = this.sizeX * TILE_SIZE_WITH_BORDER;
+  }
+
+  getRoomTilePositionX(): number {
+    return this.x * TILE_SIZE_WITH_BORDER;
+  }
+
+  getRoomTilePositionY(): number {
+    return this.y * TILE_SIZE_WITH_BORDER;
   }
 
   getRoomSystemIconPositionX(): number
   {
-    return this.x + (this.sizeX > 1 ? 17 : 0); // system icon sprite : 32x32 -> 17px to center icon
+    return this.getRoomTilePositionX() + (this.sizeX > 1 ? 17.5 : 0); // system icon sprite : 35x35 -> 17.5px to center icon
   }
 
   getRoomSystemIconPositionY(): number
   {
-    return this.y + (this.sizeY > 1 ? 17 : 0); // system icon sprite : 32x32 -> 17px to center icon
+    return this.getRoomTilePositionY() + (this.sizeY > 1 ? 17.5 : 0); // system icon sprite : 35x35 -> 17.5px to center icon
   }
 }
