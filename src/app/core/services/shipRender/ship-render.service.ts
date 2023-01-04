@@ -111,9 +111,6 @@ export class ShipRenderService {
   loadRoomsGUIofShip(shipFloorContainer: any, ship: Ship, isShedMode: boolean)
   {
     for (let room of ship.rooms) {
-      console.log(room)
-      console.log(room.roomDisplaySettings.getRoomTilePositionX(), room.roomDisplaySettings.getRoomTilePositionY());
-
       room.roomTile = new Graphics()
         .lineStyle(BORDER_TILE_SIZE, 0x000000)
         .beginFill(room.getBackgroundColorForOxygenLevel())
