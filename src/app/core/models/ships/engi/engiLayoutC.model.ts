@@ -33,23 +33,23 @@ export class EngiLayoutC extends EngiShip {
       crewsService.createCrew(new Engi(), Gender.Male)
     ];
 
-    let shieldRoom = new Room(new RoomDisplaySettings(306, 198, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),
-      engineRoom = new Room(new RoomDisplaySettings(164, 232, 1, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[2]), // Lanius
-      oxygenRoom = new Room(new RoomDisplaySettings(162, 92, 1, 2), new Oxygen(1, 13)),
-      weaponsControlRoom = new Room(new RoomDisplaySettings(378, 128, 2, 2), new WeaponControl(), this.crews[1]), // Engi
-      droneControlRoom = new Room(new RoomDisplaySettings(200, 162, 2, 2), new DroneControl(2)),
-      pilotingRoom = new Room(new RoomDisplaySettings(448, 268, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Engi
-      sensorRoom = new Room(new RoomDisplaySettings(270, 268, 2, 1), new Sensor()),
-      doorControlRoom = new Room(new RoomDisplaySettings(378, 304, 2, 1), new DoorControl()),
-      cloneBayRoom = new Room(new RoomDisplaySettings(236, 232, 2, 1), new CloneBay(1)),
-      hackingRoom = new Room(new RoomDisplaySettings(342, 92, 1, 2), new Hacking(1, 5)),
-      cloackingRoom = new Room(new RoomDisplaySettings(198, 92, 1, 2), new Cloacking(1, 4, false)),
-      batteryRoom = new Room(new RoomDisplaySettings(234, 92, 1, 2), new Battery(1, 17, false)),
-      mindControlRoom = new Room(new RoomDisplaySettings(270, 92, 1, 2), new MindControl(1, 12, false)),
-      teleportRoom = new Room(new RoomDisplaySettings(306, 92, 1, 2), new Teleport(1, false)),
-      bottomOfWeaponsControlRoom = new Room(new RoomDisplaySettings(376, 198, 1, 2)),
-      rightOfEngineRoom = new Room(new RoomDisplaySettings(200, 268, 2, 1)),
-      bottomOfSensorRoom = new Room(new RoomDisplaySettings(308, 304, 2, 1));
+    let shieldRoom = new Room(new RoomDisplaySettings(9, 6, 2, 2), new Shield(2, SystemPositionEnum.Left, 4)),
+      engineRoom = new Room(new RoomDisplaySettings(5, 7, 1, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[2]), // Lanius
+      oxygenRoom = new Room(new RoomDisplaySettings(5, 3, 1, 2), new Oxygen(1, 13)),
+      weaponsControlRoom = new Room(new RoomDisplaySettings(11, 4, 2, 2), new WeaponControl(), this.crews[1]), // Engi
+      droneControlRoom = new Room(new RoomDisplaySettings(6, 5, 2, 2), new DroneControl(2)),
+      pilotingRoom = new Room(new RoomDisplaySettings(13, 8, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Engi
+      sensorRoom = new Room(new RoomDisplaySettings(8, 8, 2, 1), new Sensor()),
+      doorControlRoom = new Room(new RoomDisplaySettings(11, 9, 2, 1), new DoorControl()),
+      cloneBayRoom = new Room(new RoomDisplaySettings(7, 7, 2, 1), new CloneBay(1)),
+      hackingRoom = new Room(new RoomDisplaySettings(10, 3, 1, 2), new Hacking(1, 5)),
+      cloackingRoom = new Room(new RoomDisplaySettings(6, 3, 1, 2), new Cloacking(1, 4, false)),
+      batteryRoom = new Room(new RoomDisplaySettings(7, 3, 1, 2), new Battery(1, 17, false)),
+      mindControlRoom = new Room(new RoomDisplaySettings(8, 3, 1, 2), new MindControl(1, 12, false)),
+      teleportRoom = new Room(new RoomDisplaySettings(9, 3, 1, 2), new Teleport(1, false)),
+      bottomOfWeaponsControlRoom = new Room(new RoomDisplaySettings(11, 6, 1, 2)),
+      rightOfEngineRoom = new Room(new RoomDisplaySettings(6, 8, 2, 1)),
+      bottomOfSensorRoom = new Room(new RoomDisplaySettings(9, 9, 2, 1));
 
     this.rooms = [
       shieldRoom,
@@ -96,8 +96,8 @@ export class EngiLayoutC extends EngiShip {
     // Shed display related
     this.hullSpriteX = 400;
     this.hullSpriteY = 50;
-    this.interiorSpriteX = 455;
-    this.interiorSpriteY = 82;
+    this.interiorSpriteX = 465;
+    this.interiorSpriteY = 100;
 
     // Experimental
     this.shipRepresentation = [

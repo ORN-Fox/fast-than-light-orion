@@ -32,23 +32,23 @@ export class KestrelLayoutA extends KestrelShip {
       crewsService.createCrew(new Human(), Gender.Female)
     ];
 
-    let shieldRoom = new Room(new RoomDisplaySettings(339, 211, 2, 2), new Shield(2, SystemPositionEnum.Left)),
-      enginesRoom = new Room(new RoomDisplaySettings(94, 177, 2, 2), new Engine(2, SystemPositionEnum.Bottom), this.crews[1]), // Human Female
-      oxygenRoom = new Room(new RoomDisplaySettings(94, 140, 2, 1), new Oxygen()),
-      weaponsControlRoom = new Room(new RoomDisplaySettings(199, 177, 2, 2), new WeaponControl(3), this.crews[2]), // Human Female
-      medbayRoom = new Room(new RoomDisplaySettings(339, 141, 2, 2), new Medbay()),
-      pilotingRoom = new Room(new RoomDisplaySettings(549, 176, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Human Male
-      sensorRoom = new Room(new RoomDisplaySettings(409, 211, 2, 1), new Sensor(1, SystemPositionEnum.Bottom)),
-      doorControlRoom = new Room(new RoomDisplaySettings(409, 174, 2, 1), new DoorControl()),
-      teleportRoom = new Room(new RoomDisplaySettings(94, 247, 2, 1), new Teleport(1, false)), // Botton on engine
-      hackingRoom = new Room(new RoomDisplaySettings(164, 247, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons
-      batteryRoom = new Room(new RoomDisplaySettings(164, 140, 2, 1), new Battery(1, 0, false)), // Right on oxygen
-      leftOnEngineRoom = new Room(new RoomDisplaySettings(57, 177, 1, 2)), // Left on engine
-      topExternalDoorsRoom = new Room(new RoomDisplaySettings(269, 104, 2, 1)), // Top external doors on center of ship
-      mindControlRoom = new Room(new RoomDisplaySettings(269, 141, 2, 2), new MindControl(1, 0, false)), // Bottom of top external doors
-      cloackingRoom = new Room(new RoomDisplaySettings(269, 211, 2, 2), new Cloacking(1, 0, false)), // Top of bottom external doors
-      bottomExternalDoorsRoom = new Room(new RoomDisplaySettings(269, 281, 2, 1)), // Bottom external doors on center of ship
-      dronesControlRoom = new Room(new RoomDisplaySettings(479, 176, 2, 2), new DroneControl(1, 0, false)); // Left of piloting
+    let shieldRoom = new Room(new RoomDisplaySettings(10, 6, 2, 2), new Shield(2, SystemPositionEnum.Left)),
+      enginesRoom = new Room(new RoomDisplaySettings(3, 5, 2, 2), new Engine(2, SystemPositionEnum.Bottom), this.crews[1]), // Human Female
+      oxygenRoom = new Room(new RoomDisplaySettings(3, 4, 2, 1), new Oxygen()),
+      weaponsControlRoom = new Room(new RoomDisplaySettings(6, 5, 2, 2), new WeaponControl(3), this.crews[2]), // Human Female
+      medbayRoom = new Room(new RoomDisplaySettings(10, 4, 2, 2), new Medbay()),
+      pilotingRoom = new Room(new RoomDisplaySettings(16, 5, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Human Male
+      sensorRoom = new Room(new RoomDisplaySettings(12, 6, 2, 1), new Sensor(1, SystemPositionEnum.Bottom)),
+      doorControlRoom = new Room(new RoomDisplaySettings(12, 5, 2, 1), new DoorControl()),
+      teleportRoom = new Room(new RoomDisplaySettings(3, 7, 2, 1), new Teleport(1, false)), // Botton on engine
+      hackingRoom = new Room(new RoomDisplaySettings(5, 7, 2, 1), new Hacking(1, 0, false)), // Bottom of weapons
+      batteryRoom = new Room(new RoomDisplaySettings(5, 4, 2, 1), new Battery(1, 0, false)), // Right on oxygen
+      leftOnEngineRoom = new Room(new RoomDisplaySettings(2, 5, 1, 2)), // Left on engine
+      topExternalDoorsRoom = new Room(new RoomDisplaySettings(8, 3, 2, 1)), // Top external doors on center of ship
+      mindControlRoom = new Room(new RoomDisplaySettings(8, 6, 2, 2), new MindControl(1, 0, false)), // Bottom of top external doors
+      cloackingRoom = new Room(new RoomDisplaySettings(8, 4, 2, 2), new Cloacking(1, 0, false)), // Top of bottom external doors
+      bottomExternalDoorsRoom = new Room(new RoomDisplaySettings(8, 8, 2, 1)), // Bottom external doors on center of ship
+      dronesControlRoom = new Room(new RoomDisplaySettings(14, 5, 2, 2), new DroneControl(1, 0, false)); // Left of piloting
 
     this.rooms = [
       shieldRoom,
@@ -117,8 +117,8 @@ export class KestrelLayoutA extends KestrelShip {
     // Shed display related
     this.hullSpriteX = 300;
     this.hullSpriteY = 0;
-    this.interiorSpriteX = 350;
-    this.interiorSpriteY = 97;
+    this.interiorSpriteX = 363;
+    this.interiorSpriteY = 98;
 
     // Experimental
     this.shipRepresentation = [

@@ -32,21 +32,21 @@ export class KestrelLayoutB extends KestrelShip {
       crewsService.createCrew(new Zoltan(), Gender.Other)
     ];
 
-    let shieldRoom = new Room(new RoomDisplaySettings(128, 122, 2, 2), new Shield(2, SystemPositionEnum.Top, 9), this.crews[2]), // Mantis
-      enginesRoom = new Room(new RoomDisplaySettings(94, 192,  2, 1), new Engine(2, SystemPositionEnum.Right, 3), this.crews[1]), // Human Female
-      oxygenRoom = new Room(new RoomDisplaySettings(302, 123, 2, 2), new Oxygen(1, 11)),
-      weaponsControlRoom = new Room(new RoomDisplaySettings(128, 229, 2, 2), new WeaponControl(4), this.crews[3]), // Zoltan
-      medbayRoom = new Room(new RoomDisplaySettings(198, 87, 2, 2), new Medbay(1, 4)),
-      pilotingRoom = new Room(new RoomDisplaySettings(512, 192,  2, 1), new Piloting(1, SystemPositionEnum.Right, 3), this.crews[0]), // Human Male
-      sensorRoom = new Room(new RoomDisplaySettings(232, 229, 2, 1), new Sensor(1, SystemPositionEnum.Bottom, 2)),
-      doorControlRoom = new Room(new RoomDisplaySettings(372, 192, 2, 1), new DoorControl()),
-      mindControlRoom = new Room(new RoomDisplaySettings(268, 87, 2, 1), new MindControl(1, 1, false)),
-      teleportRoom = new Room(new RoomDisplaySettings(232, 156, 2, 1), new Teleport(1, false)),
-      batteryRoom = new Room(new RoomDisplaySettings(302, 192, 2, 1), new Battery(1, 2, false)),
-      dronesControlRoom = new Room(new RoomDisplaySettings(198, 266, 2, 2), new DroneControl(1, 12, false)),
-      cloackingRoom = new Room(new RoomDisplaySettings(302, 229, 2, 2), new Cloacking(1, 2, false)),
-      hackingRoom = new Room(new RoomDisplaySettings(268, 299, 2, 1), new Hacking(1, 4, false)),
-      rightOfDoorControlRoom = new Room(new RoomDisplaySettings(442, 192, 2, 1)); // right of door control
+    let shieldRoom = new Room(new RoomDisplaySettings(4, 3, 2, 2), new Shield(2, SystemPositionEnum.Top, 9), this.crews[2]), // Mantis
+      enginesRoom = new Room(new RoomDisplaySettings(3, 5,  2, 1), new Engine(2, SystemPositionEnum.Right, 3), this.crews[1]), // Human Female
+      oxygenRoom = new Room(new RoomDisplaySettings(9, 3, 2, 2), new Oxygen(1, 11)),
+      weaponsControlRoom = new Room(new RoomDisplaySettings(4, 6, 2, 2), new WeaponControl(4), this.crews[3]), // Zoltan
+      medbayRoom = new Room(new RoomDisplaySettings(6, 2, 2, 2), new Medbay(1, 4)),
+      pilotingRoom = new Room(new RoomDisplaySettings(15, 5,  2, 1), new Piloting(1, SystemPositionEnum.Right, 3), this.crews[0]), // Human Male
+      sensorRoom = new Room(new RoomDisplaySettings(7, 6, 2, 1), new Sensor(1, SystemPositionEnum.Bottom, 2)),
+      doorControlRoom = new Room(new RoomDisplaySettings(11, 5, 2, 1), new DoorControl()),
+      mindControlRoom = new Room(new RoomDisplaySettings(8, 2, 2, 1), new MindControl(1, 1, false)),
+      teleportRoom = new Room(new RoomDisplaySettings(7, 4, 2, 1), new Teleport(1, false)),
+      batteryRoom = new Room(new RoomDisplaySettings(9, 5, 2, 1), new Battery(1, 2, false)),
+      dronesControlRoom = new Room(new RoomDisplaySettings(6, 7, 2, 2), new DroneControl(1, 12, false)),
+      cloackingRoom = new Room(new RoomDisplaySettings(9, 6, 2, 2), new Cloacking(1, 2, false)),
+      hackingRoom = new Room(new RoomDisplaySettings(8, 8, 2, 1), new Hacking(1, 4, false)),
+      rightOfDoorControlRoom = new Room(new RoomDisplaySettings(13, 5, 2, 1)); // right of door control
 
     this.rooms = [
       shieldRoom,
@@ -86,8 +86,8 @@ export class KestrelLayoutB extends KestrelShip {
     // Shed display related
     this.hullSpriteX = 300;
     this.hullSpriteY = 0;
-    this.interiorSpriteX = 375;
-    this.interiorSpriteY = 57;
+    this.interiorSpriteX = 388;
+    this.interiorSpriteY = 41;
 
     this.shipRepresentation = [
       [null, null, null, new Slot(0, 0, medbayRoom), new Slot(0, 0, mindControlRoom), new Slot(0, 1, mindControlRoom), null, null, null, null, null, null, null], // y0
