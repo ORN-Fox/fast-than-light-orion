@@ -140,8 +140,8 @@ export class ShipRenderService {
               for (let i = 0; i < room.roomDisplaySettings.sizeX; i++) {
                 for (let y = 0; y < room.roomDisplaySettings.sizeY; y++) {
                   let roomTeleportSystemInterior = Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-                  roomTeleportSystemInterior.x = room.roomDisplaySettings.getRoomTilePositionX() + (i * TILE_SIZE_WITH_BORDER);
-                  roomTeleportSystemInterior.y = room.roomDisplaySettings.getRoomTilePositionY() + (y * TILE_SIZE_WITH_BORDER);
+                  roomTeleportSystemInterior.x = room.roomDisplaySettings.getRoomTilePositionX() + (i * TILE_SIZE_WITH_BORDER) + 5; // 5px for center teleport sprite
+                  roomTeleportSystemInterior.y = room.roomDisplaySettings.getRoomTilePositionY() + (y * TILE_SIZE_WITH_BORDER) + 5; // 5px for center teleport sprite
                   roomTeleportSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
                   shipFloorContainer.addChild(roomTeleportSystemInterior);
@@ -151,8 +151,8 @@ export class ShipRenderService {
             else
             {
               let roomSystemInterior = Sprite.from(room.affectedSystem.srcSystemInRoomSprite);
-              roomSystemInterior.x = room.roomDisplaySettings.getRoomTilePositionX() - 2;
-              roomSystemInterior.y = room.roomDisplaySettings.getRoomTilePositionY() - 2;
+              roomSystemInterior.x = room.roomDisplaySettings.getRoomTilePositionX();
+              roomSystemInterior.y = room.roomDisplaySettings.getRoomTilePositionY();
               roomSystemInterior.alpha = room.affectedSystem.isInstalled ? 1 : .5;
 
               shipFloorContainer.addChild(roomSystemInterior);
