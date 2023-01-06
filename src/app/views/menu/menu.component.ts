@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { sound } from '@pixi/sound';
 
 import { GameService } from '../../core/services/game/game.service';
 import { I18nService } from '../../core/services/translations/i18n.service';
+import { SoundsManagerService } from '../../core/services/sounds-manager/sounds-manager.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
+
+import { PageNameEnum } from '../../core/enums/page-name.enum';
 
 import { Settings } from '../../core/models/settings/settings.model';
 
@@ -26,16 +28,17 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private gameService: GameService,
     private i18nService: I18nService,
+    private soundsManagerServivce: SoundsManagerService,
     private settingsService: SettingsService
   ) {
     this.settings = this.settingsService.getSettings();
     this.languages = this.i18nService.supportedLanguages;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.gameInProgress = this.gameService.shouldExistGameInProgress();
 
-    this.playMenuMusic();
+    this.soundsManagerServivce.initPageSounds(PageNameEnum.Menu);
 
     const modals = document.querySelectorAll("[data-modal]");
 
@@ -57,18 +60,12 @@ export class MenuComponent implements OnInit {
 
   continueGame() {
     this.router.navigate(['/game']);
-    this.menuMusic.stop();
+    // this.menuMusic.stop();
   }
 
   newGame() {
     this.router.navigate(['/shed']);
-    this.menuMusic.stop();
-  }
-
-  private playMenuMusic()
-  {
-    this.menuMusic = sound.add('main-theme', 'assets/sounds/music/bp_MUS_TitleScreen.ogg');
-    this.menuMusic.play();
+    // this.menuMusic.stop();
   }
 
   // Options related
