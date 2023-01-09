@@ -36,10 +36,10 @@ export class ShedComponent implements OnInit {
   shipListIndex: number = 0;
   shipListLayoutIndex: number = 0;
 
-  shedContainer: any;
-  shipGUIContainer: any;
-  shipContainer: any;
-  shipFloorContainer: any;
+  shedContainer: Container;
+  shipGUIContainer: Container;
+  shipContainer: Container;
+  shipFloorContainer: Container;
 
   selectedShip: Ship;
   selectedCrewForCustomization: Crew | null = null;

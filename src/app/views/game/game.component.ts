@@ -26,10 +26,10 @@ export class GameComponent implements OnInit {
   game: Game;
   settings: Settings;
 
-  gameContainer: any;
+  gameContainer: Container;
 
-  shipContainer: any;
-  shipFloorContainer: any;
+  shipContainer: Container;
+  shipFloorContainer: Container;
 
   constructor(
     private gameService: GameService,

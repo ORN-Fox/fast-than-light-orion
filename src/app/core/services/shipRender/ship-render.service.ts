@@ -1,4 +1,4 @@
-import { AnimatedSprite, Graphics, Loader, Sprite, Text } from 'pixi.js';
+import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
@@ -18,17 +18,20 @@ export class ShipRenderService {
   constructor(private texturesManagerService: TexturesManagerService)
   {}
 
-  startShipRender(shipContainer: any, shipFloorContainer: any, ship: Ship, isShedMode: boolean = false, shipGUIContainer: any = null)
+  startShipRender(shipContainer: Container, shipFloorContainer: Container, ship: Ship, isShedMode: boolean = false, shipGUIContainer: Container | null = null)
   {
     this.loadThrustersAnimation(shipContainer, ship);
 
     if (isShedMode)
     {
-      this.loadSystemsGUIofShip(shipGUIContainer, ship);
-      this.loadCrewsGUIofShip(shipGUIContainer, ship);
-      this.loadWeasponsGUIofShip(shipGUIContainer, ship);
-      this.loadDronesGUIofShip(shipGUIContainer, ship);
-      this.loadUpgradesGUIOfShip(shipGUIContainer, ship);
+      if (shipGUIContainer)
+      {
+        this.loadSystemsGUIofShip(shipGUIContainer, ship);
+        this.loadCrewsGUIofShip(shipGUIContainer, ship);
+        this.loadWeasponsGUIofShip(shipGUIContainer, ship);
+        this.loadDronesGUIofShip(shipGUIContainer, ship);
+        this.loadUpgradesGUIOfShip(shipGUIContainer, ship);
+      }
     }
 
     this.loadRoomsGUIofShip(shipFloorContainer, ship, isShedMode);
@@ -38,7 +41,7 @@ export class ShipRenderService {
     // this.loadShipDevGridGUI(shipFloorContainer);
   }
 
-  loadShipDevGridGUI(shipFloorContainer: any)
+  loadShipDevGridGUI(shipFloorContainer: Container)
   {
     let shipDevGrid = new Graphics();
 
@@ -85,7 +88,7 @@ export class ShipRenderService {
     shipFloorContainer.addChild(shipDevGrid);
   }
 
-  loadThrustersAnimation(shipContainer: any, ship: Ship)
+  loadThrustersAnimation(shipContainer: Container, ship: Ship)
   {
     if (ship instanceof KestrelShip)
     {
@@ -108,7 +111,7 @@ export class ShipRenderService {
     }
   }
 
-  loadRoomsGUIofShip(shipFloorContainer: any, ship: Ship, isShedMode: boolean)
+  loadRoomsGUIofShip(shipFloorContainer: Container, ship: Ship, isShedMode: boolean)
   {
     for (let room of ship.rooms) {
       room.roomTile = new Graphics()
@@ -216,7 +219,7 @@ export class ShipRenderService {
     }
   }
 
-  loadRoomGrid(shipFloorContainer: any, room: Room)
+  loadRoomGrid(shipFloorContainer: Container, room: Room)
   {
     if (room.roomDisplaySettings.sizeX > 1)
     {
@@ -243,7 +246,7 @@ export class ShipRenderService {
     }
   }
 
-  loadDoorsGUIofShip(shipFloorContainer: any, ship: Ship)
+  loadDoorsGUIofShip(shipFloorContainer: Container, ship: Ship)
   {
     for (let i = 0; i < ship.doors.length; i++) {
       let door = ship.doors[i];
@@ -265,7 +268,7 @@ export class ShipRenderService {
   // Shed mode related - specific for shed view
   //
 
-  loadSystemsGUIofShip(shipGUIContainer: any, ship: Ship)
+  loadSystemsGUIofShip(shipGUIContainer: Container, ship: Ship)
   {
     for (let i = 0; i < ship.rooms.length; i++) {
       let shipSystemGUI = Sprite.from('/assets/images/gui/box_system_on.png');
@@ -295,7 +298,7 @@ export class ShipRenderService {
     }
   }
 
-  loadCrewsGUIofShip(shipGUIContainer: any, ship: Ship)
+  loadCrewsGUIofShip(shipGUIContainer: Container, ship: Ship)
   {
     for (let i = 0; i < 2; i++) {
       let shipCrewLineOneGUI = Sprite.from(`/assets/images/gui/box_crew_${ i < ship.crews.length ? 'on' : 'off'}.png`);
@@ -344,7 +347,7 @@ export class ShipRenderService {
     }
   }
 
-  loadWeasponsGUIofShip(shipGUIContainer: any, ship: Ship)
+  loadWeasponsGUIofShip(shipGUIContainer: Container, ship: Ship)
   {
     for (let i = 0; i < ship.maxWeaponsAllowed; i++) {
       let shipWeaponGUI = Sprite.from(`/assets/images/gui/box_weapons_${ i < ship.weapons.length ? 'on' : 'off'}.png`);
@@ -357,7 +360,7 @@ export class ShipRenderService {
     // TODO display weapons
   }
 
-  loadDronesGUIofShip(shipGUIContainer: any, ship: Ship)
+  loadDronesGUIofShip(shipGUIContainer: Container, ship: Ship)
   {
     if (ship.drones.length > 0)
     {
@@ -373,7 +376,7 @@ export class ShipRenderService {
     }
   }
 
-  loadUpgradesGUIOfShip(shipGUIContainer: any, ship: Ship)
+  loadUpgradesGUIOfShip(shipGUIContainer: Container, ship: Ship)
   {
     for (let i = 0; i < ship.maxUpgradesAllowed; i++) {
       let shipDroneGUI = Sprite.from(`/assets/images/gui/box_augment_${ i < ship.upgrades.length ? 'on' : 'off'}.png`);
