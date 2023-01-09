@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { TexturesManagerService } from '../texturesManager/textures-manager.service';
 
 import { KestrelShip, Ship } from '../../models/ships/index';
-import { BORDER_TILE_SIZE, TILE_SIZE_WITH_BORDER, TILE_SIZE_WITHOUT_BORDER, Room } from '../../models/room/index';
+import { BORDER_TILE_SIZE, TILE_SIZE_WITH_BORDER, Room } from '../../models/room/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
 
 export const MAX_SHIP_SLOT_X = 22, MAX_SHIP_SLOT_Y = 14;

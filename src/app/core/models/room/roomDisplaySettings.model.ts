@@ -1,5 +1,4 @@
 export const TILE_SIZE_WITH_BORDER: number = 35; // px
-export const TILE_SIZE_WITHOUT_BORDER: number = 31; // px
 export const BORDER_TILE_SIZE: number = 2; // px
 
 export class RoomDisplaySettings
