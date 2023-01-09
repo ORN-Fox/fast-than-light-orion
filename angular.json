@@ -110,5 +110,7 @@
       }
     }
   },
-  "defaultProject": "fast-than-light-orion"
+  "cli": {
+    "analytics": false
+  }
 }
