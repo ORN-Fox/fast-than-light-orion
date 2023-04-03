@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Logger } from './core/services/logger/logger.service';
 import { I18nService } from './core/services/translations/i18n.service';
 import { SettingsService } from './core/services/settings/settings.service';
+import { SoundsManagerService } from './core/services/sounds-manager/sounds-manager.service';
 
 import { Settings } from './core/models/settings/settings.model';
 
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private i18nService: I18nService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private soundsManagerServivce: SoundsManagerService,
   ) {
     this.settings = this.settingsService.getSettings();
   }

@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private gameService: GameService,
     private i18nService: I18nService,
-    private soundsManagerServivce: SoundsManagerService,
     private settingsService: SettingsService
   ) {
     this.settings = this.settingsService.getSettings();
@@ -37,8 +36,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.gameInProgress = this.gameService.shouldExistGameInProgress();
-
-    this.soundsManagerServivce.initPageSounds(PageNameEnum.Menu);
 
     const modals = document.querySelectorAll("[data-modal]");
 
