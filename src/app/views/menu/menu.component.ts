@@ -28,10 +28,13 @@ export class MenuComponent implements OnInit {
     private router: Router,
     private gameService: GameService,
     private i18nService: I18nService,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private soundManagerService: SoundsManagerService
   ) {
     this.settings = this.settingsService.getSettings();
     this.languages = this.i18nService.supportedLanguages;
+
+    this.soundManagerService.initPageSounds(PageNameEnum.Menu);
   }
 
   ngOnInit() {
@@ -57,12 +60,10 @@ export class MenuComponent implements OnInit {
 
   continueGame() {
     this.router.navigate(['/game']);
-    // this.menuMusic.stop();
   }
 
   newGame() {
     this.router.navigate(['/shed']);
-    // this.menuMusic.stop();
   }
 
   // Options related

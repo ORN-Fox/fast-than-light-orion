@@ -1,16 +1,12 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { sound } from '@pixi/sound';
 
-import { ArrayService } from '../../utils/array.service';
-
 import { PageNameEnum } from '../../enums/page-name.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SoundsManagerService {
-
-  playedSound: string[] = [];
 
   constructor(@Optional() @SkipSelf() parentModule?: SoundsManagerService) {
     if (parentModule) {
@@ -24,31 +20,48 @@ export class SoundsManagerService {
         this.loadMenuSounds();
         this.playSound('main-theme');
         break;
+
+      case PageNameEnum.Shed:
+        this.loadShedSounds();
+        this.playSound('main-theme');
+        break;
     }
   }
 
   // Sounds controls related
 
-  isPlayedSound(soundName: string): boolean {
-    return ArrayService.getItemIndex(this.playedSound, soundName) == ArrayService.NOT_FOUND_ITEM_INDEX;
+  isExistingSound(name: string): boolean {
+    return sound.exists(name);
   }
 
-  playSound(soundName: string) {
-    sound.play(soundName);
-    if (!this.isPlayedSound(soundName)) {
-      this.playedSound.push(soundName);
+  isPlayedSound(name: string): boolean {
+    return sound.find(name).isPlaying;
+  }
+
+  addSound(name: string, src: string) {
+    if (!this.isExistingSound(name)) {
+      sound.add(name, src);
     }
   }
 
-  stopSound(soundName: string) {
-    sound.stop(soundName);
-    this.playedSound = ArrayService.removeItem(this.playedSound, soundName);
+  playSound(name: string) {
+    if (!this.isPlayedSound(name)) {
+      sound.play(name);
+    }
+  }
+
+  stopSound(name: string) {
+    sound.stop(name);
   }
 
   // Loading sounds related
 
   private loadMenuSounds() {
-    sound.add('main-theme', 'assets/sounds/music/bp_MUS_TitleScreen.ogg');
+    this.addSound('main-theme', 'assets/sounds/music/bp_MUS_TitleScreen.ogg');
+  }
+
+  private loadShedSounds() {
+    // TODO add shed sounds ambiance
   }
 
 }
