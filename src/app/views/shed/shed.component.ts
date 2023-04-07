@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AnimatedSprite, Application, Container, Sprite } from 'pixi.js';
 
 import { GameService } from '../../core/services/game/game.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
-import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
-import { ShipsService } from '../../core/services/ships/ships.service';
+import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
+import { ShipsService } from '../../core/services/ships/ships.service';
 import { TexturesManagerService } from '../../core/services/texturesManager/textures-manager.service';
 
 import { NumberService } from '../../core/utils/number.service';
@@ -13,7 +13,7 @@ import { NumberService } from '../../core/utils/number.service';
 import { Crew } from '../../core/models/crew/crew.model';
 import { Difficulty } from '../../core/models/difficulty/difficulty.model';
 import { Game } from '../../core/models/game/game.model';
-import { Settings } from '../../core/models/settings/settings.model';
+import { Settings } from '../../core/models/settings/settings.model';
 import { Ship, ShipList } from '../../core/models/ships/index';
 
 @Component({
@@ -42,7 +42,7 @@ export class ShedComponent implements OnInit {
   shipFloorContainer: Container;
 
   selectedShip: Ship;
-  selectedCrewForCustomization: Crew | null = null;
+  selectedCrewForCustomization: Crew | null = null;
 
   renameShipEnabled: boolean = false;
   renameCrewEnabled: boolean = false;

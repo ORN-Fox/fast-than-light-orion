@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 
-import { GameService } from '../../core/services/game/game.service';
-import { I18nService } from '../../core/services/translations/i18n.service';
-import { SoundsManagerService } from '../../core/services/sounds-manager/sounds-manager.service';
+import { GameService } from '../../core/services/game/game.service';
+import { I18nService } from '../../core/services/translations/i18n.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
+import { SoundsManagerService } from '../../core/services/sounds-manager/sounds-manager.service';
 
 import { PageNameEnum } from '../../core/enums/page-name.enum';
 
