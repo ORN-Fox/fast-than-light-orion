@@ -1,4 +1,4 @@
-import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text } from 'pixi.js';
+import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Difficulty, DifficultyEnum } from '../../models/difficulty/difficulty.model';
+import { Difficulty, DifficultyEnum } from '../../models/difficulty/difficulty.model';
 import { Game } from '../../models/game/game.model';
 
 @Injectable({

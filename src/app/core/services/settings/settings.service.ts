@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Logger } from '../logger/logger.service';
-import { Settings } from '../../models/settings/settings.model';
+import { Settings } from '../../models/settings/settings.model';
 const log = new Logger('SettingsService');
 
 @Injectable({

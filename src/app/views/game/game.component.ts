@@ -4,10 +4,10 @@ import { Application, Container, Sprite } from 'pixi.js';
 import { GameService } from '../../core/services/game/game.service';
 import { Logger } from '../../core/services/logger/logger.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
-import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
+import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
 
 import { Game } from '../../core/models/game/game.model';
-import { Settings } from '../../core/models/settings/settings.model';
+import { Settings } from '../../core/models/settings/settings.model';
 import { Ship } from '../../core/models/ships/index';
 
 const log = new Logger('App');
