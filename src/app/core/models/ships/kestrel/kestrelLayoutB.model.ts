@@ -5,7 +5,7 @@ import { KestrelShip } from './kestrelShip.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Mantis, Zoltan } from '../../races/index';
 
-import { Room, RoomDisplaySettings } from '../../room/index';
+import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 import { Slot } from '../../slot/slot.model';
 

@@ -6,9 +6,9 @@ import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Human } from '../../races/index';
 
 import { Door } from '../../door/door.model';
-import { Room, RoomDisplaySettings } from '../../room/index';
+import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
-import { Slot } from '../../slot/slot.model';
+import { Slot } from '../../slot/slot.model';
 
 import { CombatI } from '../../drones/index';
 import { EngiMedbotDispersal } from '../../upgrades/index';

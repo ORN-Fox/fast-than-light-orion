@@ -5,8 +5,8 @@ import { EngiShip } from './engiShip.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Engi, Lanius } from '../../races/index';
 
-import { Room, RoomDisplaySettings } from '../../room/index';
-import { Slot } from '../../slot/slot.model';
+import { Room, RoomDisplaySettings } from '../../room/index';
+import { Slot } from '../../slot/slot.model';
 import { Battery, Cloacking, CloneBay, DoorControl, DroneControl, Engine, Hacking, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 
 import { BeamI } from '../../drones/index';

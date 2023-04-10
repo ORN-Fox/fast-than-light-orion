@@ -6,9 +6,9 @@ import { Gender } from '../../crew/crew.model';
 import { Human } from '../../races/human/human.model';
 
 import { Door } from '../../door/door.model';
-import { Room, RoomDisplaySettings } from '../../room/index';
+import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, DroneControl, DoorControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
-import { Slot } from '../../slot/slot.model';
+import { Slot } from '../../slot/slot.model';
 
 import { Artemis, BurstLaserII } from '../../weapons/index';
 
@@ -96,7 +96,7 @@ export class KestrelLayoutA extends KestrelShip {
       new Door(390, 210), // Right Top of shields room
       new Door(460, 175), // Right of doors room
       new Door(460, 210), // Right of sensors room
-      new Door(530, 210) // Right Bottok of drones room
+      new Door(530, 210) // Right Bottom of drones room
     ];
 
     this.weapons = [
