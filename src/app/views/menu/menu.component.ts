@@ -87,10 +87,18 @@ export class MenuComponent implements OnInit {
     this.settingsService.setSettings(this.settings);
   }
 
+  updateAudioVolume(volume: number)
+  {
+    this.settings.volume = volume;
+    this.settingsService.setSettings(this.settings);
+    this.soundManagerService.setAudioVolume(volume);
+  }
+
   updateAudioMusicVolume(volume: number)
   {
-    this.menuMusic.volume = volume;
+    this.settings.musicVolume = volume;
     this.settingsService.setSettings(this.settings);
+    this.soundManagerService.setMusicVolume(volume);
   }
 
 }
