@@ -50,6 +50,14 @@ export class SoundsManagerService {
     }
   }
 
+  setAudioVolume(volume: number) {
+    // TODO
+  }
+
+  setMusicVolume(volume: number) {
+    // TODO
+  }
+
   stopSound(name: string) {
     sound.stop(name);
   }
