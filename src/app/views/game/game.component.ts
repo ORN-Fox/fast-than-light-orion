@@ -41,7 +41,7 @@ export class GameComponent implements OnInit {
     log.info('Start game, include in future version', this.game);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.app = new Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
     document.querySelector('#canvsPixi')!.appendChild(this.app.view);
 

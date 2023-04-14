@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { Logger } from '../logger/logger.service';
+import { StorageService } from '../../utils/storage.service';
+
 import { Settings } from '../../models/settings/settings.model';
+
 const log = new Logger('SettingsService');
 
 @Injectable({
@@ -16,7 +19,7 @@ export class SettingsService {
 
   getSettings(): Settings
   {
-    let storedSettings = localStorage.getItem(this.SETTINGS_LOCAL_STORAGE_KEY);
+    let storedSettings = StorageService.getLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY);
 
     if (storedSettings)
     {
@@ -35,7 +38,7 @@ export class SettingsService {
   setSettings(settings: Settings)
   {
     this.settings = settings;
-    localStorage.setItem(this.SETTINGS_LOCAL_STORAGE_KEY, JSON.stringify(settings, null, 2));
+    StorageService.setLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY, settings);
     log.debug('Settings set to :', settings);
   }
 }
