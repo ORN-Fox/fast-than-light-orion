@@ -1,3 +1,5 @@
+export * from './system-position.enum';
+
 export * from './system.model';
 
 export * from './battery/battery.model';

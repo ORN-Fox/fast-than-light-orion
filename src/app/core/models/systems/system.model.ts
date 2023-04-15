@@ -1,10 +1,3 @@
-export enum SystemPositionEnum {
-  Left = 1,
-  Top,
-  Right,
-  Bottom
-}
-
 export class System {
 
   level: number = 1;

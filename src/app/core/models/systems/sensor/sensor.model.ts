@@ -1,4 +1,5 @@
-import { System, SystemPositionEnum } from '../system.model';
+import { SystemPositionEnum } from '../system-position.enum';
+import { System } from '../system.model';
 
 export class Sensor extends System {
 
