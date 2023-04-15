@@ -1,3 +1,4 @@
+import { SystemTypeEnum } from '../system-type.enum';
 import { System } from '../system.model';
 
 export class MindControl extends System {
@@ -6,6 +7,7 @@ export class MindControl extends System {
     super();
 
     this.level = level;
+    this.type = SystemTypeEnum.MindControl;
     this.isInstalled = isInstalled;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_mind_green1.png';

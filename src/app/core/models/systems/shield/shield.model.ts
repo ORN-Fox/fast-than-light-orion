@@ -1,4 +1,5 @@
 import { SystemPositionEnum } from '../system-position.enum';
+import { SystemTypeEnum } from '../system-type.enum';
 import { System } from '../system.model';
 
 export class Shield extends System {
@@ -7,6 +8,7 @@ export class Shield extends System {
     super();
 
     this.level = level;
+    this.type = SystemTypeEnum.Shield; // TODO
 
     this.systemPosition = systemPosition;
 

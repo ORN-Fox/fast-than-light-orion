@@ -1,3 +1,4 @@
+import { SystemTypeEnum } from '../system-type.enum';
 import { System } from '../system.model';
 
 export class Battery extends System {
@@ -6,6 +7,7 @@ export class Battery extends System {
     super();
 
     this.level = level;
+    this.type = SystemTypeEnum.Battery;
     this.isInstalled = isInstalled;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_battery_green1.png';

@@ -1,3 +1,4 @@
+export * from './system-type.enum';
 export * from './system-position.enum';
 
 export * from './system.model';

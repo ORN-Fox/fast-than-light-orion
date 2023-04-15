@@ -1,3 +1,4 @@
+import { SystemTypeEnum } from '../system-type.enum';
 import { System } from '../system.model';
 
 export class Teleport extends System {
@@ -6,6 +7,7 @@ export class Teleport extends System {
     super();
 
     this.level = level;
+    this.type = SystemTypeEnum.Teleport;
     this.isInstalled = isInstalled;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_teleporter_green1.png';

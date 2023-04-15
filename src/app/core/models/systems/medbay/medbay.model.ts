@@ -1,3 +1,4 @@
+import { SystemTypeEnum } from '../system-type.enum';
 import { System } from '../system.model';
 
 export class Medbay extends System {
@@ -6,6 +7,7 @@ export class Medbay extends System {
     super();
 
     this.level = level;
+    this.type = SystemTypeEnum.Medbay;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_medbay_green1.png';
     this.srcSystemOverlaySprite = '/assets/images/gui/icons/overlay/s_medbay_overlay.png';

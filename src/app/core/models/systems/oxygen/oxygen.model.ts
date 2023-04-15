@@ -1,3 +1,4 @@
+import { SystemTypeEnum } from '../system-type.enum';
 import { System } from '../system.model';
 
 export class Oxygen extends System {
@@ -6,6 +7,7 @@ export class Oxygen extends System {
     super();
 
     this.level = level;
+    this.type = SystemTypeEnum.Oxygen;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_oxygen_green1.png';
     this.srcSystemOverlaySprite = '/assets/images/gui/icons/overlay/s_oxygen_overlay.png';

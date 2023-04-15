@@ -1,7 +1,8 @@
 export class System {
 
-  level: number = 1;
-  isInstalled: boolean = true;
+  level: number;
+  type: number;
+  isInstalled: boolean;
 
   systemPosition: number | null;
 
@@ -9,7 +10,13 @@ export class System {
   srcSystemOverlaySprite: string;
 
   srcSystemInRoomSprite: string;
-  variantSystemInRoom: number = 0;
+  variantSystemInRoom: number;
 
-  constructor() {}
+  constructor() {
+    this.level = 1;
+    this.isInstalled = true;
+
+    this.variantSystemInRoom = 0;
+  }
+
 }
