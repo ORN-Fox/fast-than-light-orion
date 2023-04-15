@@ -31,12 +31,12 @@ export class Room {
 
   criticalOxygenLevel(): boolean
   {
-    return this.oxygen <= 5;
+    return this.oxygen <= 5;
   }
 
   getBackgroundColorForOxygenLevel(): number
   {
-    if (this.oxygen >= 75)
+    if (this.oxygen >= 75)
     {
       return 0xe6e2db;
     }
