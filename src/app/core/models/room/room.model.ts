@@ -1,6 +1,6 @@
 import { Crew } from '../crew/crew.model';
 import { RoomDisplaySettings } from './roomDisplaySettings.model';
-import { System } from '../systems/system.model';
+import { System } from '../systems/system.model';
 
 export class Room {
 

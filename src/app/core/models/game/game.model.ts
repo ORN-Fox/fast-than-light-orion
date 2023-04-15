@@ -1,4 +1,4 @@
-import { Difficulty } from '../difficulty/difficulty.model';
+import { Difficulty } from '../difficulty/difficulty.model';
 import { Ship } from '../ships/ship.model';
 
 export class Game {
