@@ -13,4 +13,15 @@ export class Game {
   constructor() {
     this.createdAt = new Date();
   }
+
+  serializeForSave() {
+    let serializedGame = {
+      ship: this.ship.serializeForSave(),
+      difficulty: this.difficulty.value,
+      createdAt: this.createdAt.toISOString(),
+      updatedAt: this.updatedAt?.toISOString()
+    };
+
+    return serializedGame;
+  }
 }

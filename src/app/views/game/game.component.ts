@@ -5,6 +5,7 @@ import { GameService } from '../../core/services/game/game.service';
 import { Logger } from '../../core/services/logger/logger.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
 import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
+import { TexturesManagerService } from 'src/app/core/services/texturesManager/textures-manager.service';
 
 import { Game } from '../../core/models/game/game.model';
 import { Settings } from '../../core/models/settings/settings.model';
@@ -34,10 +35,12 @@ export class GameComponent implements OnInit {
   constructor(
     private gameService: GameService,
     private settingsService: SettingsService,
-    private shipRenderService: ShipRenderService)
+    private shipRenderService: ShipRenderService,
+    private texturesManagerService: TexturesManagerService)
   {
-    this.game = this.gameService.game;
     this.settings = this.settingsService.getSettings();
+    this.game = this.gameService.getGame();
+
     log.info('Start game, include in future version', this.game);
   }
 
@@ -49,8 +52,7 @@ export class GameComponent implements OnInit {
     gameBody.style.height = `${this.canvasHeight}px`;
     gameBody.style.width = `${this.canvasWidth}px`;
 
-    if (this.settings.fullScreenMode)
-    {
+    if (this.settings.fullScreenMode) {
       (gameBody.style as any).zoom = 1.5;
     }
 
@@ -58,11 +60,13 @@ export class GameComponent implements OnInit {
     this.app.stage.addChild(this.gameContainer);
 
     this.loadSelectedShip(this.game.ship);
-    this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
+    
+    this.texturesManagerService.loadRacesSpritesheets(() => {
+      this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
+    });
   }
 
-  loadSelectedShip(ship: Ship)
-  {
+  loadSelectedShip(ship: Ship) {
     this.shipContainer = new Container();
     this.shipContainer.x = 300;
     this.shipContainer.y = 100;

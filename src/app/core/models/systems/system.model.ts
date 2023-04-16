@@ -19,4 +19,15 @@ export class System {
     this.variantSystemInRoom = 0;
   }
 
+  serializeForSave() {
+    let system = {
+      level: this.level,
+      type: this.type,
+      isInstalled: this.isInstalled,
+      systemPosition: this.systemPosition,
+      variantSystemInRoom: this.variantSystemInRoom
+    };
+
+    return system;
+  }
 }

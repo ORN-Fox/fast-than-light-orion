@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { NumberService } from '../../utils/number.service';
 
 import { Crew, Gender } from '../../models/crew/crew.model';
-import { Crystal,  Engi, Human, Lanius, Mantis, RaceType, Rockmen, Slug, Zoltan } from '../../models/races/index';
+import { Crystal,  Engi, Human, Lanius, Mantis, RaceType, Rockmen, Slug, Zoltan } from '../../models/races/index';
 
 @Injectable({
   providedIn: 'root'

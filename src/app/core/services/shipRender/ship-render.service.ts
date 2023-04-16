@@ -18,7 +18,7 @@ export class ShipRenderService {
   constructor(private texturesManagerService: TexturesManagerService)
   {}
 
-  startShipRender(shipContainer: Container, shipFloorContainer: Container, ship: Ship, isShedMode: boolean = false, shipGUIContainer: Container | null = null)
+  startShipRender(shipContainer: Container, shipFloorContainer: Container, ship: Ship, isShedMode: boolean = false, shipGUIContainer: Container | null = null)
   {
     this.loadThrustersAnimation(shipContainer, ship);
 

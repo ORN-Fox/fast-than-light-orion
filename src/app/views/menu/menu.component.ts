@@ -35,21 +35,21 @@ export class MenuComponent implements OnInit {
     this.languages = this.i18nService.supportedLanguages;
 
     this.soundManagerService.initPageSounds(PageNameEnum.Menu);
+
+    this.gameInProgress = this.gameService.shouldExistGameInProgress();
   }
 
   ngOnInit() {
-    this.gameInProgress = this.gameService.shouldExistGameInProgress();
-
     const modals = document.querySelectorAll("[data-modal]");
 
-    modals.forEach(function (trigger: any) {
-      trigger.addEventListener("click", function (event: any) {
+    modals.forEach((trigger: any) => {
+      trigger.addEventListener("click", function (event: Event) {
         event.preventDefault();
         const modal = document.getElementById(trigger.dataset.modal) as HTMLElement;
         modal.classList.add("open");
         const exits = modal.querySelectorAll(".modal-exit");
-        exits.forEach(function (exit) {
-          exit.addEventListener("click", function (event) {
+        exits.forEach((exit) => {
+          exit.addEventListener("click", (event: Event) => {
             event.preventDefault();
             modal.classList.remove("open");
           });

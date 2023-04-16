@@ -38,7 +38,7 @@ export class SettingsService {
   setSettings(settings: Settings)
   {
     this.settings = settings;
-    StorageService.setLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY, settings);
     log.debug('Settings set to :', settings);
+    StorageService.setLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY, settings);
   }
 }

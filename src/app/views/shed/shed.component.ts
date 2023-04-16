@@ -70,16 +70,11 @@ export class ShedComponent implements OnInit {
     this.initShepPage();
 
     this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
-
-    let loadingComplete = () => {
+    this.texturesManagerService.loadRacesSpritesheets(() => {
       this.loadShepAnimations();
-
       this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
-
       this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.selectedShip, true, this.shipGUIContainer);
-    }
-
-    this.texturesManagerService.loadRacesSpritesheets(loadingComplete);
+    });
 
     const modals = document.querySelectorAll("[data-modal]");
 
@@ -332,7 +327,7 @@ export class ShedComponent implements OnInit {
 
   disablePlayButton()
   {
-    return this.selectedShip.name == "" || this.crewNamingsIsInvalid();
+    return this.selectedShip.name == "" || this.crewNamingsIsInvalid();
   }
 
   startGame() {

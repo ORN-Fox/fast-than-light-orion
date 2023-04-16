@@ -53,4 +53,15 @@ export class Room {
       return 0xfdb1a9;
     }
   }
+
+  serializeForSave() {
+    let room = {
+      affectedCrewId: this.affectedCrew?.serializeForSave(),
+      affectedSystemId: this.affectedSystem?.serializeForSave(),
+      oxygen: this.oxygen,
+      roomDisplaySettings: this.roomDisplaySettings.serializeForSave()
+    };
+
+    return room;
+  }
 }

@@ -41,4 +41,15 @@ export class Crew {
 
     return this.race.name;
   }
+
+  serializeForSave() {
+    let crew = {
+      id: this.id,
+      name: this.name,
+      raceType: this.race.type,
+      gender: this.gender
+    };
+
+    return crew;
+  }
 }

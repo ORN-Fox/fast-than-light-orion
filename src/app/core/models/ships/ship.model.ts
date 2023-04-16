@@ -56,4 +56,25 @@ export class Ship {
     this.name = this.originalName;
   }
 
+  serializeForSave() {
+    let serializeShip = {
+      name: this.name,
+      type: this.type,
+      layout: this.layout,
+      hull: this.hull,
+      reactorPower: this.reactorPower,
+      fuel: this.fuel,
+      missiles: this.missiles,
+      droneParts: this.droneParts,
+      crews : this.crews.map(crew => crew.serializeForSave()),
+      rooms: this.rooms.map(room => room.serializeForSave()),
+      // TODO: continue serialisation for save weapons, drones and upgrades
+      // weapons: this.weapons.map(weapon => weapon.id),
+      // drones: this.drones.map(drone => drone.id),
+      // upgrades: this.upgrades.map(upgrade => upgrade.id)
+    };
+
+    return serializeShip;
+  }
+
 }

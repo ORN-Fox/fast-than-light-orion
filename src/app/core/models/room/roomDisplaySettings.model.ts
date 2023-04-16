@@ -42,4 +42,15 @@ export class RoomDisplaySettings
   {
     return this.getRoomTilePositionY() + (this.sizeY > 1 ? 17.5 : 0); // system icon sprite : 35x35 -> 17.5px to center icon
   }
+
+  serializeForSave() {
+    let roomDisplaySettings = {
+      x: this.x,
+      y: this.y,
+      sizeX: this.sizeX,
+      sizeY: this.sizeY
+    };
+
+    return roomDisplaySettings;
+  }
 }
