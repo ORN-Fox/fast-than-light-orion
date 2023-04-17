@@ -231,6 +231,7 @@
   },
   "views": {
     "menu": {
+      "edition": "Édition Orion",
       "options": {
         "audio": {
           "musicVolume": "Volume musique",

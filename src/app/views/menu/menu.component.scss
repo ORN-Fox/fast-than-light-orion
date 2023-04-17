@@ -54,6 +54,24 @@
       }
     }
   }
+
+  .menu-footer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: .5rem;
+    bottom: 0;
+
+    p {
+      color: white;
+      font-family: 'Aquire';
+      margin-right: 1rem;
+    }
+
+    svg {
+      fill: white;
+    }
+  }
 }
 
 .options-container {
