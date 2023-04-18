@@ -5,6 +5,12 @@ import { Drone } from '../drones/drone.model';
 import { Crew } from '../crew/crew.model';
 import { Upgrade } from '../upgrades/upgrade.model';
 
+export enum ShipLayoutEnum {
+  A = 'A',
+  B = 'B',
+  C = 'C'
+}
+
 export class Ship {
 
   name: string;

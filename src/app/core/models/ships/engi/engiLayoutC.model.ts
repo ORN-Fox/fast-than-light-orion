@@ -1,5 +1,6 @@
 import { CrewsService } from '../../../services/crews/crews.service';
 
+import { ShipLayoutEnum } from '../ship.model';
 import { EngiShip } from './engiShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
@@ -19,7 +20,7 @@ export class EngiLayoutC extends EngiShip {
     super();
 
     this.name = this.originalName = 'Tetragon';
-    this.layout = 'C';
+    this.layout = ShipLayoutEnum.C;
 
     this.hull = this.maxHull = 300;
     this.reactorPower = 9;

@@ -1,5 +1,6 @@
 import { CrewsService } from '../../../services/crews/crews.service';
 
+import { ShipLayoutEnum } from '../ship.model';
 import { KestrelShip } from './kestrelShip.model';
 
 import { Crew, Gender } from '../../crew/crew.model';
@@ -17,7 +18,7 @@ export class KestrelLayoutB extends KestrelShip {
     super();
 
     this.name = this.originalName = 'Red-Tail';
-    this.layout = 'B';
+    this.layout = ShipLayoutEnum.B;
 
     this.hull = this.maxHull = 300;
     this.reactorPower = 8;
