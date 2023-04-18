@@ -252,8 +252,8 @@ export class ShipRenderService {
       let door = ship.doors[i];
 
       let doorSprite = Sprite.from(door.getSrcDoorSprite());
-      doorSprite.x = door.x;
-      doorSprite.y = door.y;
+      doorSprite.x = door.x * TILE_SIZE_WITH_BORDER;
+      doorSprite.y = door.y * TILE_SIZE_WITH_BORDER;
 
       if (door.rotation)
       {

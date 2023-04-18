@@ -71,28 +71,28 @@ export class EngiLayoutA extends EngiShip {
     ];
 
     this.doors = [
-      new Door(234, 141, 90), // Bottom of drone control room
-      new Door(218, 160), // Right of battery room
-      new Door(234, 211, 90), // Top of engines room
-      new Door(218, 262), // Right of engines room
-      new Door(255, 124), // Right of oxygen room
-      new Door(307, 70, 90), // Top left of top external door room
-      new Door(340, 70, 90), // Top right of top external door room
-      new Door(307, 106, 90), // Top left of top hacking room
-      new Door(340, 106, 90), // Top right of top hacking room
-      new Door(324, 124), // Right of hacking room
-      new Door(360, 124), // Right of cloacking room
-      new Door(288, 262), // Right of shields room
-      new Door(340, 245, 90), // Top of door control room
-      new Door(323, 228), // Right of sensor room
-      new Door(360, 228), // Right top of mind control room
-      new Door(360, 262), // Right bottom of mind control room
-      new Door(412, 176, 90), // Bottom of weapons control room
-      new Door(396, 192), // Right of teleport room
-      new Door(412, 245, 90), // Bottom of teleport room
-      new Door(432, 192), // Right Top of Right external doors room
-      new Door(432, 228), // Right Bottom of Right external doors room
-      new Door(429, 296) // Right of poiloting room
+      new Door(7, 4.5, 90), // Bottom of drone control room
+      new Door(6.5, 5), // Right of battery room
+      new Door(7, 6.5, 90), // Top of engines room
+      new Door(6.5, 8), // Right of engines room
+      new Door(7.5, 4), // Right of oxygen room
+      new Door(9, 2.5, 90), // Top left of top external door room
+      new Door(10, 2.5, 90), // Top right of top external door room
+      new Door(9, 3.5, 90), // Top left of top hacking room
+      new Door(10, 3.5, 90), // Top right of top hacking room
+      new Door(9.5, 4), // Right of hacking room
+      new Door(10.5, 4), // Right of cloacking room
+      new Door(8.5, 8), // Right of shields room
+      new Door(10, 7.5, 90), // Top of door control room
+      new Door(9.5, 7), // Right of sensor room
+      new Door(10.5, 7), // Right top of mind control room
+      new Door(10.5, 8), // Right bottom of mind control room
+      new Door(12, 5.5, 90), // Bottom of weapons control room
+      new Door(11.5, 6), // Right of teleport room
+      new Door(12, 7.5, 90), // Bottom of teleport room
+      new Door(12.5, 6), // Right Top of Right external doors room
+      new Door(12.5, 7), // Right Bottom of Right external doors room
+      new Door(12.5, 9) // Right of piloting room
     ];
 
     this.weapons = [
