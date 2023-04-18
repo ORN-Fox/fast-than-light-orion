@@ -1,4 +1,4 @@
-import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text } from 'pixi.js';
+import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text, TextStyle } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
@@ -39,53 +39,6 @@ export class ShipRenderService {
 
     // Dev mode
     // this.loadShipDevGridGUI(shipFloorContainer);
-  }
-
-  loadShipDevGridGUI(shipFloorContainer: Container)
-  {
-    let shipDevGrid = new Graphics();
-
-    for (let y = 0; y < MAX_SHIP_SLOT_Y; y++) {
-      for (let x = 0; x < MAX_SHIP_SLOT_X; x++) {
-        shipDevGrid
-          .lineStyle(2, 0xffffff, .5)
-          .drawRect(x * TILE_SIZE_WITH_BORDER, y * TILE_SIZE_WITH_BORDER, TILE_SIZE_WITH_BORDER - 2, TILE_SIZE_WITH_BORDER - 2);
-
-        console.log(shipDevGrid)
-      }
-    }
-
-    // Tile position X
-    for (let x = 0; x < MAX_SHIP_SLOT_X; x++) {
-      let tileXCoordinate = new Text(x, {
-        fontFamily: 'Arial',
-         fontSize: 16,
-         fill: 0xffffff,
-         align: 'center',
-      });
-
-      tileXCoordinate.x = (x + (x * TILE_SIZE_WITH_BORDER) + 2); // 2 px for text align
-      tileXCoordinate.y = MAX_SHIP_SLOT_Y * TILE_SIZE_WITH_BORDER + 20; // 20 px for text align
-
-      shipFloorContainer.addChild(tileXCoordinate);
-    }
-
-    // Tile position Y
-    for (let y = 0; y < MAX_SHIP_SLOT_Y; y++) {
-      let tileYCoordinate = new Text(y, {
-        fontFamily: 'Arial',
-         fontSize: 16,
-         fill: 0xffffff,
-         align: 'center',
-      });
-
-      tileYCoordinate.x = -30; // -30 px for text align
-      tileYCoordinate.y = (y + (y * TILE_SIZE_WITH_BORDER) + 8); // 8 px for text align
-
-      shipFloorContainer.addChild(tileYCoordinate);
-    }
-
-    shipFloorContainer.addChild(shipDevGrid);
   }
 
   loadThrustersAnimation(shipContainer: Container, ship: Ship)
@@ -390,5 +343,46 @@ export class ShipRenderService {
     {
       // TODO display upgrades
     }
+  }
+
+  private loadShipDevGridGUI(shipFloorContainer: Container) {
+    let shipDevGrid = new Graphics();
+
+    for (let y = 0; y < MAX_SHIP_SLOT_Y; y++) {
+      for (let x = 0; x < MAX_SHIP_SLOT_X; x++) {
+        shipDevGrid
+          .lineStyle(2, 0xffffff, .5)
+          .drawRect(x * TILE_SIZE_WITH_BORDER, y * TILE_SIZE_WITH_BORDER, TILE_SIZE_WITH_BORDER - 2, TILE_SIZE_WITH_BORDER - 2);
+      }
+    }
+
+    let textStyle = new TextStyle({
+      align: 'center',
+      fontFamily: 'Arial',
+      fontSize: 16,
+      fill: 0xffffff
+    });
+
+    // Tile position X
+    for (let x = 0; x < MAX_SHIP_SLOT_X; x++) {
+      let tileXCoordinate = new Text(x, textStyle);
+
+      tileXCoordinate.x = (x + (x * TILE_SIZE_WITH_BORDER) + 2); // 2 px for text align
+      tileXCoordinate.y = MAX_SHIP_SLOT_Y * TILE_SIZE_WITH_BORDER + 20; // 20 px for text align
+
+      shipFloorContainer.addChild(tileXCoordinate);
+    }
+
+    // Tile position Y
+    for (let y = 0; y < MAX_SHIP_SLOT_Y; y++) {
+      let tileYCoordinate = new Text(y, textStyle);
+
+      tileYCoordinate.x = -30; // -30 px for text align
+      tileYCoordinate.y = (y + (y * TILE_SIZE_WITH_BORDER) + 8); // 8 px for text align
+
+      shipFloorContainer.addChild(tileYCoordinate);
+    }
+
+    shipFloorContainer.addChild(shipDevGrid);
   }
 }
