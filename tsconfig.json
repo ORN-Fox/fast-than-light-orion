@@ -22,7 +22,8 @@
     "target": "ES2022",
     "module": "es2020",
     "types": [
-      "offscreencanvas"
+      "offscreencanvas",
+      "jasmine"
     ],
     "lib": [
       "es2020",
