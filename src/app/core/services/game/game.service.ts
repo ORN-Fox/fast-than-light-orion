@@ -58,6 +58,7 @@ export class GameService {
       console.log('storedSave', storedSave);
       
       game.createdAt = storedSave.createdAt;
+      game.updatedAt = storedSave.updatedAt;
       game.difficulty = this.difficulties[storedSave.difficulty];
 
       let ship = this.shipService.getShip(storedSave.ship.type, storedSave.ship.layout);
