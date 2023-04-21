@@ -6,6 +6,11 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
+// Commons
+import { ModalComponent } from './views/commons/modal/modal.component';
+
+// Pages
 import { ShedComponent } from './views/shed/shed.component';
 import { MenuComponent } from './views/menu/menu.component';
 import { GameComponent } from './views/game/game.component';
@@ -13,6 +18,7 @@ import { GameComponent } from './views/game/game.component';
 @NgModule({
   declarations: [
     AppComponent,
+    ModalComponent,
     ShedComponent,
     MenuComponent,
     GameComponent
