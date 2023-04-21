@@ -74,9 +74,11 @@
   }
 }
 
-.options-container {
+// Settings modal related
+.settings-container {
   background: url('/assets/images/gui/box_options.png') no-repeat;
   color: white;
+  position: relative;
   height: 450px;
   width: 826px;
 

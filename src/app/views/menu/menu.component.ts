@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { GameService } from '../../core/services/game/game.service';
@@ -15,12 +15,15 @@ import { Settings } from '../../core/models/settings/settings.model';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
   settings: Settings;
   languages: string[];
 
   menuMusic: any;
+
+  showSettingsModal: boolean = false;
+  showLanguagesModal: boolean = false;
 
   gameInProgress: boolean;
 
@@ -39,25 +42,6 @@ export class MenuComponent implements OnInit {
     this.gameInProgress = this.gameService.shouldExistGameInProgress();
   }
 
-  ngOnInit() {
-    const modals = document.querySelectorAll("[data-modal]");
-
-    modals.forEach((trigger: any) => {
-      trigger.addEventListener("click", function (event: Event) {
-        event.preventDefault();
-        const modal = document.getElementById(trigger.dataset.modal) as HTMLElement;
-        modal.classList.add("open");
-        const exits = modal.querySelectorAll(".modal-exit");
-        exits.forEach((exit) => {
-          exit.addEventListener("click", (event: Event) => {
-            event.preventDefault();
-            modal.classList.remove("open");
-          });
-        });
-      });
-    });
-  }
-
   continueGame() {
     this.router.navigate(['/game']);
   }
@@ -66,7 +50,11 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/shed']);
   }
 
-  // Options related
+  toggleSettingsModal = () => {
+    this.showSettingsModal = !this.showSettingsModal;
+  }
+
+  // Settings modal related
 
   toggleFullScreen()
   {
@@ -78,6 +66,10 @@ export class MenuComponent implements OnInit {
   {
     this.settings.dynamicBackground = !this.settings.dynamicBackground;
     this.settingsService.setSettings(this.settings);
+  }
+
+  toggleLanguagesModal = () => {
+    this.showLanguagesModal = !this.showLanguagesModal;
   }
 
   changeLanguage(language: string)
