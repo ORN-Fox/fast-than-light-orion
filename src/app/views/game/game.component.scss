@@ -2,3 +2,33 @@
   background: url('/assets/images/stars/z_bg_stars1.png') no-repeat;
   background-size: cover;
 }
+
+.in-game-menu-container {
+  background: url('/assets/images/gui/escape_main.png') no-repeat;
+  color: white;
+  position: relative;
+  height: 295px;
+  width: 162px;
+
+  ul {
+    padding: 17px 16px;
+
+    li:first-child {
+      margin-bottom: 25px;
+    }
+
+    li {
+      margin-bottom: 11px;
+
+      .btn {
+        font-size: 1.2rem;
+        height: 26px;
+        width: 130px;
+
+        &.btn-save-and-quit {
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+}

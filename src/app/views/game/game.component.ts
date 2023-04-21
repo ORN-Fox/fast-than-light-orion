@@ -32,6 +32,10 @@ export class GameComponent implements OnInit {
   shipContainer: Container;
   shipFloorContainer: Container;
 
+  showGameMenuModal: boolean = false;
+
+  isPause: boolean = true;
+
   constructor(
     private gameService: GameService,
     private settingsService: SettingsService,
@@ -94,4 +98,9 @@ export class GameComponent implements OnInit {
     this.shipFloorContainer.addChild(selectedShipFloor);
   }
 
+  // Game menu modal related
+
+  toggleGameMenuModal = () => {
+    this.showGameMenuModal = !this.showGameMenuModal;
+  }
 }

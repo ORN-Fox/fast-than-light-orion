@@ -12,9 +12,11 @@
       "quit": "Quitter",
       "rename": "Renomer",
       "rename_abbr": "Renom.",
-      "settings": "Options",
+      "retry": "Rejouer",
+      "saveAndQuit": "Sauv.+Quitter",
       "yes": "Oui"
     },
+    "commands": "Commandes",
     "crews": "Équipages",
     "difficulties": {
       "easy": "Facile",
@@ -24,6 +26,7 @@
     "drones": "Drones",
     "layout": "Agencement",
     "list": "Liste",
+    "settings": "Options",
     "ships": "Vaisseaux",
     "systemNotInstalled": "Système non installé",
     "races": {
@@ -232,7 +235,7 @@
   "views": {
     "menu": {
       "edition": "Édition Orion",
-      "options": {
+      "settings": {
         "audio": {
           "musicVolume": "Volume musique",
           "volume": "Volume",
@@ -253,13 +256,15 @@
           "sectiontitle": "Vidéo"
         },
         "title": "Options"
-      }
+      },
+      "title": "Menu"
     },
     "shed": {
       "chooseShip": "Choissizez votre vaisseau",
       "hideRooms": "Cacher les salles",
       "layout": "Type",
-      "randomShip": "Vaisseau aléatoire"
+      "randomShip": "Vaisseau aléatoire",
+      "title": "Hangar"
     }
   }
 }

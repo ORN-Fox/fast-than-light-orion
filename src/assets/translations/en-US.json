@@ -12,9 +12,11 @@
       "quit": "Quit",
       "rename": "Rename",
       "rename_abbr": "Rename",
-      "settings": "Settings",
+      "retry": "Retry",
+      "saveAndQuit": "Save+Quit",
       "yes": "Yes"
     },
+    "commands": "Commands",
     "crews": "Crews",
     "difficulties": {
       "easy": "Easy",
@@ -24,6 +26,7 @@
     "drones": "Drones",
     "layout": "Layout",
     "list": "List",
+    "settings": "Settings",
     "ships": "Ships",
     "systemNotInstalled": "System not installed",
     "races": {
@@ -232,7 +235,7 @@
   "views": {
     "menu": {
       "edition": "Orion Edition",
-      "options": {
+      "settings": {
         "audio": {
           "musicVolume": "Music volume",
           "volume": "Volume",
@@ -253,13 +256,15 @@
           "sectiontitle": "Video"
         },
         "title": "Settings"
-      }
+      },
+      "title": "Menu"
     },
     "shed": {
       "chooseShip": "Choose ship",
       "hideRooms": "Hide rooms",
       "layout": "Layout",
-      "randomShip": "Ramdom Ship"
+      "randomShip": "Ramdom Ship",
+      "title": "Shed"
     }
   }
 }
