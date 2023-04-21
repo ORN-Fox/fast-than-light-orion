@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Application, Container, Sprite } from 'pixi.js';
+import hotkeys from 'hotkeys-js';
 
 import { GameService } from '../../core/services/game/game.service';
 import { Logger } from '../../core/services/logger/logger.service';
@@ -18,7 +19,7 @@ const log = new Logger('App');
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   app: any;
   canvasHeight: number = 720;
@@ -45,6 +46,8 @@ export class GameComponent implements OnInit {
     this.settings = this.settingsService.getSettings();
     this.game = this.gameService.getGame();
 
+    this.initShorcuts();
+
     log.info('Start game, include in future version', this.game);
   }
 
@@ -68,6 +71,10 @@ export class GameComponent implements OnInit {
     this.texturesManagerService.loadRacesSpritesheets(() => {
       this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
     });
+  }
+
+  ngOnDestroy() {
+    this.clearShortcuts();
   }
 
   loadSelectedShip(ship: Ship) {
@@ -103,4 +110,23 @@ export class GameComponent implements OnInit {
   toggleGameMenuModal = () => {
     this.showGameMenuModal = !this.showGameMenuModal;
   }
+
+  // Shortcuts related
+
+  private initShorcuts() {
+    hotkeys('esc', () => {
+      this.toggleGameMenuModal();
+    });
+
+    hotkeys('space', () => {
+      this.isPause = !this.isPause;
+      // TODO stop/play animation and display pause label
+    });
+  }
+
+  private clearShortcuts() {
+    hotkeys.unbind('esc');
+    hotkeys.unbind('space');
+  }
+
 }
