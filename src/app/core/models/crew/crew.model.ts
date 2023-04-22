@@ -8,6 +8,13 @@ export enum Gender {
   Other
 }
 
+export interface ISerializedCrew {
+  id: string;
+  name: string;
+  raceType: number;
+  gender: number;
+}
+
 export class Crew {
 
   id: string;
@@ -42,8 +49,8 @@ export class Crew {
     return this.race.name;
   }
 
-  serializeForSave() {
-    let crew = {
+  serializeForSave(): ISerializedCrew {
+    let crew: ISerializedCrew = {
       id: this.id,
       name: this.name,
       raceType: this.race.type,

@@ -1,5 +1,14 @@
 import { Difficulty } from '../difficulty/difficulty.model';
-import { Ship } from '../ships/ship.model';
+import { ISerializedShip, Ship } from '../ships/ship.model';
+
+export interface ISerializedGame {
+  ship: ISerializedShip;
+  difficulty: number;
+  saveVersion: number;
+  gameVersion: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 export class Game {
 
@@ -18,8 +27,8 @@ export class Game {
     this.createdAt = new Date();
   }
 
-  serializeForSave() {
-    let serializedGame = {
+  serializeForSave(): ISerializedGame {
+    let serializedGame: ISerializedGame = {
       ship: this.ship.serializeForSave(),
       difficulty: this.difficulty.value,
       saveVersion: this.saveVersion,

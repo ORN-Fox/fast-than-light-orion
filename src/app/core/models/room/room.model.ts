@@ -1,6 +1,13 @@
 import { Crew } from '../crew/crew.model';
-import { RoomDisplaySettings } from './roomDisplaySettings.model';
+import { ISerializedRoomDisplaySettings, RoomDisplaySettings } from './roomDisplaySettings.model';
 import { System } from '../systems/system.model';
+
+export interface ISerializedRoom {
+  affectedCrewId: string | null;
+  affectedSystemId: string | null;
+  oxygen: number;
+  roomDisplaySettings: ISerializedRoomDisplaySettings;
+}
 
 export class Room {
 
@@ -54,8 +61,8 @@ export class Room {
     }
   }
 
-  serializeForSave() {
-    let room = {
+  serializeForSave(): ISerializedRoom {
+    let room: ISerializedRoom = {
       affectedCrewId: this.affectedCrew ? this.affectedCrew.id : null,
       affectedSystemId: this.affectedSystem ? this.affectedSystem.id : null,
       oxygen: this.oxygen,

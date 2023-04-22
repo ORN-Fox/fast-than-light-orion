@@ -1,14 +1,31 @@
 import { Door } from '../door/door.model';
-import { Room } from '../room/room.model';
+import { ISerializedRoom, Room } from '../room/room.model';
 import { Weapon } from '../weapons/weapon.model';
 import { Drone } from '../drones/drone.model';
-import { Crew } from '../crew/crew.model';
+import { Crew, ISerializedCrew } from '../crew/crew.model';
 import { Upgrade } from '../upgrades/upgrade.model';
 
 export enum ShipLayoutEnum {
   A = 'A',
   B = 'B',
   C = 'C'
+}
+
+export interface ISerializedShip {
+  name: string;
+  type: string;
+  layout: string;
+  hull: number;
+  reactorPower: number;
+  fuel: number;
+  missiles: number;
+  droneParts: number;
+  crews: ISerializedCrew[];
+  rooms: ISerializedRoom[];
+  // TODO: continue serialisation for save weapons, drones and upgrades
+  // weapons: SerializedWeapons;
+  // drones: SerializedDrones,
+  // upgrades: SerializedUpgrades
 }
 
 export class Ship {
@@ -62,8 +79,8 @@ export class Ship {
     this.name = this.originalName;
   }
 
-  serializeForSave() {
-    let serializeShip = {
+  serializeForSave(): ISerializedShip {
+    let serializeShip: ISerializedShip = {
       name: this.name,
       type: this.type,
       layout: this.layout,

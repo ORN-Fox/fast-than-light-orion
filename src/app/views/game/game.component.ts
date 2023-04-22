@@ -135,7 +135,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   toggleCommandsModal() {
-    console.log('Toggle commands modal');
+    console.log('Toggle commands modal soon ...');
     // TODO
   }
 

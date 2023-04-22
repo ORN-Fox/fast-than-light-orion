@@ -1,6 +1,13 @@
 export const TILE_SIZE_WITH_BORDER: number = 35; // px
 export const BORDER_TILE_SIZE: number = 2; // px
 
+export interface ISerializedRoomDisplaySettings {
+  x: number;
+  y: number;
+  sizeX: number;
+  sizeY: number;
+}
+
 export class RoomDisplaySettings
 {
   x: number;
@@ -43,8 +50,8 @@ export class RoomDisplaySettings
     return this.getRoomTilePositionY() + (this.sizeY > 1 ? 17.5 : 0); // system icon sprite : 35x35 -> 17.5px to center icon
   }
 
-  serializeForSave() {
-    let roomDisplaySettings = {
+  serializeForSave(): ISerializedRoomDisplaySettings {
+    let roomDisplaySettings: ISerializedRoomDisplaySettings = {
       x: this.x,
       y: this.y,
       sizeX: this.sizeX,
