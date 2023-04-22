@@ -58,8 +58,8 @@ export class GameService {
       storedSave = JSON.parse(storedSave);
       console.log('storedSave', storedSave);
       
-      game.createdAt = storedSave.createdAt;
-      game.updatedAt = storedSave.updatedAt;
+      game.createdAt = new Date(storedSave.createdAt);
+      game.updatedAt = new Date(storedSave.updatedAt);
       game.difficulty = this.difficulties[storedSave.difficulty];
 
       let ship = this.shipService.getShip(storedSave.ship.type, storedSave.ship.layout);
