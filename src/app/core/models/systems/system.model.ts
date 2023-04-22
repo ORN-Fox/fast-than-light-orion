@@ -1,5 +1,8 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export class System {
 
+  id: string;
   level: number;
   type: number;
   isInstalled: boolean;
@@ -13,6 +16,7 @@ export class System {
   variantSystemInRoom: number;
 
   constructor() {
+    this.id = uuidv4();
     this.level = 1;
     this.isInstalled = true;
 

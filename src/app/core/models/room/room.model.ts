@@ -56,8 +56,8 @@ export class Room {
 
   serializeForSave() {
     let room = {
-      affectedCrewId: this.affectedCrew?.serializeForSave(),
-      affectedSystemId: this.affectedSystem?.serializeForSave(),
+      affectedCrewId: this.affectedCrew ? this.affectedCrew.id : null,
+      affectedSystemId: this.affectedSystem ? this.affectedSystem.id : null,
       oxygen: this.oxygen,
       roomDisplaySettings: this.roomDisplaySettings.serializeForSave()
     };
