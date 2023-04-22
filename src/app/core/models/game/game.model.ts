@@ -7,10 +7,14 @@ export class Game {
 
   difficulty: Difficulty;
 
+  saveVersion: number;
+  gameVersion: string;
   createdAt: Date;
   updatedAt: Date;
 
   constructor() {
+    this.saveVersion = 1;
+    this.gameVersion = "0.0.1";
     this.createdAt = new Date();
   }
 
@@ -18,6 +22,8 @@ export class Game {
     let serializedGame = {
       ship: this.ship.serializeForSave(),
       difficulty: this.difficulty.value,
+      saveVersion: this.saveVersion,
+      gameVersion: this.gameVersion,
       createdAt: this.createdAt.toISOString(),
       updatedAt: this.updatedAt?.toISOString()
     };

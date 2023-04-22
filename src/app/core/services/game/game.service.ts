@@ -57,7 +57,9 @@ export class GameService {
     if (storedSave) {
       storedSave = JSON.parse(storedSave);
       console.log('storedSave', storedSave);
-      
+
+      game.saveVersion = storedSave.saveVersion;
+      game.gameVersion = storedSave.gameVersion;
       game.createdAt = new Date(storedSave.createdAt);
       game.updatedAt = new Date(storedSave.updatedAt);
       game.difficulty = this.difficulties[storedSave.difficulty];
