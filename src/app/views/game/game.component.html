@@ -6,12 +6,17 @@
   <div class="in-game-menu-container">
     <ul>
       <li><button class="btn" (click)="toggleGameMenuModal()">{{'commons.actions.continue' | translate}}</button></li>
-      <li><button class="btn">{{'views.menu.title' | translate}}</button></li>
-      <li><button class="btn">{{'views.shed.title' | translate}}</button></li>
-      <li><button class="btn">{{'commons.actions.retry' | translate}}</button></li>
+      <li><button class="btn" (click)="navigateToMenu()">{{'views.menu.title' | translate}}</button></li>
+      <li><button class="btn" (click)="navigateToShed()">{{'views.shed.title' | translate}}</button></li>
+      <li><button class="btn" (click)="retryGame()">{{'commons.actions.retry' | translate}}</button></li>
       <li><button class="btn">{{'commons.settings' | translate}}</button></li>
       <li><button class="btn">{{'commons.commands' | translate}}</button></li>
-      <li><button class="btn btn-save-and-quit">{{'commons.actions.saveAndQuit' | translate}}</button></li>
+      <li><button class="btn btn-save-and-quit" (click)="saveAndQuit()">{{'commons.actions.saveAndQuit' | translate}}</button></li>
     </ul>
+  </div>
+
+  <div class="difficulty-container">
+    <p class="difficulty-title">{{'commons.difficulty' | translate}}</p>
+    <p *ngIf="game" class="difficulty-value">{{('commons.difficulties.' + game.difficulty.name) | translate}}</p>
   </div>
 </app-modal>

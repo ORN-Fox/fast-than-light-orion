@@ -18,6 +18,7 @@
     },
     "commands": "Commandes",
     "crews": "Équipages",
+    "difficulty": "Difficulté",
     "difficulties": {
       "easy": "Facile",
       "hard": "Difficile",

@@ -11,6 +11,7 @@ import { TexturesManagerService } from 'src/app/core/services/texturesManager/te
 import { Game } from '../../core/models/game/game.model';
 import { Settings } from '../../core/models/settings/settings.model';
 import { Ship } from '../../core/models/ships/index';
+import { Router } from '@angular/router';
 
 const log = new Logger('App');
 
@@ -38,6 +39,7 @@ export class GameComponent implements OnInit, OnDestroy {
   isPause: boolean = true;
 
   constructor(
+    private router: Router,
     private gameService: GameService,
     private settingsService: SettingsService,
     private shipRenderService: ShipRenderService,
@@ -109,6 +111,26 @@ export class GameComponent implements OnInit, OnDestroy {
 
   toggleGameMenuModal = () => {
     this.showGameMenuModal = !this.showGameMenuModal;
+  }
+
+  navigateToMenu() {
+    this.gameService.storeGame(this.game);
+    this.router.navigate(['/menu']);
+  }
+
+  navigateToShed() {
+    // TODO display alert are your sure ?
+    this.router.navigate(['/shed']);
+  }
+
+  retryGame() {
+    // TODO enforce reset game
+    this.router.navigate(['/game']);
+  }
+
+  saveAndQuit() {
+    this.gameService.storeGame(this.game);
+    // TODO close window ??
   }
 
   // Shortcuts related

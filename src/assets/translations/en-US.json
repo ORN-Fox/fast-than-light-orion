@@ -18,6 +18,7 @@
     },
     "commands": "Commands",
     "crews": "Crews",
+    "difficulty": "Difficulty",
     "difficulties": {
       "easy": "Easy",
       "hard": "Hard",

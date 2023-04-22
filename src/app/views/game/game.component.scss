@@ -32,3 +32,28 @@
     }
   }
 }
+
+.difficulty-container {
+  background: url('/assets/images/gui/info_difficulty.png') no-repeat;
+  color: white;
+  position: relative;
+  height: 72px;
+  width: 145px;
+
+  .difficulty-title, .difficulty-value {
+    font-size: 1.25rem;
+  } 
+
+  .difficulty-title {
+    font-family: 'CW Bitmap';
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .difficulty-value {
+    font-family: 'Aquire';
+    color: black;
+    margin-top: 8px;
+    text-align: center;
+  }
+}
