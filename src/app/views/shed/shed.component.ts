@@ -49,6 +49,8 @@ export class ShedComponent implements OnInit {
   displayRooms: boolean = true;
   shipHaveNoDroneControlSystem: boolean = false;
 
+  showShipsListModal: boolean = false;
+
   constructor(
     private router: Router,
     private gameService: GameService,
@@ -74,22 +76,6 @@ export class ShedComponent implements OnInit {
       this.loadShepAnimations();
       this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
       this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.selectedShip, true, this.shipGUIContainer);
-    });
-
-    const modals = document.querySelectorAll("[data-modal]");
-
-    modals.forEach(function (trigger: any) {
-      trigger.addEventListener("click", function (event: any) {
-        event.preventDefault();
-        const modal = document.getElementById(trigger.dataset.modal) as HTMLElement;
-        const exits = modal.querySelectorAll(".modal-exit");
-        exits.forEach(function (exit) {
-          exit.addEventListener("click", function (event) {
-            event.preventDefault();
-            modal.classList.remove("open");
-          });
-        });
-      });
     });
   }
 
@@ -209,10 +195,8 @@ export class ShedComponent implements OnInit {
     this.selectShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
   }
 
-  openShipsList()
-  {
-    let modalShipList = document.querySelector('#modal-ships-list') as HTMLElement;
-    modalShipList.classList.add('open');
+  toggleShipsListModal() {
+    this.showShipsListModal = !this.showShipsListModal;
   }
 
   nextShip()
@@ -261,14 +245,13 @@ export class ShedComponent implements OnInit {
   }
 
   selectShipFromShipListSelector(shipListIndex: number, ship: Ship)
-  {
+  { 
     if (shipListIndex)
     {
       this.shipListIndex = shipListIndex;
     }
 
-    let modalShipList = document.querySelector('#modal-ships-list') as HTMLElement;
-    modalShipList.classList.remove('open');
+    this.toggleShipsListModal();
 
     this.selectShip(ship);
   }

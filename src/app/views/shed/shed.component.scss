@@ -340,8 +340,9 @@
 .ships-list-container {
   background: url('/assets/images/gui/ship_list_main.png') no-repeat;
   color: white;
-  height: 420px;
-  width: 1078px;
+  position: relative;
+  height: 412px;
+  width: 1080px;
 
   .ships-list-header {
     position: absolute;
