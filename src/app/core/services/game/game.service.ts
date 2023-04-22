@@ -6,6 +6,7 @@ import { StorageService } from '../../utils/storage.service';
 
 import { Difficulty, DifficultyEnum } from '../../models/difficulty/difficulty.model';
 import { Game } from '../../models/game/game.model';
+import { Crew } from '../../models/crew/crew.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,12 +66,13 @@ export class GameService {
       if (ship) {
         ship.name = storedSave.ship.name;
 
-        let crews = storedSave.ship.crews;
-        crews.forEach((crew: any) => {
-          crew.race = AtlasesService.getRace(crew.raceType);
-          delete crew.raceType;
+        let recomputeCrews: Crew[] = [];
+        storedSave.ship.crews.forEach((storedCrew: any) => {
+          let crew = new Crew(storedCrew.name, AtlasesService.getRace(storedCrew.raceType), storedCrew.gender);
+          crew.id = storedCrew.id;
+          recomputeCrews.push(crew);
         });
-        ship.crews = crews;
+        ship.crews = recomputeCrews;
 
         game.ship = ship;
       }
