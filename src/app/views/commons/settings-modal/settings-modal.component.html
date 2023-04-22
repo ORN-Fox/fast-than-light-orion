@@ -1,0 +1,52 @@
+<app-modal [show]="showSettingsModal" (closeCallback)="toggleSettingsModal()">
+    <div class="settings-container">
+      <h1>{{'views.menu.settings.title' | translate}}</h1>
+  
+      <div class="video-settings-container">
+        <h2>{{'views.menu.settings.video.sectiontitle' | translate}}</h2>
+        <ul class="video-settings-content">
+          <li>{{'views.menu.settings.video.fullscreen' | translate}} : <a (click)="toggleFullScreen()">{{'commons.actions.' + (settings.fullScreenMode ? 'yes' : 'no') | translate}}</a></li>
+          <li>{{'views.menu.settings.video.dynamicBackground' | translate}} : <a (click)="toggleDynamicBackground()">{{'commons.actions.' + (settings.dynamicBackground ? 'yes' : 'no') | translate}}</a></li>
+          <li>{{'views.menu.settings.video.colorblindMode' | translate}} : {{'commons.actions.no' | translate}}</li>
+          <li (click)="toggleLanguagesModal()"><a>{{'views.menu.settings.video.changeLanguage' | translate}}</a></li>
+        </ul>
+      </div>
+  
+      <div class="gameplay-settings-container">
+        <h2>{{'views.menu.settings.gameplay.sectiontitle' | translate}}</h2>
+        <ul class="gameplay-settings-content">
+          <li>{{'views.menu.settings.gameplay.chooseEvent' | translate}} : {{'views.menu.settings.gameplay.noDelay' | translate}}</li>
+          <li>{{'views.menu.settings.gameplay.displayBeaconsTrajectoryOnCursor' | translate}} : {{'commons.actions.yes' | translate}}</li>
+          <li>{{'views.menu.settings.gameplay.featsWindow' | translate}} : {{'commons.actions.yes' | translate}}</li>
+        </ul>
+      </div>
+  
+      <div class="audio-settings-container">
+        <h2>{{'views.menu.settings.audio.sectiontitle' | translate}}</h2>
+        <ul class="audio-settings-content">
+          <li>
+            <span>{{'views.menu.settings.audio.volume' | translate}}</span>
+            <div class="slidecontainer">
+              <input type="range" min="0" max="1" step="0.1" class="slider" id="volumeSlider" [(ngModel)]="settings.volume" (change)="updateAudioVolume(settings.volume)">
+            </div>
+          </li>
+          <li>
+            <span>{{'views.menu.settings.audio.musicVolume' | translate}}</span>
+            <div class="slidecontainer">
+              <input type="range" min="0" max="1" step="0.1" class="slider" id="musicVolumeSlider" [(ngModel)]="settings.musicVolume" (change)="updateAudioMusicVolume(settings.musicVolume)">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </app-modal>
+  
+  <app-modal [show]="showLanguagesModal" (closeCallback)="toggleLanguagesModal()">
+    <div class="languages-container">
+      <ul>
+        <li><button class="btn" (click)="changeLanguage(languages[0])">English</button></li>
+        <li><button class="btn" (click)="changeLanguage(languages[1])">Français</button></li>
+        <li><button class="btn more-languages-soon" disabled>More languages soon...</button></li>
+      </ul>
+    </div>
+  </app-modal>

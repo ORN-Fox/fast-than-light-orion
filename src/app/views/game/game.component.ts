@@ -34,9 +34,10 @@ export class GameComponent implements OnInit, OnDestroy {
   shipContainer: Container;
   shipFloorContainer: Container;
 
-  showGameMenuModal: boolean = false;
-
   isPause: boolean = true;
+
+  showGameMenuModal: boolean = false;
+  showSettingsModal: boolean = false;
 
   constructor(
     private router: Router,
@@ -124,8 +125,18 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   retryGame() {
+    console.log('Retry game');
     // TODO enforce reset game
     this.router.navigate(['/game']);
+  }
+
+  toggleSettingsModal = () => {
+    this.showSettingsModal = !this.showSettingsModal;
+  }
+
+  toggleCommandsModal() {
+    console.log('Toggle commands modal');
+    // TODO
   }
 
   saveAndQuit() {

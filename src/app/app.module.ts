@@ -14,6 +14,7 @@ import { ModalComponent } from './views/commons/modal/modal.component';
 import { ShedComponent } from './views/shed/shed.component';
 import { MenuComponent } from './views/menu/menu.component';
 import { GameComponent } from './views/game/game.component';
+import { SettingsModalComponent } from './views/commons/settings-modal/settings-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GameComponent } from './views/game/game.component';
     ModalComponent,
     ShedComponent,
     MenuComponent,
-    GameComponent
+    GameComponent,
+    SettingsModalComponent
   ],
   imports: [
     BrowserModule,
