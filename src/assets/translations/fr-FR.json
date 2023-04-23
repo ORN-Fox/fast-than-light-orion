@@ -236,6 +236,11 @@
   "views": {
     "menu": {
       "edition": "Édition Orion",
+      "languages": {
+        "english": "Anglais",
+        "french": "Français",
+        "moreLanguagesSoon": "Plus de langues bientôt..."
+      },
       "settings": {
         "audio": {
           "musicVolume": "Volume musique",

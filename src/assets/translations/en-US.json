@@ -236,6 +236,11 @@
   "views": {
     "menu": {
       "edition": "Orion Edition",
+      "languages": {
+        "english": "English",
+        "french": "Frenh",
+        "moreLanguagesSoon": "More languages soon..."
+      },
       "settings": {
         "audio": {
           "musicVolume": "Music volume",

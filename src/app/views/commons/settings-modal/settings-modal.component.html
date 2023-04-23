@@ -44,9 +44,9 @@
   <app-modal [show]="showLanguagesModal" (closeCallback)="toggleLanguagesModal()">
     <div class="languages-container">
       <ul>
-        <li><button class="btn" (click)="changeLanguage(languages[0])">English</button></li>
-        <li><button class="btn" (click)="changeLanguage(languages[1])">Français</button></li>
-        <li><button class="btn more-languages-soon" disabled>More languages soon...</button></li>
+        <li><button class="btn" (click)="changeLanguage(languages[0])">{{'views.menu.languages.english' | translate}}</button></li>
+        <li><button class="btn" (click)="changeLanguage(languages[1])">{{'views.menu.languages.french' | translate}}</button></li>
+        <li><button class="btn more-languages-soon" disabled>{{'views.menu.languages.moreLanguagesSoon' | translate}}</button></li>
       </ul>
     </div>
   </app-modal>
