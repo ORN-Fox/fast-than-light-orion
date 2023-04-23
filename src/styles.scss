@@ -26,6 +26,7 @@ html, body, app-root {
 }
 
 body {
+  cursor: url('/assets/images/mouse/pointerInvalid.png'), default;
   margin: 0;
   background: gray;
 
@@ -35,8 +36,8 @@ body {
   }
 }
 
-button {
-  cursor: pointer;
+button, a {
+  cursor: url('/assets/images/mouse/pointerValid.png'), pointer;
 
   &:disabled {
     cursor: not-allowed;
