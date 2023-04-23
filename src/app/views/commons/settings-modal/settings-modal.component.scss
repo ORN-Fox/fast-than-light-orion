@@ -1,3 +1,5 @@
+@import '/src/assets/styles/commons/variables';
+
 .settings-container {
     background: url('/assets/images/gui/box_options.png') no-repeat;
     color: white;
@@ -105,14 +107,14 @@
         width: 15px; /* Set a specific slider handle width */
         height: 25px; /* Slider handle height */
         background: #ffffff;
-        cursor: pointer; /* Cursor on hover */
+        cursor: $pointerCursor; /* Cursor on hover */
       }
   
       .slider::-moz-range-thumb {
         width: 15px; /* Set a specific slider handle width */
         height: 25px; /* Slider handle height */
         background: #ffffff;
-        cursor: pointer; /* Cursor on hover */
+        cursor: $pointerCursor; /* Cursor on hover */
       }
     }
   }

@@ -1,0 +1,59 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+html, body, app-root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    cursor: $defaultCursor;
+    margin: 0;
+    background: gray;
+
+    &:-webkit-full-screen {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+button, a {
+    cursor: $pointerCursor;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.btn {
+    border-radius: 10px;
+    background-color: #ebf5e5;
+    border: none;
+    font-family: 'Aquire';
+
+    &:not(:disabled) {
+
+        &:hover,
+        &.active {
+            background-color: #ffe65e;
+        }
+    }
+}
