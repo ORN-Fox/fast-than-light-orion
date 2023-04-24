@@ -60,6 +60,17 @@
   }
 }
 
+.retry-container {
+  background: url('/assets/images/gui/confirm_window.png') no-repeat;
+  height: 90px;
+  width: 140px;
+
+  p {
+    color: white;
+    font-family: 'CW Bitmap';
+  }
+}
+
 .help-commands-container {
   background: url('/assets/images/gui/help_screen_overlay.png') no-repeat;
   position: relative;

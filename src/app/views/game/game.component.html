@@ -8,7 +8,7 @@
       <li><button class="btn" (click)="toggleGameMenuModal()">{{'commons.actions.continue' | translate}}</button></li>
       <li><button class="btn" (click)="navigateToMenu()">{{'views.menu.title' | translate}}</button></li>
       <li><button class="btn" (click)="navigateToShed()">{{'views.shed.title' | translate}}</button></li>
-      <li><button class="btn" (click)="retryGame()">{{'commons.actions.retry' | translate}}</button></li>
+      <li><button class="btn" (click)="toggleRetryGameModal()">{{'commons.actions.retry' | translate}}</button></li>
       <li><button class="btn" (click)="toggleSettingsModal()">{{'commons.settings' | translate}}</button></li>
       <li><button class="btn" (click)="toggleHelpCommandsModal()">{{'commons.commands' | translate}}</button></li>
       <li><button class="btn btn-save-and-quit" (click)="saveAndQuit()">{{'commons.actions.saveAndQuit' | translate}}</button></li>
@@ -18,6 +18,18 @@
   <div class="difficulty-container">
     <p class="difficulty-title">{{'commons.difficulty' | translate}}</p>
     <p *ngIf="game" class="difficulty-value">{{('commons.difficulties.' + game.difficulty.name) | translate}}</p>
+  </div>
+</app-modal>
+
+<app-modal [show]="showRetryGameModal">
+  <div class="retry-container">
+    <p>Êtes-vous sûr ?</p>
+    <p>Toute votre progression sera perdue.</p>
+
+    <div class="choices-container">
+      <button class="btn" (click)="onConfirmRetryGame()">{{'commons.actions.yes' | translate}}</button>
+      <button class="btn" (click)="onCancelRetryGame()">{{'commons.actions.no' | translate}}</button>
+    </div>
   </div>
 </app-modal>
 

@@ -37,6 +37,7 @@ export class GameComponent implements OnInit, OnDestroy {
   isPause: boolean = true;
 
   showGameMenuModal: boolean = false;
+  showRetryGameModal: boolean = false;
   showSettingsModal: boolean = false;
   showHelpCommandsModal: boolean = false;
 
@@ -125,10 +126,19 @@ export class GameComponent implements OnInit, OnDestroy {
     this.router.navigate(['/shed']);
   }
 
-  retryGame() {
-    console.log('Retry game');
+  toggleRetryGameModal() {
+    this.showRetryGameModal = !this.showRetryGameModal;
+  }
+
+  onCancelRetryGame() {
+    this.toggleRetryGameModal();
+  }
+
+  onConfirmRetryGame() {
+    this.toggleRetryGameModal();
+    this.toggleGameMenuModal();
     // TODO enforce reset game
-    this.router.navigate(['/game']);
+    window.location.reload();
   }
 
   toggleSettingsModal = () => {
