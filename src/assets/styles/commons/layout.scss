@@ -29,7 +29,7 @@ button, a {
     cursor: $pointerCursor;
 
     &:disabled {
-        cursor: not-allowed;
+        cursor: $pointerCursor;
     }
 }
 
@@ -47,13 +47,13 @@ canvas {
     border-radius: 10px;
     background-color: #ebf5e5;
     border: none;
-    font-family: 'Aquire';
+    font-family: $aquireFont;
 
     &:not(:disabled) {
 
         &:hover,
         &.active {
-            background-color: #ffe65e;
+            background-color: $hover-effect;
         }
     }
 }
