@@ -38,6 +38,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   showGameMenuModal: boolean = false;
   showSettingsModal: boolean = false;
+  showHelpCommandsModal: boolean = false;
 
   constructor(
     private router: Router,
@@ -134,9 +135,8 @@ export class GameComponent implements OnInit, OnDestroy {
     this.showSettingsModal = !this.showSettingsModal;
   }
 
-  toggleCommandsModal() {
-    console.log('Toggle commands modal soon ...');
-    // TODO
+  toggleHelpCommandsModal() {
+    this.showHelpCommandsModal = !this.showHelpCommandsModal;
   }
 
   saveAndQuit() {

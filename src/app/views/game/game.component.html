@@ -10,7 +10,7 @@
       <li><button class="btn" (click)="navigateToShed()">{{'views.shed.title' | translate}}</button></li>
       <li><button class="btn" (click)="retryGame()">{{'commons.actions.retry' | translate}}</button></li>
       <li><button class="btn" (click)="toggleSettingsModal()">{{'commons.settings' | translate}}</button></li>
-      <li><button class="btn" (click)="toggleCommandsModal()">{{'commons.commands' | translate}}</button></li>
+      <li><button class="btn" (click)="toggleHelpCommandsModal()">{{'commons.commands' | translate}}</button></li>
       <li><button class="btn btn-save-and-quit" (click)="saveAndQuit()">{{'commons.actions.saveAndQuit' | translate}}</button></li>
     </ul>
   </div>
@@ -22,3 +22,52 @@
 </app-modal>
 
 <app-settings-modal [showSettingsModal]="showSettingsModal" [toggleSettingsModal]="toggleSettingsModal"></app-settings-modal>
+
+<app-modal [show]="showHelpCommandsModal" (closeCallback)="toggleHelpCommandsModal()">
+  <div class="help-commands-container">
+    <div class="crews-commands-container">
+      <h1>Comm. équipage</h1>
+      <p class="subtitle">Donner des ordres :</p>
+
+      <div class="first-section">
+        <p>Clic gauche ou faire glisser pour choisir un personnage.</p>
+        <p>Clic droit pour déplacer le personnage choisi.</p>
+      </div>
+      
+      <div class="second-section">
+        <p>Les personnages réparent les sytèmes ou se battend dans leur salle actuelle (auto).</p>
+      </div>
+    </div>
+
+    <div class="pause-commands-container">
+      <h1>Pause</h1>
+      <p>Barre d'espace pour mettre pause</p>
+      <p>En pause, vous pouvez agir et donner des ordres.</p>
+    </div>
+
+    <div class="power-commands-container">
+      <h1>Comm. puissance</h1>
+      <p>Augmenter/diminuer puissance systèmes :</p>
+
+      <div class="first-section">
+        <p>Clic gauche : plus de puissance.</p>
+        <p>Clic droit : moins de puissance.</p>
+      </div>
+    </div>
+
+    <div class="weapons-drones-commands-container">
+      <h1>Armes / Drones</h1>
+
+      <div class="first-section">
+        <p>Clic gauche : charge une arme.</p>
+        <p>Nouv. clic gauche : activer une arme.</p>
+        <p>Clic gauche sur vaisseau ennemi  pour le cibler.</p>
+      </div>
+      
+      <div class="second-section">
+        <p>Clic gauchhe ou faire glisser : réorganiser armes/drones.</p>
+        <p>Si le sytème est endommagé, l'objet le plus à droite est coupé en 1er.</p>
+      </div>
+    </div>
+  </div>
+</app-modal>

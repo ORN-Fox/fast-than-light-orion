@@ -1,3 +1,5 @@
+@import '/src/assets/styles/commons/variables';
+
 .game {
   background: url('/assets/images/stars/z_bg_stars1.png') no-repeat;
   background-size: cover;
@@ -55,5 +57,112 @@
     color: black;
     margin-top: 8px;
     text-align: center;
+  }
+}
+
+.help-commands-container {
+  background: url('/assets/images/gui/help_screen_overlay.png') no-repeat;
+  position: relative;
+  height: 615px;
+  width: 1280px;
+  text-align: center;
+
+  h1 {
+    color: black;
+    font-family: $aquireFont;
+    font-size: 1.5rem;
+  }
+
+  p {
+    color: white;
+    font-family: $cwBitmapFont;
+  }
+
+  .crews-commands-container {
+    position: absolute;
+    top: 5rem;
+    left: 2.5rem;
+    width: 23rem;
+
+    h1 {
+      margin-bottom: .75rem;
+    }
+
+    .subtitle {
+      margin-bottom: 7.5rem;
+    }
+
+    .first-section {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 10rem;
+
+      p {
+        display: inline-block;
+        width: 9rem;
+      }
+    }
+  }
+
+  .pause-commands-container {
+    position: absolute;
+    top: 1rem;
+    left: 30.5rem;
+    width: 19.5rem;
+
+    h1 {
+      margin-bottom: 10rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .power-commands-container {
+    position: absolute;
+    top: 22.25rem;
+    left: 30.5rem;
+    width: 20rem;
+
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .first-section {
+      margin-top: 7.25rem;
+      display: flex;
+      justify-content: space-around;
+
+      p {
+        display: inline-block;
+        width: 8rem;
+      }
+    }
+  }
+
+  .weapons-drones-commands-container {
+    position: absolute;
+    top: 4.8rem;
+    left: 54.5rem;
+    width: 24rem;
+
+    h1 {
+      margin-bottom: 9.25rem;
+    }
+
+    .first-section {
+      display: flex;
+      margin-bottom: 8.25rem;
+
+      p {
+        display: inline-block;
+        width: 8rem;
+      }
+    }
+
+    .second-section {
+      width: 23rem;
+    }
   }
 }
