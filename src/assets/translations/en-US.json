@@ -234,6 +234,37 @@
     "weapons": "Weapons"
   },
   "views": {
+    "game": {
+      "menu": {
+        "helpCommands": {
+          "crews": {
+            "charactersRepairSystemsOrFightInTheirCurrentRoom": "Characters repair systems or fight in their current room (auto).",
+            "giveOrders": "Give Orders:",
+            "leftClicOrDragToChooseCharacter": "Left click or drag to choose a character.",
+            "rightClickToMoveChosenCharacter": "Right click to move chosen character.",
+            "title": "Comm. Crew"
+          },
+          "break": {
+            "spaceBarToPause": "Space bar to pause",
+            "whilePausedYouCanActAndGiveOrders": "When paused, you can act and give orders."
+          },
+          "power": {
+            "increaseDecreaseSystemPower": "Increase/decrease systems power:",
+            "leftClicMorePower": "Left click: more power.",
+            "rightClickLessPower": "Right click: less power.",
+            "title": "Comm. power"
+          },
+          "weaponsDrones": {
+            "ifSystemIsDamagedTheRightmostObjectIsCutFirst": "If the system is damaged, the rightmost object is cut first.",
+            "leftClicLoadWeapon": "Left click: load weapon.",
+            "leftClicOnEnemyShipToTargetIt": "Left click on enemy ship to target it.",
+            "leftClicOrDragRearrangeWeaponsDrones": "Left click or drag: rearrange weapons/drones.",
+            "newLeftClicActivateWeapon": "New Left Click: Activate Weapon.",
+            "title": "Weapons / Drones"
+          }
+        }
+      }
+    },
     "menu": {
       "edition": "Orion Edition",
       "languages": {

@@ -38,47 +38,47 @@
 <app-modal [show]="showHelpCommandsModal" (closeCallback)="toggleHelpCommandsModal()">
   <div class="help-commands-container">
     <div class="crews-commands-container">
-      <h1>Comm. équipage</h1>
-      <p class="subtitle">Donner des ordres :</p>
+      <h1>{{'views.game.menu.helpCommands.crews.title' | translate}}</h1>
+      <p class="subtitle">{{'views.game.menu.helpCommands.crews.giveOrders' | translate}}</p>
 
       <div class="first-section">
-        <p>Clic gauche ou faire glisser pour choisir un personnage.</p>
-        <p>Clic droit pour déplacer le personnage choisi.</p>
+        <p>{{'views.game.menu.helpCommands.crews.leftClicOrDragToChooseCharacter' | translate}}</p>
+        <p>{{'views.game.menu.helpCommands.crews.rightClickToMoveChosenCharacter' | translate}}</p>
       </div>
       
       <div class="second-section">
-        <p>Les personnages réparent les sytèmes ou se battend dans leur salle actuelle (auto).</p>
+        <p>{{'views.game.menu.helpCommands.crews.charactersRepairSystemsOrFightInTheirCurrentRoom' | translate}}</p>
       </div>
     </div>
 
     <div class="pause-commands-container">
-      <h1>Pause</h1>
-      <p>Barre d'espace pour mettre pause</p>
-      <p>En pause, vous pouvez agir et donner des ordres.</p>
+      <h1>{{'commons.actions.pause' | translate}}</h1>
+      <p>{{'views.game.menu.helpCommands.pause.spaceBarToPause' | translate}}</p>
+      <p>{{'views.game.menu.helpCommands.whilePausedYouCanActAndGiveOrders' | translate}}</p>
     </div>
 
     <div class="power-commands-container">
-      <h1>Comm. puissance</h1>
-      <p>Augmenter/diminuer puissance systèmes :</p>
+      <h1>{{'views.game.menu.helpCommands.power.title' | translate}}</h1>
+      <p>{{'views.game.menu.helpCommands.power.increaseDecreaseSystemPower' | translate}}</p>
 
       <div class="first-section">
-        <p>Clic gauche : plus de puissance.</p>
-        <p>Clic droit : moins de puissance.</p>
+        <p>{{'views.game.menu.helpCommands.power.leftClicMorePower' | translate}}</p>
+        <p>{{'views.game.menu.helpCommands.power.rightClickLessPower' | translate}}</p>
       </div>
     </div>
 
     <div class="weapons-drones-commands-container">
-      <h1>Armes / Drones</h1>
+      <h1>{{'views.game.menu.helpCommands.weaponsDrones.title' | translate}}</h1>
 
       <div class="first-section">
-        <p>Clic gauche : charge une arme.</p>
-        <p>Nouv. clic gauche : activer une arme.</p>
-        <p>Clic gauche sur vaisseau ennemi  pour le cibler.</p>
+        <p>{{'views.game.menu.helpCommands.weaponsDrones.leftClicLoadWeapon' | translate}}</p>
+        <p>{{'views.game.menu.helpCommands.weaponsDrones.newLeftClicActivateWeapon' | translate}}</p>
+        <p>{{'views.game.menu.helpCommands.weaponsDrones.leftClicOnEnemyShipToTargetIt' | translate}}</p>
       </div>
       
       <div class="second-section">
-        <p>Clic gauchhe ou faire glisser : réorganiser armes/drones.</p>
-        <p>Si le sytème est endommagé, l'objet le plus à droite est coupé en 1er.</p>
+        <p>{{'views.game.menu.helpCommands.weaponsDrones.leftClicOrDragRearrangeWeaponsDrones' | translate}}</p>
+        <p>{{'views.game.menu.helpCommands.weaponsDrones.ifSystemIsDamagedTheRightmostObjectIsCutFirst' | translate}}</p>
       </div>
     </div>
   </div>

@@ -234,6 +234,37 @@
     "weapons": "Armes"
   },
   "views": {
+    "game": {
+      "menu": {
+        "helpCommands": {
+          "crews": {
+            "charactersRepairSystemsOrFightInTheirCurrentRoom": "Les personnages réparent les systèmes ou se battent dans leur salle actuelle (auto).",
+            "giveOrders": "Donner des ordres :",
+            "leftClicOrDragToChooseCharacter": "Clic gauche ou faire glisser pour choisir un personnage.",
+            "rightClickToMoveChosenCharacter": "Clic droit pour déplacer le personnage choisi.",
+            "title": "Comm. équipage"
+          },
+          "pause": {
+            "spaceBarToPause": "Barre d'espace pour mettre pause",
+            "whilePausedYouCanActAndGiveOrders": "En pause, vous pouvez agir et donner des ordres."
+          },
+          "power": {
+            "increaseDecreaseSystemPower": "Augmenter/diminuer puissance systèmes :",
+            "leftClicMorePower": "Clic gauche : plus de puissance.",
+            "rightClickLessPower": "Clic droit : moins de puissance.",
+            "title": "Comm. puissance"
+          },
+          "weaponsDrones": {
+            "ifSystemIsDamagedTheRightmostObjectIsCutFirst": "Si le système est endommagé, l'objet le plus à droite est coupé en 1er.",
+            "leftClicLoadWeapon": "Clic gauche : charge une arme.",
+            "leftClicOnEnemyShipToTargetIt": "Clic gauche sur vaisseau ennemi  pour le cibler.",
+            "leftClicOrDragRearrangeWeaponsDrones": "Clic gauche ou faire glisser : réorganiser armes/drones.",
+            "newLeftClicActivateWeapon": "Nouv. clic gauche : activer une arme.",
+            "title": "Armes / Drones"
+          }
+        }
+      }
+    },
     "menu": {
       "edition": "Édition Orion",
       "languages": {
