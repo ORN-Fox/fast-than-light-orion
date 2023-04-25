@@ -39,9 +39,9 @@ export class EngiLayoutC extends EngiShip {
       engineRoom = new Room(new RoomDisplaySettings(5, 7, 1, 2), new Engine(2, SystemPositionEnum.Bottom, 2), this.crews[2]), // Lanius
       oxygenRoom = new Room(new RoomDisplaySettings(5, 3, 1, 2), new Oxygen(1, 13)),
       weaponsControlRoom = new Room(new RoomDisplaySettings(11, 4, 2, 2), new WeaponControl(), this.crews[1]), // Engi
-      droneControlRoom = new Room(new RoomDisplaySettings(6, 5, 2, 2), new DroneControl(2)),
+      droneControlRoom = new Room(new RoomDisplaySettings(6, 5, 2, 2), new DroneControl(2, 9)),
       pilotingRoom = new Room(new RoomDisplaySettings(13, 8, 1, 2), new Piloting(1, SystemPositionEnum.Right), this.crews[0]), // Engi
-      sensorRoom = new Room(new RoomDisplaySettings(8, 8, 2, 1), new Sensor()),
+      sensorRoom = new Room(new RoomDisplaySettings(8, 8, 2, 1), new Sensor(1, SystemPositionEnum.Top, 2)),
       doorControlRoom = new Room(new RoomDisplaySettings(11, 9, 2, 1), new DoorControl()),
       cloneBayRoom = new Room(new RoomDisplaySettings(7, 7, 2, 1), new CloneBay(1)),
       hackingRoom = new Room(new RoomDisplaySettings(10, 3, 1, 2), new Hacking(1, 5)),
@@ -73,6 +73,32 @@ export class EngiLayoutC extends EngiShip {
       bottomOfSensorRoom
     ];
 
+    this.doors = [
+      new Door(5.5, 8), // Right of engine room
+      new Door(5.5, 4), // Right of oxygen room
+      new Door(6.5, 4), // Right of cloacking room
+      new Door(7.5, 4), // Right of battery room
+      new Door(8, 2.5, 90), // Top of battery room
+      new Door(8.5, 4), // Right of mind control room
+      new Door(9, 2.5, 90), // Top of mind control room
+      new Door(9.5, 4), // Right of teleport room
+      new Door(10, 2.5, 90), // Top of teleport room
+      new Door(10.5, 4), // Right of hacking room
+      new Door(12, 5.5, 90), // Bottom of weapon room
+      new Door(7, 4.5, 90), // Top left of drone control room
+      new Door(8, 4.5, 90), // Top right of drone control room
+      new Door(7.5, 6), // Right of drone control room
+      new Door(8, 6.5, 90), // Bottom of drone control room
+      new Door(8, 7.5, 90), // Bottom of clonebay room
+      new Door(8.5, 7), // Right of clonebay room
+      new Door(7.5, 8), // Left of sensor room
+      new Door(10, 8.5, 90), // Bottom of sensor room
+      new Door(10.5, 7), // Right of shield room
+      new Door(11, 9.5, 90), // Bottom of room on bottom of sensor room
+      new Door(10.5, 9), // Left of door control room
+      new Door(12.5, 9), // Left of piloting room
+    ];
+
     this.weapons = [
       new DualLasers() // Dual Lasers
     ];
@@ -97,7 +123,7 @@ export class EngiLayoutC extends EngiShip {
 
     // Shed display related
     this.hullSpriteX = 400;
-    this.hullSpriteY = 50;
+    this.hullSpriteY = 65;
     this.interiorSpriteX = 465;
     this.interiorSpriteY = 100;
 
