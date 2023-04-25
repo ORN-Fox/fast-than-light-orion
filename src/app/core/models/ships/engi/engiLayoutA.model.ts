@@ -120,7 +120,7 @@ export class EngiLayoutA extends EngiShip {
 
     // Shed display related
     this.hullSpriteX = 400;
-    this.hullSpriteY = 50;
+    this.hullSpriteY = 65;
     this.interiorSpriteX = 465;
     this.interiorSpriteY = 97;
 

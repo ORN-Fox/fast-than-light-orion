@@ -124,7 +124,7 @@ export class KestrelLayoutC extends KestrelShip {
     this.srcInteriorSprite = '/assets/images/ships/kestrel/layout_c/kestral_c_floor.png';
 
     // Shed display related
-    this.hullSpriteX = 300;
+    this.hullSpriteX = 312.5;
     this.hullSpriteY = 0;
     this.interiorSpriteX = 363;
     this.interiorSpriteY = 98;
