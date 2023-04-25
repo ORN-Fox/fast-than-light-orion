@@ -33,8 +33,8 @@ export class ShedComponent implements OnInit {
   settings: Settings;
 
   shipsList: ShipList[];
-  shipListIndex: number = 0;
-  shipListLayoutIndex: number = 0;
+  shipListIndex: number;
+  shipListLayoutIndex: number;
 
   shedContainer: Container;
   shipGUIContainer: Container;
@@ -66,6 +66,8 @@ export class ShedComponent implements OnInit {
     this.game.difficulty = this.difficulties[0];
 
     this.shipsList = this.shipsService.getShips();
+    this.shipListIndex = 0;
+    this.shipListLayoutIndex = 0;
   }
 
   ngOnInit() {
