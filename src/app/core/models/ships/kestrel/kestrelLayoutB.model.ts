@@ -11,6 +11,7 @@ import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay,
 import { Slot } from '../../slot/slot.model';
 
 import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
+import { Door } from '../../door/door.model';
 
 export class KestrelLayoutB extends KestrelShip {
 
@@ -65,6 +66,36 @@ export class KestrelLayoutB extends KestrelShip {
       cloackingRoom,
       hackingRoom,
       rightOfDoorControlRoom
+    ];
+
+    this.doors = [
+      new Door(5, 4.5, 90), // Top of engine room
+      new Door(5, 5.5, 90), // Botton of engine room
+      new Door(5.5, 3), // Right of shield room
+      new Door(7.5, 2), // Right of medbay room
+      new Door(8, 3.5, 90), // Bottom of medbay room
+      new Door(9, 1.5, 90), // Top left of mind control room
+      new Door(10, 1.5, 90), // Top right of mind control room
+      new Door(10, 2.5, 90), // Bottom of mind control room
+      new Door(8.5, 4), // Right of teleport room
+      new Door(5.5, 7), // Right of weapon room
+      new Door(8, 6.5, 90), // Top of drone control room
+      new Door(7.5, 8), // Right of drone control room
+      new Door(8.5, 6), // Right of sensor room
+      new Door(9, 8.5, 90), // Bottom left of hacking room
+      new Door(10, 8.5, 90), // Bottom right of hacking room
+      new Door(10, 4.5, 90), // Bottom left of oxygen room
+      new Door(11, 4.5, 90), // Bottom right of oxygen room
+      new Door(10, 7.5, 90), // Bottom of cloacking room
+      new Door(10, 5.5, 90), // Top left of cloacking room
+      new Door(11, 5.5, 90), // Top right of cloacking room
+      new Door(10.5, 5), // Right of battery room
+      new Door(12.5, 5), // Right of door control
+      new Door(14, 4.5, 90), // Top left of right of door control
+      new Door(15, 4.5, 90), // Top right of right of door control
+      new Door(14, 5.5, 90), // Bottom left of right of door control
+      new Door(15, 5.5, 90), // Bottom right of right of door control,
+      new Door(14.5, 5) // Right of piloting room
     ];
 
     this.weapons = [
