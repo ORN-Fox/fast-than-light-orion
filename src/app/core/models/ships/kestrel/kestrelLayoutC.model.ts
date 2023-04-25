@@ -73,6 +73,41 @@ export class KestrelLayoutC extends KestrelShip {
       batteryRoom
     ];
 
+    this.doors = [
+      new Door(1.5, 5), // Left top of engine room
+      new Door(1.5, 6), // Left bottom of engine room
+      new Door(4, 4.5, 90), // Top of engine room 
+      new Door(4, 6.5, 90), // Bottom of engine room
+      new Door(5, 4.5, 90), // Bottom of cloacking room
+      new Door(5, 6.5, 90), // Top of hacking room
+      new Door(5.5, 5), // Right top of drone control room
+      new Door(5.5, 6), // Right bottom of drone control room
+      new Door(7.5, 4), // Right of weapon room
+      new Door(7.5, 7), // Right of shield room
+      new Door(9, 2.5, 90), // Top left of top room in center ship
+      new Door(10, 2.5, 90), // Top right of top room in center ship
+      new Door(9, 3.5, 90), // Top left of bottom of top room in center ship
+      new Door(10, 3.5, 90), // Top right of bottom of top room in center ship
+      new Door(10, 4.5, 90), // Top of oxygen room
+      new Door(10, 6.5, 90), // Bottom of oxygen room
+      new Door(9, 7.5, 90), // Bottom left of top of bottom room in center ship
+      new Door(10, 7.5, 90), // Bottom right of top of bottom room in center ship
+      new Door(9, 8.5, 90), // Bottom left of bottom room in center ship
+      new Door(10, 8.5, 90), // Bottom right of bottom room in center ship
+      new Door(9.5, 4), // Right of teleport room
+      new Door(12, 4.5, 90), // Bottom of teleport room
+      new Door(9.5, 7), // Right of mind control room
+      new Door(12, 6.5, 90), // Top of mind control room
+      new Door(11.5, 5), // Left top of battery room
+      new Door(11.5, 6), // Left right of battery room
+      new Door(13.5, 5), // Left top of clonebay room
+      new Door(13.5, 6), // Left bottom of clonebay room
+      new Door(15, 5.5, 90), // Bottom left of door control room
+      new Door(16, 5.5, 90), // Bottom left of door control room
+      new Door(15.5, 5), // Left top of piloting room
+      new Door(15.5, 6) // Left bottom of piloting room
+    ];
+
     this.weapons = [
       new DualLasers(),
       new IonStunner()
