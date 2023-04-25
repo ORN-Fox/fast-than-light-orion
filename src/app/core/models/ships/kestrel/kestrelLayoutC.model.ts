@@ -6,6 +6,7 @@ import { KestrelShip } from './kestrelShip.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Lanius } from '../../races/index';
 
+import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, CloneBay, DroneControl, DoorControl, Engine, Hacking, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 import { Slot } from '../../slot/slot.model';

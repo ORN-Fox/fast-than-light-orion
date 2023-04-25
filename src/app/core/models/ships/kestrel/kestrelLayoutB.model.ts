@@ -6,12 +6,12 @@ import { KestrelShip } from './kestrelShip.model';
 import { Crew, Gender } from '../../crew/crew.model';
 import { Human, Mantis, Zoltan } from '../../races/index';
 
+import { Door } from '../../door/door.model';
 import { Room, RoomDisplaySettings } from '../../room/index';
 import { Battery, Cloacking, DoorControl, DroneControl, Engine, Hacking, Medbay, MindControl, Oxygen, Piloting, Sensor, Shield, SystemPositionEnum, Teleport, WeaponControl } from '../../systems/index';
 import { Slot } from '../../slot/slot.model';
 
 import { BasicLaser } from '../../weapons/armory/lasers/basicLaser.model';
-import { Door } from '../../door/door.model';
 
 export class KestrelLayoutB extends KestrelShip {
 
