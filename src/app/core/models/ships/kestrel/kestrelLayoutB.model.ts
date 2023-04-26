@@ -117,7 +117,7 @@ export class KestrelLayoutB extends KestrelShip {
 
     // Shed display related
     this.hullSpriteX = 312.5;
-    this.hullSpriteY = 0;
+    this.hullSpriteY = -15;
     this.interiorSpriteX = 388;
     this.interiorSpriteY = 41;
 
