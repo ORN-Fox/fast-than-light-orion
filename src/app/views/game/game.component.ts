@@ -149,11 +149,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this.showHelpCommandsModal = !this.showHelpCommandsModal;
   }
 
-  saveAndQuit() {
-    this.gameService.storeGame(this.game);
-    // TODO close window ??
-  }
-
   // Shortcuts related
 
   private initShorcuts() {

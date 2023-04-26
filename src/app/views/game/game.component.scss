@@ -9,7 +9,7 @@
   background: url('/assets/images/gui/escape_main.png') no-repeat;
   color: white;
   position: relative;
-  height: 295px;
+  height: 259px;
   width: 162px;
 
   ul {
@@ -26,10 +26,6 @@
         font-size: 1.2rem;
         height: 26px;
         width: 130px;
-
-        &.btn-save-and-quit {
-          font-size: .9rem;
-        }
       }
     }
   }
