@@ -4,7 +4,7 @@ import { AnimatedSprite, Application, Container, Sprite } from 'pixi.js';
 
 import { GameService } from '../../core/services/game/game.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
-import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
+import { ShipRenderService } from '../../core/services/ship-render/ship-render.service';
 import { ShipsService } from '../../core/services/ships/ships.service';
 import { TexturesManagerService } from '../../core/services/textures-manager/textures-manager.service';
 
