@@ -2,7 +2,7 @@ import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text, TextStyle } 
 
 import { Injectable } from '@angular/core';
 
-import { TexturesManagerService } from '../texturesManager/textures-manager.service';
+import { TexturesManagerService } from '../textures-manager/textures-manager.service';
 
 import { KestrelShip, Ship } from '../../models/ships/index';
 import { BORDER_TILE_SIZE, TILE_SIZE_WITH_BORDER, Room } from '../../models/room/index';

@@ -6,7 +6,7 @@ import { GameService } from '../../core/services/game/game.service';
 import { Logger } from '../../core/services/logger/logger.service';
 import { SettingsService } from '../../core/services/settings/settings.service';
 import { ShipRenderService } from '../../core/services/shipRender/ship-render.service';
-import { TexturesManagerService } from 'src/app/core/services/texturesManager/textures-manager.service';
+import { TexturesManagerService } from 'src/app/core/services/textures-manager/textures-manager.service';
 
 import { Game } from '../../core/models/game/game.model';
 import { Settings } from '../../core/models/settings/settings.model';
