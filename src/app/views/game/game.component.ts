@@ -153,7 +153,15 @@ export class GameComponent implements OnInit, OnDestroy {
 
   private initShorcuts() {
     hotkeys('esc', () => {
-      this.toggleGameMenuModal();
+      if (this.showRetryGameModal) {
+        this.toggleRetryGameModal();
+      } else if (this.showHelpCommandsModal) {
+        this.toggleHelpCommandsModal();
+      } else if (this.showSettingsModal) {
+        this.toggleSettingsModal();
+      } else {
+        this.toggleGameMenuModal();
+      }
     });
 
     hotkeys('space', () => {
