@@ -48,11 +48,10 @@ canvas {
     background-color: #ebf5e5;
     border: none;
     font-family: $aquireFont;
+    outline: none;
 
     &:not(:disabled) {
-
-        &:hover,
-        &.active {
+        &:hover, &.active {
             background-color: $hover-effect;
         }
     }
