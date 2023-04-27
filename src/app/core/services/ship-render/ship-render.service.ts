@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 import { TexturesManagerService } from '../textures-manager/textures-manager.service';
 
-import { KestrelShip, Ship } from '../../models/ships/index';
+import { KestrelLayoutB, KestrelShip, Ship } from '../../models/ships/index';
 import { BORDER_TILE_SIZE, TILE_SIZE_WITH_BORDER, Room } from '../../models/room/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
 
@@ -49,14 +49,14 @@ export class ShipRenderService {
       const thrustersAnimationSpeed = .12;
 
       let animatedThrustersLeftSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
-      animatedThrustersLeftSprite.x = 72;
-      animatedThrustersLeftSprite.y = 75;
+      animatedThrustersLeftSprite.x = 85;
+      animatedThrustersLeftSprite.y = ship instanceof KestrelLayoutB ? 60 : 75;
       animatedThrustersLeftSprite.animationSpeed = thrustersAnimationSpeed;
       animatedThrustersLeftSprite.play();
 
       let animatedThrustersRightSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
-      animatedThrustersRightSprite.x = 72;
-      animatedThrustersRightSprite.y = 340;
+      animatedThrustersRightSprite.x = 85;
+      animatedThrustersRightSprite.y = ship instanceof KestrelLayoutB ? 325 : 340;
       animatedThrustersRightSprite.animationSpeed = thrustersAnimationSpeed;
       animatedThrustersRightSprite.play();
 
