@@ -20,13 +20,13 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "es2020",
+    "module": "es2022",
     "types": [
       "offscreencanvas",
       "jasmine"
     ],
     "lib": [
-      "es2020",
+      "es2022",
       "dom"
     ],
     "useDefineForClassFields": false
