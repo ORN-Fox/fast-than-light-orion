@@ -23,7 +23,7 @@ export class Game {
 
   constructor() {
     this.saveVersion = 1;
-    this.gameVersion = "0.0.1";
+    this.gameVersion = "0.1.0";
     this.createdAt = new Date();
   }
 
