@@ -1,4 +1,4 @@
-# Fast Than Light - Orion Edition v0.1.0
+# Fast Than Light - Orion Edition v0.2.0
 ## ! Work in progress !
 
 ![Game Home Menu](./preview.jpg)
