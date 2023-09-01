@@ -7,6 +7,7 @@ import { TexturesManagerService } from '../textures-manager/textures-manager.ser
 import { KestrelLayoutB, KestrelShip, Ship } from '../../models/ships/index';
 import { BORDER_TILE_SIZE, TILE_SIZE_WITH_BORDER, Room } from '../../models/room/index';
 import { SystemPositionEnum, Teleport } from '../../models/systems/index';
+import { environment } from 'src/environments/environment';
 
 export const MAX_SHIP_SLOT_X = 22, MAX_SHIP_SLOT_Y = 14;
 
@@ -37,8 +38,9 @@ export class ShipRenderService {
     this.loadRoomsGUIofShip(shipFloorContainer, ship, isShedMode);
     this.loadDoorsGUIofShip(shipFloorContainer, ship);
 
-    // Dev mode
-    // this.loadShipDevGridGUI(shipFloorContainer);
+    if (environment.dev_mode) {
+      this.loadShipDevGridGUI(shipFloorContainer);
+    }
   }
 
   async loadThrustersAnimation(shipContainer: Container, ship: Ship)
