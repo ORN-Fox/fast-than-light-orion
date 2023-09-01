@@ -45,19 +45,20 @@ export class ShipRenderService {
   {
     if (ship instanceof KestrelShip)
     {
-      const thrustersOnSheet = await Assets.load('/assets/images/effects/thrusters_on.json') as Spritesheet;
+      const thrustersOnSheet: Spritesheet = await Assets.load('/assets/images/effects/thrusters_on.json');
       const thrustersAnimationSpeed = .12;
 
       let animatedThrustersLeftSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
       animatedThrustersLeftSprite.x = 85;
       animatedThrustersLeftSprite.y = ship instanceof KestrelLayoutB ? 60 : 75;
       animatedThrustersLeftSprite.animationSpeed = thrustersAnimationSpeed;
-      animatedThrustersLeftSprite.play();
 
       let animatedThrustersRightSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
       animatedThrustersRightSprite.x = 85;
       animatedThrustersRightSprite.y = ship instanceof KestrelLayoutB ? 325 : 340;
       animatedThrustersRightSprite.animationSpeed = thrustersAnimationSpeed;
+
+      animatedThrustersLeftSprite.play();
       animatedThrustersRightSprite.play();
 
       shipContainer.addChild(animatedThrustersLeftSprite, animatedThrustersRightSprite);
