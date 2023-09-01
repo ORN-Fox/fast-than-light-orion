@@ -74,11 +74,9 @@ export class ShedComponent implements OnInit {
     this.initShepPage();
 
     this.loadSelectedShip(this.shipsList[this.shipListIndex].layouts[this.shipListLayoutIndex]);
-    this.texturesManagerService.loadRacesSpritesheets(() => {
-      this.loadShepAnimations();
-      this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
-      this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.selectedShip, true, this.shipGUIContainer);
-    });
+    this.loadShepAnimations();
+    this.shipHaveNoDroneControlSystem = this.selectedShip.drones.length == 0;
+    this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.selectedShip, true, this.shipGUIContainer);
   }
 
   initShepPage()
@@ -142,8 +140,8 @@ export class ShedComponent implements OnInit {
 
   loadShepAnimations()
   {
-    const humanMaleSheet = this.texturesManagerService.getRaceSheetForRace('human-male');
-    const humanFemaleSheet = this.texturesManagerService.getRaceSheetForRace('human-female');
+    const humanMaleSheet = this.texturesManagerService.getSpritesheet('human-male');
+    const humanFemaleSheet = this.texturesManagerService.getSpritesheet('human-female');
     const humanAnimationSpeed = .1;
 
     let animatedShipEngineerSprite = new AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);

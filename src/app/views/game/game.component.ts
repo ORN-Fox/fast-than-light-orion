@@ -56,7 +56,7 @@ export class GameComponent implements OnInit, OnDestroy {
     log.info('Start game, include in future version', this.game);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.app = new Application({ backgroundAlpha: 0, height: this.canvasHeight, width: this.canvasWidth });
     document.querySelector('#canvsPixi')!.appendChild(this.app.view);
 
@@ -72,10 +72,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.app.stage.addChild(this.gameContainer);
 
     this.loadSelectedShip(this.game.ship);
-    
-    this.texturesManagerService.loadRacesSpritesheets(() => {
-      this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
-    });
+    this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
   }
 
   ngOnDestroy() {

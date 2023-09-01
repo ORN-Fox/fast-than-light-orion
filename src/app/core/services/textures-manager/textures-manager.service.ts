@@ -1,61 +1,58 @@
-import { Loader, Spritesheet } from 'pixi.js';
-
-import { Injectable } from '@angular/core';
+import { Assets, ResolverManifest, Spritesheet } from 'pixi.js';
+import { Injectable, Optional, SkipSelf } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TexturesManagerService {
 
-  constructor() {}
+  // racesSpritsheetBundle: any;
 
-  loadRacesSpritesheets(callbackFunction: any)
-  {
-    Loader.shared
-      .add("/assets/images/effects/thrusters_on.json")
-      .add("/assets/images/peoples/crystal/crystal-base-spritesheet.json")
-      .add("/assets/images/peoples/engi/engi-base-spritesheet.json")
-      .add("/assets/images/peoples/human-female/human-female-base-spritesheet.json")
-      .add("/assets/images/peoples/human-male/human-male-base-spritesheet.json")
-      .add("/assets/images/peoples/lanius/lanius-base-spritesheet.json")
-      .add("/assets/images/peoples/mantis/mantis-base-spritesheet.json")
-      .add("/assets/images/peoples/rockmen/rockmen-base-spritesheet.json")
-      .add("/assets/images/peoples/slug/slug-base-spritesheet.json")
-      .add("/assets/images/peoples/zoltan/zoltan-base-spritesheet.json")
-      .load(callbackFunction);
+  constructor(
+    @Optional() @SkipSelf() parentModule?: TexturesManagerService
+  ) {
+    if (parentModule) {
+      throw new Error('TexturesManagerService is already loaded. Import it in the AppModule only');
+    }
   }
 
-  getRaceSheetForRace(name: string): Spritesheet
-  {
-    switch (name)
-    {
-      case 'crystal':
-        return Loader.shared.resources["/assets/images/peoples/crystal/crystal-base-spritesheet.json"].spritesheet as Spritesheet;
+  async init() {
+    this.loadManifest();
+  }
 
-      case 'engi':
-        return Loader.shared.resources["/assets/images/peoples/engi/engi-base-spritesheet.json"].spritesheet as Spritesheet;
+  // Get functions
 
-      case 'human-female':
-        return Loader.shared.resources["/assets/images/peoples/human-female/human-female-base-spritesheet.json"].spritesheet as Spritesheet;
+  getSpritesheet(name: string): Spritesheet {
+    return Assets.cache.get(name);
+  }
 
-      default:
-      case 'human-male':
-        return Loader.shared.resources["/assets/images/peoples/human-male/human-male-base-spritesheet.json"].spritesheet as Spritesheet;
+  // Private functions
 
-      case 'lanius':
-        return Loader.shared.resources["/assets/images/peoples/lanius/lanius-base-spritesheet.json"].spritesheet as Spritesheet;
+  private async loadManifest() {
+    const manifest: ResolverManifest = {
+      bundles: [
+        {
+          name: 'races-spritesheets',
+          assets: [
+            { name: 'crystal', srcs: '/assets/images/peoples/crystal/crystal-base-spritesheet.json' },
+            { name: 'engi', srcs: '/assets/images/peoples/engi/engi-base-spritesheet.json' },
+            { name: 'human-female', srcs: '/assets/images/peoples/human-female/human-female-base-spritesheet.json' },
+            { name: 'human-male', srcs: '/assets/images/peoples/human-male/human-male-base-spritesheet.json' },
+            { name: 'lanius', srcs: '/assets/images/peoples/lanius/lanius-base-spritesheet.json' },
+            { name: 'mantis', srcs: '/assets/images/peoples/mantis/mantis-base-spritesheet.json' },
+            { name: 'rockmen', srcs: '/assets/images/peoples/rockmen/rockmen-base-spritesheet.json' },
+            { name: 'slug', srcs: '/assets/images/peoples/slug/slug-base-spritesheet.json' },
+            { name: 'zoltan', srcs: '/assets/images/peoples/zoltan/zoltan-base-spritesheet.json' }
+          ]
+        }
+      ]
+    };
 
-      case 'mantis':
-        return Loader.shared.resources["/assets/images/peoples/mantis/mantis-base-spritesheet.json"].spritesheet as Spritesheet;
+    await Assets.init({ manifest });
+    console.debug('TextureManager init');
 
-      case 'rockmen':
-        return Loader.shared.resources["/assets/images/peoples/rockmen/rockmen-base-spritesheet.json"].spritesheet as Spritesheet;
-
-      case 'slug':
-        return Loader.shared.resources["/assets/images/peoples/slug/slug-base-spritesheet.json"].spritesheet as Spritesheet;
-
-      case 'zoltan':
-        return Loader.shared.resources["/assets/images/peoples/zoltan/zoltan-base-spritesheet.json"].spritesheet as Spritesheet;
-    }
+    // Load assets bundles
+    await Assets.loadBundle('races-spritesheets');
+    console.debug('All bundles is loaded', Assets.cache);
   }
 }
