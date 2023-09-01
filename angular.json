@@ -35,6 +35,8 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
+              "earcut",
+              "eventemitter3",
               "lodash"
             ]
           },
