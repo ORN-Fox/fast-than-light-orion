@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import { SystemPositionEnum } from '../systems';
+
 import { Race, RaceType } from '../races/race.model';
 
 export enum Gender {
@@ -47,6 +49,23 @@ export class Crew {
     }
 
     return this.race.name;
+  }
+
+  getAnimationNameForRoomAftectation(systemPosition: number | null): string {
+    switch (systemPosition) {
+      default:
+      case SystemPositionEnum.Top:
+        return "useComputer_Top";
+
+      case SystemPositionEnum.Right:
+        return "useComputer_Right";
+
+      case SystemPositionEnum.Bottom:
+        return "useComputer_Bottom";
+
+      case SystemPositionEnum.Left:
+        return "useComputer_Left";
+    }
   }
 
   serializeForSave(): ISerializedCrew {

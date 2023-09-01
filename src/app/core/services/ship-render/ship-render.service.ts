@@ -1,4 +1,4 @@
-import { AnimatedSprite, Container, Graphics, Loader, Sprite, Text, TextStyle } from 'pixi.js';
+import { AnimatedSprite, Assets, Container, Graphics, Sprite, Spritesheet, Text, TextStyle } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
@@ -41,11 +41,11 @@ export class ShipRenderService {
     // this.loadShipDevGridGUI(shipFloorContainer);
   }
 
-  loadThrustersAnimation(shipContainer: Container, ship: Ship)
+  async loadThrustersAnimation(shipContainer: Container, ship: Ship)
   {
     if (ship instanceof KestrelShip)
     {
-      const thrustersOnSheet = Loader.shared.resources["/assets/images/effects/thrusters_on.json"].spritesheet as any;
+      const thrustersOnSheet = await Assets.load('/assets/images/effects/thrusters_on.json') as Spritesheet;
       const thrustersAnimationSpeed = .12;
 
       let animatedThrustersLeftSprite = new AnimatedSprite(thrustersOnSheet.animations["thrusters_on"]);
@@ -125,28 +125,6 @@ export class ShipRenderService {
           if (room.affectedCrew) {
             const raceSpeed = .1;
 
-            let crewMemberAnimationName;
-
-            switch (room.affectedSystem.systemPosition)
-            {
-              default:
-              case SystemPositionEnum.Top:
-                crewMemberAnimationName = "useComputer_Top";
-                break;
-
-              case SystemPositionEnum.Right:
-                crewMemberAnimationName = "useComputer_Right";
-                break;
-
-              case SystemPositionEnum.Bottom:
-                crewMemberAnimationName = "useComputer_Bottom";
-                break;
-
-              case SystemPositionEnum.Left:
-                crewMemberAnimationName = "useComputer_Left";
-                break;
-            }
-
             for (let i = 0; i < ship.shipRepresentation.length; i++) {
               for (let y = 0; y < ship.shipRepresentation[i].length; y++) {
                 let slot = ship.shipRepresentation[i][y];
@@ -154,7 +132,10 @@ export class ShipRenderService {
                 // Affected crew rendering
                 if (slot && slot.crew && slot.crew.id == room.affectedCrew.id)
                 {
-                  let crewMember = new AnimatedSprite(this.texturesManagerService.getRaceSheetForRace(room.affectedCrew.getRaceNameWithGender().toLowerCase()).animations[crewMemberAnimationName]);
+                  let raceSpritesheet = this.texturesManagerService.getSpritesheet(room.affectedCrew.getRaceNameWithGender().toLowerCase());
+                  let animationName = room.affectedCrew.getAnimationNameForRoomAftectation(room.affectedSystem.systemPosition);
+
+                  let crewMember = new AnimatedSprite(raceSpritesheet.animations[animationName]);
                   crewMember.x = room.roomDisplaySettings.getRoomTilePositionX() + (TILE_SIZE_WITH_BORDER * slot.slotPositionX) + 17.5; // 17.5 = 35 / 2 for position crew in center of slot
                   crewMember.y = room.roomDisplaySettings.getRoomTilePositionY() + (TILE_SIZE_WITH_BORDER * slot.slotPositionY) + 17.5;
                   crewMember.animationSpeed = raceSpeed;
@@ -266,7 +247,7 @@ export class ShipRenderService {
       {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
 
-        let crewMemberLineOne = Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
+        let crewMemberLineOne = Sprite.from(this.texturesManagerService.getSpritesheet(raceName).animations['portrait'][0]);
         crewMemberLineOne.x = 112 + (i * 150);
         crewMemberLineOne.y = 558;
         crewMemberLineOne.height = 60;
@@ -289,7 +270,7 @@ export class ShipRenderService {
       {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
 
-        let crewMemberLineTwo = Sprite.from(this.texturesManagerService.getRaceSheetForRace(raceName).animations['portrait'][0]);
+        let crewMemberLineTwo = Sprite.from(this.texturesManagerService.getSpritesheet(raceName).animations['portrait'][0]);
         crewMemberLineTwo.x = 112 + (y * 150);
         crewMemberLineTwo.y = 648;
         crewMemberLineTwo.height = 60;
