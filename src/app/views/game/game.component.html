@@ -24,10 +24,16 @@
       </div>
     </div>
 
-    <div class="field-missile-drone-container">
-      <div class="fiel-gui-container">16</div>
-      <div class="misile-gui-container">8</div>
-      <div class="drone-gui-container">2</div>
+    <div class="fuel-missiles-drones-gui-container">
+      <div class="fuel-quantity-gui-container" [ngClass]="{'field-low-quantity': game.ship.fuel == 0}">
+        <p>{{game.ship.fuel}}</p>
+      </div>
+      <div class="missiles-quantity-gui-container" [ngClass]="{'missiles-low-quantity': game.ship.missiles == 0}">
+        <p>{{game.ship.missiles}}</p>
+      </div>
+      <div class="drone-parts-quantity-gui-container" [ngClass]="{'drone-parts-low-quantity': game.ship.droneParts == 0}">
+        <p>{{game.ship.droneParts}}</p>
+      </div>
     </div>
 
     <div class="engine-oxygen-gui-container">

@@ -59,8 +59,52 @@
     }
   }
   
-  .field-missile-drone-container {
+  .fuel-missiles-drones-gui-container {
+    display: flex;
+    position: absolute;
+    top: 44px;
+    left: 140px;
 
+    .fuel-quantity-gui-container, .missiles-quantity-gui-container, .drone-parts-quantity-gui-container {
+      height: 40px;
+      width: 70px;
+
+      p {
+        color: white;
+        display: inline-block;
+        font-family: "Aquire";
+        font-size: 1.2rem;
+        position: relative;
+        left: 34px;
+        top: 12px;
+        width: 34px;
+        text-align: center;
+      }
+    }
+
+    .fuel-quantity-gui-container {
+      background: url('/assets/images/gui/status/top_fuel_on.png') no-repeat;
+
+      &.fuel-low-quantity {
+        background: url('/assets/images/gui/status/top_fuel_on_red.png') no-repeat;
+      }
+    }
+
+    .missiles-quantity-gui-container {
+      background: url('/assets/images/gui/status/top_missiles_on.png') no-repeat;
+
+      &.missiles-low-quantity {
+        background: url('/assets/images/gui/status/top_missiles_on_red.png') no-repeat;
+      }
+    }
+
+    .drone-parts-quantity-gui-container {
+      background: url('/assets/images/gui/status/top_drones_on.png') no-repeat;
+
+      &.drone-parts-quantity {
+        background: url('/assets/images/gui/status/top_drones_on_red.png') no-repeat;
+      }
+    }
   }
 
   .engine-oxygen-gui-container {
