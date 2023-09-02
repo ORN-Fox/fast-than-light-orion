@@ -41,6 +41,10 @@ export class Crew {
     // TODO
   }
 
+  getFirstName(): string {
+    return this.name.split(' ')[0];
+  }
+
   getRaceNameWithGender(): string
   {
     if (this.race.type == RaceType.Human)

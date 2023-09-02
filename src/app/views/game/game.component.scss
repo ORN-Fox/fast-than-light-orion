@@ -5,6 +5,166 @@
   background-size: cover;
 }
 
+.ship-hull-scrap-shell-items-gui-container {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  width: 380px;
+  height: 50px;
+
+  .hull-gui-container {
+    .hull-label-gui-container {
+      background: url('/assets/images/gui/status/top_hull_label.png') no-repeat;
+      display: inline-block;
+      height: 28px;
+      width: 50px;
+      
+      p {
+        color: white;
+        font-family: 'Aquire';
+        font-size: 1.5rem;
+      }
+    }
+    
+    .hull-progress-bar-container {
+      background: url('/assets/images/gui/status/top_hull.png') no-repeat;
+      position: absolute;
+      top: 0;
+      height: 65px;
+      width: 385px;
+
+      .hull-progress-bar {
+        position: relative;
+        left: 10px;
+      }
+    }
+
+    // TODO manage hull domage
+  }
+
+  .shield-gui-container {
+    background: url('/assets/images/gui/status/top_shields4_on.png') no-repeat;
+    position: absolute;
+    left: 5px;
+    top: 44px;
+    width: 132px;
+    height: 52px;
+
+    .shield-indicators-gui-container {
+      display: inline-block;
+      position: relative;
+      top: 4px;
+      left: 30px;
+      width: 100px;
+    }
+  }
+  
+  .field-missile-drone-container {
+
+  }
+
+  .engine-oxygen-gui-container {
+    background: url('/assets/images/gui/status/top_evade_oxygen.png') no-repeat;
+    display: inline-block;
+    position: absolute;
+    top: 92px;
+    left: 5px;
+    width: 104px;
+    height: 56px;
+
+    p {
+      color: white;
+      position: relative;
+      font-family: 'Aquire';
+      font-size: 1rem;
+      left: 38px;
+      width: 52px;
+      text-align: right;
+    }
+
+    .engine-level-content {
+      top: 10px;
+    }
+
+    .oxygen-level-content {
+      top: 18px;
+    }
+  }
+}
+
+.scrap-gui-container {
+  background: url('/assets/images/gui/status/top_scrap.png')  no-repeat;
+  position: absolute;
+  left: 378px;
+  top: 0;
+  width: 135px;
+  height: 55px;
+
+  p {
+    color: white;
+    font-family: 'Aquire';
+    font-size: 1.5rem;
+    width: 88px;
+    display: inline-block;
+    position: relative;
+    left: 38px;
+    top: 18px;
+    text-align: center;
+  }
+}
+
+.ship-actions-gui-container {
+  position: absolute;
+  top: 10px;
+  left: 550px;
+
+  p {
+    color: white;
+    font-family: 'Aquire';
+  }
+}
+
+.crews-gui-container {
+  position: absolute;
+  left: 5px;
+  top: 165px;
+
+  .crew-gui-content {
+    border: 1px solid grey;
+    display: flex;
+    margin-bottom: 4px;
+
+    .crew-sprite {
+      height: 25px;
+      width: 30px;
+    }
+
+    .crew-name {
+      color: #c6c6c6;
+      font-family: 'Aquire';
+      font-size: 12px;
+    }
+
+    .crew-health-bar {
+      background-color: greenyellow;
+      height: 3px;
+      width: 65px; 
+    }
+  }
+}
+
+.ship-systems-gui-container {
+  position: absolute;
+  top: 500px;
+  left: 5px;
+}
+
+.ship-sub-systems-gui-container {
+  position: absolute;
+  top: 500px;
+  left: 900px;
+}
+
 .in-game-menu-container {
   background: url('/assets/images/gui/escape_main.png') no-repeat;
   color: white;

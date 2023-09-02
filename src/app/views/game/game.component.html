@@ -1,5 +1,73 @@
 <div class="game">
   <div id="canvsPixi"></div>
+
+  <div class="ship-hull-scrap-shell-items-gui-container">
+    <div class="hull-gui-container">
+      <div class="hull-label-gui-container">
+        <p>{{'hull' | translate}}</p>
+      </div>
+      <div class="hull-progress-bar-container">
+        <img src="/assets/images/gui/status/top_hull_bar_mask.png" alt="" class="hull-progress-bar">
+      </div>
+    </div>
+
+    <div class="scrap-gui-container">
+      <p>30</p>
+    </div>
+
+    <div class="shield-gui-container">
+      <div class="shield-indicators-gui-container">
+        <img *ngFor="let shield of game.ship.shields" [src]="shield.getSpriteSrc()" alt="">
+      </div>
+      <div>
+        <!-- // TODO progress bar shield reactivation indicator -->
+      </div>
+    </div>
+
+    <div class="field-missile-drone-container">
+      <div class="fiel-gui-container">16</div>
+      <div class="misile-gui-container">8</div>
+      <div class="drone-gui-container">2</div>
+    </div>
+
+    <div class="engine-oxygen-gui-container">
+      <p class="engine-level-content">15%</p>
+      <p class="oxygen-level-content">100%</p>
+    </div>
+  </div>
+
+  <div class="ship-actions-gui-container">
+    <p>{{'spl_generator' | translate}}</p>
+    <button class="btn btn-jump">{{'jump' | translate}}</button>
+    <button class="btn">SHIP</button>
+    <button class="btn">Settings</button>
+  </div>
+
+  <div class="crews-gui-container">
+    <div *ngFor="let crew of this.game.ship.crews" class="crew-gui-content">
+      <img src="" alt="" class="crew-sprite">
+      <div>
+        <p class="crew-name">{{crew.getFirstName()}}</p>
+        <div class="crew-health-bar"></div>
+      </div>
+    </div>
+
+    <button class="btn btn-save-crew-affections">
+      III
+    </button>
+
+    <button class="btn btn-return-crew-affectations">
+      <>
+    </button>
+  </div>
+
+  <div class="ship-systems-gui-container">
+    // TODO ship systems gui
+  </div>
+
+  <div class="ship-sub-systems-gui-container">
+    // TODO ship sub systems gui
+  </div>
 </div>
 
 <app-modal [show]="showGameMenuModal" (closeCallback)="toggleGameMenuModal()">
