@@ -3,6 +3,7 @@ import { ISerializedRoom, Room } from '../room/room.model';
 import { Weapon } from '../weapons/weapon.model';
 import { Drone } from '../drones/drone.model';
 import { Crew, ISerializedCrew } from '../crew/crew.model';
+import { IShieldLevel, ShieldLevel } from '../shield-level/shield-level.model';
 import { Upgrade } from '../upgrades/upgrade.model';
 
 export enum ShipLayoutEnum {
@@ -16,6 +17,7 @@ export interface ISerializedShip {
   type: string;
   layout: string;
   hull: number;
+  shields: IShieldLevel[];
   reactorPower: number;
   fuel: number;
   missiles: number;
@@ -36,6 +38,7 @@ export class Ship {
   layout: string;
 
   hull: number;
+  shields: ShieldLevel[];
   reactorPower: number;
   fuel: number;
   missiles: number;
@@ -71,6 +74,10 @@ export class Ship {
 
   constructor()
   {
+    this.shields = [
+      new ShieldLevel()
+    ];
+
     this.maxSystemsAllowed = 14;
   }
 
@@ -85,6 +92,7 @@ export class Ship {
       type: this.type,
       layout: this.layout,
       hull: this.hull,
+      shields: this.shields.map(shield => shield.serializeForSave()),
       reactorPower: this.reactorPower,
       fuel: this.fuel,
       missiles: this.missiles,
