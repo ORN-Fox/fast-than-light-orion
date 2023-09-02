@@ -56,7 +56,7 @@ export class GameService {
 
     if (storedSave) {
       storedSave = JSON.parse(storedSave);
-      console.log('storedSave', storedSave);
+      console.debug('StoredSave', storedSave);
 
       game.saveVersion = storedSave.saveVersion;
       game.gameVersion = storedSave.gameVersion;
@@ -79,7 +79,7 @@ export class GameService {
         game.ship = ship;
       }
 
-      console.log('game', game);
+      console.debug('Game', game);
     }
       
     return game;
