@@ -107,6 +107,16 @@ export class GameComponent implements OnInit, OnDestroy {
     this.shipFloorContainer.addChild(selectedShipFloor);
   }
 
+  // Game actions related
+
+  saveCrewsAffectations() {
+    log.info('Save crews affectations, include in future version');
+  }
+
+  returnCrewsAffectations() {
+    log.info('Return crews affectations, include in future version');
+  }
+
   // Game menu modal related
 
   toggleGameMenuModal = () => {

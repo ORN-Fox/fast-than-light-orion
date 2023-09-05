@@ -195,6 +195,42 @@
       width: 65px; 
     }
   }
+
+  .btn-save-crew-affections, .btn-return-crew-affectations {
+    background: url('/assets/images/gui/status/button_station_base.png') no-repeat;
+    height: 44px;
+    width: 44px;
+  }
+
+  .btn-save-crew-affections {
+    span {
+      background: url('/assets/images/gui/status/button_station_assign_on.png') no-repeat;
+      width: 20px;
+      height: 20px;
+      display: block;
+      position: relative;
+      left: 12px;
+    }
+
+    &:hover span {
+      background: url('/assets/images/gui/status/button_station_assign_select2.png') no-repeat;
+    }
+  }
+
+  .btn-return-crew-affectations {
+    span {
+      background: url('/assets/images/gui/status/button_station_return_on.png') no-repeat;
+      width: 20px;
+      height: 20px;
+      display: block;
+      position: relative;
+      left: 12px;
+    }
+
+    &:hover span {
+      background: url('/assets/images/gui/status/button_station_return_select2.png') no-repeat;
+    }
+  }
 }
 
 .ship-systems-gui-container {
