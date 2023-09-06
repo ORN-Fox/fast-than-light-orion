@@ -18,14 +18,14 @@
       display: inline-block;
       height: 28px;
       width: 50px;
-      
+
       p {
         color: white;
         font-family: 'Aquire';
         font-size: 1.5rem;
       }
     }
-    
+
     .hull-progress-bar-container {
       background: url('/assets/images/gui/status/top_hull.png') no-repeat;
       position: absolute;
@@ -58,7 +58,7 @@
       width: 100px;
     }
   }
-  
+
   .fuel-missiles-drones-gui-container {
     display: flex;
     position: absolute;
@@ -192,7 +192,7 @@
     .crew-health-bar {
       background-color: greenyellow;
       height: 3px;
-      width: 65px; 
+      width: 65px;
     }
   }
 
@@ -240,9 +240,20 @@
 }
 
 .ship-sub-systems-gui-container {
+  background: url('/assets/images/gui/box_subsystems4.png') no-repeat;
   position: absolute;
-  top: 500px;
-  left: 900px;
+  top: 660px;
+  left: 1000px;
+  height: 40px;
+  width: 170px;
+
+  .sub-systems-title {
+    font-family: 'Aquire';
+    top: 12px;
+    position: relative;
+    left: 10px;
+    font-size: 1.25rem;
+  }
 }
 
 .in-game-menu-container {
@@ -280,7 +291,7 @@
 
   .difficulty-title, .difficulty-value {
     font-size: 1.25rem;
-  } 
+  }
 
   .difficulty-title {
     font-family: 'CW Bitmap';
