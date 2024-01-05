@@ -51,8 +51,8 @@
 
   <div class="crews-gui-container">
     <div *ngFor="let crew of this.game.ship.crews" class="crew-gui-content">
-      <img src="" alt="" class="crew-sprite">
-      <div>
+      <img [src]="crew.getBaseSrc()" alt="" class="crew-sprite">
+      <div class="crew-stats-content">
         <p class="crew-name">{{crew.getFirstName()}}</p>
         <div class="crew-health-bar"></div>
       </div>

@@ -55,6 +55,10 @@ export class Crew {
     return this.race.name;
   }
 
+  getBaseSrc(): string {
+    return `/assets/images/peoples/${this.getRaceNameWithGender()}/${this.getRaceNameWithGender()}_base-0.png`;
+  }
+
   getAnimationNameForRoomAftectation(systemPosition: number | null): string {
     switch (systemPosition) {
       default:

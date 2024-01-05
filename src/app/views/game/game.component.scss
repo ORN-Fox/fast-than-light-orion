@@ -174,25 +174,42 @@
   top: 165px;
 
   .crew-gui-content {
-    border: 1px solid grey;
+    position: relative;
+    height: 24px;
+    border: 2px solid grey;
     display: flex;
+    padding: 2px 3px 0;
     margin-bottom: 4px;
 
+    &:hover {
+      border-color: #9deb23;
+    }
+
     .crew-sprite {
-      height: 25px;
-      width: 30px;
+      position: absolute;
+      left: -2px;
+      top: -4px;
+      height: auto;
+      width: 40px;
     }
 
-    .crew-name {
-      color: #c6c6c6;
-      font-family: 'Aquire';
-      font-size: 12px;
-    }
+    .crew-stats-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin-left: 30px;
 
-    .crew-health-bar {
-      background-color: greenyellow;
-      height: 3px;
-      width: 65px;
+      .crew-name {
+        color: #c6c6c6;
+        font-family: 'Aquire';
+        font-size: 12px;
+      }
+  
+      .crew-health-bar {
+        background-color: greenyellow;
+        height: 3px;
+        width: 65px;
+      }
     }
   }
 
