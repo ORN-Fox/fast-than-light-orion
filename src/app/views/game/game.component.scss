@@ -197,7 +197,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      margin-left: 30px;
+      margin-left: 34px;
+      width: 75px;
 
       .crew-name {
         color: #c6c6c6;
@@ -208,7 +209,7 @@
       .crew-health-bar {
         background-color: greenyellow;
         height: 3px;
-        width: 65px;
+        width: 72px;
       }
     }
   }
