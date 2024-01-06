@@ -235,6 +235,7 @@
   },
   "views": {
     "game": {
+      "autofire": "Tir auto",
       "menu": {
         "helpCommands": {
           "crews": {

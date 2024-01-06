@@ -255,6 +255,48 @@
   position: absolute;
   top: 500px;
   left: 5px;
+
+  .ship-systems-gui-weapons-container {
+    position: absolute;
+
+    @for $nbWeapons from 2 through 4 {
+      &.ship-systems-gui-#{$nbWeapons}-weapons-container {
+        background: url('/assets/images/gui/status/box_weapons_bottom' + #{$nbWeapons} + '.png');
+        top: 90px;
+        left: 260px;
+
+        @if ($nbWeapons == 2) {
+          height: 87px;
+          width: 225px;
+        } @else {
+          height: 88px;
+          
+          @if ($nbWeapons == 3) {
+            width: 322px;
+          } @else {
+            width: 419px;
+          }
+        }
+      }
+    }
+
+    .ship-systems-gui-weapons-title-container {
+      background: url('/assets/images/gui/status/box_weapons_bottom_label.png') no-repeat;
+      background-size: cover;
+      top: 61px;
+      position: relative;
+      left: 18px;
+      height: 20px;
+      width: 150px;
+
+      .ship-systems-gui-weapons-title {
+        font-family: "Aquire";
+        position: relative;
+        font-size: 1.25rem;
+      }
+    }
+    
+  }
 }
 
 .ship-sub-systems-gui-container {

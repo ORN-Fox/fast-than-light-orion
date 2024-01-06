@@ -68,7 +68,20 @@
   </div>
 
   <div class="ship-systems-gui-container">
-    // TODO ship systems gui
+    <!-- power gui -->
+    <!-- systems gui -->
+    <div class="ship-systems-gui-weapons-container ship-systems-gui-{{this.game.ship.maxWeaponsAllowed}}-weapons-container">
+      <div *ngFor="let weapon of this.game.ship.weapons">
+        <div class="ship-systems-gui-weapon-container">
+          <span>{{weapon.name}}</span>
+        </div>
+      </div>
+
+      <div class="ship-systems-gui-weapons-title-container">
+        <p class="ship-systems-gui-weapons-title">{{'commons.weapons' | translate}}</p>
+      </div>
+      <button class="btn btn-autofire">{{'views.game.autofire' | translate}}</button>
+    </div>
   </div>
 
   <div class="ship-sub-systems-gui-container">
