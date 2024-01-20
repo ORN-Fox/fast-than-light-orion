@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "fast-than-light-orion:build:production"
+              "buildTarget": "fast-than-light-orion:build:production"
             },
             "development": {
-              "browserTarget": "fast-than-light-orion:build:development"
+              "buildTarget": "fast-than-light-orion:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fast-than-light-orion:build"
+            "buildTarget": "fast-than-light-orion:build"
           }
         },
         "test": {
