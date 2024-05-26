@@ -44,9 +44,9 @@
 
   <div class="ship-actions-gui-container">
     <p>{{'spl_generator' | translate}}</p>
-    <button class="btn btn-jump">{{'jump' | translate}}</button>
-    <button class="btn">SHIP</button>
-    <button class="btn">Settings</button>
+    <button class="btn btn-jump" (click)="openJumpModal()">{{'jump' | translate}}</button>
+    <button class="btn btn-ship" (click)="openShipMenuModal()"></button>
+    <button class="btn btn-settings" (click)="toggleGameMenuModal()">Settings</button>
   </div>
 
   <div class="crews-gui-container">

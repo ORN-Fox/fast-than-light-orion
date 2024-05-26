@@ -109,6 +109,14 @@ export class GameComponent implements OnInit, OnDestroy {
 
   // Game actions related
 
+  openJumpModal() {
+    log.info('Open jump modal, include in future version');
+  }
+
+  openShipMenuModal() {
+    log.info('Open ship modal, include in future version');
+  }
+
   saveCrewsAffectations() {
     log.info('Save crews affectations, include in future version');
   }

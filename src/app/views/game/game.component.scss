@@ -166,6 +166,16 @@
     color: white;
     font-family: 'Aquire';
   }
+
+  .btn-ship {
+    background: url('/assets/images/gui/status/top_ship_on.png') no-repeat;
+    height: 55px;
+    width: 74px;
+
+    &:hover {
+      background: url('/assets/images/gui/status/top_ship_select2.png') no-repeat;
+    }
+  }
 }
 
 .crews-gui-container {
