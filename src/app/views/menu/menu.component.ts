@@ -40,6 +40,7 @@ export class MenuComponent {
   }
 
   newGame() {
+    this.gameService.newGame();
     this.router.navigate(['/shed']);
   }
 

@@ -59,7 +59,9 @@ export class ShedComponent implements OnInit {
     private shipsService: ShipsService,
     private texturesManagerService: TexturesManagerService)
   {
-    this.game = this.gameService.newGame();
+    console.log('shed constructor');
+
+    this.game = this.gameService.getGame();
     this.settings = this.settingsService.getSettings();
 
     this.difficulties = this.gameService.difficulties;
@@ -245,7 +247,7 @@ export class ShedComponent implements OnInit {
   }
 
   selectShipFromShipListSelector(shipListIndex: number, ship: Ship)
-  { 
+  {
     if (shipListIndex)
     {
       this.shipListIndex = shipListIndex;
