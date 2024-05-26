@@ -1,4 +1,4 @@
-import { AnimatedSprite, Assets, Container, Graphics, Sprite, Spritesheet, Text, TextStyle } from 'pixi.js';
+import { AnimatedSprite, Assets, Container, Graphics, Sprite, Spritesheet, Text, TextStyle, Texture } from 'pixi.js';
 
 import { Injectable } from '@angular/core';
 
@@ -197,6 +197,14 @@ export class ShipRenderService {
       let doorSprite = Sprite.from(door.getSrcDoorSprite());
       doorSprite.x = door.x * TILE_SIZE_WITH_BORDER;
       doorSprite.y = door.y * TILE_SIZE_WITH_BORDER;
+      doorSprite.cursor = "pointer";
+      doorSprite.eventMode = 'static';
+      doorSprite.on('pointerdown', () => {
+        // TODO check if door system is on or damage ?
+        // TODO check if door open room on space (oxygen) ?
+        door.isOpen = !door.isOpen;
+        doorSprite.texture = Texture.from(door.getSrcDoorSprite());
+      });
 
       if (door.rotation)
       {

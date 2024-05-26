@@ -18,6 +18,6 @@ export class Door
 
   getSrcDoorSprite()
   {
-    return `/assets/images/effects/door_${this.level}.png`;
+    return `/assets/images/effects/door_${this.isOpen ? 'open_' : ''}${this.level}.png`;
   }
 }
