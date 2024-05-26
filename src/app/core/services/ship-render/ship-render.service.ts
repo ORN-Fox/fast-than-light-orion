@@ -142,6 +142,7 @@ export class ShipRenderService {
                   crewMember.x = room.roomDisplaySettings.getRoomTilePositionX() + (TILE_SIZE_WITH_BORDER * slot.slotPositionX) + 17.5; // 17.5 = 35 / 2 for position crew in center of slot
                   crewMember.y = room.roomDisplaySettings.getRoomTilePositionY() + (TILE_SIZE_WITH_BORDER * slot.slotPositionY) + 17.5;
                   crewMember.animationSpeed = raceSpeed;
+                  crewMember.anchor.set(0.5);
                   crewMember.play();
 
                   shipFloorContainer.addChild(crewMember);
