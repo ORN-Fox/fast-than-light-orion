@@ -143,6 +143,11 @@ export class ShipRenderService {
                   crewMember.y = room.roomDisplaySettings.getRoomTilePositionY() + (TILE_SIZE_WITH_BORDER * slot.slotPositionY) + 17.5;
                   crewMember.animationSpeed = raceSpeed;
                   crewMember.anchor.set(0.5);
+                  crewMember.eventMode = 'static';
+                  crewMember.cursor = "pointer";
+                  crewMember.on('pointerdown', () => {
+                    console.log('pointerDown crew', room.affectedCrew, crewMember);
+                  });
                   crewMember.play();
 
                   shipFloorContainer.addChild(crewMember);
