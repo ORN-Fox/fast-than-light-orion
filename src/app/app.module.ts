@@ -7,6 +7,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+// Root services
+import { SettingsService } from './core/services/settings/settings.service';
+import { SoundsManagerService } from './core/services/sounds-manager/sounds-manager.service';
+
 // Commons
 import { ModalComponent } from './views/commons/modal/modal.component';
 import { SettingsModalComponent } from './views/commons/settings-modal/settings-modal.component';
@@ -31,7 +35,10 @@ import { GameComponent } from './views/game/game.component';
     TranslateModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    SettingsService,
+    SoundsManagerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

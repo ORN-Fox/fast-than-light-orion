@@ -1,24 +1,23 @@
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 import { sound } from '@pixi/sound';
 
-import { PageNameEnum } from '../../enums/page-name.enum';
 import { SettingsService } from '../settings/settings.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+import { PageNameEnum } from '../../enums/page-name.enum';
+
+@Injectable()
 export class SoundsManagerService {
 
   constructor(
     private settingsService: SettingsService,
-    @Optional() @SkipSelf() parentModule?: SoundsManagerService
+    @Optional() @SkipSelf() sharedService?: SoundsManagerService
   ) {
+    if (sharedService) {
+      throw new Error('SoundsManagerService is already loaded');
+    }
     let settings = this.settingsService.getSettings();
     this.setMusicVolume(settings.musicVolume);
-
-    if (parentModule) {
-      throw new Error('SoundsManagerService is already loaded. Import it in the AppModule only');
-    }
+    console.info('SoundsManagerService created');
   }
 
   initPageSounds(pageEnum: number) {
