@@ -27,6 +27,11 @@ export class Crew {
   // Skills related
   // TODO
 
+  // local data
+  title: any;
+  border: any;
+  selected: boolean = false;
+
   constructor(
     name: string,
     race: Race,

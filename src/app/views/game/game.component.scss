@@ -191,7 +191,7 @@
     padding: 2px 3px 0;
     margin-bottom: 4px;
 
-    &:hover {
+    &:hover, &.active {
       border-color: #9deb23;
     }
 
@@ -215,7 +215,7 @@
         font-family: 'Aquire';
         font-size: 12px;
       }
-  
+
       .crew-health-bar {
         background-color: greenyellow;
         height: 3px;
@@ -280,7 +280,7 @@
           width: 225px;
         } @else {
           height: 88px;
-          
+
           @if ($nbWeapons == 3) {
             width: 322px;
           } @else {
@@ -305,7 +305,7 @@
         font-size: 1.25rem;
       }
     }
-    
+
   }
 }
 

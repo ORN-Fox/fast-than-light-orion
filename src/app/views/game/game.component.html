@@ -50,7 +50,7 @@
   </div>
 
   <div class="crews-gui-container">
-    <div *ngFor="let crew of this.game.ship.crews" class="crew-gui-content">
+    <div *ngFor="let crew of this.game.ship.crews" class="crew-gui-content" [ngClass]="{'active': crew.selected}" (click)="selectCrew(crew)">
       <img [src]="crew.getBaseSrc()" alt="" class="crew-sprite">
       <div class="crew-stats-content">
         <p class="crew-name">{{crew.getFirstName()}}</p>

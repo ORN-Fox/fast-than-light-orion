@@ -147,8 +147,38 @@ export class ShipRenderService {
                   crewMember.cursor = "pointer";
                   crewMember.on('pointerdown', () => {
                     console.log('pointerDown crew', room.affectedCrew, crewMember);
+
+                    if (room.affectedCrew) {
+                      ship.crews.forEach(crew => {
+                        if (crew.id == room.affectedCrew?.id) {
+                          crew.selected = !crew.selected;
+                          room.affectedCrew.selected != room.affectedCrew.selected;
+
+                          if (crew.selected) {
+                            const border = new Graphics();
+                            border.lineStyle(2, 0x9deb23);
+                            border.drawRect(0, 0, crew.title.width, crew.title.height);
+                            border.zIndex = -1;
+                            border.position.x = crew.title.position.x - crew.title.width / 2;
+                            border.position.y = crew.title.position.y - crew.title.height / 2;
+                            shipFloorContainer.addChild(border);
+                            crew.border = border;
+                          } else {
+                            crew.border.destroy();
+                          }
+                        }
+                      });
+                    }
                   });
                   crewMember.play();
+
+                  if (room.affectedCrew) {
+                    ship.crews.forEach(crew => {
+                      if (crew.id == room.affectedCrew?.id) {
+                        crew.title = crewMember;
+                      }
+                    });
+                  }
 
                   shipFloorContainer.addChild(crewMember);
 

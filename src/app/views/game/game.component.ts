@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Application, Container, Sprite } from 'pixi.js';
+import { Router } from '@angular/router';
+import { Application, Container, Graphics, Sprite } from 'pixi.js';
 import hotkeys from 'hotkeys-js';
 
 import { GameService } from '../../core/services/game/game.service';
@@ -8,10 +9,10 @@ import { SettingsService } from '../../core/services/settings/settings.service';
 import { ShipRenderService } from '../../core/services/ship-render/ship-render.service';
 import { TexturesManagerService } from 'src/app/core/services/textures-manager/textures-manager.service';
 
+import { Crew } from 'src/app/core/models/crew/crew.model';
 import { Game } from '../../core/models/game/game.model';
 import { Settings } from '../../core/models/settings/settings.model';
 import { Ship } from '../../core/models/ships/index';
-import { Router } from '@angular/router';
 
 const log = new Logger('App');
 
@@ -52,8 +53,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this.game = this.gameService.getGame();
 
     this.initShorcuts();
-
-    log.info('Start game, include in future version', this.game);
   }
 
   async ngOnInit() {
@@ -115,6 +114,11 @@ export class GameComponent implements OnInit, OnDestroy {
 
   openShipMenuModal() {
     log.info('Open ship modal, include in future version');
+  }
+
+  selectCrew(crew: Crew) {
+    console.log('select crew todo', crew);
+    // crew.selected = !crew.selected;
   }
 
   saveCrewsAffectations() {
