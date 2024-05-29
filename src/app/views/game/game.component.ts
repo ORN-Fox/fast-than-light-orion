@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Application, Container, Graphics, Sprite } from 'pixi.js';
+import { Application, Container, Graphics, Renderer, Sprite } from 'pixi.js';
 import hotkeys from 'hotkeys-js';
 
 import { GameService } from '../../core/services/game/game.service';
@@ -185,7 +185,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
     hotkeys('space', () => {
       this.isPause = !this.isPause;
-      // TODO stop/play animation and display pause label
+      this.shipRenderService.togglePauseAnimation(this.isPause);
     });
   }
 

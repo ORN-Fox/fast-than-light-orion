@@ -87,6 +87,10 @@
   <div class="ship-sub-systems-gui-container">
     <p class="sub-systems-title">{{'sub_systems' | translate}}</p>
   </div>
+
+  <div *ngIf="isPause" class="game-pause-gui-container">
+    <p class="game-pause-title">{{'pause' | translate}}</p>
+  </div>
 </div>
 
 <app-modal [show]="showGameMenuModal" (closeCallback)="toggleGameMenuModal()">

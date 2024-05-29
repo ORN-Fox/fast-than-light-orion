@@ -16,11 +16,17 @@ export const MAX_SHIP_SLOT_X = 22, MAX_SHIP_SLOT_Y = 14;
 })
 export class ShipRenderService {
 
+  private animatedThrustersLeftSprite: AnimatedSprite;
+  private animatedThrustersRightSprite: AnimatedSprite;
+  private crewsSriptes: AnimatedSprite[];
+
   constructor(private texturesManagerService: TexturesManagerService)
   {}
 
   startShipRender(shipContainer: Container, shipFloorContainer: Container, ship: Ship, isShedMode: boolean = false, shipGUIContainer: Container | null = null)
   {
+    this.crewsSriptes = [];
+
     this.loadThrustersAnimation(shipContainer, ship);
 
     if (isShedMode)
@@ -43,6 +49,18 @@ export class ShipRenderService {
     }
   }
 
+  togglePauseAnimation(pause: boolean) {
+    if (pause) {
+      this.animatedThrustersLeftSprite.stop();
+      this.animatedThrustersRightSprite.stop();
+      this.crewsSriptes.forEach(crewSprite => crewSprite.stop());
+    } else {
+      this.animatedThrustersLeftSprite.play();
+      this.animatedThrustersRightSprite.play();
+      this.crewsSriptes.forEach(crewSprite => crewSprite.play());
+    }
+  }
+
   async loadThrustersAnimation(shipContainer: Container, ship: Ship)
   {
     if (ship instanceof KestrelShip)
@@ -60,8 +78,8 @@ export class ShipRenderService {
       animatedThrustersRightSprite.y = ship instanceof KestrelLayoutB ? 325 : 340;
       animatedThrustersRightSprite.animationSpeed = thrustersAnimationSpeed;
 
-      animatedThrustersLeftSprite.play();
-      animatedThrustersRightSprite.play();
+      this.animatedThrustersLeftSprite = animatedThrustersLeftSprite;
+      this.animatedThrustersRightSprite = animatedThrustersRightSprite;
 
       shipContainer.addChild(animatedThrustersLeftSprite, animatedThrustersRightSprite);
     }
@@ -170,7 +188,8 @@ export class ShipRenderService {
                       });
                     }
                   });
-                  crewMember.play();
+
+                  this.crewsSriptes.push(crewMember);
 
                   if (room.affectedCrew) {
                     ship.crews.forEach(crew => {

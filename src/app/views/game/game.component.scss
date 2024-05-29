@@ -494,3 +494,18 @@
     }
   }
 }
+
+.game-pause-gui-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
+  width: 100%;
+
+  .game-pause-title {
+    color: white;
+    font-family: "Aquire";
+    font-size: 2.5rem;
+    margin-bottom: 10rem;
+  }
+}
