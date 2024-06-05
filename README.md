@@ -9,9 +9,9 @@ Remake FTL with web technologies for fun !
 
 ## Requirements
 
-- Node 18.x / NPM 8.x
+- Node 20.x / NPM 10.x
 - Angular v17.x
-- PIXI v6.x
+- PIXI v7.x
 - TexturePacker v6.x
 
 ## Develop
