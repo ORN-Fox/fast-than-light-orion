@@ -103,8 +103,10 @@ export class ShedComponent implements OnInit {
     this.app.stage.addChild(this.shedContainer);
 
     const shipsListGUIContainer = document.querySelector('.modal') as HTMLElement;
-    shipsListGUIContainer.style.height = `${this.canvasHeight}px`;
-    shipsListGUIContainer.style.width = `${this.canvasWidth}px`;
+    if (shipsListGUIContainer) {
+      shipsListGUIContainer.style.height = `${this.canvasHeight}px`;
+      shipsListGUIContainer.style.width = `${this.canvasWidth}px`;
+    }
   }
 
   loadSelectedShip(ship: Ship)
@@ -146,43 +148,44 @@ export class ShedComponent implements OnInit {
     const humanFemaleSheet = this.texturesManagerService.getSpritesheet('human-female');
     const humanAnimationSpeed = .1;
 
-    let animatedShipEngineerSprite = new AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);
-    animatedShipEngineerSprite.x = 100;
-    animatedShipEngineerSprite.y = 109;
+    if (humanMaleSheet && humanFemaleSheet) {
+      let animatedShipEngineerSprite = new AnimatedSprite(humanMaleSheet.animations["useComputer_Top"]);
+      animatedShipEngineerSprite.x = 100;
+      animatedShipEngineerSprite.y = 109;
 
-    let animatedShipEngineerReparingDroneSprite = new AnimatedSprite(humanMaleSheet.animations["repair"]);
-    animatedShipEngineerReparingDroneSprite.x = 1120;
-    animatedShipEngineerReparingDroneSprite.y = 114;
+      let animatedShipEngineerReparingDroneSprite = new AnimatedSprite(humanMaleSheet.animations["repair"]);
+      animatedShipEngineerReparingDroneSprite.x = 1120;
+      animatedShipEngineerReparingDroneSprite.y = 114;
 
-    let animatedShipEngineerReparingMissileSprite = new AnimatedSprite(humanFemaleSheet.animations["repair"]);
-    animatedShipEngineerReparingMissileSprite.x = 1206;
-    animatedShipEngineerReparingMissileSprite.y = 332;
+      let animatedShipEngineerReparingMissileSprite = new AnimatedSprite(humanFemaleSheet.animations["repair"]);
+      animatedShipEngineerReparingMissileSprite.x = 1206;
+      animatedShipEngineerReparingMissileSprite.y = 332;
 
-    let animatedShipEngineerReparingShipSprite = new AnimatedSprite(humanFemaleSheet.animations["repair"]);
-    animatedShipEngineerReparingShipSprite.x = 1100;
-    animatedShipEngineerReparingShipSprite.y = 362;
+      let animatedShipEngineerReparingShipSprite = new AnimatedSprite(humanFemaleSheet.animations["repair"]);
+      animatedShipEngineerReparingShipSprite.x = 1100;
+      animatedShipEngineerReparingShipSprite.y = 362;
 
-    if (this.settings.dynamicBackground)
-    {
-      animatedShipEngineerSprite.animationSpeed = humanAnimationSpeed;
-      animatedShipEngineerSprite.play();
+      if (this.settings.dynamicBackground) {
+        animatedShipEngineerSprite.animationSpeed = humanAnimationSpeed;
+        animatedShipEngineerSprite.play();
 
-      animatedShipEngineerReparingDroneSprite.animationSpeed = humanAnimationSpeed;
-      animatedShipEngineerReparingDroneSprite.play();
+        animatedShipEngineerReparingDroneSprite.animationSpeed = humanAnimationSpeed;
+        animatedShipEngineerReparingDroneSprite.play();
 
-      animatedShipEngineerReparingMissileSprite.animationSpeed = humanAnimationSpeed;
-      animatedShipEngineerReparingMissileSprite.play();
+        animatedShipEngineerReparingMissileSprite.animationSpeed = humanAnimationSpeed;
+        animatedShipEngineerReparingMissileSprite.play();
 
-      animatedShipEngineerReparingShipSprite.animationSpeed = humanAnimationSpeed;
-      animatedShipEngineerReparingShipSprite.play();
+        animatedShipEngineerReparingShipSprite.animationSpeed = humanAnimationSpeed;
+        animatedShipEngineerReparingShipSprite.play();
+      }
+
+      this.shedContainer.addChild(
+        animatedShipEngineerSprite,
+        animatedShipEngineerReparingDroneSprite,
+        animatedShipEngineerReparingMissileSprite,
+        animatedShipEngineerReparingShipSprite,
+      );
     }
-
-    this.shedContainer.addChild(
-      animatedShipEngineerSprite,
-      animatedShipEngineerReparingDroneSprite,
-      animatedShipEngineerReparingMissileSprite,
-      animatedShipEngineerReparingShipSprite,
-    );
   }
 
   previousShip()

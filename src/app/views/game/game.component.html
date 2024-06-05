@@ -15,7 +15,7 @@
       <p>30</p>
     </div>
 
-    <div class="shield-gui-container">
+    <div *ngIf="game.ship" class="shield-gui-container">
       <div class="shield-indicators-gui-container">
         <img *ngFor="let shield of game.ship.shields" [src]="shield.getSpriteSrc()" alt="">
       </div>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="fuel-missiles-drones-gui-container">
+    <div *ngIf="game.ship" class="fuel-missiles-drones-gui-container">
       <div class="fuel-quantity-gui-container" [ngClass]="{'field-low-quantity': game.ship.fuel == 0}">
         <p>{{game.ship.fuel}}</p>
       </div>
@@ -49,7 +49,7 @@
     <button class="btn btn-settings" (click)="toggleGameMenuModal()">Settings</button>
   </div>
 
-  <div class="crews-gui-container">
+  <div *ngIf="game.ship" class="crews-gui-container">
     <div *ngFor="let crew of this.game.ship.crews" class="crew-gui-content" [ngClass]="{'active': crew.selected}" (click)="selectCrew(crew)">
       <img [src]="crew.getBaseSrc()" alt="" class="crew-sprite">
       <div class="crew-stats-content">
@@ -67,11 +67,11 @@
     </button>
   </div>
 
-  <div class="ship-systems-gui-container">
+  <div *ngIf="game.ship" class="ship-systems-gui-container">
     <!-- power gui -->
     <!-- systems gui -->
-    <div class="ship-systems-gui-weapons-container ship-systems-gui-{{this.game.ship.maxWeaponsAllowed}}-weapons-container">
-      <div *ngFor="let weapon of this.game.ship.weapons">
+    <div *ngIf="game.ship.weapons" class="ship-systems-gui-weapons-container ship-systems-gui-{{this.game.ship.maxWeaponsAllowed}}-weapons-container">
+      <div *ngFor="let weapon of game.ship.weapons">
         <div class="ship-systems-gui-weapon-container">
           <span>{{weapon.name}}</span>
         </div>
@@ -107,7 +107,7 @@
 
   <div class="difficulty-container">
     <p class="difficulty-title">{{'commons.difficulty' | translate}}</p>
-    <p *ngIf="game" class="difficulty-value">{{('commons.difficulties.' + game.difficulty.name) | translate}}</p>
+    <p *ngIf="game.difficulty" class="difficulty-value">{{('commons.difficulties.' + game.difficulty.name) | translate}}</p>
   </div>
 </app-modal>
 

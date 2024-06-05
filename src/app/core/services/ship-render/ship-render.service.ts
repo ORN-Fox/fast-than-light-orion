@@ -156,50 +156,52 @@ export class ShipRenderService {
                   let raceSpritesheet = this.texturesManagerService.getSpritesheet(room.affectedCrew.getRaceNameWithGender().toLowerCase());
                   let animationName = room.affectedCrew.getAnimationNameForRoomAftectation(room.affectedSystem.systemPosition);
 
-                  let crewMember = new AnimatedSprite(raceSpritesheet.animations[animationName]);
-                  crewMember.x = room.roomDisplaySettings.getRoomTilePositionX() + (TILE_SIZE_WITH_BORDER * slot.slotPositionX) + 17.5; // 17.5 = 35 / 2 for position crew in center of slot
-                  crewMember.y = room.roomDisplaySettings.getRoomTilePositionY() + (TILE_SIZE_WITH_BORDER * slot.slotPositionY) + 17.5;
-                  crewMember.animationSpeed = raceSpeed;
-                  crewMember.anchor.set(0.5);
-                  crewMember.eventMode = 'static';
-                  crewMember.cursor = "pointer";
-                  crewMember.on('pointerdown', () => {
-                    console.log('pointerDown crew', room.affectedCrew, crewMember);
+                  if (raceSpritesheet) {
+                    let crewMember = new AnimatedSprite(raceSpritesheet.animations[animationName]);
+                    crewMember.x = room.roomDisplaySettings.getRoomTilePositionX() + (TILE_SIZE_WITH_BORDER * slot.slotPositionX) + 17.5; // 17.5 = 35 / 2 for position crew in center of slot
+                    crewMember.y = room.roomDisplaySettings.getRoomTilePositionY() + (TILE_SIZE_WITH_BORDER * slot.slotPositionY) + 17.5;
+                    crewMember.animationSpeed = raceSpeed;
+                    crewMember.anchor.set(0.5);
+                    crewMember.eventMode = 'static';
+                    crewMember.cursor = "pointer";
+                    crewMember.on('pointerdown', () => {
+                      console.log('pointerDown crew', room.affectedCrew, crewMember);
+
+                      if (room.affectedCrew) {
+                        ship.crews.forEach(crew => {
+                          if (crew.id == room.affectedCrew?.id) {
+                            crew.selected = !crew.selected;
+                            room.affectedCrew.selected != room.affectedCrew.selected;
+
+                            if (crew.selected) {
+                              const border = new Graphics();
+                              border.lineStyle(2, 0x9deb23);
+                              border.drawRect(0, 0, crew.title.width, crew.title.height);
+                              border.zIndex = -1;
+                              border.position.x = crew.title.position.x - crew.title.width / 2;
+                              border.position.y = crew.title.position.y - crew.title.height / 2;
+                              shipFloorContainer.addChild(border);
+                              crew.border = border;
+                            } else {
+                              crew.border.destroy();
+                            }
+                          }
+                        });
+                      }
+                    });
+
+                    this.crewsSriptes.push(crewMember);
 
                     if (room.affectedCrew) {
                       ship.crews.forEach(crew => {
                         if (crew.id == room.affectedCrew?.id) {
-                          crew.selected = !crew.selected;
-                          room.affectedCrew.selected != room.affectedCrew.selected;
-
-                          if (crew.selected) {
-                            const border = new Graphics();
-                            border.lineStyle(2, 0x9deb23);
-                            border.drawRect(0, 0, crew.title.width, crew.title.height);
-                            border.zIndex = -1;
-                            border.position.x = crew.title.position.x - crew.title.width / 2;
-                            border.position.y = crew.title.position.y - crew.title.height / 2;
-                            shipFloorContainer.addChild(border);
-                            crew.border = border;
-                          } else {
-                            crew.border.destroy();
-                          }
+                          crew.title = crewMember;
                         }
                       });
                     }
-                  });
 
-                  this.crewsSriptes.push(crewMember);
-
-                  if (room.affectedCrew) {
-                    ship.crews.forEach(crew => {
-                      if (crew.id == room.affectedCrew?.id) {
-                        crew.title = crewMember;
-                      }
-                    });
+                    shipFloorContainer.addChild(crewMember);
                   }
-
-                  shipFloorContainer.addChild(crewMember);
 
                   break;
                 }
@@ -309,17 +311,21 @@ export class ShipRenderService {
 
       let crewMember = ship.crews[i];
 
-      if (crewMember)
-      {
+      if (crewMember) {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
+        let raceSpritesheet = this.texturesManagerService.getSpritesheet(raceName);
 
-        let crewMemberLineOne = Sprite.from(this.texturesManagerService.getSpritesheet(raceName).animations['portrait'][0]);
-        crewMemberLineOne.x = 112 + (i * 150);
-        crewMemberLineOne.y = 558;
-        crewMemberLineOne.height = 60;
-        crewMemberLineOne.width = 60;
+        if (raceSpritesheet) {
+          let crewMemberLineOne = Sprite.from(raceSpritesheet.animations['portrait'][0]);
+          crewMemberLineOne.x = 112 + (i * 150);
+          crewMemberLineOne.y = 558;
+          crewMemberLineOne.height = 60;
+          crewMemberLineOne.width = 60;
 
-        shipGUIContainer.addChild(crewMemberLineOne);
+          shipGUIContainer.addChild(crewMemberLineOne);
+        } else {
+          console.error(`Unable to load ${raceName} race spritesheet`);
+        }
       }
     }
 
@@ -332,17 +338,21 @@ export class ShipRenderService {
 
       let crewMember = ship.crews[y + 2];
 
-      if (crewMember)
-      {
+      if (crewMember) {
         let raceName = crewMember.getRaceNameWithGender().toLowerCase();
+        let raceSpritesheet = this.texturesManagerService.getSpritesheet(raceName);
 
-        let crewMemberLineTwo = Sprite.from(this.texturesManagerService.getSpritesheet(raceName).animations['portrait'][0]);
-        crewMemberLineTwo.x = 112 + (y * 150);
-        crewMemberLineTwo.y = 648;
-        crewMemberLineTwo.height = 60;
-        crewMemberLineTwo.width = 60;
+        if (raceSpritesheet) {
+          let crewMemberLineTwo = Sprite.from(this.texturesManagerService.getSpritesheet(raceName)?.animations['portrait'][0]);
+          crewMemberLineTwo.x = 112 + (y * 150);
+          crewMemberLineTwo.y = 648;
+          crewMemberLineTwo.height = 60;
+          crewMemberLineTwo.width = 60;
 
-        shipGUIContainer.addChild(crewMemberLineTwo);
+          shipGUIContainer.addChild(crewMemberLineTwo);
+        } else {
+          console.error(`Unable to load ${raceName} race spritesheet`);
+        }
       }
     }
   }

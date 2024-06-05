@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
 
 import { ShedComponent } from './shed.component';
 
@@ -8,7 +11,13 @@ describe('ShedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShedComponent ]
+      declarations: [ ShedComponent ],
+      imports: [
+        TranslateModule.forRoot(),
+      ],
+      providers: [
+        SettingsService,
+      ],
     })
     .compileComponents();
   });

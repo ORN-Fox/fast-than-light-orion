@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { SettingsService } from 'src/app/core/services/settings/settings.service';
+import { SoundsManagerService } from 'src/app/core/services/sounds-manager/sounds-manager.service';
 
 import { SettingsModalComponent } from './settings-modal.component';
 
@@ -8,7 +12,14 @@ describe('SettingsModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SettingsModalComponent ]
+      declarations: [ SettingsModalComponent ],
+      imports: [
+        TranslateModule.forRoot(),
+      ],
+      providers: [
+        SettingsService,
+        SoundsManagerService,
+      ],
     })
     .compileComponents();
 

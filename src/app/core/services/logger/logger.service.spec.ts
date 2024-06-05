@@ -10,8 +10,8 @@ describe('Logger', () => {
   beforeAll(() => {
     savedConsole = [];
     logMethods.forEach(m => {
-      savedConsole[m] = console[m];
-      console[m] = () => {};
+      (savedConsole as any)[m] = (console as any)[m];
+      (console as any)[m] = () => {};
     });
     savedLevel = Logger.level;
     savedOutputs = Logger.outputs;
@@ -23,7 +23,7 @@ describe('Logger', () => {
 
   afterAll(() => {
     logMethods.forEach(m => {
-      console[m] = savedConsole[m];
+      (console as any)[m] = (savedConsole as any)[m];
     });
     Logger.level = savedLevel;
     Logger.outputs = savedOutputs;
