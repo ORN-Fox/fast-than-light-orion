@@ -89,7 +89,7 @@
   </div>
 
   <div *ngIf="isPause" class="game-pause-gui-container">
-    <p class="game-pause-title">{{'pause' | translate}}</p>
+    <img [src]="getPauseImageSrc()" alt="" class="game-pause-content">
   </div>
 </div>
 

@@ -36,6 +36,8 @@ export class GameComponent implements OnInit, OnDestroy {
   shipFloorContainer: Container;
 
   isPause: boolean = true;
+  useAlternativePauseSrc: boolean = false;
+  pauseInterval: any;
 
   showGameMenuModal: boolean = false;
   showRetryGameModal: boolean = false;
@@ -72,6 +74,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
     this.loadSelectedShip(this.game.ship);
     this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
+    this.startPauseInterval();
   }
 
   ngOnDestroy() {
@@ -129,6 +132,25 @@ export class GameComponent implements OnInit, OnDestroy {
     log.info('Return crews affectations, include in future version');
   }
 
+  togglePause() {
+    this.isPause = !this.isPause;
+    this.shipRenderService.togglePauseAnimation(this.isPause);
+
+    if (this.isPause) {
+      this.startPauseInterval();
+    } else {
+      clearInterval(this.pauseInterval);
+    }
+  }
+
+  getPauseImageSrc(): string{
+    return `/assets/images/gui/pause_${this.useAlternativePauseSrc ? '1' : '2'}.png`;
+  }
+
+  private startPauseInterval() {
+    this.pauseInterval = setInterval(() => this.useAlternativePauseSrc = !this.useAlternativePauseSrc, 1000);
+  }
+
   // Game menu modal related
 
   toggleGameMenuModal = () => {
@@ -184,8 +206,7 @@ export class GameComponent implements OnInit, OnDestroy {
     });
 
     hotkeys('space', () => {
-      this.isPause = !this.isPause;
-      this.shipRenderService.togglePauseAnimation(this.isPause);
+      this.togglePause();
     });
   }
 
