@@ -72,9 +72,11 @@ export class GameComponent implements OnInit, OnDestroy {
     this.gameContainer = new Container();
     this.app.stage.addChild(this.gameContainer);
 
-    this.loadSelectedShip(this.game.ship);
-    this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
-    this.startPauseInterval();
+    setTimeout(() => {
+      this.loadSelectedShip(this.game.ship);
+      this.shipRenderService.startShipRender(this.shipContainer, this.shipFloorContainer, this.game.ship);
+      this.startPauseInterval();
+    }, 1000);
   }
 
   ngOnDestroy() {
