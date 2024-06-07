@@ -28,6 +28,9 @@ export class CrewsService {
       raceNameWithGender = `${raceNameWithGender}-${gender == Gender.Male ? 'male' : 'female'}`;
     }
 
-    return this.translateService.instant(`commons.races.${raceNameWithGender}.name-${NumberService.randomIntFromInterval(1, 20)}`);
+    if (this.translateService.store) {
+      return this.translateService.instant(`commons.races.${raceNameWithGender}.name-${NumberService.randomIntFromInterval(1, 20)}`);
+    }
+    return "loadingInProgress";
   }
 }

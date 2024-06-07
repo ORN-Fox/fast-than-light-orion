@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { AtlasesService } from '../atlases/atlases.service';
-import { ShipsService } from '../ships/ships.service';
 import { StorageService } from '../../utils/storage.service';
 
 import { Difficulty, DifficultyEnum } from '../../models/difficulty/difficulty.model';
 import { Game } from '../../models/game/game.model';
-import { Crew } from '../../models/crew/crew.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +15,8 @@ export class GameService {
 
   private game: Game;
 
-  constructor(private shipService: ShipsService) {
-    this.difficulties = [
-      new Difficulty('easy', DifficultyEnum.Easy, 1),
-      new Difficulty('normal', DifficultyEnum.Normal, 2),
-      new Difficulty('hard', DifficultyEnum.Hard, 3)
-    ];
+  constructor() {
+    this.difficulties = this.getDifficulties();
   }
 
   shouldExistGameInProgress(): boolean {
@@ -50,39 +43,26 @@ export class GameService {
     StorageService.setLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY, game.serializeForSave());
   }
 
+  getDifficulties(): Difficulty[] {
+    return [
+      new Difficulty('easy', DifficultyEnum.Easy, 1),
+      new Difficulty('normal', DifficultyEnum.Normal, 2),
+      new Difficulty('hard', DifficultyEnum.Hard, 3)
+    ];
+  }
+
   private reloadGameFromSave(): Game {
-    let storedSave: any = StorageService.getLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY);
-    let game: Game = new Game();
+    let storedSave = StorageService.getLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY);
+    let game = new Game();
 
     if (storedSave) {
-      storedSave = JSON.parse(storedSave);
-      console.debug('StoredSave', storedSave);
-
-      game.saveVersion = storedSave.saveVersion;
-      game.gameVersion = storedSave.gameVersion;
-      game.createdAt = new Date(storedSave.createdAt);
-      game.updatedAt = new Date(storedSave.updatedAt);
-      game.difficulty = this.difficulties[storedSave.difficulty];
-
-      let ship = this.shipService.getShip(storedSave.ship.type, storedSave.ship.layout);
-      if (ship) {
-        ship.name = storedSave.ship.name;
-
-        let recomputeCrews: Crew[] = [];
-        storedSave.ship.crews.forEach((storedCrew: any) => {
-          let crew = new Crew(storedCrew.name, AtlasesService.getRace(storedCrew.raceType), storedCrew.gender);
-          crew.id = storedCrew.id;
-          recomputeCrews.push(crew);
-        });
-        ship.crews = recomputeCrews;
-
-        game.ship = ship;
-      }
-
+      game.deserilizeFromSave(storedSave);
       console.debug('Game', game);
+    } else {
+      console.error('Stored save not found', storedSave);
     }
-      
+
     return game;
   }
-  
+
 }

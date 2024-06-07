@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import { AtlasesService } from '../../services/atlases/atlases.service';
+
 import { SystemPositionEnum } from '../systems';
 
 import { Race, RaceType } from '../races/race.model';
@@ -91,4 +93,12 @@ export class Crew {
 
     return crew;
   }
+
+  deserilizeFromSave(serializedCrew: ISerializedCrew) {
+    this.id = serializedCrew.id;
+    this.name = serializedCrew.name;
+    this.race = AtlasesService.getRace(serializedCrew.raceType);
+    this.gender = serializedCrew.gender;
+  }
+
 }

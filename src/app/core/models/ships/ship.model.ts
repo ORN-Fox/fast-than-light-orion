@@ -1,8 +1,10 @@
 import { Door } from '../door/door.model';
-import { ISerializedRoom, Room } from '../room/room.model';
 import { Weapon } from '../weapons/weapon.model';
 import { Drone } from '../drones/drone.model';
 import { Crew, ISerializedCrew } from '../crew/crew.model';
+import { ISerializedRoom, Room } from '../room/room.model';
+import { RoomDisplaySettings } from '../room';
+import { Race } from '../races';
 import { IShieldLevel, ShieldLevel } from '../shield-level/shield-level.model';
 import { Upgrade } from '../upgrades/upgrade.model';
 
@@ -106,6 +108,38 @@ export class Ship {
     };
 
     return serializeShip;
+  }
+
+  deserilizeFromSave(serializedShip: ISerializedShip) {
+    this.name = serializedShip.name;
+
+    this.shields = serializedShip.shields.map(serializedShield => {
+      let shieldLevel = new ShieldLevel();
+      shieldLevel.deserilizeFromSave(serializedShield);
+      return shieldLevel;
+    });
+
+    this.reactorPower = serializedShip.reactorPower;
+    this.fuel = serializedShip.fuel;
+    this.missiles = serializedShip.missiles;
+    this.droneParts = serializedShip.droneParts;
+
+    this.crews = serializedShip.crews.map(serializedCrew => {
+      let crew = new Crew('', new Race(), 0);
+      crew.deserilizeFromSave(serializedCrew);
+      return crew;
+    });
+
+    this.rooms = serializedShip.rooms.map(serializedRoom => {
+      let room = new Room(new RoomDisplaySettings(0, 0, 0, 0));
+      room.deserilizeFromSave(serializedRoom, this.crews);
+      return room;
+    });
+
+    // TODO: continue deserialisation from save weapons, drones and upgrades
+    //weapons: Weapon[] = [];
+    // drones: Drone[] = [];
+    // upgrades: Upgrade[] = [];
   }
 
 }

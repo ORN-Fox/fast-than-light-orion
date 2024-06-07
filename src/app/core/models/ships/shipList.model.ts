@@ -1,7 +1,7 @@
 import { Ship } from './ship.model';
 
-export class ShipList
-{
+export class ShipList {
+
   name: string;
   layouts: Ship[];
 
@@ -10,4 +10,5 @@ export class ShipList
     this.name = name;
     this.layouts = layouts;
   }
+
 }

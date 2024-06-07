@@ -4,6 +4,7 @@ export interface IShieldLevel {
 }
 
 export class ShieldLevel {
+
     enabled: boolean;
     isHacked: boolean;
 
@@ -26,4 +27,10 @@ export class ShieldLevel {
 
         return serializeShieldLevel;
     }
+
+    deserilizeFromSave(serializedShieldLevel: IShieldLevel) {
+        this.enabled = serializedShieldLevel.enabled;
+        this.isHacked = serializedShieldLevel.isHacked;
+    }
+
 }

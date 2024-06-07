@@ -27,10 +27,7 @@ export class Room {
     this.affectedCrew = crew;
     this.affectedSystem = system;
 
-    if (this.affectedCrew && !this.affectedCrew.race.needOxygen)
-    {
-      this.oxygen = 0;
-    }
+    this.computeOxygen();
 
     // display related
     this.roomDisplaySettings = roomDisplaySettings;
@@ -71,4 +68,27 @@ export class Room {
 
     return room;
   }
+
+  deserilizeFromSave(serializedRoom: ISerializedRoom, crews: Crew[]) {
+    let affectedCrew = crews.find(crew => crew.id == serializedRoom.affectedCrewId);
+    this.affectedCrew = affectedCrew ? affectedCrew : null;
+
+    // TODO deserialize systems
+    // let affectedSystem = systems.find(system => system.id == serializedRoom.affectedSystemId);
+    // this.affectedSystem = affectedSystem ? affectedSystem : null;
+
+    this.oxygen = serializedRoom.oxygen;
+    this.computeOxygen();
+
+    let roomDisplaySettings = new RoomDisplaySettings(0, 0, 0, 0);
+    roomDisplaySettings.deserilizeFromSave(serializedRoom.roomDisplaySettings);
+    this.roomDisplaySettings = roomDisplaySettings;
+  }
+
+  private computeOxygen() {
+    if (this.affectedCrew && !this.affectedCrew.race.needOxygen) {
+      this.oxygen = 0;
+    }
+  }
+
 }

@@ -16,4 +16,5 @@ export class Difficulty {
     this.value = value;
     this.scoreMultiplicator = scoreMultiplicator;
   }
+
 }

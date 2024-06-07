@@ -5,7 +5,6 @@ import { CrewsService } from '../crews/crews.service';
 
 import { EngiLayoutA, EngiLayoutB, EngiLayoutC, KestrelLayoutA, KestrelLayoutB, KestrelLayoutC, Ship, ShipList } from '../../models/ships/index';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -41,5 +40,5 @@ export class ShipsService {
     }
     return null;
   }
-  
+
 }

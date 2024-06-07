@@ -27,9 +27,7 @@ export class RoomDisplaySettings
     this.sizeX = sizeX;
     this.sizeY = sizeY;
 
-    // In pixels
-    this.height = this.sizeY * TILE_SIZE_WITH_BORDER;
-    this.width = this.sizeX * TILE_SIZE_WITH_BORDER;
+    this.computeDimensions();
   }
 
   getRoomTilePositionX(): number {
@@ -60,4 +58,21 @@ export class RoomDisplaySettings
 
     return roomDisplaySettings;
   }
+
+  deserilizeFromSave(serializedRoomDisplaySettings: ISerializedRoomDisplaySettings) {
+    this.x = serializedRoomDisplaySettings.x;
+    this.y = serializedRoomDisplaySettings.y;
+
+    this.sizeX = serializedRoomDisplaySettings.sizeX;
+    this.sizeY = serializedRoomDisplaySettings.sizeY;
+
+    this.computeDimensions();
+  }
+
+  private computeDimensions() {
+    // In pixels
+    this.height = this.sizeY * TILE_SIZE_WITH_BORDER;
+    this.width = this.sizeX * TILE_SIZE_WITH_BORDER;
+  }
+
 }
