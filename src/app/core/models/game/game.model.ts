@@ -1,6 +1,9 @@
 import { TranslateService } from '@ngx-translate/core';
+
 import { CrewsService } from '../../services/crews/crews.service';
+import { GameService } from '../../services/game/game.service';
 import { ShipsService } from '../../services/ships/ships.service';
+
 import { Difficulty } from '../difficulty/difficulty.model';
 import { ISerializedShip, Ship } from '../ships/ship.model';
 
@@ -15,9 +18,8 @@ export interface ISerializedGame {
 
 export class Game {
 
-  ship: Ship;
-
   difficulty: Difficulty;
+  ship: Ship;
 
   saveVersion: number;
   gameVersion: string;
@@ -47,19 +49,18 @@ export class Game {
     let parsedSerializedGame: ISerializedGame = JSON.parse(serializedSave);
     console.debug('parsedSerializedGame', parsedSerializedGame);
 
-    this.saveVersion = parsedSerializedGame.saveVersion;
-    this.gameVersion = parsedSerializedGame.gameVersion;
-    this.createdAt = new Date(parsedSerializedGame.createdAt);
-    this.updatedAt = new Date(parsedSerializedGame.updatedAt);
-    // TODO recover difficulty from data array
-    // this.difficulty = new Difficulty(serializedSave.difficulty.name, serializedSave.difficulty.value, serializedSave.difficulty.scoreMultiplicator);
-
     let shipService = new ShipsService(new CrewsService(TranslateService.prototype));
     let ship = shipService.getShip(parsedSerializedGame.ship.type, parsedSerializedGame.ship.layout);
     if (ship) {
       ship.deserilizeFromSave(parsedSerializedGame.ship);
       this.ship = ship;
     }
+
+    this.difficulty = GameService.prototype.getDifficulty(parsedSerializedGame.difficulty)
+    this.saveVersion = parsedSerializedGame.saveVersion;
+    this.gameVersion = parsedSerializedGame.gameVersion;
+    this.createdAt = new Date(parsedSerializedGame.createdAt);
+    this.updatedAt = new Date(parsedSerializedGame.updatedAt);
   }
 
 }

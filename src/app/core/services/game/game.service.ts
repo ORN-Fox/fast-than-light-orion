@@ -51,6 +51,11 @@ export class GameService {
     ];
   }
 
+  getDifficulty(value: number): Difficulty {
+    const difficulties = this.getDifficulties();
+    return difficulties.filter((difficulty) => difficulty.value == value)[0];
+  }
+
   private reloadGameFromSave(): Game {
     let storedSave = StorageService.getLocalStorageItem(this.SETTINGS_LOCAL_STORAGE_KEY);
     let game = new Game();
