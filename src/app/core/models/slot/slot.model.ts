@@ -16,15 +16,13 @@ export class Slot {
   fire: boolean = false;
   hacking: boolean = false;
 
-  constructor(slotPositionX: number, slotPositionY: number, room: Room | null = null, crew: Crew | null = null)
-  {
+  constructor(slotPositionX: number, slotPositionY: number, room: Room | null = null, crew: Crew | null = null) {
     this.slotPositionX = slotPositionX;
     this.slotPositionY = slotPositionY;
 
     this.room = room;
 
-    if (this.room)
-    {
+    if (this.room) {
       this.crew = crew;
     }
   }
