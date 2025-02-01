@@ -8,6 +8,7 @@ export class DoorControl extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.DoorControl;
 
     this.systemPosition = systemPosition;

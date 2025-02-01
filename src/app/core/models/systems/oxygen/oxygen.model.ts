@@ -7,6 +7,7 @@ export class Oxygen extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Oxygen;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_oxygen_green1.png';

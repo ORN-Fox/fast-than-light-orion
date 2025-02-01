@@ -8,6 +8,7 @@ export class WeaponControl extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 8;
     this.type = SystemTypeEnum.WeaponControl;
 
     this.systemPosition = systemPosition;

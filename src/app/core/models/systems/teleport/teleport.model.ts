@@ -7,6 +7,7 @@ export class Teleport extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Teleport;
     this.isInstalled = isInstalled;
 

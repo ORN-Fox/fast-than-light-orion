@@ -8,6 +8,7 @@ export class Piloting extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Piloting;
 
     this.systemPosition = systemPosition;

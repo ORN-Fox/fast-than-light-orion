@@ -7,6 +7,7 @@ export class Hacking extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Hacking;
     this.isInstalled = isInstalled;
 

@@ -7,6 +7,7 @@ export class MindControl extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.MindControl;
     this.isInstalled = isInstalled;
 

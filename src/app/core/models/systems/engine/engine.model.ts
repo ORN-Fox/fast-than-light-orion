@@ -8,6 +8,7 @@ export class Engine extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 8;
     this.type = SystemTypeEnum.Engine;
 
     this.systemPosition = systemPosition;

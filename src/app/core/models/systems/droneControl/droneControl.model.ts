@@ -7,6 +7,7 @@ export class DroneControl extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 4;
     this.type = SystemTypeEnum.DroneControl;
     this.isInstalled = isInstalled;
 

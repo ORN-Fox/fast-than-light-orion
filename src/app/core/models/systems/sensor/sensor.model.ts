@@ -8,6 +8,7 @@ export class Sensor extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Sensor;
     this.isInstalled = isInstalled;
 

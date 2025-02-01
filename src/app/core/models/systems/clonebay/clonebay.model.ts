@@ -7,6 +7,7 @@ export class CloneBay extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.CloneBay;
     this.isInstalled = isInstalled;
 

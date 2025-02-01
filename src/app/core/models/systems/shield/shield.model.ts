@@ -8,6 +8,7 @@ export class Shield extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 8;
     this.type = SystemTypeEnum.Shield; // TODO
 
     this.systemPosition = systemPosition;

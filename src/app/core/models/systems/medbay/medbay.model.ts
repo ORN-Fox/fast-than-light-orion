@@ -7,6 +7,7 @@ export class Medbay extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Medbay;
 
     this.srcSystemGreenSprite = '/assets/images/gui/icons/green1/s_medbay_green1.png';

@@ -7,6 +7,7 @@ export class Cloacking extends System {
     super();
 
     this.level = level;
+    this.maxLevel = 3;
     this.type = SystemTypeEnum.Cloacking;
     this.isInstalled = isInstalled;
 

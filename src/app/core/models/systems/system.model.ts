@@ -4,6 +4,7 @@ export class System {
 
   id: string;
   level: number;
+  maxLevel: number;
   type: number;
   isInstalled: boolean;
 
