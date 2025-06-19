@@ -17,9 +17,10 @@ import { Ship } from '../../core/models/ships/index';
 const log = new Logger('App');
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+    selector: 'app-game',
+    templateUrl: './game.component.html',
+    styleUrls: ['./game.component.scss'],
+    standalone: false
 })
 export class GameComponent implements OnInit, OnDestroy {
 

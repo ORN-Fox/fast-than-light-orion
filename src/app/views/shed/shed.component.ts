@@ -17,9 +17,10 @@ import { Settings } from '../../core/models/settings/settings.model';
 import { Ship, ShipList } from '../../core/models/ships/index';
 
 @Component({
-  selector: 'app-shed',
-  templateUrl: './shed.component.html',
-  styleUrls: ['./shed.component.scss']
+    selector: 'app-shed',
+    templateUrl: './shed.component.html',
+    styleUrls: ['./shed.component.scss'],
+    standalone: false
 })
 export class ShedComponent implements OnInit {
 

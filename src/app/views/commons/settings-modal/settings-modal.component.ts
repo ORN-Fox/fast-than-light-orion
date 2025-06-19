@@ -7,9 +7,10 @@ import { SoundsManagerService } from 'src/app/core/services/sounds-manager/sound
 import { Settings } from 'src/app/core/models/settings/settings.model';
 
 @Component({
-  selector: 'app-settings-modal',
-  templateUrl: './settings-modal.component.html',
-  styleUrls: ['./settings-modal.component.scss']
+    selector: 'app-settings-modal',
+    templateUrl: './settings-modal.component.html',
+    styleUrls: ['./settings-modal.component.scss'],
+    standalone: false
 })
 export class SettingsModalComponent {
 
