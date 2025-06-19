@@ -1,4 +1,5 @@
-import { Assets, ResolverManifest, Spritesheet } from 'pixi.js';
+import { Spritesheet } from 'pixi.js';
+import { Assets } from '@pixi/assets';
 import { Injectable, Optional, SkipSelf } from '@angular/core';
 
 @Injectable({
@@ -29,7 +30,7 @@ export class TexturesManagerService {
   // Private functions
 
   private async loadManifest() {
-    const manifest: ResolverManifest = {
+    const manifest = {
       bundles: [
         {
           name: 'races-spritesheets',
