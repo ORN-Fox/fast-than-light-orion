@@ -1,97 +1,119 @@
 <div class="shed">
-    <img src="/assets/images/gui/box_shipequip.png" alt="" class="ship-components-gui-image">
+  <img src="/assets/images/gui/box_shipequip.png" alt="" class="ship-components-gui-image">
 
-    <div id="canvsPixi"></div>
+  <div id="canvsPixi"></div>
 
-    <div class="shed-gui-container">
-        <img src="/assets/images/gui/box_shipname.png" alt="" class="ship-rename-gui-image">
-      <div class="ship-rename-gui-container">
-        <button class="btn btn-rename" [ngClass]="{'active': renameShipEnabled}" (click)="openRenameShipInput()">{{'commons.actions.rename_abbr' | translate}}</button>
-        <input type="text" id="inputShipRename" class="input-rename" [(ngModel)]="selectedShip.name" (keyup.enter)="closeRenameShipInput()" maxlength="16">
-      </div>
+  <div class="shed-gui-container">
+    <img src="/assets/images/gui/box_shipname.png" alt="" class="ship-rename-gui-image">
+    <div class="ship-rename-gui-container">
+      <button class="btn btn-rename" [ngClass]="{'active': renameShipEnabled}" (click)="openRenameShipInput()">{{'commons.actions.rename_abbr' | translate}}</button>
+      <input type="text" id="inputShipRename" class="input-rename" [(ngModel)]="selectedShip.name" (keyup.enter)="closeRenameShipInput()" maxlength="16">
+    </div>
 
-      <img src="/assets/images/gui/box_start.png" alt="" class="ship-play-gui-image">
-      <div class="ship-box-start">
-        <div class="difficulities-container">
-          <button *ngFor="let difficulty of difficulties" class="btn" [ngClass]="{'active': difficulty.value == game.difficulty.value }" (click)="selectDifficulty(difficulty)">
+    <img src="/assets/images/gui/box_start.png" alt="" class="ship-play-gui-image">
+    <div class="ship-box-start">
+      <div class="difficulities-container">
+        @for (difficulty of difficulties; track difficulty) {
+          <button class="btn" [ngClass]="{'active': difficulty.value == game.difficulty.value }" (click)="selectDifficulty(difficulty)">
             {{'commons.difficulties.' + difficulty.name | translate}}
           </button>
-        </div>
-
-        <button class="btn btn-play" (click)="startGame()" [disabled]="disablePlayButton()">{{'commons.actions.play' | translate}}</button>
+        }
       </div>
 
-      <img src="/assets/images/gui/box_shipselect.png" alt="" class="ship-select-gui-image">
-      <div class="ship-management-gui-container">
-        <p class="ships-label">{{'commons.ships' | translate}}</p>
-        <div class="ships-list-control-container">
-          <button class="btn btn-previous-ship" (click)="previousShip()"><</button>
-          <button class="btn btn-ship-list" (click)="toggleShipsListModal()">{{'commons.list' | translate}}</button>
-          <button class="btn btn-next-ship" (click)="nextShip()">></button>
-        </div>
-        <button class="btn btn-random-ship" (click)="randomShip()">{{'views.shed.randomShip' | translate}}</button>
+      <button class="btn btn-play" (click)="startGame()" [disabled]="disablePlayButton()">{{'commons.actions.play' | translate}}</button>
+    </div>
 
-        <p class="ships-layout">{{'commons.layout' | translate}}</p>
-        <div class="ships-layout-control-container">
-          <button *ngFor="let shipLayout of shipsList[shipListIndex].layouts" class="btn btn-ship-layout" [ngClass]="{'active': shipLayout.layout == selectedShip.layout}" (click)="selectShip(shipLayout)">
+    <img src="/assets/images/gui/box_shipselect.png" alt="" class="ship-select-gui-image">
+    <div class="ship-management-gui-container">
+      <p class="ships-label">{{'commons.ships' | translate}}</p>
+      <div class="ships-list-control-container">
+        <button class="btn btn-previous-ship" (click)="previousShip()"><</button>
+        <button class="btn btn-ship-list" (click)="toggleShipsListModal()">{{'commons.list' | translate}}</button>
+        <button class="btn btn-next-ship" (click)="nextShip()">></button>
+      </div>
+      <button class="btn btn-random-ship" (click)="randomShip()">{{'views.shed.randomShip' | translate}}</button>
+
+      <p class="ships-layout">{{'commons.layout' | translate}}</p>
+      <div class="ships-layout-control-container">
+        @for (shipLayout of shipsList[shipListIndex].layouts; track shipLayout) {
+          <button class="btn btn-ship-layout" [ngClass]="{'active': shipLayout.layout == selectedShip.layout}" (click)="selectShip(shipLayout)">
             {{shipLayout.layout}}
           </button>
-        </div>
-
-        <button class="btn btn-hide-ship-rooms" (click)="toggleShipRooms()">{{'views.shed.hideRooms' | translate}}</button>
+        }
       </div>
 
-      <div class="ships-crews-gui-container">
-        <p class="crews-label">{{'commons.crews' | translate}}</p>
+      <button class="btn btn-hide-ship-rooms" (click)="toggleShipRooms()">{{'views.shed.hideRooms' | translate}}</button>
+    </div>
 
-        <div *ngIf="!selectedCrewForCustomization" class="ships-crews-container">
-            <div *ngFor="let crew of selectedShip.crews" class="ship-crew-content">
-                <p class="ship-crew-name" title="{{crew.name}}">{{crew.name}}</p>
-                <button class="btn btn-customize-crew" (click)="openCrewCustomization(crew)">{{'commons.actions.customize' | translate}}</button>
+    <div class="ships-crews-gui-container">
+      <p class="crews-label">{{'commons.crews' | translate}}</p>
+
+      @if (!selectedCrewForCustomization) {
+        <div class="ships-crews-container">
+          @for (crew of selectedShip.crews; track crew) {
+            <div class="ship-crew-content">
+              <p class="ship-crew-name" title="{{crew.name}}">{{crew.name}}</p>
+              <button class="btn btn-customize-crew" (click)="openCrewCustomization(crew)">{{'commons.actions.customize' | translate}}</button>
             </div>
+          }
         </div>
+      }
 
-        <div *ngIf="selectedCrewForCustomization" class="ships-crew-customization-bg-container">
+      @if (selectedCrewForCustomization) {
+        <div class="ships-crew-customization-bg-container">
           <div class="ships-crew-customization-container">
-              <input type="text" id="inputCrewRename" class="input-rename" [(ngModel)]="selectedCrewForCustomization.name" (keyup.enter)="closeRenameCrewInput()" maxlength="32">
-              <button class="btn btn-rename-crew" [ngClass]="{'active': renameCrewEnabled}" (click)="openRenameCrewInput()">{{'commons.actions.rename' | translate}}</button>
-              <button class="btn btn-accept-crew" (click)="closeCrewCustomization()" [disabled]="!selectedCrewForCustomization.name">{{'commons.actions.accept' | translate}}</button>
+            <input type="text" id="inputCrewRename" class="input-rename" [(ngModel)]="selectedCrewForCustomization.name" (keyup.enter)="closeRenameCrewInput()" maxlength="32">
+            <button class="btn btn-rename-crew" [ngClass]="{'active': renameCrewEnabled}" (click)="openRenameCrewInput()">{{'commons.actions.rename' | translate}}</button>
+            <button class="btn btn-accept-crew" (click)="closeCrewCustomization()" [disabled]="!selectedCrewForCustomization.name">{{'commons.actions.accept' | translate}}</button>
           </div>
         </div>
-      </div>
+      }
+    </div>
 
-      <div class="ships-weapons-gui-container">
-        <p class="weapons-label">{{'commons.weapons' | translate}}</p>
+    <div class="ships-weapons-gui-container">
+      <p class="weapons-label">{{'commons.weapons' | translate}}</p>
 
-        <div class="ships-weapons-container">
-            <div *ngFor="let weapon of selectedShip.weapons" class="ship-weapon-content">
-                <p>{{weapon.name}}</p>
-            </div>
-        </div>
-      </div>
-
-      <div class="ships-drones-gui-container">
-        <p class="drones-label">{{'commons.drones' | translate}}</p>
-
-        <p *ngIf="shipHaveNoDroneControlSystem" class="no-drone-control-label">{{'commons.systemNotInstalled' | translate}}</p>
-
-        <div *ngIf="!shipHaveNoDroneControlSystem" class="ships-drones-container">
-            <div *ngFor="let drone of selectedShip.drones" class="ship-drone-content">
-                <p>{{drone.name}}</p>
-            </div>
-        </div>
-      </div>
-
-      <div class="ships-upgrades-gui-container">
-        <p class="upgrades-label">{{'commons.upgrades' | translate}}</p>
-
-        <div *ngIf="selectedShip.upgrades.length > 0" class="ships-upgrades-container">
-            <div *ngFor="let upgrade of selectedShip.upgrades" class="ship-upgrade-content">
-                <p>{{upgrade.name}}</p>
-            </div>
-        </div>
+      <div class="ships-weapons-container">
+        @for (weapon of selectedShip.weapons; track weapon) {
+          <div class="ship-weapon-content">
+            <p>{{weapon.name}}</p>
+          </div>
+        }
       </div>
     </div>
+
+    <div class="ships-drones-gui-container">
+      <p class="drones-label">{{'commons.drones' | translate}}</p>
+
+      @if (shipHaveNoDroneControlSystem) {
+        <p class="no-drone-control-label">{{'commons.systemNotInstalled' | translate}}</p>
+      }
+
+      @if (!shipHaveNoDroneControlSystem) {
+        <div class="ships-drones-container">
+          @for (drone of selectedShip.drones; track drone) {
+            <div class="ship-drone-content">
+              <p>{{drone.name}}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="ships-upgrades-gui-container">
+      <p class="upgrades-label">{{'commons.upgrades' | translate}}</p>
+
+      @if (selectedShip.upgrades.length > 0) {
+        <div class="ships-upgrades-container">
+          @for (upgrade of selectedShip.upgrades; track upgrade) {
+            <div class="ship-upgrade-content">
+              <p>{{upgrade.name}}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
 </div>
 
 <app-modal [show]="showShipsListModal" (closeCallback)="toggleShipsListModal()">
@@ -104,15 +126,16 @@
     </div>
 
     <div class="ships-list-content">
-      <div *ngFor="let ships of shipsList; let shipListIndex = index" [attr.data-index]="shipListIndex" style="margin-right: 15px;">
-        <div class="ship-layouts-containter" (click)="selectShipFromShipListSelector(shipListIndex, ships.layouts[shipListLayoutIndex])">
-          <img src="assets/images/ships/{{ships.layouts[shipListLayoutIndex].type}}/layout_{{ships.layouts[shipListLayoutIndex].layout.toLowerCase()}}/miniship.png" alt="">
-        </div>
-
-        <!-- <div class="ship-layouts-feats-container">
+      @for (ships of shipsList; track ships; let shipListIndex = $index) {
+        <div [attr.data-index]="shipListIndex" style="margin-right: 15px;">
+          <div class="ship-layouts-containter" (click)="selectShipFromShipListSelector(shipListIndex, ships.layouts[shipListLayoutIndex])">
+            <img src="assets/images/ships/{{ships.layouts[shipListLayoutIndex].type}}/layout_{{ships.layouts[shipListLayoutIndex].layout.toLowerCase()}}/miniship.png" alt="">
+          </div>
+          <!-- <div class="ship-layouts-feats-container">
           // TODO
         </div> -->
       </div>
-    </div>
+    }
   </div>
+</div>
 </app-modal>

@@ -15,26 +15,32 @@
       <p>30</p>
     </div>
 
-    <div *ngIf="game.ship" class="shield-gui-container">
-      <div class="shield-indicators-gui-container">
-        <img *ngFor="let shield of game.ship.shields" [src]="shield.getSpriteSrc()" alt="">
+    @if (game.ship) {
+      <div class="shield-gui-container">
+        <div class="shield-indicators-gui-container">
+          @for (shield of game.ship.shields; track shield) {
+            <img [src]="shield.getSpriteSrc()" alt="">
+          }
+        </div>
+        <div>
+          <!-- // TODO progress bar shield reactivation indicator -->
+        </div>
       </div>
-      <div>
-        <!-- // TODO progress bar shield reactivation indicator -->
-      </div>
-    </div>
+    }
 
-    <div *ngIf="game.ship" class="fuel-missiles-drones-gui-container">
-      <div class="fuel-quantity-gui-container" [ngClass]="{'field-low-quantity': game.ship.fuel == 0}">
-        <p>{{game.ship.fuel}}</p>
+    @if (game.ship) {
+      <div class="fuel-missiles-drones-gui-container">
+        <div class="fuel-quantity-gui-container" [ngClass]="{'field-low-quantity': game.ship.fuel == 0}">
+          <p>{{game.ship.fuel}}</p>
+        </div>
+        <div class="missiles-quantity-gui-container" [ngClass]="{'missiles-low-quantity': game.ship.missiles == 0}">
+          <p>{{game.ship.missiles}}</p>
+        </div>
+        <div class="drone-parts-quantity-gui-container" [ngClass]="{'drone-parts-low-quantity': game.ship.droneParts == 0}">
+          <p>{{game.ship.droneParts}}</p>
+        </div>
       </div>
-      <div class="missiles-quantity-gui-container" [ngClass]="{'missiles-low-quantity': game.ship.missiles == 0}">
-        <p>{{game.ship.missiles}}</p>
-      </div>
-      <div class="drone-parts-quantity-gui-container" [ngClass]="{'drone-parts-low-quantity': game.ship.droneParts == 0}">
-        <p>{{game.ship.droneParts}}</p>
-      </div>
-    </div>
+    }
 
     <div class="engine-oxygen-gui-container">
       <p class="engine-level-content">15%</p>
@@ -49,48 +55,57 @@
     <button class="btn btn-settings" (click)="toggleGameMenuModal()">Settings</button>
   </div>
 
-  <div *ngIf="game.ship" class="crews-gui-container">
-    <div *ngFor="let crew of this.game.ship.crews" class="crew-gui-content" [ngClass]="{'active': crew.selected}" (click)="selectCrew(crew)">
-      <img [src]="crew.getBaseSrc()" alt="" class="crew-sprite">
-      <div class="crew-stats-content">
-        <p class="crew-name">{{crew.getFirstName()}}</p>
-        <div class="crew-health-bar"></div>
-      </div>
-    </div>
-
-    <button class="btn btn-save-crew-affections" (click)="saveCrewsAffectations()">
-      <span></span>
-    </button>
-
-    <button class="btn btn-return-crew-affectations" (click)="returnCrewsAffectations()">
-      <span></span>
-    </button>
-  </div>
-
-  <div *ngIf="game.ship" class="ship-systems-gui-container">
-    <!-- power gui -->
-    <!-- systems gui -->
-    <div *ngIf="game.ship.weapons" class="ship-systems-gui-weapons-container ship-systems-gui-{{this.game.ship.maxWeaponsAllowed}}-weapons-container">
-      <div *ngFor="let weapon of game.ship.weapons">
-        <div class="ship-systems-gui-weapon-container">
-          <span>{{weapon.name}}</span>
+  @if (game.ship) {
+    <div class="crews-gui-container">
+      @for (crew of this.game.ship.crews; track crew) {
+        <div class="crew-gui-content" [ngClass]="{'active': crew.selected}" (click)="selectCrew(crew)">
+          <img [src]="crew.getBaseSrc()" alt="" class="crew-sprite">
+          <div class="crew-stats-content">
+            <p class="crew-name">{{crew.getFirstName()}}</p>
+            <div class="crew-health-bar"></div>
+          </div>
         </div>
-      </div>
-
-      <div class="ship-systems-gui-weapons-title-container">
-        <p class="ship-systems-gui-weapons-title">{{'commons.weapons' | translate}}</p>
-      </div>
-      <button class="btn btn-autofire">{{'views.game.autofire' | translate}}</button>
+      }
+      <button class="btn btn-save-crew-affections" (click)="saveCrewsAffectations()">
+        <span></span>
+      </button>
+      <button class="btn btn-return-crew-affectations" (click)="returnCrewsAffectations()">
+        <span></span>
+      </button>
     </div>
-  </div>
+  }
+
+  @if (game.ship) {
+    <div class="ship-systems-gui-container">
+      <!-- power gui -->
+      <!-- systems gui -->
+      @if (game.ship.weapons) {
+        <div class="ship-systems-gui-weapons-container ship-systems-gui-{{this.game.ship.maxWeaponsAllowed}}-weapons-container">
+          @for (weapon of game.ship.weapons; track weapon) {
+            <div>
+              <div class="ship-systems-gui-weapon-container">
+                <span>{{weapon.name}}</span>
+              </div>
+            </div>
+          }
+          <div class="ship-systems-gui-weapons-title-container">
+            <p class="ship-systems-gui-weapons-title">{{'commons.weapons' | translate}}</p>
+          </div>
+          <button class="btn btn-autofire">{{'views.game.autofire' | translate}}</button>
+        </div>
+      }
+    </div>
+  }
 
   <div class="ship-sub-systems-gui-container">
     <p class="sub-systems-title">{{'sub_systems' | translate}}</p>
   </div>
 
-  <div *ngIf="isPause" class="game-pause-gui-container">
-    <img [src]="getPauseImageSrc()" alt="" class="game-pause-content">
-  </div>
+  @if (isPause) {
+    <div class="game-pause-gui-container">
+      <img [src]="getPauseImageSrc()" alt="" class="game-pause-content">
+    </div>
+  }
 </div>
 
 <app-modal [show]="showGameMenuModal" (closeCallback)="toggleGameMenuModal()">
@@ -107,7 +122,9 @@
 
   <div class="difficulty-container">
     <p class="difficulty-title">{{'commons.difficulty' | translate}}</p>
-    <p *ngIf="game.difficulty" class="difficulty-value">{{('commons.difficulties.' + game.difficulty.name) | translate}}</p>
+    @if (game.difficulty) {
+      <p class="difficulty-value">{{('commons.difficulties.' + game.difficulty.name) | translate}}</p>
+    }
   </div>
 </app-modal>
 
